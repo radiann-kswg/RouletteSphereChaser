@@ -51,8 +51,8 @@ public static class ParkBuilder
         var cam = Camera.main;
         if (cam != null)
         {
-            cam.transform.position = new Vector3(6.5f, 4.5f, 6.5f);
-            cam.transform.LookAt(new Vector3(0.5f, 0.6f, 0));
+            cam.transform.position = new Vector3(11f, 9f, 11f);
+            cam.transform.LookAt(new Vector3(0.5f, 4f, 0));
             cam.farClipPlane = 100f;
             if (cam.GetComponent<FollowCamera>() == null) cam.gameObject.AddComponent<FollowCamera>();
         }
@@ -71,7 +71,7 @@ public static class ParkBuilder
         // 傾斜円盤（+X側が低い）。円形外周壁の谷が排水口へ自然に集める（v1実証済み）
         Prim(PrimitiveType.Cylinder, g, "BasinPlate", new Vector3(0, 0.25f, 0),
             new Vector3(0, 0, -BasinTiltDeg), new Vector3((BasinR + 0.2f) * 2f, 0.01f, (BasinR + 0.2f) * 2f), Track); // 壁の下まで延長—縁の隙間リング(v1の罠)防止
-        WallRing(g, BasinR + 0.1f, 0.30f, 0.6f, 48, 0f, DrainGapDeg);
+        WallRing(g, BasinR + 0.1f, 0.50f, 1.0f, 48, 0f, DrainGapDeg); // 高所投下のバウンドを確実に収める高壁
     }
 
     // ---- 排水ステーション（広幅→浅テーパー→2レーン） ----
@@ -109,9 +109,9 @@ public static class ParkBuilder
     static void BuildLifts(Transform root)
     {
         var g = Group(root, "Lifts");
-        // 高さは大きめに確保（User方針）: 塔は最大3.5m級を想定
-        BuildLift(g, "LiftN", 0.09f, new Vector3(0, 2.8f, 0.3f));       // 将来: タワーA頂上へ
-        BuildLift(g, "LiftS", -0.09f, new Vector3(-1.8f, 2.8f, -1.2f)); // 将来: タワーB/C側へ
+        // 高さ4倍方針（User 2026-08-22）: 塔は最大13m級の縦積み。リフト頂部14m
+        BuildLift(g, "LiftN", 0.09f, new Vector3(0, 12.8f, 0.3f));       // 将来: タワーA頂上へ
+        BuildLift(g, "LiftS", -0.09f, new Vector3(-1.8f, 12.8f, -1.2f)); // 将来: タワーB/C側へ
     }
 
     static void BuildLift(Transform parent, string name, float laneZ, Vector3 dropPoint)
@@ -119,15 +119,15 @@ public static class ParkBuilder
         var liftGO = Trigger(parent, name, new Vector3(4.78f, 0.08f, laneZ), new Vector3(0.16f, 0.12f, 0.15f), 0);
         Object.DestroyImmediate(liftGO.GetComponent<ScoreZone>());
         var lift = liftGO.AddComponent<BallLift>();
-        lift.speed = 1.3f;
+        lift.speed = 3.5f; // 14m級に合わせて増速
         lift.waypoints = new Transform[]
         {
-            Waypoint(liftGO.transform, "W0", new Vector3(4.78f, 3.4f, laneZ)),
-            Waypoint(liftGO.transform, "W1", new Vector3(dropPoint.x, 3.4f, dropPoint.z)),
+            Waypoint(liftGO.transform, "W0", new Vector3(4.78f, 14f, laneZ)),
+            Waypoint(liftGO.transform, "W1", new Vector3(dropPoint.x, 14f, dropPoint.z)),
             Waypoint(liftGO.transform, "W2", dropPoint),
         };
         // ガイドレール（見た目）
-        VisualBar(parent, name + "_GuideA", new Vector3(4.78f + 0.09f, 1.72f, laneZ), Vector3.zero, new Vector3(0.03f, 3.4f, 0.03f));
-        VisualBar(parent, name + "_GuideB", new Vector3(4.78f - 0.09f, 1.72f, laneZ), Vector3.zero, new Vector3(0.03f, 3.4f, 0.03f));
+        VisualBar(parent, name + "_GuideA", new Vector3(4.78f + 0.09f, 7f, laneZ), Vector3.zero, new Vector3(0.03f, 14f, 0.03f));
+        VisualBar(parent, name + "_GuideB", new Vector3(4.78f - 0.09f, 7f, laneZ), Vector3.zero, new Vector3(0.03f, 14f, 0.03f));
     }
 }

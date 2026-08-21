@@ -10,8 +10,8 @@ AIエージェント設定の単一情報源（SSOT）。運用ルール・設�
 
 ### 開発方針（重要）
 
-> **次期計画（v2）: マシン全体を約10倍スケールに拡大し、抽選機構を5倍程度に増設。
-> 20球以上の同時稼働で安定循環させる大型ボールコースターとして全面作り直しを行う（現行機の破棄可）。**
+> **v2計画: 多塔パーク型・高さ約14m（縦積み高密度）・抽選機構約25基・32球安定稼働。
+> 正式な設計正本は `Docs/DESIGN-v2.md`（改訂2）。フェーズ1（パーク基盤）は実装・検証済み。**
 
 > **今後はレールと抽選機構をさらに増やし、大きめの「ボールコースター」として拡張していく。**
 > 新機構・新ルートの追加が前提の設計を保つこと：
@@ -52,7 +52,29 @@ AIエージェント設定の単一情報源（SSOT）。運用ルール・設�
 - GameObjectのentityIdはJSON数値精度で化けるため、ID渡しのキャプチャは不可。スクリーンショットは `RunCommand` でRenderTexture→PNG書き出し→ファイル読取で行う。
 - 動作検証はボール座標/速度/laps/scoreの定期プローブと `Physics.OverlapSphere` の接触列挙が有効。
 
-## 5. 運用ルール
+## 5. 引き継ぎ（次セッションの開始手順）
+
+**現状（2026-08-22時点）**
+
+- v1完成機: `SampleScene`＋`GreyboxBuilder.cs`（凍結。参照用に残置、以後は触らない）
+- v2フェーズ1完成: `ParkScene`＋`ParkBuilder.cs`＋`GreyboxKit.cs`。盆地→排水路→リフト2基(頂部14m)の循環を8球スモークで検証済み（68周/3.4m版、53周130秒/14m版、詰まり・場外ゼロ）
+- **次の作業: `Docs/DESIGN-v2.md` 6章フェーズ2「タワーA（4階層縦積み）」から。**上の階層から1段ずつ建てて、段ごとにプレイ検証すること
+
+**セッション開始手順**
+
+1. UserにUnityエディタ（RouletteSphereChaser）とBlender 5.2.0LTSの起動を依頼（他のUnityプロジェクトは閉じる）
+2. `Unity_GetProjectData` で疎通確認。「Unity not detected」は再コンパイル中の一時症状のことが多い→20〜40秒待って再試行
+3. 作業ブランチは `main`（現状ブランチ運用は単一。変更時はここを更新）
+
+**検証ループ（厳守）**
+
+exit playmode → `AssetDatabase.Refresh` → 40秒待機（コンパイル完了確認）→ ビルダーメニュー実行 → play → 2〜3分放置 → `Unity_RunCommand` でボール座標/速度/laps/score をプローブ。詰まり調査は `Physics.OverlapSphere` の接触列挙が最速。スクリーンショットはRenderTexture→PNG書き出し→Read（entityIdはJSON精度で渡せない）。
+
+**git（定期コミット必須）**
+
+- サンドボックスからは操作不可（lfs無し・削除不可）。**`Tools > Git Commit All` メニュー**を使う。メッセージは事前に `EditorPrefs "GitTools.Message"` へ。pushはUser指示時のみ。
+
+## 6. 運用ルール
 
 - 回答は日本語。`Library/` `Temp/` `Logs/` `obj/` `UserSettings/` は編集・コミット対象外。
 - `.meta` はUnityエディタに任せる。
