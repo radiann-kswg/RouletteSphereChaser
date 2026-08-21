@@ -56,5 +56,5 @@ AIエージェント設定の単一情報源（SSOT）。運用ルール・設�
 
 - 回答は日本語。`Library/` `Temp/` `Logs/` `obj/` `UserSettings/` は編集・コミット対象外。
 - `.meta` はUnityエディタに任せる。
-- コミット・pushはUserの指示があったときのみ。
+- **gitは節目ごとに定期コミットする**（User方針 2026-08-21）。サンドボックスのマウントはgit-lfs無し・削除不可でgit操作不能のため、**コミットはUnityメニュー `Tools > Git Commit All`（`Assets/Editor/GitTools.cs`）経由**で行う。メッセージは実行前に `EditorPrefs "GitTools.Message"` へ設定。pushはUserの指示があったときのみ。
 - ロールプレイはルート `AGENTS.md` の既定（錦野歌嫁）に従う。
