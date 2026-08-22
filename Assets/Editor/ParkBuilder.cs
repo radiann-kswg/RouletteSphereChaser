@@ -41,6 +41,7 @@ public static class ParkBuilder
         BuildDrainStation(root);
         BuildLifts(root);
         BuildTowerA_Tier1(root);
+        BuildTowerA_Tier23(root);
 
         // フェーズ1スモーク用スポナー
         var spawner = new GameObject("BallSpawner").AddComponent<BallSpawner>();
@@ -158,6 +159,64 @@ public static class ParkBuilder
         var arb = agit.GetComponent<Rigidbody>();
         arb.isKinematic = true;
         arb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
+    }
+
+    // ---- タワーA ②③（フェーズ3改・4分岐版）: 各スパイラル直下に専用チェーン ----
+    // 4本の中央シャフト排出(y9.55, スパイラル中心からr≈0.4)は合流させず（User指示）、
+    // 各スパイラル中心(±1.52,±1.52)に ②ミニクルーン(r1.34, 穴縁8.45/縁床8.75/壁9.35)
+    // → ③ミニルーレット(ボウルr0.87@7.25＋フレット6ホイール18°/s) を1系統ずつ＝計4系統。
+    // 撹拌クロスはDrainStirrer.fbx流用（罠10）。スコアは静止側トリガー（罠6）。
+    // 排出スナウトは軸方位→自由落下柱で盆地へ（フェイルセーフ維持）。
+    static void BuildTowerA_Tier23(Transform root)
+    {
+        var g = Group(root, "TowerA23");
+        var kuruunPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Models/TowerA_MiniKuruun.fbx");
+        var bowlPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Models/TowerA_MiniRouletteBowl.fbx");
+        var wheelPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Models/TowerA_MiniRouletteWheel.fbx");
+        var kuruunMat = Mat("TowerA_MiniKuruun", new Color(0.72f, 0.55f, 0.62f));
+        var bowlMat = Mat("TowerA_MiniRouletteBowl", new Color(0.30f, 0.45f, 0.30f));
+        var wheelMat = Mat("TowerA_MiniRouletteWheel", new Color(0.75f, 0.30f, 0.28f));
+        int[] pts = { 40, 20, 100, 60 };  // 軸方位 +X/+Z/-X/-Z
+        foreach (float az in new[] { 45f, 135f, 225f, 315f })
+        {
+            float rad = az * Mathf.Deg2Rad;
+            var c = new Vector3(2.15f * Mathf.Cos(rad), 0, 2.15f * Mathf.Sin(rad));
+            var sub = Group(g, "Chain_" + az);
+            // ②ミニクルーン＋撹拌クロス
+            var kuruun = (GameObject)Object.Instantiate(kuruunPrefab, c + new Vector3(0, 8.45f, 0), Quaternion.Euler(-90f, 0, 0), sub);
+            kuruun.name = "MiniKuruun";
+            SetupMesh(kuruun, kuruunMat);
+            var ks = new GameObject("KuruunStirrer");
+            ks.transform.SetParent(sub);
+            ks.transform.position = c + new Vector3(0, 8.54f, 0);
+            ks.AddComponent<Rotator>().degreesPerSecond = 12f;
+            var krb = ks.GetComponent<Rigidbody>();
+            krb.isKinematic = true;
+            krb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
+            var ksMesh = InstantiateFbx("Assets/Models/DrainStirrer.fbx", "StirrerMesh", ks.transform, Accent, true);
+            ksMesh.transform.localPosition = Vector3.zero;
+            ksMesh.transform.localRotation = Quaternion.Euler(90f, 0, 0);
+            // ③ミニルーレット（ボウル静止＋ホイール回転）
+            var bowl = (GameObject)Object.Instantiate(bowlPrefab, c + new Vector3(0, 7.25f, 0), Quaternion.Euler(-90f, 0, 0), sub);
+            bowl.name = "MiniRouletteBowl";
+            SetupMesh(bowl, bowlMat);
+            var wheel = (GameObject)Object.Instantiate(wheelPrefab, c + new Vector3(0, 7.25f, 0), Quaternion.Euler(-90f, 0, 0), sub);
+            wheel.name = "MiniRouletteWheel";
+            SetupMesh(wheel, wheelMat);
+            var wrot = wheel.AddComponent<Rotator>();
+            wrot.axis = Vector3.forward;
+            wrot.degreesPerSecond = 18f;
+            var wrb = wheel.GetComponent<Rigidbody>();
+            wrb.isKinematic = true;
+            wrb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
+            // スコアトリガー（スナウト出口・静止側）
+            for (int i = 0; i < 4; i++)
+            {
+                float taz = i * 90f * Mathf.Deg2Rad;
+                var pos = c + new Vector3(1.06f * Mathf.Cos(taz), 7.27f, 1.06f * Mathf.Sin(taz));
+                Trigger(sub, "RouletteScore_" + pts[i], pos, new Vector3(0.24f, 0.28f, 0.24f), pts[i]);
+            }
+        }
     }
 
     /// BlenderメッシュFBX共通セットアップ: 単一マテリアル＋非凸MeshCollider＋低摩擦
