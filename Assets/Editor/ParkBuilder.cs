@@ -42,6 +42,12 @@ public static class ParkBuilder
         BuildLifts(root);
         BuildTowerA_Tier1(root);
         BuildTowerA_Tier23(root);
+        // レーン対称配置（User案 2026-08-22）: JPスピナー×2=Z軸両端 / 沼×2=X軸両端
+        // 建て込みは基準位置で行い、グループごとY回転で配置（鏡像問題を回避）
+        BuildTowerG_Numa(root, "TowerG_E", 90f);    // 東(+X)
+        BuildTowerG_Numa(root, "TowerG_W", -90f);   // 西(-X)
+        BuildTowerF_JPSpinner(root, "TowerF_S", 0f);    // 南(-Z)
+        BuildTowerF_JPSpinner(root, "TowerF_N", 180f);  // 北(+Z)
 
         // フェーズ1スモーク用スポナー
         var spawner = new GameObject("BallSpawner").AddComponent<BallSpawner>();
@@ -50,6 +56,8 @@ public static class ParkBuilder
         spawner.ballPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/LotteryBall.prefab");
         spawner.count = 8;
         spawner.interval = 1f;
+        // サンプルキャラスキン常用（User作・CC BY 4.0）
+        spawner.characterSkin = AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/Textures/BallSkins_Sample.png");
 
         var cam = Camera.main;
         if (cam != null)
@@ -342,6 +350,99 @@ public static class ParkBuilder
         tmp.color = textColor;
         tmp.rectTransform.sizeDelta = new Vector2(0.6f, 0.2f);
         tmp.fontSharedMaterial = PenchantCullBack();
+    }
+
+    /// 落下系スコア地点: トリガー＋TMP得点表示（ゲート無し。深度テスト＋背面カリング）
+    static void ScoreMark(Transform parent, Vector3 pos, int points, Color color, float labelAzDeg)
+    {
+        Trigger(parent, "DropScore_" + points, pos, new Vector3(0.30f, 0.26f, 0.30f), points, false);
+        var dir = new Vector3(Mathf.Cos(labelAzDeg * Mathf.Deg2Rad), 0, Mathf.Sin(labelAzDeg * Mathf.Deg2Rad));
+        var go = new GameObject("DropLabel_" + points);
+        go.transform.SetParent(parent);
+        go.transform.position = pos + Vector3.up * 0.25f + dir * 0.18f;
+        go.transform.rotation = Quaternion.LookRotation(-dir); // 外側から読む向き
+        var tmp = go.AddComponent<TMPro.TextMeshPro>();
+        var fa = PenchantFont();
+        if (fa != null) tmp.font = fa;
+        tmp.text = points.ToString();
+        tmp.fontSize = 1.5f;
+        tmp.alignment = TMPro.TextAlignmentOptions.Center;
+        tmp.textWrappingMode = TMPro.TextWrappingModes.NoWrap;
+        tmp.color = color;
+        tmp.rectTransform.sizeDelta = new Vector2(0.6f, 0.2f);
+        tmp.fontSharedMaterial = PenchantCullBack();
+    }
+
+    // ---- タワーG「沼」(0,5): 釘バラし盤→三連クルーン縦積み（HighLane+Z×2から給球） ----
+    // 盤: 前板(低)がA側・後板(高)が北。ギャップ0.15=1.5d・釘4段千鳥・V字ガイドで中央へ集約。
+    // クルーンはMiniKuruunのスケール流用(0.8/0.65/0.52)。撹拌なし（低トラフィック前提。
+    // ponytail: 2球同時到達でk3穴(1.66d)アーチの可能性→観測されたら小型撹拌追加）
+    static void BuildTowerG_Numa(Transform root, string name, float yawDeg)
+    {
+        var g = Group(root, name);
+        var board = InstantiateMech("Assets/Models/TowerG_NumaBoard.fbx", "NumaBoard", g,
+            new Vector3(0, 5.85f, 5.0f), Quaternion.Euler(-90f, 180f, 0),
+            Mat("TowerG_NumaBoard", new Color(0.35f, 0.42f, 0.55f)));
+        // 当たり=中央穴（次段へ）/ ハズレ=壁ノッチ×2＋スナウトで径外へ排出（沼式・User指摘）
+        // ハズレ排出半径: k1≈1.23 > k2皿0.87 / k2≈1.00 > k3皿0.70 / k3≈0.80 → いずれも下段をかわして盆地へ
+        var kuruunPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Models/TowerG_NumaKuruun.fbx");
+        var kMat = Mat("TowerG_NumaKuruun", new Color(0.45f, 0.55f, 0.40f));
+        // 穴の同軸落下防止（User指摘）: 中心を千鳥オフセット→上の穴の真下は必ず次の皿の斜面
+        // （穴間隔 0.25/0.45 > 穴半径和 0.23/0.19。毎皿で転がり直す沼らしい抽選に）
+        float[] scales = { 0.80f, 0.65f, 0.52f };
+        float[] roots = { 5.10f, 4.30f, 3.55f };
+        float[] xoff = { 0f, 0.25f, -0.20f };
+        for (int i = 0; i < 3; i++)
+        {
+            var k = (GameObject)Object.Instantiate(kuruunPrefab, new Vector3(xoff[i], roots[i], 5.0f), Quaternion.Euler(-90f, 0, 0), g);
+            k.name = "NumaKuruun_" + (i + 1);
+            k.transform.localScale = Vector3.one * scales[i];
+            SetupMesh(k, kMat);
+        }
+        ScoreMark(g, new Vector3(0, 4.96f, 5.0f), 20, new Color(0.92f, 0.92f, 0.95f), 90f);
+        ScoreMark(g, new Vector3(0.25f, 4.16f, 5.0f), 40, new Color(0.92f, 0.92f, 0.95f), 90f);
+        ScoreMark(g, new Vector3(-0.20f, 3.40f, 5.0f), 120, new Color(1.0f, 0.83f, 0.25f), 90f);
+        g.rotation = Quaternion.Euler(0, yawDeg, 0);  // グループ一括回転（原点ピボット）
+    }
+
+    // ---- タワーF「JPスピナー」(0,-5): 受けトレイ→回転穴皿→セパレータ（HighLane-Z×2から給球） ----
+    // 皿: 中央JP穴(カラー付)＋通過穴3(r0.45リング)・15°/s回転。下段は半径分離:
+    // 中央落下→チューブ→JP150、リング落下→セクター欠きリング床→南ギャップ→30。
+    static void BuildTowerF_JPSpinner(Transform root, string name, float yawDeg)
+    {
+        var g = Group(root, name);
+        InstantiateMech("Assets/Models/TowerF_CatchTray.fbx", "CatchTray", g,
+            new Vector3(0, 6.25f, -5.35f), Quaternion.Euler(-90f, 180f, 0),
+            Mat("TowerF_CatchTray", new Color(0.55f, 0.50f, 0.42f)));
+        var dish = InstantiateMech("Assets/Models/TowerF_SpinnerDish.fbx", "SpinnerDish", g,
+            new Vector3(0, 5.55f, -5.0f), Quaternion.Euler(-90f, 0, 0),
+            Mat("TowerF_SpinnerDish", new Color(0.75f, 0.55f, 0.20f)));
+        var rot = dish.AddComponent<Rotator>();
+        rot.axis = Vector3.forward;
+        rot.degreesPerSecond = 15f;
+        var drb = dish.GetComponent<Rigidbody>();
+        drb.isKinematic = true;
+        drb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
+        // セクターギャップを南へ（鏡像則: world方位=180-yaw+blender方位。blender270°→yaw180で南270°）
+        // ＋南下がり4°チルト: リング床は回転対称で接線力ゼロ→チューブ際で静止する（実測）ため、
+        // 最低点=ギャップ方位に傾けてどの着地方位からも南へ転がす
+        InstantiateMech("Assets/Models/TowerF_Separator.fbx", "Separator", g,
+            new Vector3(0, 4.65f, -5.0f),
+            Quaternion.AngleAxis(-4f, Vector3.right) * Quaternion.Euler(-90f, 180f, 0),
+            Mat("TowerF_Separator", new Color(0.40f, 0.32f, 0.45f)));
+        ScoreMark(g, new Vector3(0, 4.50f, -5.0f), 150, new Color(1.0f, 0.35f, 0.30f), 270f);  // JP
+        ScoreMark(g, new Vector3(0, 4.72f, -5.55f), 30, new Color(0.92f, 0.92f, 0.95f), 270f); // 通過
+        g.rotation = Quaternion.Euler(0, yawDeg, 0);  // グループ一括回転（原点ピボット）
+    }
+
+    /// 機構系FBXの配置ヘルパ（回転指定つき）
+    static GameObject InstantiateMech(string path, string name, Transform parent, Vector3 pos, Quaternion rot, Material mat)
+    {
+        var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
+        var go = (GameObject)Object.Instantiate(prefab, pos, rot, parent);
+        go.name = name;
+        SetupMesh(go, mat);
+        return go;
     }
 
     /// BlenderメッシュFBX共通セットアップ: 単一マテリアル＋非凸MeshCollider＋低摩擦
