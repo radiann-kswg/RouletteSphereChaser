@@ -64,54 +64,20 @@ public static class ParkBuilder
         Debug.Log("[ParkBuilder] phase1 build complete");
     }
 
-    // ---- 地面＋矩形回収フロア ----
+    // ---- 地面＋矩形回収フロア（Blender一体メッシュ。寸法はBlenderSources/ParkBase.blend側が正） ----
     static void BuildGroundAndBasin(Transform root)
     {
         var g = Group(root, "Basin");
-        Prim(PrimitiveType.Cube, g, "GroundPlate", new Vector3(0.8f, -0.02f, 0), Vector3.zero,
-            new Vector3(26f, 0.04f, 16f), Track);
-        // 傾斜フロア（+X側が低い）。西端(x-10)y≈1.14 → 東端(x10.6)y≈0.06
-        // 東端はV字漏斗壁の合流点(10.5)より先まで延長（端で平地に落ちると停止する）
-        Prim(PrimitiveType.Cube, g, "FloorPlate", new Vector3(0.3f, 0.58f, 0),
-            new Vector3(0, 0, -FloorTiltDeg), new Vector3(20.6f, 0.04f, FloorHalfZ * 2f), Track);
-        // 周囲壁（高所投下のバウンドを収める高壁）
-        foreach (float s in new[] { -1f, 1f })
-            Prim(PrimitiveType.Cube, g, s < 0 ? "WallS" : "WallN", new Vector3(0.3f, 1.1f, s * (FloorHalfZ + 0.05f)),
-                Vector3.zero, new Vector3(21f, 2.2f, 0.06f), Rail);
-        Prim(PrimitiveType.Cube, g, "WallW", new Vector3(-(FloorHalfX + 0.05f), 1.4f, 0), Vector3.zero,
-            new Vector3(0.06f, 2.6f, FloorHalfZ * 2f + 0.2f), Rail);
-        // 東側V字漏斗壁: 東端に達したボールを壁沿いに排水口(z=0)へ滑らせる
-        foreach (float s in new[] { -1f, 1f })
-        {
-            Vector3 p1 = new Vector3(8.8f, 0.7f, s * (FloorHalfZ + 0.05f)), p2 = new Vector3(10.5f, 0.7f, s * 0.53f);
-            Prim(PrimitiveType.Cube, g, s < 0 ? "FunnelWallS" : "FunnelWallN", (p1 + p2) * 0.5f,
-                Quaternion.LookRotation(p2 - p1).eulerAngles, new Vector3(0.06f, 1.4f, Vector3.Distance(p1, p2) + 0.1f), Rail);
-        }
+        InstantiateFbx("Assets/Models/ParkBase.fbx", "ParkBase", g,
+            Mat("ParkBase", new Color(0.55f, 0.55f, 0.58f)), true);
     }
 
-    // ---- 排水ステーション（広幅→浅テーパー→2レーン） ----
+    // ---- 排水ステーション（Blender一体メッシュ＋撹拌/トリガーはUnity側） ----
     static void BuildDrainStation(Transform root)
     {
         var g = Group(root, "DrainStation");
-        // エプロン床（フロア東端の高さから緩やかに下る）
-        Prim(PrimitiveType.Cube, g, "Apron", new Vector3(11.25f, 0.015f, 0),
-            new Vector3(0, 0, -1.4f), new Vector3(2.6f, 0.04f, 1.3f), Track);
-        // 浅テーパー壁（片側約17°。急絞りはアーチする）
-        foreach (float s in new[] { -1f, 1f })
-        {
-            Vector3 p1 = new Vector3(10.5f, 0.18f, s * 0.56f), p2 = new Vector3(11.75f, 0.16f, s * 0.17f);
-            Prim(PrimitiveType.Cube, g, s < 0 ? "TaperL" : "TaperR", (p1 + p2) * 0.5f,
-                Quaternion.LookRotation(p2 - p1).eulerAngles, new Vector3(0.03f, 0.34f, 1.36f), Rail);
-            // レーン平行壁
-            Prim(PrimitiveType.Cube, g, s < 0 ? "LaneWallL" : "LaneWallR", new Vector3(12.1f, 0.16f, s * 0.175f),
-                Vector3.zero, new Vector3(0.75f, 0.32f, 0.03f), Rail);
-        }
-        // 2レーン分割ノーズ（幅0.16=1.6dずつ）
-        Prim(PrimitiveType.Cube, g, "LaneNose", new Vector3(12.1f, 0.10f, 0), Vector3.zero,
-            new Vector3(0.72f, 0.20f, 0.02f), Rail);
-        // レーン終端壁
-        Prim(PrimitiveType.Cube, g, "LaneEnd", new Vector3(12.49f, 0.16f, 0), Vector3.zero,
-            new Vector3(0.03f, 0.32f, 0.40f), Rail);
+        InstantiateFbx("Assets/Models/DrainStation.fbx", "DrainStation", g,
+            Mat("DrainStation", new Color(0.42f, 0.45f, 0.52f)), true);
         // 撹拌ローター（テーパー喉元。アーチ崩し標準装備）
         Stirrer(g, "DrainStirrer", new Vector3(11.6f, 0.09f, 0), new Vector3(0, 0, -1.4f), 2, 0.5f, 20f);
         // 周回確定（両レーン共通、レーン入口手前）
@@ -120,14 +86,27 @@ public static class ParkBuilder
         lap.AddComponent<LapGate>();
     }
 
+    // 注意: ベース系FBX（単一メッシュ・無回転オブジェクト）はX軸ミラーで
+    // インポートされる（実測）。Z対称ジオメトリ前提でY180°回転で相殺する。
+    static GameObject InstantiateFbx(string path, string name, Transform parent, Material mat, bool collide)
+    {
+        var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
+        var go = (GameObject)Object.Instantiate(prefab, Vector3.zero, Quaternion.Euler(0, 180f, 0), parent);
+        go.name = name;
+        if (collide) SetupMesh(go, mat);
+        else foreach (var r in go.GetComponentsInChildren<Renderer>()) r.sharedMaterial = mat;
+        return go;
+    }
+
     // ---- リフト2基（各レーン終端から別々の投下点へ） ----
     static void BuildLifts(Transform root)
     {
         var g = Group(root, "Lifts");
         // 高さ4倍方針（User 2026-08-22）: 塔は最大13m級の縦積み。リフト頂部14m
-        // タワーA分岐盤へ投下。コーン真頂点(0,0)だと完全対称で摂動ゼロ→頂点上で垂直バウンド
-        // し続けて頂点シームからすり抜ける（実測）。斜面に落として対称性を崩すこと。
-        BuildLift(g, "LiftN", 0.09f, new Vector3(0.18f, 13.5f, 0.12f));
+        // タワーA分岐盤へ投下。※静止コーン真頂点への無摂動投下は垂直バウンド＋すり抜けの罠
+        // だったが、現在は回転キャップ＋解放ジッタで対称性が崩れるため中心投下でよい。
+        // 位置オフセットは方位バイアスになる（西側スパイラルが0件になった実測）ので入れない。
+        BuildLift(g, "LiftN", 0.09f, new Vector3(0, 13.5f, 0), 0.6f);
         BuildLift(g, "LiftS", -0.09f, new Vector3(-7f, 9.8f, -4f));    // 将来: タワーB頂上(-7,-4)へ
     }
 
@@ -146,7 +125,9 @@ public static class ParkBuilder
         {
             float rad = az * Mathf.Deg2Rad;
             var pos = new Vector3(2.15f * Mathf.Cos(rad), 12.45f, 2.15f * Mathf.Sin(rad));
-            var spiral = (GameObject)Object.Instantiate(spiralPrefab, pos, Quaternion.Euler(-90f, -(az + 150f), 0), g);
+            // yaw+180（User指摘）: 開始デッドエンドを着地方位の反対側へ置き、
+            // 着地帯の前後両方に樋が続く向きにする（取りこぼし→1段落ち防止）
+            var spiral = (GameObject)Object.Instantiate(spiralPrefab, pos, Quaternion.Euler(-90f, 30f - az, 0), g);
             spiral.name = "SpiralA_" + az;
             SetupMesh(spiral, spiralMat);
         }
@@ -162,7 +143,7 @@ public static class ParkBuilder
         SetupMesh(agit, Accent);
         var rot = agit.AddComponent<Rotator>();
         rot.axis = Vector3.forward;   // ルートX-90回転のためローカルz=鉛直軸
-        rot.degreesPerSecond = 12f;
+        rot.degreesPerSecond = 18f;   // 4枚羽根×18°/s: 羽根遭遇位相で排出方位をばらす
         var arb = agit.GetComponent<Rigidbody>();
         arb.isKinematic = true;
         arb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
@@ -180,20 +161,22 @@ public static class ParkBuilder
         }
     }
 
-    static void BuildLift(Transform parent, string name, float laneZ, Vector3 dropPoint)
+    static void BuildLift(Transform parent, string name, float laneZ, Vector3 dropPoint, float releaseJitter = 0f)
     {
         var liftGO = Trigger(parent, name, new Vector3(12.33f, 0.08f, laneZ), new Vector3(0.16f, 0.12f, 0.15f), 0);
         Object.DestroyImmediate(liftGO.GetComponent<ScoreZone>());
         var lift = liftGO.AddComponent<BallLift>();
         lift.speed = 3.5f; // 14m級に合わせて増速
+        lift.releaseJitter = releaseJitter;
         lift.waypoints = new Transform[]
         {
             Waypoint(liftGO.transform, "W0", new Vector3(12.33f, 14f, laneZ)),
             Waypoint(liftGO.transform, "W1", new Vector3(dropPoint.x, 14f, dropPoint.z)),
             Waypoint(liftGO.transform, "W2", dropPoint),
         };
-        // ガイドレール（見た目）
-        VisualBar(parent, name + "_GuideA", new Vector3(12.33f + 0.09f, 7f, laneZ), Vector3.zero, new Vector3(0.03f, 14f, 0.03f));
-        VisualBar(parent, name + "_GuideB", new Vector3(12.33f - 0.09f, 7f, laneZ), Vector3.zero, new Vector3(0.03f, 14f, 0.03f));
+        // ガイドレール（Blenderメッシュ・見た目専用）
+        var guide = InstantiateFbx("Assets/Models/LiftGuide.fbx", name + "_Guide", parent,
+            Mat("LiftGuide", new Color(0.35f, 0.35f, 0.40f)), false);
+        guide.transform.position = new Vector3(12.33f, 0, laneZ);
     }
 }

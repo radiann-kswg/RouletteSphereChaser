@@ -7,6 +7,7 @@ public class BallLift : MonoBehaviour
 {
     public Transform[] waypoints;
     public float speed = 0.6f; // m/s
+    public float releaseJitter = 0f; // 解放時の水平ランダム速度[m/s]。分岐盤への投下方位を一様化する
 
     void OnTriggerEnter(Collider other)
     {
@@ -28,6 +29,8 @@ public class BallLift : MonoBehaviour
             }
         }
         rb.isKinematic = false;
-        rb.linearVelocity = Vector3.zero;
+        rb.linearVelocity = releaseJitter > 0f
+            ? Quaternion.Euler(0, Random.Range(0f, 360f), 0) * new Vector3(releaseJitter, 0, 0)
+            : Vector3.zero;
     }
 }
