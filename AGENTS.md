@@ -25,7 +25,7 @@ AIエージェント設定の単一情報源（SSOT）。運用ルール・設�
 - `Assets/Models/LotteryBall.fbx` … ボール（submesh0=本体: キャラ用全周UV / submesh1=番号パッチ: `NumberAtlas.png` 10×10のUVオフセットで番号切替）
 - `Assets/Models/Funnels.fbx` … クルーン・回収槽のすり鉢（Blenderスピンメッシュ、MeshCollider）
 - `Assets/Textures/NumberAtlas.png` … 番号0〜99アトラス（PILで生成）
-- `Assets/Scripts/` … `LotteryBall` / `ScoreZone` / `LapGate` / `Rotator` / `Oscillator` / `BallLift` / `BallSpawner` / `FollowCamera` / `Billboard`
+- `Assets/Scripts/` … `LotteryBall` / `ScoreZone` / `LapGate` / `Rotator` / `Oscillator` / `BallLift` / `BallSpawner` / `FollowCamera`（**無指示時は1番ボール自動追従**・Tab切替・0で全景=オート解除）/ `BallHUD`（Penchant書体の情報HUD: 番号/LAP/SCORE/TOTAL、全景時はパーク集計）/ `Billboard`
 - `Assets/Editor/GreyboxBuilder.cs` … コース一式の生成（再実行で作り直し）
 - `Assets/Models/TowerA_*.fbx` … タワーA機構（Spiral/Distributor/Agitator。原本 `BlenderSources/TowerA.blend`）
 - `Assets/Models/ParkBase.fbx` / `DrainStation.fbx` / `LiftGuide.fbx` / `DrainStirrer.fbx` … 土台・回収系（原本 `BlenderSources/ParkBase.blend`。Basin=ParkBase.fbx）
@@ -80,7 +80,7 @@ AIエージェント設定の単一情報源（SSOT）。運用ルール・設�
 - ✅ **設計改訂3（2026-08-22）**: 8塔構成に拡張（`Docs/DESIGN-v2.md` 2章）。F=JPスピナー塔(0,-5)・G=沼塔(0,5)・H=ガラポン塔(-8.8,0)を新設（皿・穴系＝D類似の家系）、B/C/Eは軽量化、Eの回転ドラムはHへ移設。
 - ✅ **フェーズ3完了（2026-08-22）**: タワーA②③＝**スパイラル毎の専用チェーン×4（シャフト合流なし・User指示）**。各スパイラル中心(±1.52,±1.52)にミニクルーン(r1.34@8.45・DrainStirrer流用撹拌)→ミニルーレット(ボウルr0.87@7.25＋6フレットホイール18°/s・静止側スコア20/40/60/100)。8球全球スコア獲得を検証。メッシュ: `TowerA_Mini*.fbx`（Grand版3点は未使用・予備として残置）。**外装方針（User 2026-08-22）: 構造完成後、実際のメダルゲーム/抽選機風のテクスチャ・マテリアルで化粧する前提**——各機構は部位別マテリアル＋スピンUV(u=周方向,v=断面)で作ってある。
 - ✅ **レーン構造改編（2026-08-22・User案）**: ミニルーレット16口を内外で二分。内向き8口=低得点(10/20)→集約ファンネル(r2.05@6.15)→大型ルーレット(Grand版FBX採用 r1.7@5.0・10-60pt)。外向き8口=高得点(80/120)→金色HighLane8本（高レア横ルート・将来のB〜H給球網の起点。DESIGN-v2 2章のレーン構造項参照）。
-- ✅ **フェーズ4完了（2026-08-22）**: **JPスピナー×2（Z軸両端）＋沼塔×2（X軸両端）**の対称4機（User案）。高レアレーン8本全てが機構接続。メッシュ: `TowerF_*.fbx`/`TowerG_*.fbx`（原本`BlenderSources/TowerFG.blend`）。踏んだ罠: 皿の穴リングは休止帯の真下を掃く位置に（r0.32）／リング床は回転対称だと停留→チルトで最低点=出口に／縦積みクルーンの穴は千鳥オフセット（同軸だと素通し）。サンプルスキン(`BallSkins_Sample.png`)はスポナー常用化済み。Recorderは**ユーザーのRecorder設定と同時使用不可**（Time.captureFramerate競合）—どちらか1系統で。
+- ✅ **フェーズ4完了（2026-08-22）**: **JPスピナー×2（Z軸両端）＋沼塔×2（X軸両端）**の対称4機（User案）。高レアレーン8本全てが機構接続。メッシュ: `TowerF_*.fbx`/`TowerG_*.fbx`（原本`BlenderSources/TowerFG.blend`）。踏んだ罠: 皿の穴リングは休止帯の真下を掃く位置に（r0.32）／リング床は回転対称だと停留→チルトで最低点=出口に／縦積みクルーンの穴は千鳥オフセット（同軸だと素通し）。サンプルスキン(`BallSkins_Sample.png`)はスポナー常用化済み。**Recorder運用（User合意）**: エージェントがPlayを起動する検証ではスクリプトからRecorder使用OK（録画→ffmpegフレーム抽出が標準デバッグフロー）。**Userが手動でPlay/録画中のときは起動しない**（Time.captureFramerate競合のため同時1系統のみ）。
 - **次の作業: フェーズ5「タワーB/C（軽量版）＋タワーH」**（DESIGN-v2 2章・6章）。着工前に**排水路の広幅化**を検討（8球でも撹拌前渋滞が顕在化=罠12。32球の前提条件）。
 - ✅ ボールメッシュ/UV再設計済み（2026-08-22）: **メッシュはスフィア化キューブ（クアッド球, 8×8×6面）**（User参考`SphereCube_Test`準拠。極が無く円盤縁のメッシュが破綻しない）。**本体UVは「前後2円ディスク」方式**（参考`UVSphere_Test`準拠）。
   - キャンバスは**2:1**（例2048×1024）。**左円=前半球**（Unity +Z 正面、方位等距離図法・円中心=顔の中心）、**右円=後半球**（左右鏡像=後ろから見た絵をそのまま描ける）。円は画像上で真円（UV空間ではu半径0.24/v半径0.48）

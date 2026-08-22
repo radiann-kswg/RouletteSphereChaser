@@ -66,6 +66,11 @@ public static class ParkBuilder
             cam.transform.LookAt(new Vector3(1f, 4f, 0));
             cam.farClipPlane = 100f;
             if (cam.GetComponent<FollowCamera>() == null) cam.gameObject.AddComponent<FollowCamera>();
+            // ボール情報HUD（Penchant書体・追従対象の番号/周回/得点）
+            var hud = cam.GetComponent<BallHUD>();
+            if (hud == null) hud = cam.gameObject.AddComponent<BallHUD>();
+            hud.font = PenchantFont();
+            hud.followCam = cam.GetComponent<FollowCamera>();
         }
 
         EditorSceneManager.MarkAllScenesDirty();

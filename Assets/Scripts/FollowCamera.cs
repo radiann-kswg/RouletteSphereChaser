@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 /// Tabでボールを順に追従、0キーで全景に戻る観賞用カメラ。
+/// 無指示のときは1番ボールへ自動追従（User方針 2026-08-22）。0で全景にするとオート解除、Tabで復帰。
 public class FollowCamera : MonoBehaviour
 {
     public float distance = 0.5f;
@@ -12,6 +13,10 @@ public class FollowCamera : MonoBehaviour
     Quaternion overviewRot;
     LotteryBall target;
     int index = -1;
+    bool manualOverview;
+
+    /// HUD等が現在の追従対象を参照するためのアクセサ
+    public LotteryBall Target => target;
 
     void Start()
     {
@@ -22,20 +27,30 @@ public class FollowCamera : MonoBehaviour
     void Update()
     {
         var kb = Keyboard.current;
-        if (kb == null) return;
-        if (kb.tabKey.wasPressedThisFrame)
+        if (kb != null)
         {
-            var balls = FindObjectsByType<LotteryBall>(FindObjectsSortMode.InstanceID);
-            if (balls.Length > 0)
+            if (kb.tabKey.wasPressedThisFrame)
             {
-                index = (index + 1) % balls.Length;
-                target = balls[index];
+                var balls = FindObjectsByType<LotteryBall>(FindObjectsSortMode.InstanceID);
+                if (balls.Length > 0)
+                {
+                    index = (index + 1) % balls.Length;
+                    target = balls[index];
+                    manualOverview = false;
+                }
+            }
+            if (kb.digit0Key.wasPressedThisFrame)
+            {
+                target = null;
+                index = -1;
+                manualOverview = true;
             }
         }
-        if (kb.digit0Key.wasPressedThisFrame)
+        // デフォルト: 1番ボールに追従（スポーン待ちの間は毎フレーム探す）
+        if (target == null && !manualOverview)
         {
-            target = null;
-            index = -1;
+            foreach (var b in FindObjectsByType<LotteryBall>(FindObjectsSortMode.None))
+                if (b.number == 1) { target = b; break; }
         }
     }
 
