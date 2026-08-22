@@ -125,40 +125,59 @@ public static class ParkBuilder
     {
         var g = Group(root, "Lifts");
         // 高さ4倍方針（User 2026-08-22）: 塔は最大13m級の縦積み。リフト頂部14m
-        BuildLift(g, "LiftN", 0.09f, new Vector3(0, 12.8f, 0.3f));     // 将来: タワーA頂上(0,0)へ
+        // タワーA分岐盤へ投下。コーン真頂点(0,0)だと完全対称で摂動ゼロ→頂点上で垂直バウンド
+        // し続けて頂点シームからすり抜ける（実測）。斜面に落として対称性を崩すこと。
+        BuildLift(g, "LiftN", 0.09f, new Vector3(0.18f, 13.5f, 0.12f));
         BuildLift(g, "LiftS", -0.09f, new Vector3(-7f, 9.8f, -4f));    // 将来: タワーB頂上(-7,-4)へ
     }
 
-    // ---- タワーA ①大スパイラル（Blenderメッシュ 12.45→9.85） ----
-    // FBXは軸素通し（Blender座標=Unity座標）。Euler(-90,-90,0)で立てると
-    // 入口=(0,+12.45,0.9)・出口=(0,9.85,-0.9)・排出方向-X（上から見て時計回り降下）
+    // ---- タワーA ① 分岐盤＋大スパイラル×4（水平分散配置, 全メッシュBlender製） ----
+    // FBXは軸素通し（Blender座標=Unity座標）。分岐盤は静止（回すとキネマティック体との
+    // CCDペア不成立でトンネリングした）。撹拌腕(12°/s)が滞留ボールをノッチへ送る。
+    // ノッチ4箇所→radialスナウト→対角配置の4台のスパイラルへ落下投入。
+    // 着地点=各スパイラル開始30°先の高い床（yaw=-(az+150)で開始方位=ノッチ30°手前）。
+    // 各スパイラル終端は内向きテールで自分の中央シャフトへ排出→盆地へ自由落下（フェイルセーフ）。
     static void BuildTowerA_Tier1(Transform root)
     {
         var g = Group(root, "TowerA");
-        var prefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Models/TowerA_Spiral.fbx");
-        var spiral = (GameObject)Object.Instantiate(prefab, new Vector3(0, 12.45f, 0), Quaternion.Euler(-90f, -90f, 0), g);
-        spiral.name = "SpiralA";
-        // テクスチャ差し替え可能マテリアル（_BaseMapに任意テクスチャを割当。UVは1周=1タイル）
-        var mat = Mat("TowerA_Spiral", new Color(0.78f, 0.64f, 0.45f));
-        foreach (var r in spiral.GetComponentsInChildren<Renderer>()) r.sharedMaterial = mat;
-        foreach (var mf in spiral.GetComponentsInChildren<MeshFilter>())
+        var spiralPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Models/TowerA_Spiral.fbx");
+        var spiralMat = Mat("TowerA_Spiral", new Color(0.78f, 0.64f, 0.45f)); // テクスチャ差し替え用
+        foreach (float az in new[] { 45f, 135f, 225f, 315f })
+        {
+            float rad = az * Mathf.Deg2Rad;
+            var pos = new Vector3(2.15f * Mathf.Cos(rad), 12.45f, 2.15f * Mathf.Sin(rad));
+            var spiral = (GameObject)Object.Instantiate(spiralPrefab, pos, Quaternion.Euler(-90f, -(az + 150f), 0), g);
+            spiral.name = "SpiralA_" + az;
+            SetupMesh(spiral, spiralMat);
+        }
+        // 分岐盤（静止）: yaw-45でノッチ/スナウトを対角方位へ
+        var dishPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Models/TowerA_Distributor.fbx");
+        var dish = (GameObject)Object.Instantiate(dishPrefab, new Vector3(0, 12.85f, 0), Quaternion.Euler(-90f, -45f, 0), g);
+        dish.name = "DistributorA";
+        SetupMesh(dish, Mat("TowerA_Distributor", new Color(0.55f, 0.68f, 0.75f)));
+        // 撹拌腕（回転・キネマティック・Speculative CCD）
+        var agitPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Models/TowerA_Agitator.fbx");
+        var agit = (GameObject)Object.Instantiate(agitPrefab, new Vector3(0, 12.85f, 0), Quaternion.Euler(-90f, 0, 0), g);
+        agit.name = "AgitatorA";
+        SetupMesh(agit, Accent);
+        var rot = agit.AddComponent<Rotator>();
+        rot.axis = Vector3.forward;   // ルートX-90回転のためローカルz=鉛直軸
+        rot.degreesPerSecond = 12f;
+        var arb = agit.GetComponent<Rigidbody>();
+        arb.isKinematic = true;
+        arb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
+    }
+
+    /// BlenderメッシュFBX共通セットアップ: 単一マテリアル＋非凸MeshCollider＋低摩擦
+    static void SetupMesh(GameObject go, Material mat)
+    {
+        foreach (var r in go.GetComponentsInChildren<Renderer>()) r.sharedMaterial = mat;
+        foreach (var mf in go.GetComponentsInChildren<MeshFilter>())
         {
             var mc = mf.gameObject.AddComponent<MeshCollider>();
             mc.sharedMesh = mf.sharedMesh;
             mc.material = RailPM;
         }
-        // 入口キャッチトレイ: LiftN投下点(0,12.8,0.3)直下で受け、内壁(top12.65)を越えて樋へ投入
-        // 投下点がトレイ縁に乗ると-Z側へこぼれる（実測）→ 後方へ延長＋背面壁
-        Ramp(g, "EntryTray", new Vector3(0, 12.74f, 0.10f), new Vector3(0, 12.68f, 0.70f), 0.2f);
-        Prim(PrimitiveType.Cube, g, "EntryTrayBack", new Vector3(0, 12.80f, 0.06f), Vector3.zero,
-            new Vector3(0.24f, 0.16f, 0.03f), Rail);
-        // 出口ストップ&ドロップ: -Xへ排出→短ストブ→落下ギャップ(2.3d)→盆地へ自由落下（フェイルセーフ）
-        Ramp(g, "ExitStub", new Vector3(-0.03f, 9.83f, -0.9f), new Vector3(-0.45f, 9.80f, -0.9f), 0.2f);
-        foreach (float s in new[] { -1f, 1f })
-            Prim(PrimitiveType.Cube, g, s < 0 ? "ExitChuteL" : "ExitChuteR", new Vector3(-0.585f, 9.95f, -0.9f + s * 0.125f),
-                Vector3.zero, new Vector3(0.27f, 0.5f, 0.03f), Rail);
-        Prim(PrimitiveType.Cube, g, "ExitStop", new Vector3(-0.72f, 9.95f, -0.9f), Vector3.zero,
-            new Vector3(0.04f, 0.5f, 0.28f), Rail);
     }
 
     static void BuildLift(Transform parent, string name, float laneZ, Vector3 dropPoint)
