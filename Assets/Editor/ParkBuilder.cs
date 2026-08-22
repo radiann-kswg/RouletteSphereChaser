@@ -78,8 +78,18 @@ public static class ParkBuilder
         var g = Group(root, "DrainStation");
         InstantiateFbx("Assets/Models/DrainStation.fbx", "DrainStation", g,
             Mat("DrainStation", new Color(0.42f, 0.45f, 0.52f)), true);
-        // 撹拌ローター（テーパー喉元。アーチ崩し標準装備）
-        Stirrer(g, "DrainStirrer", new Vector3(11.6f, 0.09f, 0), new Vector3(0, 0, -1.4f), 2, 0.5f, 20f);
+        // 撹拌ローター（テーパー喉元。アーチ崩し標準装備。腕はBlenderメッシュ＝十字バー＋ハブキャップ）
+        var st = new GameObject("DrainStirrer");
+        st.transform.SetParent(g);
+        st.transform.position = new Vector3(11.6f, 0.09f, 0);
+        st.transform.rotation = Quaternion.Euler(0, 0, -1.4f);
+        st.AddComponent<Rotator>().degreesPerSecond = 20f; // axis=up 既定（ローカル上軸=エプロン法線）
+        var srb = st.GetComponent<Rigidbody>();
+        srb.isKinematic = true;
+        srb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
+        var stMesh = InstantiateFbx("Assets/Models/DrainStirrer.fbx", "StirrerMesh", st.transform, Accent, true);
+        stMesh.transform.localPosition = Vector3.zero;
+        stMesh.transform.localRotation = Quaternion.Euler(0, 180f, 0); // ベース系X-mirror相殺
         // 周回確定（両レーン共通、レーン入口手前）
         var lap = Trigger(g, "LapGate", new Vector3(11.87f, 0.10f, 0), new Vector3(0.10f, 0.16f, 0.38f), 0);
         Object.DestroyImmediate(lap.GetComponent<ScoreZone>());

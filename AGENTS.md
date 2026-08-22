@@ -28,10 +28,10 @@ AIエージェント設定の単一情報源（SSOT）。運用ルール・設�
 - `Assets/Scripts/` … `LotteryBall` / `ScoreZone` / `LapGate` / `Rotator` / `Oscillator` / `BallLift` / `BallSpawner` / `FollowCamera` / `Billboard`
 - `Assets/Editor/GreyboxBuilder.cs` … コース一式の生成（再実行で作り直し）
 - `Assets/Models/TowerA_*.fbx` … タワーA機構（Spiral/Distributor/Agitator。原本 `BlenderSources/TowerA.blend`）
-- `Assets/Models/ParkBase.fbx` / `DrainStation.fbx` / `LiftGuide.fbx` … 土台・回収系（原本 `BlenderSources/ParkBase.blend`）
+- `Assets/Models/ParkBase.fbx` / `DrainStation.fbx` / `LiftGuide.fbx` / `DrainStirrer.fbx` … 土台・回収系（原本 `BlenderSources/ParkBase.blend`。Basin=ParkBase.fbx）
 - `BlenderSources/LotteryBall.blend` … Blender原本（ボール＋すり鉢）
 
-> **造形ポリシー（User方針 2026-08-22）**: シーンに配置するメッシュは**すべてBlenderモデリング**を基本とする。Unityプリミティブはトリガー等の不可視コライダと撹拌腕ローター（DrainStirrer）のみ許容。各メッシュは単一マテリアル＋UV展開済みで、`Assets/Materials/` のマテリアル（`TowerA_Spiral` 等）の `_BaseMap` に任意テクスチャを差し替えられる。
+> **造形ポリシー（User方針 2026-08-22）**: シーンに配置するメッシュは**すべてBlenderモデリング**とする（DrainStirrer含め可視メッシュ100%Blender化済み）。Unityプリミティブはトリガー等の不可視コライダのみ許容。各メッシュは単一マテリアル＋UV展開済みで、`Assets/Materials/` のマテリアル（`TowerA_Spiral` 等）の `_BaseMap` に任意テクスチャを差し替えられる。
 > **接合部の仕上げ**: 複数パーツからなるメッシュは重ね置きにせず、パーツを少し食い込ませて**ブーリアンUnion→角度制限ベベル(0.01〜0.025, clamp)→スマートUV再展開**で一体化する（継ぎ接ぎ感の除去。ベベルはコライダも僅かに丸めるので、変更後はレイキャストで床高さ等価を確認すること）。コプレーナ接触のままUnionすると壊れやすいので必ず食い込ませる。
 
 ## 3. 物理・実装の既知の罠（必読）
