@@ -89,19 +89,20 @@ public static class ParkBuilder
         srb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
         var stMesh = InstantiateFbx("Assets/Models/DrainStirrer.fbx", "StirrerMesh", st.transform, Accent, true);
         stMesh.transform.localPosition = Vector3.zero;
-        stMesh.transform.localRotation = Quaternion.Euler(0, 180f, 0); // ベース系X-mirror相殺
+        stMesh.transform.localRotation = Quaternion.Euler(90f, 0, 0); // Z-up規約→Unity補正（InstantiateFbxと同一）
         // 周回確定（両レーン共通、レーン入口手前）
         var lap = Trigger(g, "LapGate", new Vector3(11.87f, 0.10f, 0), new Vector3(0.10f, 0.16f, 0.38f), 0);
         Object.DestroyImmediate(lap.GetComponent<ScoreZone>());
         lap.AddComponent<LapGate>();
     }
 
-    // 注意: ベース系FBX（単一メッシュ・無回転オブジェクト）はX軸ミラーで
-    // インポートされる（実測）。Z対称ジオメトリ前提でY180°回転で相殺する。
+    // ベース系FBXはBlender Z-up規約（blender X=Unity X / Z=Unity Y / Y=-Unity Z）で
+    // 作成し、インポータのbakeAxisConversion=ON。Euler(90,0,0)で world=(x, y, -z) になる（実測）。
+    // 残るZ反転はベースメッシュが全てZ対称なため無害。Z非対称の新メッシュを作る場合は要再実測。
     static GameObject InstantiateFbx(string path, string name, Transform parent, Material mat, bool collide)
     {
         var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
-        var go = (GameObject)Object.Instantiate(prefab, Vector3.zero, Quaternion.Euler(0, 180f, 0), parent);
+        var go = (GameObject)Object.Instantiate(prefab, Vector3.zero, Quaternion.Euler(90f, 0, 0), parent);
         go.name = name;
         if (collide) SetupMesh(go, mat);
         else foreach (var r in go.GetComponentsInChildren<Renderer>()) r.sharedMaterial = mat;
