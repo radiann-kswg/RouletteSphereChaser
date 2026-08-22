@@ -54,7 +54,7 @@ public static class ParkBuilder
         spawner.transform.SetParent(root);
         spawner.transform.position = new Vector3(-1.0f, 1.6f, 1.0f);
         spawner.ballPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/LotteryBall.prefab");
-        spawner.count = 8;
+        spawner.count = 12;  // 12球テスト（16球化は排水路広幅化=罠12対応後）
         spawner.interval = 1f;
         // サンプルキャラスキン常用（User作・CC BY 4.0）
         spawner.characterSkin = AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/Textures/BallSkins_Sample.png");
@@ -165,6 +165,7 @@ public static class ParkBuilder
         var agitPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Models/TowerA_Agitator.fbx");
         var agit = (GameObject)Object.Instantiate(agitPrefab, new Vector3(0, 12.85f, 0), Quaternion.Euler(-90f, 0, 0), g);
         agit.name = "AgitatorA";
+        // 注意: 羽根の面内短縮は不可（0.92でリム停留球=r0.80に届かず滞留。羽根先端0.83はリム球0.815にぎりぎり届く設計）
         SetupMesh(agit, Accent);
         var rot = agit.AddComponent<Rotator>();
         rot.axis = Vector3.forward;   // ルートX-90回転のためローカルz=鉛直軸
@@ -235,7 +236,9 @@ public static class ParkBuilder
                     (Mathf.Abs(dir.x) > 0.5f && Mathf.Sign(dir.x) != Mathf.Sign(c.x)) ||
                     (Mathf.Abs(dir.z) > 0.5f && Mathf.Sign(dir.z) != Mathf.Sign(c.z));
                 bool xAxis = Mathf.Abs(dir.x) > 0.5f;
-                int p = centerFacing ? (xAxis ? 10 : 20) : (xAxis ? 80 : 120);
+                // 配点則「点数=C/P」(C=2.5): 各口P≈25% → 全16口一律10pt。
+                // ミニルーレットは分配器扱い（当たり演出は衛星側の低確率トリガーへ集約）
+                int p = 10;
                 if (centerFacing)
                     ScoreGateAt(sub, c + dir * 1.03f + new Vector3(0, 7.12f, 0), taz, p, new Color(0.92f, 0.92f, 0.95f));
                 else
@@ -279,7 +282,8 @@ public static class ParkBuilder
         var gwrb = gWheel.GetComponent<Rigidbody>();
         gwrb.isKinematic = true;
         gwrb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
-        int[] gpts = { 40, 20, 60, 10 };
+        // 配点則: 通常口10×3＋当たり口40×1（西=-X。機内当たり率25%・1巡あたりP=12.5%）
+        int[] gpts = { 10, 10, 40, 10 };
         for (int i = 0; i < 4; i++)
         {
             float gazDeg = i * 90f;
@@ -388,25 +392,25 @@ public static class ParkBuilder
         var board = InstantiateMech("Assets/Models/TowerG_NumaBoard.fbx", "NumaBoard", g,
             new Vector3(0, 5.85f, 5.0f), Quaternion.Euler(-90f, 180f, 0),
             Mat("TowerG_NumaBoard", new Color(0.35f, 0.42f, 0.55f)));
-        // 当たり=中央穴（次段へ）/ ハズレ=壁ノッチ×2＋スナウトで径外へ排出（沼式・User指摘）
-        // ハズレ排出半径: k1≈1.23 > k2皿0.87 / k2≈1.00 > k3皿0.70 / k3≈0.80 → いずれも下段をかわして盆地へ
-        var kuruunPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Models/TowerG_NumaKuruun.fbx");
+        // v3「当たり穴＋ハズレ穴」方式（User原案）: 皿=リングトラフ＋中央クレーター縁(高0.055=確率ノブ)。
+        // 当たり=縁を越えて中央穴(3.0d)へ→採点、ハズレ=トラフ床穴×2(3.2d, r0.39, 世界±X)から次皿へ素通り落下(採点なし)。
+        // すり鉢単穴の「減速球は必ず中央へ」問題を構造で解消（旧壁ノッチ式は勝率75%超で廃止）。
+        // 穴・トラフ・縁は3皿とも絶対寸法＝L/M/S別メッシュ（一律スケールだとk3の穴が3d未満に潰れる）
         var kMat = Mat("TowerG_NumaKuruun", new Color(0.45f, 0.55f, 0.40f));
-        // 穴の同軸落下防止（User指摘）: 中心を千鳥オフセット→上の穴の真下は必ず次の皿の斜面
-        // （穴間隔 0.25/0.45 > 穴半径和 0.23/0.19。毎皿で転がり直す沼らしい抽選に）
-        float[] scales = { 0.80f, 0.65f, 0.52f };
+        // 千鳥オフセット（User指摘の同軸素通し防止）は維持: 上の当たり穴の真下=次皿のクレーター斜面
+        string[] variants = { "L", "M", "S" };
         float[] roots = { 5.10f, 4.30f, 3.55f };
         float[] xoff = { 0f, 0.25f, -0.20f };
         for (int i = 0; i < 3; i++)
         {
-            var k = (GameObject)Object.Instantiate(kuruunPrefab, new Vector3(xoff[i], roots[i], 5.0f), Quaternion.Euler(-90f, 0, 0), g);
+            var prefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Models/TowerG_NumaKuruun_" + variants[i] + ".fbx");
+            var k = (GameObject)Object.Instantiate(prefab, new Vector3(xoff[i], roots[i], 5.0f), Quaternion.Euler(-90f, 0, 0), g);
             k.name = "NumaKuruun_" + (i + 1);
-            k.transform.localScale = Vector3.one * scales[i];
             SetupMesh(k, kMat);
         }
         ScoreMark(g, new Vector3(0, 4.96f, 5.0f), 20, new Color(0.92f, 0.92f, 0.95f), 90f);
         ScoreMark(g, new Vector3(0.25f, 4.16f, 5.0f), 40, new Color(0.92f, 0.92f, 0.95f), 90f);
-        ScoreMark(g, new Vector3(-0.20f, 3.40f, 5.0f), 120, new Color(1.0f, 0.83f, 0.25f), 90f);
+        ScoreMark(g, new Vector3(-0.20f, 3.40f, 5.0f), 150, new Color(1.0f, 0.83f, 0.25f), 90f);  // 最終カップ（機内P≈6%）
         g.rotation = Quaternion.Euler(0, yawDeg, 0);  // グループ一括回転（原点ピボット）
     }
 
@@ -435,8 +439,8 @@ public static class ParkBuilder
             new Vector3(0, 4.65f, -5.0f),
             Quaternion.AngleAxis(-4f, Vector3.right) * Quaternion.Euler(-90f, 180f, 0),
             Mat("TowerF_Separator", new Color(0.40f, 0.32f, 0.45f)));
-        ScoreMark(g, new Vector3(0, 4.50f, -5.0f), 150, new Color(1.0f, 0.35f, 0.30f), 270f);  // JP
-        ScoreMark(g, new Vector3(0, 4.72f, -5.55f), 30, new Color(0.92f, 0.92f, 0.95f), 270f); // 通過
+        ScoreMark(g, new Vector3(0, 4.50f, -5.0f), 100, new Color(1.0f, 0.35f, 0.30f), 270f);  // JP（機内P≈10%目標・カラー低背化）
+        ScoreMark(g, new Vector3(0, 4.72f, -5.55f), 15, new Color(0.92f, 0.92f, 0.95f), 270f); // 通過
         g.rotation = Quaternion.Euler(0, yawDeg, 0);  // グループ一括回転（原点ピボット）
     }
 
