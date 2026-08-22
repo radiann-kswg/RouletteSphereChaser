@@ -40,6 +40,7 @@ public static class ParkBuilder
         BuildGroundAndBasin(root);
         BuildDrainStation(root);
         BuildLifts(root);
+        BuildTowerA_Tier1(root);
 
         // フェーズ1スモーク用スポナー
         var spawner = new GameObject("BallSpawner").AddComponent<BallSpawner>();
@@ -126,6 +127,38 @@ public static class ParkBuilder
         // 高さ4倍方針（User 2026-08-22）: 塔は最大13m級の縦積み。リフト頂部14m
         BuildLift(g, "LiftN", 0.09f, new Vector3(0, 12.8f, 0.3f));     // 将来: タワーA頂上(0,0)へ
         BuildLift(g, "LiftS", -0.09f, new Vector3(-7f, 9.8f, -4f));    // 将来: タワーB頂上(-7,-4)へ
+    }
+
+    // ---- タワーA ①大スパイラル（Blenderメッシュ 12.45→9.85） ----
+    // FBXは軸素通し（Blender座標=Unity座標）。Euler(-90,-90,0)で立てると
+    // 入口=(0,+12.45,0.9)・出口=(0,9.85,-0.9)・排出方向-X（上から見て時計回り降下）
+    static void BuildTowerA_Tier1(Transform root)
+    {
+        var g = Group(root, "TowerA");
+        var prefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Models/TowerA_Spiral.fbx");
+        var spiral = (GameObject)Object.Instantiate(prefab, new Vector3(0, 12.45f, 0), Quaternion.Euler(-90f, -90f, 0), g);
+        spiral.name = "SpiralA";
+        // テクスチャ差し替え可能マテリアル（_BaseMapに任意テクスチャを割当。UVは1周=1タイル）
+        var mat = Mat("TowerA_Spiral", new Color(0.78f, 0.64f, 0.45f));
+        foreach (var r in spiral.GetComponentsInChildren<Renderer>()) r.sharedMaterial = mat;
+        foreach (var mf in spiral.GetComponentsInChildren<MeshFilter>())
+        {
+            var mc = mf.gameObject.AddComponent<MeshCollider>();
+            mc.sharedMesh = mf.sharedMesh;
+            mc.material = RailPM;
+        }
+        // 入口キャッチトレイ: LiftN投下点(0,12.8,0.3)直下で受け、内壁(top12.65)を越えて樋へ投入
+        // 投下点がトレイ縁に乗ると-Z側へこぼれる（実測）→ 後方へ延長＋背面壁
+        Ramp(g, "EntryTray", new Vector3(0, 12.74f, 0.10f), new Vector3(0, 12.68f, 0.70f), 0.2f);
+        Prim(PrimitiveType.Cube, g, "EntryTrayBack", new Vector3(0, 12.80f, 0.06f), Vector3.zero,
+            new Vector3(0.24f, 0.16f, 0.03f), Rail);
+        // 出口ストップ&ドロップ: -Xへ排出→短ストブ→落下ギャップ(2.3d)→盆地へ自由落下（フェイルセーフ）
+        Ramp(g, "ExitStub", new Vector3(-0.03f, 9.83f, -0.9f), new Vector3(-0.45f, 9.80f, -0.9f), 0.2f);
+        foreach (float s in new[] { -1f, 1f })
+            Prim(PrimitiveType.Cube, g, s < 0 ? "ExitChuteL" : "ExitChuteR", new Vector3(-0.585f, 9.95f, -0.9f + s * 0.125f),
+                Vector3.zero, new Vector3(0.27f, 0.5f, 0.03f), Rail);
+        Prim(PrimitiveType.Cube, g, "ExitStop", new Vector3(-0.72f, 9.95f, -0.9f), Vector3.zero,
+            new Vector3(0.04f, 0.5f, 0.28f), Rail);
     }
 
     static void BuildLift(Transform parent, string name, float laneZ, Vector3 dropPoint)
