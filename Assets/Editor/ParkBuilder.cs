@@ -54,7 +54,7 @@ public static class ParkBuilder
         spawner.transform.SetParent(root);
         spawner.transform.position = new Vector3(-1.0f, 1.6f, 1.0f);
         spawner.ballPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/LotteryBall.prefab");
-        spawner.count = 12;  // 12球テスト（16球化は排水路広幅化=罠12対応後）
+        spawner.count = 16;  // 排水路広幅化(2026-08-22)後に16球へ。32球はフェーズ7の負荷検証で
         spawner.interval = 1f;
         // サンプルキャラスキン常用（User作・CC BY 4.0）
         spawner.characterSkin = AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/Textures/BallSkins_Sample.png");
@@ -97,7 +97,10 @@ public static class ParkBuilder
         st.transform.SetParent(g);
         st.transform.position = new Vector3(11.6f, 0.09f, 0);
         st.transform.rotation = Quaternion.Euler(0, 0, -1.4f);
-        st.AddComponent<Rotator>().degreesPerSecond = 20f; // axis=up 既定（ローカル上軸=エプロン法線）
+        // 広幅化（罠12対応 2026-08-22）: 喉元を±0.40ポケット化＋ローター1.7倍（r≈0.43）。
+        // 先端は常に壁内=密閉掃引を維持（隙間0.5〜1.5dの楔ゾーンを作らない）。レーン/リフトは無変更。
+        st.transform.localScale = new Vector3(1.7f, 1f, 1.7f);
+        st.AddComponent<Rotator>().degreesPerSecond = 24f; // axis=up 既定（ローカル上軸=エプロン法線）
         var srb = st.GetComponent<Rigidbody>();
         srb.isKinematic = true;
         srb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
