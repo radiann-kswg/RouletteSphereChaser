@@ -209,13 +209,67 @@ public static class ParkBuilder
             var wrb = wheel.GetComponent<Rigidbody>();
             wrb.isKinematic = true;
             wrb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
-            // スコアトリガー（スナウト出口・静止側）
+            // スコア＋レーン分岐（User案 2026-08-22）:
+            // 内向き2口=低得点(X:10/Z:20)→中央集約ファンネルへ落下、
+            // 外向き2口=高得点(X:80/Z:120)→HighLane（高レア横ルート）へ
+            var lanePrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Models/TowerA_HighLane.fbx");
+            var laneMat = Mat("TowerA_HighLane", new Color(0.85f, 0.72f, 0.25f)); // 高レア=金色系
             for (int i = 0; i < 4; i++)
             {
-                float taz = i * 90f * Mathf.Deg2Rad;
-                var pos = c + new Vector3(1.06f * Mathf.Cos(taz), 7.27f, 1.06f * Mathf.Sin(taz));
-                Trigger(sub, "RouletteScore_" + pts[i], pos, new Vector3(0.24f, 0.28f, 0.24f), pts[i]);
+                float taz = i * 90f;
+                var dir = new Vector3(Mathf.Cos(taz * Mathf.Deg2Rad), 0, Mathf.Sin(taz * Mathf.Deg2Rad));
+                bool centerFacing =
+                    (Mathf.Abs(dir.x) > 0.5f && Mathf.Sign(dir.x) != Mathf.Sign(c.x)) ||
+                    (Mathf.Abs(dir.z) > 0.5f && Mathf.Sign(dir.z) != Mathf.Sign(c.z));
+                bool xAxis = Mathf.Abs(dir.x) > 0.5f;
+                int p = centerFacing ? (xAxis ? 10 : 20) : (xAxis ? 80 : 120);
+                var pos = c + dir * 1.06f + new Vector3(0, 7.27f, 0);
+                Trigger(sub, (centerFacing ? "CenterScore_" : "RareScore_") + p, pos, new Vector3(0.24f, 0.28f, 0.24f), p);
+                if (!centerFacing)
+                {
+                    // 機構系FBXもX-mirror（実測）: blender+Xの向き = world az 180-yaw → yaw = 180-方位角
+                    var lane = (GameObject)Object.Instantiate(lanePrefab,
+                        c + dir * 1.10f + new Vector3(0, 7.10f, 0), Quaternion.Euler(-90f, 180f - taz, 0), sub);
+                    lane.name = "HighLane_" + taz;
+                    SetupMesh(lane, laneMat);
+                }
             }
+        }
+        // ---- 中央集約: ファンネル(8口の落下環r≈1.6を受ける)→大型ルーレット（Grand版FBX採用） ----
+        var funnelPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Models/TowerA_CollectorFunnel.fbx");
+        var funnel = (GameObject)Object.Instantiate(funnelPrefab, new Vector3(0, 6.15f, 0), Quaternion.Euler(-90f, 0, 0), g);
+        funnel.name = "CollectorFunnel";
+        SetupMesh(funnel, Mat("TowerA_CollectorFunnel", new Color(0.55f, 0.50f, 0.68f)));
+        var fs = new GameObject("FunnelStirrer");
+        fs.transform.SetParent(g);
+        fs.transform.position = new Vector3(0, 6.24f, 0);
+        fs.AddComponent<Rotator>().degreesPerSecond = 12f;
+        var frb = fs.GetComponent<Rigidbody>();
+        frb.isKinematic = true;
+        frb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
+        var fsMesh = InstantiateFbx("Assets/Models/DrainStirrer.fbx", "StirrerMesh", fs.transform, Accent, true);
+        fsMesh.transform.localPosition = Vector3.zero;
+        fsMesh.transform.localRotation = Quaternion.Euler(90f, 0, 0);
+        var gBowlPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Models/TowerA_RouletteBowl.fbx");
+        var gBowl = (GameObject)Object.Instantiate(gBowlPrefab, new Vector3(0, 5.0f, 0), Quaternion.Euler(-90f, 0, 0), g);
+        gBowl.name = "GrandRouletteBowl";
+        SetupMesh(gBowl, Mat("TowerA_GrandRouletteBowl", new Color(0.28f, 0.40f, 0.30f)));
+        var gWheelPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Models/TowerA_RouletteWheel.fbx");
+        var gWheel = (GameObject)Object.Instantiate(gWheelPrefab, new Vector3(0, 5.0f, 0), Quaternion.Euler(-90f, 0, 0), g);
+        gWheel.name = "GrandRouletteWheel";
+        SetupMesh(gWheel, Mat("TowerA_GrandRouletteWheel", new Color(0.70f, 0.28f, 0.30f)));
+        var gwrot = gWheel.AddComponent<Rotator>();
+        gwrot.axis = Vector3.forward;
+        gwrot.degreesPerSecond = 15f;
+        var gwrb = gWheel.GetComponent<Rigidbody>();
+        gwrb.isKinematic = true;
+        gwrb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
+        int[] gpts = { 40, 20, 60, 10 };
+        for (int i = 0; i < 4; i++)
+        {
+            float gaz = i * 90f * Mathf.Deg2Rad;
+            var pos = new Vector3(1.80f * Mathf.Cos(gaz), 5.02f, 1.80f * Mathf.Sin(gaz));
+            Trigger(g, "GrandScore_" + gpts[i], pos, new Vector3(0.28f, 0.30f, 0.28f), gpts[i]);
         }
     }
 
