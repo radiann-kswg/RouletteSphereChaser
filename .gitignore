@@ -115,3 +115,10 @@ InitTestScene*.unity*
 
 # デバッグ用スクリーンショット
 /probe.png
+
+# ボールスキン（球体化キャラのテクスチャ）はリポジトリの管轄外。
+# 権利はテクスチャ画像元のライセンスに従うため、各自でここに置く（LICENSE-ASSETS.md §2）。
+/[Aa]ssets/[Tt]extures/BallSkins/*
+!/[Aa]ssets/[Tt]extures/BallSkins/.gitkeep
+/[Aa]ssets/[Tt]extures/RefBallTex.png
+/[Aa]ssets/[Tt]extures/RefBallTex.png.meta

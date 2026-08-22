@@ -78,7 +78,7 @@ AIエージェント設定の単一情報源（SSOT）。運用ルール・設�
 - ✅ ボールメッシュ/UV再設計済み（2026-08-22）: **メッシュはスフィア化キューブ（クアッド球, 8×8×6面）**（User参考`SphereCube_Test`準拠。極が無く円盤縁のメッシュが破綻しない）。**本体UVは「前後2円ディスク」方式**（参考`UVSphere_Test`準拠）。
   - キャンバスは**2:1**（例2048×1024）。**左円=前半球**（Unity +Z 正面、方位等距離図法・円中心=顔の中心）、**右円=後半球**（左右鏡像=後ろから見た絵をそのまま描ける）。円は画像上で真円（UV空間ではu半径0.24/v半径0.48）
   - **番号パッチは上面/下面**（Blender±Z=Unity±Y、25°円錐、アトラスUV・submesh1）。数字の上=キャラ後頭部側（正面斜め上から覗き込んで読める向き）。FBX鏡像対策のu反転は全UVに適用済み
-  - アーティスト用テンプレート: `Docs/BallUV_Template.png`。テスト用テクスチャ: `Assets/Textures/RefBallTex.png`（User作・猫キャラ）。UV変更時は必ずUnity側で正面＋真上レンダリングして鏡像チェック（前髪の流れ・数字の向きで判定）
+  - アーティスト用テンプレート: `Docs/BallUV_Template.png`。**ボールスキン（球体化キャラのテクスチャ）は `Assets/Textures/BallSkins/` に置き、gitの管轄外**（`.gitignore` 済み。権利はテクスチャ画像元のライセンス依存＝`LICENSE-ASSETS.md` §2。クローンした人が自前の画像を置ける運用）。旧テスト用テクスチャ `Assets/Textures/RefBallTex.png` も同様に管轄外へ移行済み。UV変更時は必ずUnity側で正面＋真上レンダリングして鏡像チェック（前髪の流れ・数字の向きで判定）
 
 **セッション開始手順**
 
@@ -97,6 +97,7 @@ exit playmode → `AssetDatabase.Refresh` → 40秒待機（コンパイル完�
 ## 6. 運用ルール
 
 - 回答は日本語。`Library/` `Temp/` `Logs/` `obj/` `UserSettings/` は編集・コミット対象外。
+- **ライセンス**: 本リポジトリは CC BY 4.0（表記: ラジアン(柏木主税) / RadianN_kswg）。**ボールスキンのみ対象外**で画像元のライセンス依存（`LICENSE` / `LICENSE-ASSETS.md`）。閲覧用ドキュメントは `README.md`（日）・`README.en.md`（英）。設計・運用の追記は本ファイルに行い、READMEには概要だけを置く。
 - `.meta` はUnityエディタに任せる。
 - **gitは節目ごとに定期コミットする**（User方針 2026-08-21）。サンドボックスのマウントはgit-lfs無し・削除不可でgit操作不能のため、**コミットはUnityメニュー `Tools > Git Commit All`（`Assets/Editor/GitTools.cs`）経由**で行う。メッセージは実行前に `EditorPrefs "GitTools.Message"` へ設定。pushはUserの指示があったときのみ。
 - ロールプレイはルート `AGENTS.md` の既定（錦野歌嫁）に従う。
