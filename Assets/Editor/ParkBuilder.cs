@@ -14,7 +14,7 @@ public static class ParkBuilder
     // 東側はV字漏斗壁で排水口(x=10.5)へ集約
     const float FloorHalfX = 10f, FloorHalfZ = 6.5f;
     const float FloorTiltDeg = 3f;
-    const string ScenePath = "Assets/Scenes/ParkScene.unity";
+    const string ScenePath = "Assets/Scenes/ParkScene_v2.unity"; // User改名（旧: ParkScene.unity）
 
     [MenuItem("Tools/Build RouletteSphere Park (v2)")]
     public static void Build()
@@ -223,8 +223,10 @@ public static class ParkBuilder
                     (Mathf.Abs(dir.z) > 0.5f && Mathf.Sign(dir.z) != Mathf.Sign(c.z));
                 bool xAxis = Mathf.Abs(dir.x) > 0.5f;
                 int p = centerFacing ? (xAxis ? 10 : 20) : (xAxis ? 80 : 120);
-                var pos = c + dir * 1.06f + new Vector3(0, 7.27f, 0);
-                Trigger(sub, (centerFacing ? "CenterScore_" : "RareScore_") + p, pos, new Vector3(0.24f, 0.28f, 0.24f), p);
+                if (centerFacing)
+                    ScoreGateAt(sub, c + dir * 1.03f + new Vector3(0, 7.12f, 0), taz, p, new Color(0.92f, 0.92f, 0.95f));
+                else
+                    ScoreGateAt(sub, c + dir * 1.35f + new Vector3(0, 7.08f, 0), taz, p, new Color(1.0f, 0.83f, 0.25f));
                 if (!centerFacing)
                 {
                     // 機構系FBXもX-mirror（実測）: blender+Xの向き = world az 180-yaw → yaw = 180-方位角
@@ -267,10 +269,79 @@ public static class ParkBuilder
         int[] gpts = { 40, 20, 60, 10 };
         for (int i = 0; i < 4; i++)
         {
-            float gaz = i * 90f * Mathf.Deg2Rad;
-            var pos = new Vector3(1.80f * Mathf.Cos(gaz), 5.02f, 1.80f * Mathf.Sin(gaz));
-            Trigger(g, "GrandScore_" + gpts[i], pos, new Vector3(0.28f, 0.30f, 0.28f), gpts[i]);
+            float gazDeg = i * 90f;
+            float gaz = gazDeg * Mathf.Deg2Rad;
+            var pos = new Vector3(1.80f * Mathf.Cos(gaz), 4.90f, 1.80f * Mathf.Sin(gaz));
+            ScoreGateAt(g, pos, gazDeg, gpts[i], new Color(1.0f, 0.45f, 0.35f));
         }
+    }
+
+    // ---- 得点ゲート（メダルゲームのチャッカー風・Blenderメッシュ＋PenchantManufacture書体） ----
+    // 表示はTMP SDF（深度テスト＋背面カリング）: 壁の奥・反対向きの得点は自動的に見えない。
+    static TMPro.TMP_FontAsset _penchantFont;
+    static TMPro.TMP_FontAsset PenchantFont()
+    {
+        if (_penchantFont != null) return _penchantFont;
+        _penchantFont = AssetDatabase.LoadAssetAtPath<TMPro.TMP_FontAsset>("Assets/Fonts/PenchantManufacture_SDF.asset");
+        if (_penchantFont == null)
+        {
+            if (TMPro.TMP_Settings.instance == null)
+            {
+                // TMP必須リソース未導入だとCreateFontAssetがNullRefで落ちる
+                TMPro.TMP_PackageResourceImporter.ImportResources(true, false, false);
+                AssetDatabase.Refresh();
+            }
+            var src = AssetDatabase.LoadAssetAtPath<Font>("Assets/Fonts/PenchantManufacture.otf");
+            _penchantFont = TMPro.TMP_FontAsset.CreateFontAsset(src, 64, 6,
+                UnityEngine.TextCore.LowLevel.GlyphRenderMode.SDFAA, 512, 512);
+            _penchantFont.name = "PenchantManufacture_SDF";
+            AssetDatabase.CreateAsset(_penchantFont, "Assets/Fonts/PenchantManufacture_SDF.asset");
+            _penchantFont.atlasTexture.name = "PenchantAtlas";
+            AssetDatabase.AddObjectToAsset(_penchantFont.atlasTexture, _penchantFont);
+            _penchantFont.material.name = "PenchantManufacture_SDF_Mat";
+            AssetDatabase.AddObjectToAsset(_penchantFont.material, _penchantFont);
+            AssetDatabase.SaveAssets();
+        }
+        return _penchantFont;
+    }
+
+    static Material PenchantCullBack()
+    {
+        const string path = "Assets/Fonts/Penchant_SDF_CullBack.mat";
+        var m = AssetDatabase.LoadAssetAtPath<Material>(path);
+        if (m == null)
+        {
+            m = new Material(PenchantFont().material);
+            m.SetFloat("_CullMode", 2f); // Cull Back: 裏側から見えない
+            AssetDatabase.CreateAsset(m, path);
+        }
+        return m;
+    }
+
+    /// 得点ゲート一式: ゲートメッシュ＋スコアトリガー＋ボード上のTMP得点表示
+    static void ScoreGateAt(Transform parent, Vector3 floorPos, float azDeg, int points, Color textColor)
+    {
+        var prefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Models/TowerA_ScoreGate.fbx");
+        var gate = (GameObject)Object.Instantiate(prefab, floorPos, Quaternion.Euler(-90f, 180f - azDeg, 0), parent);
+        gate.name = "ScoreGate_" + points;
+        SetupMesh(gate, Mat("TowerA_ScoreGate", new Color(0.80f, 0.66f, 0.30f)));
+        var dir = new Vector3(Mathf.Cos(azDeg * Mathf.Deg2Rad), 0, Mathf.Sin(azDeg * Mathf.Deg2Rad));
+        Trigger(parent, "GateScore_" + points, floorPos + Vector3.up * 0.15f,
+            new Vector3(0.26f, 0.28f, 0.26f), points, false);
+        var go = new GameObject("GateLabel_" + points);
+        go.transform.SetParent(parent);
+        go.transform.position = floorPos + Vector3.up * 0.415f - dir * 0.035f;
+        go.transform.rotation = Quaternion.LookRotation(dir);
+        var tmp = go.AddComponent<TMPro.TextMeshPro>();
+        var fa = PenchantFont();
+        if (fa != null) tmp.font = fa;
+        tmp.text = points.ToString();
+        tmp.fontSize = 1.5f;
+        tmp.alignment = TMPro.TextAlignmentOptions.Center;
+        tmp.textWrappingMode = TMPro.TextWrappingModes.NoWrap;
+        tmp.color = textColor;
+        tmp.rectTransform.sizeDelta = new Vector2(0.6f, 0.2f);
+        tmp.fontSharedMaterial = PenchantCullBack();
     }
 
     /// BlenderメッシュFBX共通セットアップ: 単一マテリアル＋非凸MeshCollider＋低摩擦

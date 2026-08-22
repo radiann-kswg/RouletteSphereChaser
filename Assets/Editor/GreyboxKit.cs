@@ -96,8 +96,8 @@ public static class GreyboxKit
         }
     }
 
-    /// スコアトリガー（points>0なら点数マーカー自動付与）
-    public static GameObject Trigger(Transform parent, string name, Vector3 pos, Vector3 size, int points)
+    /// スコアトリガー（points>0かつautoLabelなら点数マーカー自動付与）
+    public static GameObject Trigger(Transform parent, string name, Vector3 pos, Vector3 size, int points, bool autoLabel = true)
     {
         var go = GameObject.CreatePrimitive(PrimitiveType.Cube);
         go.name = name;
@@ -107,7 +107,7 @@ public static class GreyboxKit
         go.GetComponent<Collider>().isTrigger = true;
         go.GetComponent<Renderer>().enabled = false;
         go.AddComponent<ScoreZone>().points = points;
-        if (points > 0) ScoreLabel(parent, name, pos + Vector3.up * 0.12f, points);
+        if (points > 0 && autoLabel) ScoreLabel(parent, name, pos + Vector3.up * 0.12f, points);
         return go;
     }
 

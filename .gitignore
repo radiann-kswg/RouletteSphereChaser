@@ -122,3 +122,6 @@ InitTestScene*.unity*
 !/[Aa]ssets/[Tt]extures/BallSkins/.gitkeep
 /[Aa]ssets/[Tt]extures/RefBallTex.png
 /[Aa]ssets/[Tt]extures/RefBallTex.png.meta
+
+# ボールスキンの作成用PSD（サンプル texture の原本）も同様に管轄外。
+/[Dd]ocs/BallSkins PSD/

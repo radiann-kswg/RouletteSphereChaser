@@ -24,6 +24,12 @@ public static class GitTools
         UnityEngine.Debug.Log("[GitTools] log: " + Run(root, "log --oneline -3"));
     }
 
+    /// 任意のgitコマンド実行（RunCommandのコンパイル文脈からProcessが使えないため公開）
+    public static string RunGit(string args)
+    {
+        return Run(Directory.GetCurrentDirectory(), args);
+    }
+
     static string Run(string cwd, string args)
     {
         var psi = new ProcessStartInfo("git", args)
@@ -38,9 +44,17 @@ public static class GitTools
         };
         using (var p = Process.Start(psi))
         {
-            string o = p.StandardOutput.ReadToEnd() + p.StandardError.ReadToEnd();
-            p.WaitForExit();
-            return $"[exit {p.ExitCode}] {o}";
+            // stdout/stderrは必ず非同期で両方読む。順次ReadToEnd()はstderrが
+            // パイプバッファ(数KB)を超えた時点でデッドロックする（実測: TMP導入時の
+            // CRLF警告大量出力でgit add -Aが永久停止しUnityごとフリーズした）
+            var so = p.StandardOutput.ReadToEndAsync();
+            var se = p.StandardError.ReadToEndAsync();
+            if (!p.WaitForExit(300000))
+            {
+                try { p.Kill(); } catch { }
+                return "[timeout] git " + args;
+            }
+            return $"[exit {p.ExitCode}] {so.Result}{se.Result}";
         }
     }
 }

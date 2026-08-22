@@ -30,6 +30,9 @@ AIエージェント設定の単一情報源（SSOT）。運用ルール・設�
 - `Assets/Models/TowerA_*.fbx` … タワーA機構（Spiral/Distributor/Agitator。原本 `BlenderSources/TowerA.blend`）
 - `Assets/Models/ParkBase.fbx` / `DrainStation.fbx` / `LiftGuide.fbx` / `DrainStirrer.fbx` … 土台・回収系（原本 `BlenderSources/ParkBase.blend`。Basin=ParkBase.fbx）
 - `BlenderSources/LotteryBall.blend` … Blender原本（ボール＋すり鉢）
+- `PenchantManufacture_ImageAssets/` … **gitサブモジュール**（User作フォント・CC BY 4.0）。`Assets/Fonts/PenchantManufacture.otf` はここからのコピー。TMP SDFアセットはビルダーが自動生成（`Assets/Fonts/PenchantManufacture_SDF.asset`）
+- 得点表示の標準: **Blender製ScoreGate（チャッカー風）＋ボード上TMP SDFラベル**（深度テスト＋`_CullMode=2`背面カリング→壁越し・裏側の得点は見えない）。ボール番号アトラス`NumberAtlas.png`も同フォントで生成（上段=90番台・下段=0番台のUV反転レイアウト・白地黒丸黒数字。生成はPIL・4xスーパーサンプル）
+- クレジット: `PenchantManufacture image assets by RadianN_kswg / ラジアン（柏木主税） CC BY 4.0`
 
 > **造形ポリシー（User方針 2026-08-22）**: シーンに配置するメッシュは**すべてBlenderモデリング**とする（DrainStirrer含め可視メッシュ100%Blender化済み）。Unityプリミティブはトリガー等の不可視コライダのみ許容。各メッシュは単一マテリアル＋UV展開済みで、`Assets/Materials/` のマテリアル（`TowerA_Spiral` 等）の `_BaseMap` に任意テクスチャを差し替えられる。
 > **接合部の仕上げ**: 複数パーツからなるメッシュは重ね置きにせず、パーツを少し食い込ませて**ブーリアンUnion→角度制限ベベル(0.01〜0.025, clamp)→スマートUV再展開**で一体化する（継ぎ接ぎ感の除去。ベベルはコライダも僅かに丸めるので、変更後はレイキャストで床高さ等価を確認すること）。コプレーナ接触のままUnionすると壊れやすいので必ず食い込ませる。
@@ -56,6 +59,8 @@ AIエージェント設定の単一情報源（SSOT）。運用ルール・設�
 18. **投下点の固定オフセットは分配方位バイアス**になる（西側スパイラル0件の実測）。分岐盤への投下は中心＋解放ジッタで一様化する。
 19. **Blender右手系→Unity左手系の座標規約（2026-08-22確定）**: ベース系（ParkBase.blend）は**Blender Z-up規約**で作成する＝blender X=Unity X／blender Z=Unity Y(上)／blender Y=−Unity Z（純回転・det+1）。Unityインポータは`bakeAxisConversion=ON`、配置は`InstantiateFbx`の`Euler(90,0,0)`で world=(x, y, −z)。**Z反転が1軸残る**ため、ベース系メッシュはZ対称で作る（Z非対称の造形を入れるときは要実測・要補正見直し）。機構系（TowerA.blend）はbake無し＋`Euler(-90,yaw,0)`だが、**こちらもX-mirror**（HighLaneで実測発覚。回転対称メッシュとカイラリティ実測合わせのため長く見えなかった）：**blender+Xの向き = world方位 180°−yaw → 方位azに向けるには yaw=180−az**。新規FBXは必ずインスタンス後にレイキャスト/バウンズで実測確認。
 20. **エディットモードでコライダ追加後にTransformを動かしたら`Physics.SyncTransforms()`**を呼んでから検証レイキャストすること（未同期だとコライダが旧位置に残り「すり抜け」に見える。プレイ中は自動同期）。
+21. **BlenderのFBXエクスポート前は必ず`select_all(action='DESELECT')`→対象のみ選択**。前回選択が残ったまま`use_selection=True`で出すと**別オブジェクトが混入**する（ScoreGateにHighLaneが混入し全ゲートが幽霊コライダで通路を塞いだ実測事故）。エクスポート後はUnityのプレハブ子メッシュ名で混入チェック。
+22. **FBX差し替え直後のビルダー実行は再インポート完了前の旧プレハブを掴むことがある**。`AssetDatabase.ImportAsset(path, ForceUpdate)`で強制再インポートしてからビルドする。
 
 ## 4. Unity MCP 運用
 
@@ -69,8 +74,8 @@ AIエージェント設定の単一情報源（SSOT）。運用ルール・設�
 
 **現状（2026-08-22時点）**
 
-- v1完成機: `SampleScene`＋`GreyboxBuilder.cs`（凍結。参照用に残置、以後は触らない）
-- v2フェーズ1完成: `ParkScene`＋`ParkBuilder.cs`＋`GreyboxKit.cs`。矩形傾斜フロア(20.6×13m)→V字漏斗壁→排水路→リフト2基(頂部14m)の循環を8球スモークで検証済み（最新: 50周/150秒・詰まり・場外ゼロ。1球が一時静止する場面あり—次セッションで長時間観察推奨）
+- v1完成機: `ParkScene_v1`（旧SampleScene・User改名2026-08-22）＋`GreyboxBuilder.cs`（凍結。参照用に残置、以後は触らない）
+- v2フェーズ1完成: `ParkScene_v2`（旧ParkScene・同改名）＋`ParkBuilder.cs`＋`GreyboxKit.cs`。矩形傾斜フロア(20.6×13m)→V字漏斗壁→排水路→リフト2基(頂部14m)の循環を8球スモークで検証済み（最新: 50周/150秒・詰まり・場外ゼロ。1球が一時静止する場面あり—次セッションで長時間観察推奨）
 - ✅ **タワーA①完成（2026-08-22）**: 分岐盤ディッシュ（静止・ノッチ4＋radialスナウト）＋回転撹拌腕（4枚羽根＋円錐キャップ・18°/s）＋**大スパイラル×4**（中心距離2.15m対角配置・内向き排出テールで各自の中央シャフト→盆地落下）。LiftN投下(0,13.5,0)＋解放ジッタ0.6。8球170秒で分配 14:15:8:11・詰まり/場外/貫通ゼロ。土台（Basin/DrainStation/Liftガイド）もBlenderメッシュ化済み。
 - ✅ **設計改訂3（2026-08-22）**: 8塔構成に拡張（`Docs/DESIGN-v2.md` 2章）。F=JPスピナー塔(0,-5)・G=沼塔(0,5)・H=ガラポン塔(-8.8,0)を新設（皿・穴系＝D類似の家系）、B/C/Eは軽量化、Eの回転ドラムはHへ移設。
 - ✅ **フェーズ3完了（2026-08-22）**: タワーA②③＝**スパイラル毎の専用チェーン×4（シャフト合流なし・User指示）**。各スパイラル中心(±1.52,±1.52)にミニクルーン(r1.34@8.45・DrainStirrer流用撹拌)→ミニルーレット(ボウルr0.87@7.25＋6フレットホイール18°/s・静止側スコア20/40/60/100)。8球全球スコア獲得を検証。メッシュ: `TowerA_Mini*.fbx`（Grand版3点は未使用・予備として残置）。**外装方針（User 2026-08-22）: 構造完成後、実際のメダルゲーム/抽選機風のテクスチャ・マテリアルで化粧する前提**——各機構は部位別マテリアル＋スピンUV(u=周方向,v=断面)で作ってある。
@@ -78,8 +83,13 @@ AIエージェント設定の単一情報源（SSOT）。運用ルール・設�
 - **次の作業: フェーズ4「タワーF/G」**（JPスピナー塔(0,-5)・沼塔(0,5)）。給球は**HighLaneの±Z 4本を延長してF/Gへ接続**（DESIGN-v2レーン構造項）。
 - ✅ ボールメッシュ/UV再設計済み（2026-08-22）: **メッシュはスフィア化キューブ（クアッド球, 8×8×6面）**（User参考`SphereCube_Test`準拠。極が無く円盤縁のメッシュが破綻しない）。**本体UVは「前後2円ディスク」方式**（参考`UVSphere_Test`準拠）。
   - キャンバスは**2:1**（例2048×1024）。**左円=前半球**（Unity +Z 正面、方位等距離図法・円中心=顔の中心）、**右円=後半球**（左右鏡像=後ろから見た絵をそのまま描ける）。円は画像上で真円（UV空間ではu半径0.24/v半径0.48）
-  - **番号パッチは上面/下面**（Blender±Z=Unity±Y、25°円錐、アトラスUV・submesh1）。数字の上=キャラ後頭部側（正面斜め上から覗き込んで読める向き）。FBX鏡像対策のu反転は全UVに適用済み
-  - アーティスト用テンプレート: `Docs/BallUV_Template.png`。**ボールスキン（球体化キャラのテクスチャ）は `Assets/Textures/BallSkins/` に置き、gitの管轄外**（`.gitignore` 済み。権利はテクスチャ画像元のライセンス依存＝`LICENSE-ASSETS.md` §2。クローンした人が自前の画像を置ける運用）。旧テスト用テクスチャ `Assets/Textures/RefBallTex.png` も同様に管轄外へ移行済み。UV変更時は必ずUnity側で正面＋真上レンダリングして鏡像チェック（前髪の流れ・数字の向きで判定）
+  - **番号パッチは上面/下面の「別UVデカール」**（2026-08-22改訂）。**本体メッシュは穴なしの全周384面**（極も本体UVが通っているのでキャラ絵を途切れず描ける）。その上に**球面から0.4%(0.2mm)浮かせた円盤シェル**（24分割×3リング＝片極72面、submesh1・不透明）を重ねる。旧仕様（25°コーンで極の面をsubmesh1に付け替え）は8分割グリッド上で**4×4マス−四隅＝十字形**になり丸数字に見えなかったため廃止。
+    - 円盤の直径は**ボール幅の40%**（`SINT=0.40`）。UVは正射影 `u=0.05±K·dx, v=0.05+K·dy`（K=0.044/0.40、上極は+dx・下極は−dx＝FBX鏡像対策のu反転）。円盤の縁がアトラス1タイル(0.1)の内接円ちょうどに乗る
+    - 数字の上=キャラ後頭部側（Blender+Y側）。正面斜め上から覗き込んで読める向き
+    - `Assets/Textures/NumberAtlas.png` は**縁なし白地＋黒数字**（再生成: `python Docs/gen_number_atlas.py` をリポジトリ直下で実行。数字は円盤内接円の約71%に自動フィット）。丸の輪郭は円盤シェルの形状そのものなので、テクスチャ側に円を描かない
+  - アーティスト用テンプレート: `Docs/BallUV_Template.png` と、作画用のレイヤー付き `Docs/BallUV_Template.psd`（レイヤー: 背景 / 下絵(空) / UVガイド / 番号デカール範囲。赤い弧が番号デカールに隠れる範囲）。再生成はBlenderで `Temp/uv_dump.json` を書き出してから `python Docs/gen_ball_uv_template.py` / `python Docs/gen_ball_uv_psd.py`（要 `pip install pytoshop`。統合画像はraw圧縮＝6MB強。packbits拡張が入る環境ならrleにすると小さくなる）。スキン作成中のPSD（サンプル原本）は `Docs/BallSkins PSD/` に置き、これも**gitの管轄外**（`.gitignore` 済み）。**ボールスキン（球体化キャラのテクスチャ）は `Assets/Textures/BallSkins/` に置き、gitの管轄外**（`.gitignore` 済み。権利はテクスチャ画像元のライセンス依存＝`LICENSE-ASSETS.md` §2。クローンした人が自前の画像を置ける運用）。旧テスト用テクスチャ `Assets/Textures/RefBallTex.png` も同様に管轄外へ移行済み。UV変更時は必ずUnity側で正面＋真上レンダリングして鏡像チェック（前髪の流れ・数字の向きで判定）
+
+- ⚠️ **未検証の申し送り（2026-08-22 ボールUVセッション）**: `LotteryBall.fbx`（528面: 本体384＋番号デカール144）と `NumberAtlas.png` を差し替え済みだが、**Unity側の再インポート・目視確認とコミットが未実施**（当該セッション中は他セッションがUnity MCPを使用中だったため）。次にUnityを触るときに、①真上＋正面斜めのレンダリングで丸数字の向き（鏡文字でないこと）とZファイティングの有無、②`Prefabs/LotteryBall.prefab` のマテリアル割当（submesh0=BallBody / submesh1=BallNumber）、③コンソールのエラー、を確認してから `Tools > Git Commit All`。Blender側のプレビュー（`Temp/prev_top.png` / `prev_45.png` / `prev_front.png`）では正常。
 
 **セッション開始手順**
 

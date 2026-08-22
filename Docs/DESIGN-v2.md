@@ -83,7 +83,7 @@ AGENTS.md 3章の罠リスト全項目を `GreyboxKit` が強制（Cylinder凸�
 
 - `Assets/Editor/ParkBuilder.cs` … v2ビルダー（`Tools > Build RouletteSphere Park (v2)`、冪等）
 - `Assets/Editor/GreyboxKit.cs` … 共通ヘルパ（罠対策標準装備）
-- `Assets/Scenes/ParkScene.unity` … v2シーン（v1の`SampleScene`は凍結保存）
+- `Assets/Scenes/ParkScene_v2.unity` … v2シーン（v1は`ParkScene_v1.unity`として凍結保存。2026-08-22 User改名: SampleScene→ParkScene_v1, ParkScene→ParkScene_v2）
 - `Assets/Editor/GitTools.cs` … `Tools > Git Commit All`（定期コミット用）
 - `BlenderSources/TowerA.blend` … タワーA機構（SpiralA/DistributorA/AgitatorA）✅
 - `BlenderSources/ParkBase.blend` … 土台一式（ParkBase/DrainStation/LiftGuide）✅
