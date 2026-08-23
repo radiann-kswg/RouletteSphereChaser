@@ -61,7 +61,7 @@ public static class ParkBuilder
         spawner.transform.SetParent(root);
         spawner.transform.position = new Vector3(-1.0f, 1.6f, 1.0f);
         spawner.ballPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/LotteryBall.prefab");
-        spawner.count = 16;  // 排水路広幅化(2026-08-22)後に16球へ。32球はフェーズ7の負荷検証で
+        spawner.count = 24;  // フェーズ5完了(2026-08-23)で24球へ。32球はフェーズ7の負荷検証で
         spawner.interval = 1f;
         // サンプルキャラスキン常用（User作・CC BY 4.0）
         spawner.characterSkin = AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/Textures/BallSkins_Sample.png");
@@ -145,6 +145,13 @@ public static class ParkBuilder
         // フェーズ5(2026-08-23): 旧B予定地(-7,9.8,-4)への空投下を廃止（半数の球が全機構スキップだった）。
         // 両リフトともA分岐盤へ→全球が抽選網に乗る。配点は24球バランスフェーズで再調整。
         BuildLift(g, "LiftS", -0.09f, new Vector3(0, 13.5f, 0), 0.6f);
+        // 頂部搬送レール（User要望 2026-08-23）: 見た目専用（ボールはウェイポイント搬送・コライダ無し）。
+        // ツインチューブが両レーン(z±0.09)をまたぐ。ボール(y14)の少し下(13.90)に敷設
+        var railPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Models/LiftTopRail.fbx");
+        var topRail = (GameObject)Object.Instantiate(railPrefab, new Vector3(0f, 13.90f, 0f), Quaternion.Euler(-90f, 180f, 0), g);
+        topRail.name = "LiftTopRail";
+        foreach (var r in topRail.GetComponentsInChildren<Renderer>())
+            r.sharedMaterial = Mat("LiftGuide", new Color(0.35f, 0.35f, 0.40f));
     }
 
     // ---- タワーA ① 分岐盤＋大スパイラル×4（水平分散配置, 全メッシュBlender製） ----
@@ -301,7 +308,7 @@ public static class ParkBuilder
         gwrb.isKinematic = true;
         gwrb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
         // 配点則: 通常口10×3＋当たり口40×1（西=-X。機内当たり率25%・1巡あたりP=12.5%）
-        int[] gpts = { 10, 10, 40, 10 };
+        int[] gpts = { 10, 10, 20, 10 };  // 西当たり口: P=12.5%実測→C/P=20
         for (int i = 0; i < 4; i++)
         {
             float gazDeg = i * 90f;
@@ -427,8 +434,8 @@ public static class ParkBuilder
             SetupMesh(k, kMat);
         }
         ScoreMark(g, new Vector3(0, 4.96f + LiftY, 5.0f), 20, new Color(0.92f, 0.92f, 0.95f), 90f);
-        ScoreMark(g, new Vector3(0.25f, 4.16f + LiftY, 5.0f), 40, new Color(0.92f, 0.92f, 0.95f), 90f);
-        ScoreMark(g, new Vector3(-0.20f, 3.40f + LiftY, 5.0f), 150, new Color(1.0f, 0.83f, 0.25f), 90f);  // 最終カップ（機内P≈6%）
+        ScoreMark(g, new Vector3(0.25f, 4.16f + LiftY, 5.0f), 60, new Color(0.92f, 0.92f, 0.95f), 90f);
+        ScoreMark(g, new Vector3(-0.20f, 3.40f + LiftY, 5.0f), 110, new Color(1.0f, 0.83f, 0.25f), 90f);  // 最終カップ（機内P≈6%）
         g.rotation = Quaternion.Euler(0, yawDeg, 0);  // グループ一括回転（原点ピボット）
     }
 
@@ -459,7 +466,7 @@ public static class ParkBuilder
             new Vector3(0, 4.65f + LiftY, -5.0f),
             Quaternion.AngleAxis(-4f, Vector3.right) * Quaternion.Euler(-90f, 180f, 0),
             Mat("TowerF_Separator", new Color(0.40f, 0.32f, 0.45f)));
-        ScoreMark(g, new Vector3(0, 4.50f + LiftY, -5.0f), 100, new Color(1.0f, 0.35f, 0.30f), 270f);  // JP（機内P≈10%目標・カラー低背化）
+        ScoreMark(g, new Vector3(0, 4.50f + LiftY, -5.0f), 150, new Color(1.0f, 0.35f, 0.30f), 270f);  // JP（機内P≈10%目標・カラー低背化）
         ScoreMark(g, new Vector3(0, 4.72f + LiftY, -5.55f), 15, new Color(0.92f, 0.92f, 0.95f), 270f); // 通過
         g.rotation = Quaternion.Euler(0, yawDeg, 0);  // グループ一括回転（原点ピボット）
     }
@@ -488,12 +495,12 @@ public static class ParkBuilder
         InstantiateMech("Assets/Models/TowerB_StepChucker.fbx", "StepChucker", g,
             new Vector3(7.30f, 0.45f + LiftY, 0.20f), Quaternion.Euler(-90f, 180f, 0),
             Mat("TowerB_StepChucker", new Color(0.55f, 0.35f, 0.40f)));
-        // 穴スコア（西=通りにくい60 / 中40 / 東=通りやすい25。暫定→C/P実測調整）
+        // 穴スコア（西=通りにくい65 / 中35 / 東=通りやすい25。値は集計識別のため全トリガーで一意）
         // トリガーは薄型・高め（床バウンドの再進入による二重加算防止）
         var thinTrig = new Vector3(0.26f, 0.12f, 0.26f);
-        ScoreMark(g, new Vector3(6.75f, 0.53f + LiftY, 0.28f), 60, new Color(1.0f, 0.83f, 0.25f), 0f, thinTrig);
-        ScoreMark(g, new Vector3(7.30f, 0.53f + LiftY, 0.12f), 40, new Color(0.92f, 0.92f, 0.95f), 0f, thinTrig);
-        ScoreMark(g, new Vector3(7.85f, 0.53f + LiftY, 0.28f), 25, new Color(0.92f, 0.92f, 0.95f), 0f, thinTrig);
+        ScoreMark(g, new Vector3(6.75f, 0.53f + LiftY, 0.28f), 35, new Color(1.0f, 0.83f, 0.25f), 0f, thinTrig);
+        ScoreMark(g, new Vector3(7.30f, 0.53f + LiftY, 0.12f), 65, new Color(0.92f, 0.92f, 0.95f), 0f, thinTrig);
+        ScoreMark(g, new Vector3(7.85f, 0.53f + LiftY, 0.28f), 90, new Color(0.92f, 0.92f, 0.95f), 0f, thinTrig);
         g.rotation = Quaternion.Euler(0, yawDeg, 0);  // 180°=G西ミラー（原点ピボット）
     }
 
@@ -524,8 +531,10 @@ public static class ParkBuilder
         srb.isKinematic = true;  // 同上（エディタ時のコライダ無効化対策）
         srb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
         // 当たり=シーソー西落ち（薄型トリガー）
-        ScoreMark(g, new Vector3(4.58f, 1.08f + LiftY, cz), 50, new Color(1.0f, 0.83f, 0.25f), 180f,
-            new Vector3(0.26f, 0.12f, 0.30f));
+        // L4排出の勢いでシーソーを飛び越えるため実質通過ゲート（P≈10.5%実測→C/P=25）。
+        // トリガーは板西端からの飛翔弧全体を覆う大型箱（垂直落下前提の小箱だと0/16で素通りした実測）
+        ScoreMark(g, new Vector3(4.50f, 1.00f + LiftY, cz), 25, new Color(1.0f, 0.83f, 0.25f), 180f,
+            new Vector3(0.60f, 0.30f, 0.30f));
     }
 
     // ---- タワーH「ガラポン」(赤・中央): 大型ルーレット直下＝中央チェーン3段目 ----
@@ -543,9 +552,9 @@ public static class ParkBuilder
         InstantiateMech("Assets/Models/TowerH_KarakoDish.fbx", "KarakoDish", g,
             new Vector3(0f, 3.46f + LiftY, 0f), Quaternion.Euler(-90f, 180f, 0),
             Mat("TowerH_KarakoDish", new Color(0.55f, 0.40f, 0.55f)));
-        // 当たり穴通過スコア（チューブ内薄型トリガー）
-        ScoreMark(g, new Vector3(0.575f, 3.42f + LiftY, 0f), 40, new Color(1.0f, 0.83f, 0.25f), 0f,
-            new Vector3(0.20f, 0.10f, 0.20f));
+        // 当たり穴通過スコア（チューブ内薄型トリガー。45=集計識別のため一意値）
+        ScoreMark(g, new Vector3(0.575f, 3.42f + LiftY, 0f), 75, new Color(1.0f, 0.83f, 0.25f), 0f,
+            new Vector3(0.20f, 0.14f, 0.20f));
         var drum = InstantiateMech("Assets/Models/TowerH_Drum.fbx", "Drum", g,
             new Vector3(0.575f, 2.89f + LiftY, 0f), Quaternion.Euler(-90f, 180f, 0),  // 頂=当たり穴チューブ下端-0.02密閉
             Mat("TowerH_Drum", new Color(0.80f, 0.55f, 0.25f)));
@@ -566,7 +575,7 @@ public static class ParkBuilder
         srb.isKinematic = true;
         srb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
         // 2択スイング当たり=東落ち（薄型トリガー）
-        ScoreMark(g, new Vector3(1.075f, 1.76f + LiftY, 0f), 60, new Color(1.0f, 0.83f, 0.25f), 0f,
+        ScoreMark(g, new Vector3(1.075f, 1.76f + LiftY, 0f), 100, new Color(1.0f, 0.83f, 0.25f), 0f,
             new Vector3(0.26f, 0.12f, 0.30f));
     }
 
@@ -597,7 +606,7 @@ public static class ParkBuilder
         var liftGO = Trigger(parent, name, new Vector3(12.33f, 0.08f, laneZ), new Vector3(0.16f, 0.12f, 0.15f), 0);
         Object.DestroyImmediate(liftGO.GetComponent<ScoreZone>());
         var lift = liftGO.AddComponent<BallLift>();
-        lift.speed = 3.5f; // 14m級に合わせて増速
+        lift.speed = 1.7f; // 半速化(User要望 2026-08-23): 視線が追える速度に。BallLiftは球ごと並行搬送なので処理能力は不変
         lift.releaseJitter = releaseJitter;
         lift.waypoints = new Transform[]
         {
@@ -605,9 +614,10 @@ public static class ParkBuilder
             Waypoint(liftGO.transform, "W1", new Vector3(dropPoint.x, 14f, dropPoint.z)),
             Waypoint(liftGO.transform, "W2", dropPoint),
         };
-        // ガイドレール（Blenderメッシュ・見た目専用）
-        var guide = InstantiateFbx("Assets/Models/LiftGuide.fbx", name + "_Guide", parent,
-            Mat("LiftGuide", new Color(0.35f, 0.35f, 0.40f)), false);
+        // ガイドレール（Blenderメッシュ・見た目専用）。片面シェルの裏面が透けるため両面描画（法線は健全と実測）
+        var guideMat = Mat("LiftGuide", new Color(0.35f, 0.35f, 0.40f));
+        guideMat.SetFloat("_Cull", 0f);  // Both faces
+        var guide = InstantiateFbx("Assets/Models/LiftGuide.fbx", name + "_Guide", parent, guideMat, false);
         guide.transform.position = new Vector3(12.33f, 0, laneZ);
     }
 }
