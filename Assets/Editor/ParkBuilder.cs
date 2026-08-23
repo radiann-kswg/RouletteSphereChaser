@@ -50,12 +50,11 @@ public static class ParkBuilder
         BuildTowerF_JPSpinner(root, "TowerF_N", 180f);  // 北(+Z)
         // フェーズ5（User配置指示 2026-08-23）: ハズレルート接続型サルベージ抽選
         // 対称2基化（User案）: 180°回転でG西/F北のハズレルートにも同型を接続
-        // フェーズ6の作業スペース確保のため B/C は一時停止（User指示 2026-08-23）。
-        // 新フロー（F→C→E / G→B→D）で配置ごと作り直すので、旧位置の実体は建てない。
-        // BuildTowerB_Pachinko(root, "TowerB_E", 0f);
+        // フェーズ6新フロー: F当選→E上段 / Fハズレ→C→E下段（C再配置済）。B/D はG系タスクで実装。
+        BuildTowerC_Zigzag(root, "TowerC_S", -1f);
+        BuildTowerC_Zigzag(root, "TowerC_N", +1f);
+        // BuildTowerB_Pachinko(root, "TowerB_E", 0f);   // G系フェーズで新座標へ
         // BuildTowerB_Pachinko(root, "TowerB_W", 180f);
-        // BuildTowerC_Zigzag(root, "TowerC_S", -1f);
-        // BuildTowerC_Zigzag(root, "TowerC_N", +1f);
         BuildTowerH_Garapon(root);                      // 赤: 大型ルーレット直下のガラポン挿入
 
         // フェーズ1スモーク用スポナー
@@ -515,37 +514,39 @@ public static class ParkBuilder
         g.rotation = Quaternion.Euler(0, yawDeg, 0);  // 180°=G西ミラー（原点ピボット）
     }
 
-    // ---- タワーC「ジグザグ」(緑・南縁 z≈-6.05): F南ハズレのサルベージ抽選 ----
-    // F南セパレータ南ギャップ排出(0,4.7,-5.55)→受けポケット(床4.32)→東行きトラフ6.1°下り→
-    // ジグザグ4段(2枚板ギャップ1.5d・同一鉛直面z=-6.05・棚4.3°交互)→西下口排出→シーソー(往復±11°)。
-    // シーソー西=当たり50（P≈給球10%×位相45%≈5%）／東=盆地へ（フェイルセーフ）。
+    // ---- タワーC「ジグザグ」フェーズ6版: FハズレのMissTrayスパウト(東, x1.05, 床5.61)を受ける ----
+    // 主面 z=±5.0: スパウト直下→ZigzagShort4段(yaw180: 入口=西端天面/出口=東端下段)→シーソー→
+    // FeedTrough(z向き・6°チルト)で z=±5.62 の戻りレーンへ乗り換え→CatchTurn(5.77m西行き)→
+    // 西端排出(x≈-1.0)からE車輪西側のピックアップへ落下（E未設置の間は盆地へ=フェイルセーフ）。
+    // 同一面に縦積みするとJPチューブ・E車輪・E上段デッキと干渉するため、戻りだけ別レーン（phase5のz-6.05と同じ発想）。
+    // Z対称ミラー配置（User美観指示）: 北側は zSign 反転のみ・グループ回転なし。
     static void BuildTowerC_Zigzag(Transform root, string name, float zSign)
     {
-        // Z対称ミラー配置（User案 2026-08-23）: メッシュは全てZ対称化済みのため、
-        // 北側もグループ回転なしで z符号だけ反転して置ける（南北で鏡映の見た目になる）
-        float cz = 6.05f * zSign;
+        float cz = 5.0f * zSign;      // 主面（F塔と同じ鉛直面・罠11。戻りトラフも同面でジグザグ下をくぐる）
         var g = Group(root, name);
-        InstantiateMech("Assets/Models/TowerC_CatchTurn.fbx", "CatchTurn", g,
-            new Vector3(0f, 3.72f + LiftY, cz), Quaternion.Euler(-90f, 180f, 0),
-            Mat("TowerC_CatchTurn", new Color(0.42f, 0.52f, 0.48f)));
-        // フレア天端(基準+2.28)がトラフ末端床(3.72)より低くなる高さに置く（縁への横衝突防止）
-        InstantiateMech("Assets/Models/TowerC_Zigzag.fbx", "Zigzag", g,
-            new Vector3(6.55f, 1.21f + LiftY, cz), Quaternion.Euler(-90f, 180f, 0),
+        // ジグザグ: 入口天面(top5.49)はスパウト床(5.61)より低く（縁への横衝突防止）
+        InstantiateMech("Assets/Models/TowerC_ZigzagShort.fbx", "Zigzag", g,
+            new Vector3(2.20f, 2.71f + LiftY, cz), Quaternion.Euler(-90f, 180f, 0),
             Mat("TowerC_Zigzag", new Color(0.30f, 0.45f, 0.55f)));
         var saw = InstantiateMech("Assets/Models/TowerC_Seesaw.fbx", "Seesaw", g,
-            new Vector3(5.05f, 1.42f + LiftY, cz), Quaternion.Euler(-90f, 180f, 0),
+            new Vector3(3.65f, 3.09f + LiftY, cz), Quaternion.Euler(-90f, 180f, 0),
             Mat("TowerC_Seesaw", new Color(0.75f, 0.60f, 0.30f)));
         var osc = saw.AddComponent<Oscillator>();
         osc.axis = Vector3.up;      // Euler(-90,180,0)配置のためローカルup=世界Z軸
         osc.angleA = -11f; osc.angleB = 11f; osc.period = 4.5f;
         var srb = saw.GetComponent<Rigidbody>();
-        srb.isKinematic = true;  // 同上（エディタ時のコライダ無効化対策）
+        srb.isKinematic = true;
         srb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
-        // 当たり=シーソー西落ち（薄型トリガー）
-        // L4排出の勢いでシーソーを飛び越えるため実質通過ゲート（P≈10.5%実測→C/P=25）。
-        // トリガーは板西端からの飛翔弧全体を覆う大型箱（垂直落下前提の小箱だと0/16で素通りした実測）
-        ScoreMark(g, new Vector3(4.50f, 1.00f + LiftY, cz), 25, new Color(1.0f, 0.83f, 0.25f), 180f,
+        // 通過25: シーソー東側の飛翔弧全体を覆う大型トリガー（罠31）
+        ScoreMark(g, new Vector3(4.15f, 2.95f + LiftY, cz), 25, new Color(1.0f, 0.83f, 0.25f), 180f,
             new Vector3(0.60f, 0.30f, 0.30f));
+        // 戻りトラフ: 主面 z=±5 のまま西行き5.77m（yaw0=西端が低い実測プロファイル）。
+        // ジグザグ本体(底3.95)の下をくぐる: 壁天端3.88=0.5d級密閉、床〜E上段デッキ(3.9)ヘッドルーム0.4超。
+        // シーソーからのこぼれは東西どちらでも interior に落ちる。西端排出(x≈-1.0, 床≈3.15)→E車輪西側へ落下
+        // メッシュ原点は東端寄り（バウンズ中心=原点-2.51実測）→ +2.51補正でバウンズ中心1.75(x -1.14..4.62)
+        InstantiateMech("Assets/Models/TowerC_CatchTurn.fbx", "ReturnTrough", g,
+            new Vector3(4.26f, 1.85f + LiftY, cz), Quaternion.Euler(-90f, 0, 0),
+            Mat("TowerC_CatchTurn", new Color(0.42f, 0.52f, 0.48f)));
     }
 
     // ---- タワーH「ガラポン」(赤・中央): 大型ルーレット直下＝中央チェーン3段目 ----
