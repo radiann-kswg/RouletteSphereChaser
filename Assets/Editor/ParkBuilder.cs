@@ -53,8 +53,8 @@ public static class ParkBuilder
         // フェーズ6新フロー: F当選→E上段 / Fハズレ→C→E下段、G当選→D上段 / Gハズレ→B→D下段
         BuildTowerC_Zigzag(root, "TowerC_S", -1f);
         BuildTowerC_Zigzag(root, "TowerC_N", +1f);
-        BuildTowerE_Wheel(root, "TowerE_S", -1f);
-        BuildTowerE_Wheel(root, "TowerE_N", +1f);
+        BuildTowerE_Disc(root, "TowerE_S", -1f);
+        BuildTowerE_Disc(root, "TowerE_N", +1f);
         BuildTowerB_Pachinko(root, "TowerB_E", 0f);
         BuildTowerB_Pachinko(root, "TowerB_W", 180f);
         BuildTowerD_Kuruun(root, "TowerD_E", 0f);
@@ -534,7 +534,9 @@ public static class ParkBuilder
             Quaternion.AngleAxis(trayTilt, Vector3.forward) * Quaternion.Euler(-90f, 180f - yawDeg, 0), trayMat);
         // JPチューブ×3段（φ0.37外径・各0.8高。天端=皿底6.79の0.02下=密閉。ボアとの隙間0.015<0.5d）
         var tubeMat = Mat("TowerF_JPTube", new Color(1.0f, 0.55f, 0.25f));
-        float[] tubeY = { 5.13f, 4.33f, 3.53f };
+        // 2026-08-24: E が傾斜ポケット盤になり受け面が下がったため、2段(1.6m)延長して
+        // 給球パンへの落差を 2.5m → 1.3m に詰める（高所自由落下の跳ね出し対策）
+        float[] tubeY = { 5.13f, 4.33f, 3.53f, 2.73f, 1.93f };
         for (int i = 0; i < tubeY.Length; i++)
             InstantiateMech("Assets/Models/TowerF_JPTube.fbx", "JPTube_" + i, g,
                 new Vector3(0, tubeY[i] + LiftY, -5.0f), Quaternion.Euler(-90f, 0, 0), tubeMat);
@@ -746,7 +748,82 @@ public static class ParkBuilder
             Mat("TowerH_Swing", new Color(0.72f, 0.66f, 0.35f)));
     }
 
-    // ---- タワーE「縦回転ポケット車輪」(0,±5): F系終端（フェーズ6・DESIGN F5〜F7） ----
+    // ---- タワーE「45°傾斜ポケット盤」(0,±5): F系終端（フェーズ6改訂 2026-08-24・User指示） ----
+    // 参考: まちゃつ氏の自作ボール抽選機（YouTube tVcMwzCRDcM）。盤を45°に寝かせた観賞型抽選機。
+    // ★User仕様（2026-08-24 スケッチ）:
+    //   ・給球は「皿の下側」＝盤面の低い側から入れる。よって盤は −X（給球側）へ倒す。
+    //   ・回転するのは **皿とポケット穴（とスターギア）を含む回転体ぜんぶ**。固定の当たり口を持たず、
+    //     「穴の位置が回ってきて、球の真下に来た口に落ちる」＝抽選時間そのものが演出になる。
+    //   ・したがってスコアトリガーも穴と一緒に回る（＝点数はポケットに属する）。
+    // ・盤 `TowerE_PocketDisc`: 外径1.00・リム壁0.55(5.5d)・チャンネル(r0.55〜0.88)・ハブ円錐0.34
+    //   ポケット8口は r0.68〜0.88 を貫通。**口の角幅で当選確率を作る**: 当たり9°／中14°×2／素通り22.5°×5
+    // ・ギア `TowerE_StarGear`: 11歯（ポケット8と非整数比＝毎回位相がずれる）。歯先r0.79 vs リム内径0.88
+    //   ＝隙間0.09 < ボール径0.10 で球は歯を越えられず、盤底で保持されながら口の到来を待つ。皿の子＝同回転。
+    // ・給球 `TowerE_FeedPan`（固定）: JPチューブ(x0)の落下と C戻りトラフ西端排出の両方を受け、
+    //   東へ12°で流して盤の低い側へ投下する。パン壁0.45＝落下エネルギーの封じ込め（罠: 高所落下受け）。
+    // ・排出: ポケットは盤を貫通し、球は裏面側(−法線)へ抜けて盆地へ自由落下＝フェイルセーフ絶対則を維持。
+    // 配点は暫定（全トリガー一意値）。フェーズ7の36球ソークで各ポケットの実測Pを採って C/P に揃える。
+    const float DiscTiltDeg = 45f;
+    static void BuildTowerE_Disc(Transform root, string name, float zSign)
+    {
+        float cz = 5.0f * zSign;
+        var g = Group(root, name);
+        float t = DiscTiltDeg * Mathf.Deg2Rad;
+        Vector3 nrm = new Vector3(-Mathf.Sin(t), Mathf.Cos(t), 0f);   // 盤の法線（−X＝給球側へ倒す）
+        Vector3 up = new Vector3(Mathf.Sin(t), Mathf.Cos(t), 0f);     // 盤面上の「上」方向（+X・上）
+        // 盤中心 (1.45, 1.60): 天端リム2.69 が C戻りトラフ底(≈2.90)の下、盤の最下端0.85 が
+        // 盆地床(x0.79で0.56)から0.29 上。低い側(−X)が給球パンの真下に来る（2026-08-24 実測前の設計値）
+        Vector3 C = new Vector3(1.45f, 0.36f + LiftY, cz);
+        Quaternion rot = Quaternion.LookRotation(nrm, up);
+
+        // 回転体（皿＋穴＋ギア＋点数トリガーが一体で回る）。
+        // ★スケール1のピボットを噛ませる: 機構FBXのプレハブ根は localScale=100 なので、
+        //   直下に Trigger() をぶら下げると localScale がそのまま100倍されて20m角の巨大トリガーになる
+        //   （2026-08-24 実測: 6トリガーが盤ごと飲み込み1000回超の多重加算＝罠6の派生）。
+        var pivot = new GameObject("DiscPivot").transform;
+        pivot.SetParent(g);
+        pivot.SetPositionAndRotation(C, rot);
+        var drot = pivot.gameObject.AddComponent<Rotator>();
+        drot.axis = Vector3.forward;      // メッシュ局所+Z＝盤の法線
+        drot.degreesPerSecond = 18f;      // 遅め＝抽選時間を見せる（罠4の遠心域には入れない）
+        var drb = pivot.GetComponent<Rigidbody>();
+        drb.isKinematic = true;
+        drb.useGravity = false;
+        drb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
+        InstantiateMech("Assets/Models/TowerE_PocketDisc.fbx", "PocketDisc", pivot, C, rot,
+            Mat("TowerE_Disc", new Color(0.52f, 0.44f, 0.34f)));
+        InstantiateMech("Assets/Models/TowerE_StarGear.fbx", "StarGear", pivot, C, rot,
+            Mat("TowerE_Gear", new Color(0.80f, 0.62f, 0.22f)));
+
+        // 給球パン（固定）: 西高(−0.35, 1.95) → 東低(1.02, 1.65) の12°シュート。
+        // メッシュはZ-up・局所+Xが長手（低い側が+X端・開放）
+        // 注: 機構系FBXは X-mirror（罠19）。メッシュの長手 +X は Unity では局所 −X になるので、
+        // 「局所+Z=パンの上／局所+X=西上がり」になる姿勢を直接指定する
+        // 西端 (−0.75, 2.04) → 東端の落とし口 (0.62, 1.74)。落とし口を盤の中央まで伸ばすと
+        // ハブ円錐の上へ投げてしまい絵的にも塞ぐので、リム天端の手前(c=0.68>0.55)で止める。
+        // 投下球は盤面 r≈0.61（低い側）に着地し、そこから r0.83 のチャンネルまで転がる
+        Vector3 panPos = new Vector3(-0.747f, 0.797f + LiftY, cz);
+        float ps = 12.4f * Mathf.Deg2Rad;
+        Quaternion panRot = Quaternion.LookRotation(
+            new Vector3(Mathf.Sin(ps), Mathf.Cos(ps), 0f), Vector3.forward);
+        InstantiateMech("Assets/Models/TowerE_FeedPan.fbx", "FeedPan", g, panPos, panRot,
+            Mat("TowerE_Pickup", new Color(0.55f, 0.45f, 0.35f)));
+
+        // ポケット裏のスコアトリガー（皿の子＝穴と一緒に回る）。局所角 45k。
+        // 口の角幅で P を作る: k0=9°(当たり)／k1,k2=14°(中)／k3..k7=22.5°(素通り=トリガー無し)
+        int[] slotPts = { 180, 55, 45, 0, 0, 0, 0, 0 };
+        for (int k = 0; k < 8; k++)
+        {
+            if (slotPts[k] == 0) continue;
+            float a = (45f * k) * Mathf.Deg2Rad;
+            // X-mirror（罠19）: メッシュ公称角 a の口は Unity では局所 −sin(a) 側に出る
+            Vector3 p = C + rot * new Vector3(-0.78f * Mathf.Sin(a), 0.78f * Mathf.Cos(a), -0.17f);
+            var col = slotPts[k] >= 100 ? new Color(1.0f, 0.35f, 0.30f) : new Color(1.0f, 0.83f, 0.25f);
+            ScoreMark(pivot, p, slotPts[k], col, 0f, new Vector3(0.20f, 0.20f, 0.20f));
+        }
+    }
+
+    // ---- 旧タワーE「縦回転ポケット車輪」(0,±5): フェーズ6版（2026-08-24に傾斜ポケット盤へ置換・参照用に残置） ----
     // 車輪=2枚円盤+ポケット仕切り(φ1.76・隙間0.15にボール0.1)。западピックアップ: C戻りトラフ排出(-1.15,3.1)を
     // 受けトレイ+ブリッジトラフで車輪西下(リム密閉0.05)へ送り、西側上昇→頂点越えの東こぼれ→下段デッキ。
     // 上段デッキ(3.94)=JPチューブ直下の高得点チャレンジ(穴180)。ハズレは東端開放（TopSplit東壁は除去済み）→下段へ。
@@ -834,7 +911,9 @@ public static class ParkBuilder
             float sg = s == 0 ? -1f : 1f;
             string sfx = s == 0 ? "S" : "N";
             Cam("F_JPSpinner_" + sfx, new Vector3(0f, 7.2f, sg * 8.6f), new Vector3(0f, 6.5f, sg * 5f), 42f);
-            Cam("E_Wheel_" + sfx, new Vector3(1.4f, 3.0f, sg * 8.5f), new Vector3(1.4f, 2.5f, sg * 5f), 55f);
+            // 傾斜ポケット盤は盤面が −X 上向き45°を向くので法線側（西上空）から。
+            // 真正面だと JPチューブ(x0) が視線を塞ぐので z を 2.0 ずらして避ける
+            Cam("E_PocketDisc_" + sfx, new Vector3(-1.05f, 4.05f, sg * 7.0f), new Vector3(1.45f, 1.6f, sg * 5f), 46f);
             Cam("C_Zigzag_" + sfx, new Vector3(2.6f, 4.4f, sg * 8.4f), new Vector3(2.6f, 3.6f, sg * 5f), 55f);
         }
         // G/B/D系（東西）: 東は+X側から、西は-X側から見る
