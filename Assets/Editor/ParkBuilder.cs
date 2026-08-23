@@ -323,7 +323,12 @@ public static class ParkBuilder
             float gazDeg = i * 90f;
             float gaz = gazDeg * Mathf.Deg2Rad;
             var pos = new Vector3(1.80f * Mathf.Cos(gaz), 4.90f + LiftY, 1.80f * Mathf.Sin(gaz));
-            ScoreGateAt(g, pos, gazDeg, gpts[i], new Color(1.0f, 0.45f, 0.35f));
+            // 既定の0.26角トリガーは、排出スロット(幅0.30)を横にずれて抜けた球やバウンドで
+            // 上を越えた球を取りこぼす（採点されずに素通り＝User報告 2026-08-23）。
+            // 大型ルーレットのゲートは互いに2.5m離れているので、飛翔弧を覆う大型箱にしてよい（罠31）。
+            // ※ミニルーレットの16門は内外0.32間隔なので既定サイズのまま（大型化すると二重加算する）
+            ScoreGateAt(g, pos, gazDeg, gpts[i], new Color(1.0f, 0.45f, 0.35f),
+                new Vector3(0.40f, 0.42f, 0.40f));
         }
     }
 
@@ -370,7 +375,7 @@ public static class ParkBuilder
     }
 
     /// 得点ゲート一式: ゲートメッシュ＋スコアトリガー＋ボード上のTMP得点表示
-    static void ScoreGateAt(Transform parent, Vector3 floorPos, float azDeg, int points, Color textColor)
+    static void ScoreGateAt(Transform parent, Vector3 floorPos, float azDeg, int points, Color textColor, Vector3? triggerSize = null)
     {
         var prefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Models/TowerA_ScoreGate.fbx");
         var gate = (GameObject)Object.Instantiate(prefab, floorPos, Quaternion.Euler(-90f, 180f - azDeg, 0), parent);
@@ -378,7 +383,7 @@ public static class ParkBuilder
         SetupMesh(gate, Mat("TowerA_ScoreGate", new Color(0.80f, 0.66f, 0.30f)));
         var dir = new Vector3(Mathf.Cos(azDeg * Mathf.Deg2Rad), 0, Mathf.Sin(azDeg * Mathf.Deg2Rad));
         Trigger(parent, "GateScore_" + points, floorPos + Vector3.up * 0.15f,
-            new Vector3(0.26f, 0.28f, 0.26f), points, false);
+            triggerSize ?? new Vector3(0.26f, 0.28f, 0.26f), points, false);
         var go = new GameObject("GateLabel_" + points);
         go.transform.SetParent(parent);
         go.transform.position = floorPos + Vector3.up * 0.415f - dir * 0.035f;
@@ -429,12 +434,20 @@ public static class ParkBuilder
         // 取りこぼし（高速球）はMergeTray東壁(6.45)が受けてハズレ路へ＝フェイルセーフ
         // ローカル系注意: グループyaw回転前。トラフ長手=ローカルx(=ワールドz)・チルト軸=ローカルforward。
         // FeedTroughメッシュは原点=端・−ローカルx方向へ1.0伸びる（実測）。中心側(ローカル|x|小)が低くなる6°チルト
+        // フェーズ6追補（User報告 2026-08-23）: FeedTroughは飛翔方向(世界±X)の受け幅が0.32しかなく、
+        // 勢いの付いた球がレーンに乗らずコースアウトしていた。飛翔方向1.46幅・両端壁付きの
+        // 専用受けパン `TowerG_FeedCatch` に差し替える（受け幅1.0＝落下点 x5.22〜6.22 を捕捉。
+        // 旧トラフの捕捉幅は0.32しかなかった）。床はV字（幅方向は中央 x=5.72 へ集約）＋
+        // 設置6°チルト（長手＝世界Z、皿中心側が低い）で、開放端から皿の内側 r0.88 に落ちる。
+        // 幅は1.46から1.0へ削ってある（1.46だと皿の口を覆う「蓋」に見えるとUser指摘 2026-08-23）。
         var ftMat = Mat("TowerF_CatchTray", new Color(0.55f, 0.50f, 0.42f));
-        InstantiateMech("Assets/Models/TowerDE_FeedTrough.fbx", "FeedGuide_S", g,
-            new Vector3(1.6f, 5.71f + LiftY, 5.46f),
+        // 注: FeedCatchメッシュは原点から「ローカル+x が減る向き」＝世界−Z へ1.05伸びる（FeedTroughと逆）。
+        // よって原点は皿中心側（|localX|の小さい方）に置く。両端開放なので高い側から抜ける心配は無い
+        InstantiateMech("Assets/Models/TowerG_FeedCatch.fbx", "FeedGuide_S", g,
+            new Vector3(0.6f, 5.72f + LiftY, 5.72f),
             Quaternion.AngleAxis(6f, Vector3.forward) * Quaternion.Euler(-90f, 0f, 0), ftMat);
-        InstantiateMech("Assets/Models/TowerDE_FeedTrough.fbx", "FeedGuide_N", g,
-            new Vector3(-0.6f, 5.71f + LiftY, 5.46f),
+        InstantiateMech("Assets/Models/TowerG_FeedCatch.fbx", "FeedGuide_N", g,
+            new Vector3(-1.6f, 5.72f + LiftY, 5.72f),
             Quaternion.AngleAxis(-6f, Vector3.forward) * Quaternion.Euler(-90f, 0f, 0), ftMat);
         // v3「当たり穴＋ハズレ穴」方式（User原案）: 皿=リングトラフ＋中央クレーター縁(高0.055=確率ノブ)。
         // 当たり=縁を越えて中央穴(3.0d)へ→採点、ハズレ=トラフ床穴×2(3.2d, r0.39, 世界±X)から次皿へ素通り落下(採点なし)。
@@ -687,6 +700,25 @@ public static class ParkBuilder
         // 2択スイング当たり=東落ち（薄型トリガー）
         ScoreMark(g, new Vector3(1.075f, 1.76f + LiftY, 0f), 100, new Color(1.0f, 0.83f, 0.25f), 0f,
             new Vector3(0.26f, 0.12f, 0.30f));
+        // ---- フェーズ6追補: 回収を2ルートに分離（DESIGN-v2 H2/H4・User案 2026-08-23） ----
+        // 中央から球が降り注ぐのをやめ、〈赤〉ハズレ7穴 と〈黄〉ドラム→スイング通過球 を別方位へ流す。
+        // 実測の空きは y3.40〜3.60 の帯だけ（上=ドラム底3.68 / 下=スイング天面3.37）。ここに
+        // 〈赤〉MissPan（外径2.6・リム0.14・+X側にドラム落下路のノッチ）を差し込み、4°傾けて
+        // 対角(−X,−Z)のリム開口から排出する。ドラム直下は抜けているので当選ルートとは交差しない。
+        // yaw180: メッシュのX鏡映（罠19）でノッチが−X側に出るため反転して+X＝ドラム直下に合わせる。
+        // 実測（リム高さの方位スキャン）: この向きでリムの90°開口は世界 az180〜270 に出る。
+        // 傾きは左掛け＝世界空間指定なので、その開口（az225）が低くなる向きへ6°。
+        InstantiateMech("Assets/Models/TowerH_MissPan.fbx", "MissPan", g,
+            new Vector3(0f, 2.20f + LiftY, 0f),
+            // 傾きは「法線を倒したい方位へ倒す」で直接指定する（AngleAxisの符号は回転規約で迷うため）。
+            // 実測: 法線が傾いた方位＝床が低い方位。開口は az180〜270 なので法線を az225 へ6°倒す
+            Quaternion.FromToRotation(Vector3.up, new Vector3(-0.0739f, 0.9945f, -0.0739f)) * Quaternion.Euler(-90f, 180f, 0),
+            Mat("TowerH_CatchFunnel", new Color(0.62f, 0.34f, 0.34f)));
+        // 〈黄〉スイングを抜けた球の受け樋（TowerB_CatchChute流用・yaw180=東下り）→ 東へ排出。
+        // 〈赤〉は az225（南西）へ出すので、2ルートは別方位＝樋どうしが交差しない
+        InstantiateMech("Assets/Models/TowerB_CatchChute.fbx", "SwingCatch", g,
+            new Vector3(0.575f, 1.41f + LiftY, 0f), Quaternion.Euler(-90f, 180f, 0),
+            Mat("TowerH_Swing", new Color(0.72f, 0.66f, 0.35f)));
     }
 
     // ---- タワーE「縦回転ポケット車輪」(0,±5): F系終端（フェーズ6・DESIGN F5〜F7） ----
@@ -702,6 +734,11 @@ public static class ParkBuilder
         var wheel = InstantiateMech("Assets/Models/TowerDE_BigWheel.fbx", "Wheel", g,
             new Vector3(0, 1.07f + LiftY, cz), Quaternion.Euler(-90f, 0, 0),
             Mat("TowerE_Wheel", new Color(0.30f, 0.50f, 0.62f)));
+        // ポケット仕切りの隙間は 0.15＝1.5d で罠5の下限ちょうど。実機で球が仕切りに噛んで
+        // 止まる現象をUserが確認（2026-08-23）ため、軸方向のみ1.45倍して隙間を約2.2dへ広げる。
+        // 軸方向は Euler(-90,0,0) 配置でメッシュのローカルY（＝世界Z）
+        var ws = wheel.transform.localScale;
+        wheel.transform.localScale = new Vector3(ws.x, ws.y * 1.45f, ws.z);
         var wrot = wheel.AddComponent<Rotator>();
         wrot.axis = Vector3.forward;
         wrot.degreesPerSecond = -20f;  // 負=+Z視でCW=西側上昇（シミュ実測で確定した向き）
@@ -727,15 +764,18 @@ public static class ParkBuilder
             new Vector3(0.18f, 0.12f, 0.18f));
         // 下段デッキ2枚直列（通常抽選・車輪で弾かれた球+上段ハズレを受ける）:
         // 高速リコシェット球の着地分布(実測1.2〜2.8m)をカバー。A穴=45／B穴=40、通過=東端→盆地
+        // 東へ+0.25（2026-08-23）: 旧位置は下段デッキAの西端(x0.85)が車輪のカップ掃引円 r1.02 の
+        // 内側(r0.86)に食い込んでおり、回ってきたカップとデッキ縁で球を挟んで止めていた（User報告）。
+        // 西端を r1.10 まで退けて、掃引円との間に1d以上のクリアランスを確保する。
         InstantiateMech("Assets/Models/TowerE_TopSplit.fbx", "LowerDeckA", g,
-            new Vector3(1.80f, 0.72f + LiftY, cz),
+            new Vector3(2.05f, 0.72f + LiftY, cz),
             Quaternion.AngleAxis(-3f, Vector3.forward) * Quaternion.Euler(-90f, 0, 0), deckMat);
-        ScoreMark(g, new Vector3(1.50f, 0.62f + LiftY, cz), 45, new Color(1.0f, 0.83f, 0.25f), 270f,
+        ScoreMark(g, new Vector3(1.75f, 0.62f + LiftY, cz), 45, new Color(1.0f, 0.83f, 0.25f), 270f,
             new Vector3(0.18f, 0.12f, 0.18f));
         InstantiateMech("Assets/Models/TowerE_TopSplit.fbx", "LowerDeckB", g,
-            new Vector3(2.90f, 0.60f + LiftY, cz),
+            new Vector3(3.15f, 0.60f + LiftY, cz),
             Quaternion.AngleAxis(-3f, Vector3.forward) * Quaternion.Euler(-90f, 0, 0), deckMat);
-        ScoreMark(g, new Vector3(2.60f, 0.50f + LiftY, cz), 40, new Color(1.0f, 0.83f, 0.25f), 270f,
+        ScoreMark(g, new Vector3(2.85f, 0.50f + LiftY, cz), 40, new Color(1.0f, 0.83f, 0.25f), 270f,
             new Vector3(0.18f, 0.12f, 0.18f));
     }
 
