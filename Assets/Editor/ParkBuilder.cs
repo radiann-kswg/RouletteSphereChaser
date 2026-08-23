@@ -877,9 +877,12 @@ public static class ParkBuilder
             Waypoint(liftGO.transform, "W1", new Vector3(dropPoint.x, 14f, dropPoint.z)),
             Waypoint(liftGO.transform, "W2", dropPoint),
         };
-        // ガイドレール（Blenderメッシュ・見た目専用）。片面シェルの裏面が透けるため両面描画（法線は健全と実測）
+        // ガイドレール（Blenderメッシュ・見た目専用）。
+        // 旧: 片面シェル対策で両面描画(_Cull=0)にしていたが、実測すると LiftGuide は
+        // 非多様体0・符号付き体積+0.0256 の閉じたソリッドで法線も外向き＝両面描画は不要。
+        // 両面のままだと内側の面が見えて「メッシュ反転」に見える（User報告 2026-08-23）のでカリングを戻す
         var guideMat = Mat("LiftGuide", new Color(0.35f, 0.35f, 0.40f));
-        guideMat.SetFloat("_Cull", 0f);  // Both faces
+        guideMat.SetFloat("_Cull", 2f);  // Back-face culling（既定）
         var guide = InstantiateFbx("Assets/Models/LiftGuide.fbx", name + "_Guide", parent, guideMat, false);
         guide.transform.position = new Vector3(12.33f, 0, laneZ);
     }
