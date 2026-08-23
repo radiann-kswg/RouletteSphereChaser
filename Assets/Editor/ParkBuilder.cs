@@ -67,7 +67,7 @@ public static class ParkBuilder
         spawner.transform.SetParent(root);
         spawner.transform.position = new Vector3(-1.0f, 1.6f, 1.0f);
         spawner.ballPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/LotteryBall.prefab");
-        spawner.count = 24;  // フェーズ5完了(2026-08-23)で24球へ。32球はフェーズ7の負荷検証で
+        spawner.count = 36;  // フェーズ6完了(2026-08-23)で36球へ（DESIGN-v2 6章フェーズ7の負荷検証水準）
         spawner.interval = 1f;
         // サンプルキャラスキン常用（User作・CC BY 4.0）
         spawner.characterSkin = AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/Textures/BallSkins_Sample.png");
@@ -495,9 +495,15 @@ public static class ParkBuilder
         // ハズレ受けトレイ: 中央ボアφ0.4・排出スパウト=mesh−X面（Euler(-90,0,0)実測でスパウトは世界az180=西）。
         // C受けは世界東（+X）なので tray yaw=180−グループyaw: F_S(0)→180, F_N(180)→0（グループ回転後に両方とも世界東）
         var trayMat = Mat("TowerF_MissTray", new Color(0.40f, 0.32f, 0.45f));
-        // 平床停留対策はメッシュ側で解消済み（床=スパウトへ向かう円錐勾配 k0.05≈2.9°。壁コーナー停留なし）
+        // 床=スパウトへ向かう円錐勾配（メッシュ側 k0.05≈2.9°）だが、36球ソークで
+        // トレイ床上に2球が数十秒止まる停留を実測（User報告 2026-08-23）。2.9°は
+        // ボール径0.1・低摩擦でも「他球に当たって止まった球」を再始動できない浅さ。
+        // → 設置側で世界+X（スパウト側）へ4°足して実効≈7°にする。スパウト床は0.07下がるだけで、
+        //    Cジグザグ入口天面(5.49)とのクリアランスは保たれる。
+        float trayTilt = -4f * Mathf.Cos(yawDeg * Mathf.Deg2Rad);   // 世界+X低で固定（F_N はグループ鏡映ぶん反転）
         InstantiateMech("Assets/Models/TowerF_MissTray.fbx", "MissTray", g,
-            new Vector3(0, 4.40f + LiftY, -5.0f), Quaternion.Euler(-90f, 180f - yawDeg, 0), trayMat);
+            new Vector3(0, 4.40f + LiftY, -5.0f),
+            Quaternion.AngleAxis(trayTilt, Vector3.forward) * Quaternion.Euler(-90f, 180f - yawDeg, 0), trayMat);
         // JPチューブ×3段（φ0.37外径・各0.8高。天端=皿底6.79の0.02下=密閉。ボアとの隙間0.015<0.5d）
         var tubeMat = Mat("TowerF_JPTube", new Color(1.0f, 0.55f, 0.25f));
         float[] tubeY = { 5.13f, 4.33f, 3.53f };
@@ -572,15 +578,24 @@ public static class ParkBuilder
         // 上段ボウル: 床 world 2.40 / リム上端 2.82（JPレール下端2.96の直下ぎりぎりまで持ち上げ＝塔を伸ばす）
         InstantiateMech("Assets/Models/TowerD_Kuruun.fbx", "BowlUpper", g,
             new Vector3(5.00f, 1.16f + LiftY, 0.70f), Quaternion.Euler(-90f, 0, 0), dMat);
-        // 下段ボウル: 床 world 1.08 / リム上端 1.50。ここは B_CatchChute 床(1.53)に張り付く＝上限
+        // 下段ボウル: 床 world 1.13 / リム上端は東(B側)1.51・西1.60。
+        // ここは上下から挟まれた最難所——上は B_CatchChute 床(1.53)、下は盆地床(3°で+X低)。
+        // 水平に置くと西塔(x-5.3)ではスカート下端(root-0.12)と床の隙間が0.07しか無く、
+        // 穴から落ちた球がスカート下に潜り込んで抜けられなくなる（36球ソークで6球が滞留・実測）。
+        // → **盆地と同じ3°で傾けて隙間を均一化**する（+X低＝床と平行）。これで
+        //    ・スカート下の隙間はどのx位置でも約0.13（1.3d）で一定＝楔ゾーンが消える
+        //    ・B側（東）のリムは0.045下がるのでシュート床1.53の下に収まったまま
+        // 傾きは世界+X低（床と平行）で固定する。グループyaw180のD_WはZ軸チルトも鏡映されるので符号を反転。
+        float tiltSign = Mathf.Cos(yawDeg * Mathf.Deg2Rad);   // D_E:+1 / D_W:-1
         InstantiateMech("Assets/Models/TowerD_Kuruun.fbx", "BowlLower", g,
-            new Vector3(5.30f, -0.16f + LiftY, 0.25f), Quaternion.Euler(-90f, 36f, 0), dMat);
+            new Vector3(5.30f, -0.11f + LiftY, 0.25f),
+            Quaternion.AngleAxis(-3f * tiltSign, Vector3.forward) * Quaternion.Euler(-90f, 36f, 0), dMat);
         // 撹拌ローター（罠4の標準手当て）: トラフ床は穴と穴の間が1.1dの平坦地で、
         // 静止ボウルだと ①球が平坦地に乗って停留 ②毎回同じ穴に入る（実測16/16が西穴＝罠23の再来）。
         // 低速の掃引アームで球を穴リング上に送り続ける＝停留解消＋入る穴がランダム化（≈1/5）。
         // 盤ごと微振動（Oscillator）は「振動軸=±X」が優先方位になり西穴に集中したため不採用。
         Stirrer(g, "StirrerUpper", new Vector3(5.00f, 1.22f + LiftY, 0.70f));
-        Stirrer(g, "StirrerLower", new Vector3(5.30f, -0.10f + LiftY, 0.25f));
+        Stirrer(g, "StirrerLower", new Vector3(5.30f, -0.03f + LiftY, 0.25f));  // 傾けたぶん+0.02逃がす
         // 当たり穴の真下に薄型トリガー（穴0.18に対し0.20角。隣穴は0.28離れているので誤検出なし）。
         // 当たり穴の選び方は実測ベース: 給球は毎回ほぼ同じ点(az180付近)に落ちるので、
         // 撹拌アームの掃引方向に沿って穴の当選率が偏る。24球実測の分布
