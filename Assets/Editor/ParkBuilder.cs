@@ -214,6 +214,15 @@ public static class ParkBuilder
     // スパイラル3巻き化(2026-08-23)に伴い、A23以下の全機構を+Yシフト（LIFT定数）
     // 0.74=3巻き化で浮いた1ピッチ分 + 0.50=User指示の追加詰め（テール→クレーター落差1.10→0.60）
     const float LiftY = 1.24f;
+    /// G/B/D系（東西ルート）だけの追加嵩上げ（User要望 2026-08-23）。
+    /// F/C/E系に比べて段数が多く、終端のD下段が盆地床に張り付いていたため塔ごと持ち上げる。
+    /// グループのpositionで一括して上げるので、系内の受け渡しクリアランス（0.03級のものも含む）は
+    /// すべて相対関係が保たれる。系外との接点は
+    ///   ・HighLane給球（レーンは動かないので FeedCatch を西へ寄せて着弾窓を合わせる）
+    ///   ・D下段スカート下の盆地クリアランス（上がるぶん余裕が増える＝改善）
+    /// の2箇所だけ。0.30より上げるには FeedCatch の西壁を低くしたメッシュが要る
+    /// （低速球がレーン終端から西壁を越えられなくなるため）。
+    const float GLift = 0.30f;
 
     static void BuildTowerA_Tier23(Transform root)
     {
@@ -444,10 +453,10 @@ public static class ParkBuilder
         // 注: FeedCatchメッシュは原点から「ローカル+x が減る向き」＝世界−Z へ1.05伸びる（FeedTroughと逆）。
         // よって原点は皿中心側（|localX|の小さい方）に置く。両端開放なので高い側から抜ける心配は無い
         InstantiateMech("Assets/Models/TowerG_FeedCatch.fbx", "FeedGuide_S", g,
-            new Vector3(0.6f, 5.72f + LiftY, 5.72f),
+            new Vector3(0.6f, 5.72f + LiftY, 5.50f),
             Quaternion.AngleAxis(6f, Vector3.forward) * Quaternion.Euler(-90f, 0f, 0), ftMat);
         InstantiateMech("Assets/Models/TowerG_FeedCatch.fbx", "FeedGuide_N", g,
-            new Vector3(-1.6f, 5.72f + LiftY, 5.72f),
+            new Vector3(-1.6f, 5.72f + LiftY, 5.50f),
             Quaternion.AngleAxis(-6f, Vector3.forward) * Quaternion.Euler(-90f, 0f, 0), ftMat);
         // v3「当たり穴＋ハズレ穴」方式（User原案）: 皿=リングトラフ＋中央クレーター縁(高0.055=確率ノブ)。
         // 当たり=縁を越えて中央穴(3.0d)へ→採点、ハズレ=トラフ床穴×2(3.2d, r0.39, 世界±X)から次皿へ素通り落下(採点なし)。
@@ -483,6 +492,7 @@ public static class ParkBuilder
             InstantiateMech("Assets/Models/TowerF_JPTube.fbx", "JPRail_" + ty, g,
                 new Vector3(-0.20f, ty + LiftY, 5.0f), Quaternion.Euler(-90f, 0, 0), gtubeMat);
         g.rotation = Quaternion.Euler(0, yawDeg, 0);  // グループ一括回転（原点ピボット）
+        g.position = new Vector3(0, GLift, 0);        // G/B/D系の一括嵩上げ
     }
 
     // ---- タワーF「JPスピナー」(0,-5): 受けトレイ→回転穴皿→MissTray＋JPTube（フェーズ6・DESIGN F1〜F3） ----
@@ -569,6 +579,7 @@ public static class ParkBuilder
             new Vector3(7.15f, 0.35f + LiftY, 0.20f), Quaternion.Euler(-90f, 0f, 0),
             Mat("TowerB_CatchTray", new Color(0.60f, 0.45f, 0.35f)));
         g.rotation = Quaternion.Euler(0, yawDeg, 0);  // 180°=G西ミラー（原点ピボット）
+        g.position = new Vector3(0, GLift, 0);        // G/B/D系の一括嵩上げ
     }
 
     // ---- タワーD「クルーンボウル」フェーズ6版: G系の終端（DESIGN G7/G8） ----
@@ -591,24 +602,19 @@ public static class ParkBuilder
         // 上段ボウル: 床 world 2.40 / リム上端 2.82（JPレール下端2.96の直下ぎりぎりまで持ち上げ＝塔を伸ばす）
         InstantiateMech("Assets/Models/TowerD_Kuruun.fbx", "BowlUpper", g,
             new Vector3(5.00f, 1.16f + LiftY, 0.70f), Quaternion.Euler(-90f, 0, 0), dMat);
-        // 下段ボウル: 床 world 1.13 / リム上端は東(B側)1.51・西1.60。
-        // ここは上下から挟まれた最難所——上は B_CatchChute 床(1.53)、下は盆地床(3°で+X低)。
-        // 水平に置くと西塔(x-5.3)ではスカート下端(root-0.12)と床の隙間が0.07しか無く、
-        // 穴から落ちた球がスカート下に潜り込んで抜けられなくなる（36球ソークで6球が滞留・実測）。
-        // → **盆地と同じ3°で傾けて隙間を均一化**する（+X低＝床と平行）。これで
-        //    ・スカート下の隙間はどのx位置でも約0.13（1.3d）で一定＝楔ゾーンが消える
-        //    ・B側（東）のリムは0.045下がるのでシュート床1.53の下に収まったまま
-        // 傾きは世界+X低（床と平行）で固定する。グループyaw180のD_WはZ軸チルトも鏡映されるので符号を反転。
-        float tiltSign = Mathf.Cos(yawDeg * Mathf.Deg2Rad);   // D_E:+1 / D_W:-1
+        // 下段ボウル: 床 world 1.08+GLift / リム上端 1.50+GLift。B_CatchChute 床(1.53+GLift)の
+        // わずかに下へ潜り込ませ、シュート排出球をリム越しでなく「懐へ」落とす。
+        // 以前は盆地床とのクリアランス確保のため3°チルトを掛けていたが、GLiftで系ごと0.30上がって
+        // スカート下の隙間が0.38取れたので不要になった。チルトは世界+X低で固定だったため
+        // 西塔ではB側（＝西）のリムが0.045持ち上がり、シュート床を突き上げて球を止めていた（実測4球）。
         InstantiateMech("Assets/Models/TowerD_Kuruun.fbx", "BowlLower", g,
-            new Vector3(5.30f, -0.11f + LiftY, 0.25f),
-            Quaternion.AngleAxis(-3f * tiltSign, Vector3.forward) * Quaternion.Euler(-90f, 36f, 0), dMat);
+            new Vector3(5.30f, -0.16f + LiftY, 0.25f), Quaternion.Euler(-90f, 36f, 0), dMat);
         // 撹拌ローター（罠4の標準手当て）: トラフ床は穴と穴の間が1.1dの平坦地で、
         // 静止ボウルだと ①球が平坦地に乗って停留 ②毎回同じ穴に入る（実測16/16が西穴＝罠23の再来）。
         // 低速の掃引アームで球を穴リング上に送り続ける＝停留解消＋入る穴がランダム化（≈1/5）。
         // 盤ごと微振動（Oscillator）は「振動軸=±X」が優先方位になり西穴に集中したため不採用。
         Stirrer(g, "StirrerUpper", new Vector3(5.00f, 1.22f + LiftY, 0.70f));
-        Stirrer(g, "StirrerLower", new Vector3(5.30f, -0.03f + LiftY, 0.25f));  // 傾けたぶん+0.02逃がす
+        Stirrer(g, "StirrerLower", new Vector3(5.30f, -0.10f + LiftY, 0.25f));
         // 当たり穴の真下に薄型トリガー（穴0.18に対し0.20角。隣穴は0.28離れているので誤検出なし）。
         // 当たり穴の選び方は実測ベース: 給球は毎回ほぼ同じ点(az180付近)に落ちるので、
         // 撹拌アームの掃引方向に沿って穴の当選率が偏る。24球実測の分布
@@ -620,6 +626,7 @@ public static class ParkBuilder
         // 下段 az162.5（yaw36後・実測 4/23 ≈17%）= (5.30,0.25) + (0.072, -0.227)
         ScoreMark(g, new Vector3(5.372f, -0.36f + LiftY, 0.023f), 45, new Color(0.92f, 0.92f, 0.95f), 0f, thin);
         g.rotation = Quaternion.Euler(0, yawDeg, 0);  // 180°=D西ミラー（原点ピボット）
+        g.position = new Vector3(0, GLift, 0);        // G/B/D系の一括嵩上げ
     }
 
     // ---- タワーC「ジグザグ」フェーズ6版: FハズレのMissTrayスパウト(東, x1.05, 床5.61)を受ける ----
@@ -708,8 +715,11 @@ public static class ParkBuilder
         // yaw180: メッシュのX鏡映（罠19）でノッチが−X側に出るため反転して+X＝ドラム直下に合わせる。
         // 実測（リム高さの方位スキャン）: この向きでリムの90°開口は世界 az180〜270 に出る。
         // 傾きは左掛け＝世界空間指定なので、その開口（az225）が低くなる向きへ6°。
+        // 高さ（User指示 2026-08-23）: 皿がドラムより下にあるとドラム排出球が皿に落ちてルートが混ざる。
+        // **ノッチがドラムを咥え込む高さ**＝ドラム中心帯(3.68〜4.58)まで上げる。床4.10・リム上端4.28、
+        // 6°チルトの高い側でも4.42でカラコロッタ皿の底(4.59)に当たらない。
         InstantiateMech("Assets/Models/TowerH_MissPan.fbx", "MissPan", g,
-            new Vector3(0f, 2.20f + LiftY, 0f),
+            new Vector3(0f, 2.86f + LiftY, 0f),
             // 傾きは「法線を倒したい方位へ倒す」で直接指定する（AngleAxisの符号は回転規約で迷うため）。
             // 実測: 法線が傾いた方位＝床が低い方位。開口は az180〜270 なので法線を az225 へ6°倒す
             Quaternion.FromToRotation(Vector3.up, new Vector3(-0.0739f, 0.9945f, -0.0739f)) * Quaternion.Euler(-90f, 180f, 0),
