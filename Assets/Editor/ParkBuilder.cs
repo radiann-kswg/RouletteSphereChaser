@@ -441,9 +441,10 @@ public static class ParkBuilder
         g.rotation = Quaternion.Euler(0, yawDeg, 0);  // グループ一括回転（原点ピボット）
     }
 
-    // ---- タワーF「JPスピナー」(0,-5): 受けトレイ→回転穴皿→セパレータ（HighLane-Z×2から給球） ----
-    // 皿: 中央JP穴(カラー付)＋通過穴3(r0.45リング)・15°/s回転。下段は半径分離:
-    // 中央落下→チューブ→JP150、リング落下→セクター欠きリング床→南ギャップ→30。
+    // ---- タワーF「JPスピナー」(0,-5): 受けトレイ→回転穴皿→MissTray＋JPTube（フェーズ6・DESIGN F1〜F3） ----
+    // 当選=中央JP穴→JPTube×3段スタック（密閉ガイド）でE上段デッキ(3.9)直上まで降ろす。
+    // ハズレ=リング穴(r0.32)→MissTray(中央ボアφ0.4をチューブが貫通・排出=側面スパウト)→C受けへ。
+    // 旧Separator（リング床+ギャップ）は廃止: 休止帯停留（罠29）を構造で解消。
     static void BuildTowerF_JPSpinner(Transform root, string name, float yawDeg)
     {
         var g = Group(root, name);
@@ -455,21 +456,29 @@ public static class ParkBuilder
             Mat("TowerF_SpinnerDish", new Color(0.75f, 0.55f, 0.20f)));
         var rot = dish.AddComponent<Rotator>();
         rot.axis = Vector3.forward;
-        // 22°/s: LiftS両掛け化(2026-08-23)でF給球倍増→休止帯r≈0.18の多球アーチが発生。
-        // 遠心で穴リング(r0.32)へ送るため増速（50°/s級の遠心軌道罠4には未達の中速）
+        // 22°/s: 休止帯r≈0.18の多球アーチ対策の中速（罠4の遠心軌道50°/s級には未達）
         rot.degreesPerSecond = 22f;
         var drb = dish.GetComponent<Rigidbody>();
         drb.isKinematic = true;
         drb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
-        // セクターギャップを南へ（鏡像則: world方位=180-yaw+blender方位。blender270°→yaw180で南270°）
-        // ＋南下がり4°チルト: リング床は回転対称で接線力ゼロ→チューブ際で静止する（実測）ため、
-        // 最低点=ギャップ方位に傾けてどの着地方位からも南へ転がす
-        InstantiateMech("Assets/Models/TowerF_Separator.fbx", "Separator", g,
-            new Vector3(0, 4.65f + LiftY, -5.0f),
-            Quaternion.AngleAxis(-4f, Vector3.right) * Quaternion.Euler(-90f, 180f, 0),
-            Mat("TowerF_Separator", new Color(0.40f, 0.32f, 0.45f)));
-        ScoreMark(g, new Vector3(0, 4.50f + LiftY, -5.0f), 150, new Color(1.0f, 0.35f, 0.30f), 270f);  // JP（機内P≈10%目標・カラー低背化）
-        ScoreMark(g, new Vector3(0, 4.72f + LiftY, -5.55f), 15, new Color(0.92f, 0.92f, 0.95f), 270f); // 通過
+        // ハズレ受けトレイ: 中央ボアφ0.4・排出スパウト=mesh−X面（Euler(-90,0,0)実測でスパウトは世界az180=西）。
+        // C受けは世界東（+X）なので tray yaw=180−グループyaw: F_S(0)→180, F_N(180)→0（グループ回転後に両方とも世界東）
+        var trayMat = Mat("TowerF_MissTray", new Color(0.40f, 0.32f, 0.45f));
+        // 平床停留対策はメッシュ側で解消済み（床=スパウトへ向かう円錐勾配 k0.05≈2.9°。壁コーナー停留なし）
+        InstantiateMech("Assets/Models/TowerF_MissTray.fbx", "MissTray", g,
+            new Vector3(0, 4.40f + LiftY, -5.0f), Quaternion.Euler(-90f, 180f - yawDeg, 0), trayMat);
+        // JPチューブ×3段（φ0.37外径・各0.8高。天端=皿底6.79の0.02下=密閉。ボアとの隙間0.015<0.5d）
+        var tubeMat = Mat("TowerF_JPTube", new Color(1.0f, 0.55f, 0.25f));
+        float[] tubeY = { 5.13f, 4.33f, 3.53f };
+        for (int i = 0; i < tubeY.Length; i++)
+            InstantiateMech("Assets/Models/TowerF_JPTube.fbx", "JPTube_" + i, g,
+                new Vector3(0, tubeY[i] + LiftY, -5.0f), Quaternion.Euler(-90f, 0, 0), tubeMat);
+        // JP=チューブ内通過（薄型トリガー・二重加算なし）。通過15はトレイ排出スパウト（世界東側=グループyawで反転）
+        float sx = Mathf.Cos(yawDeg * Mathf.Deg2Rad);  // F_S:+1 / F_N:-1 → 回転後に世界+Xで一致
+        ScoreMark(g, new Vector3(0, 3.42f + LiftY, -5.0f), 150, new Color(1.0f, 0.35f, 0.30f), 270f,
+            new Vector3(0.20f, 0.14f, 0.20f));
+        ScoreMark(g, new Vector3(1.05f * sx, 4.50f + LiftY, -5.0f), 15, new Color(0.92f, 0.92f, 0.95f), yawDeg,
+            new Vector3(0.26f, 0.14f, 0.34f));
         g.rotation = Quaternion.Euler(0, yawDeg, 0);  // グループ一括回転（原点ピボット）
     }
 
