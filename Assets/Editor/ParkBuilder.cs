@@ -50,10 +50,12 @@ public static class ParkBuilder
         BuildTowerF_JPSpinner(root, "TowerF_N", 180f);  // 北(+Z)
         // フェーズ5（User配置指示 2026-08-23）: ハズレルート接続型サルベージ抽選
         // 対称2基化（User案）: 180°回転でG西/F北のハズレルートにも同型を接続
-        BuildTowerB_Pachinko(root, "TowerB_E", 0f);     // 青: G東k3下→東のピン盤+ステップチャッカー
-        BuildTowerB_Pachinko(root, "TowerB_W", 180f);   // G西k3下→西側ミラー
-        BuildTowerC_Zigzag(root, "TowerC_S", -1f);      // 緑: F南ギャップ→南縁トラフ→ジグザグ→シーソー
-        BuildTowerC_Zigzag(root, "TowerC_N", +1f);      // F北ギャップ→Z対称ミラー配置（User案: 点対称でなく鏡映で美観）
+        // フェーズ6の作業スペース確保のため B/C は一時停止（User指示 2026-08-23）。
+        // 新フロー（F→C→E / G→B→D）で配置ごと作り直すので、旧位置の実体は建てない。
+        // BuildTowerB_Pachinko(root, "TowerB_E", 0f);
+        // BuildTowerB_Pachinko(root, "TowerB_W", 180f);
+        // BuildTowerC_Zigzag(root, "TowerC_S", -1f);
+        // BuildTowerC_Zigzag(root, "TowerC_N", +1f);
         BuildTowerH_Garapon(root);                      // 赤: 大型ルーレット直下のガラポン挿入
 
         // フェーズ1スモーク用スポナー
