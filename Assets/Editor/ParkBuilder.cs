@@ -625,11 +625,21 @@ public static class ParkBuilder
         // 撹拌アームの掃引方向に沿って穴の当選率が偏る。24球実測の分布
         //   上段 az342:4 / 126:3 / 198:3 / 54:2 / 270:0   下段 az18:8 / 90:8 / 162:4 / 306:3 / 234:0
         // から、目標の「5穴中1（≈20%）」に最も近い穴を当たりに割り当てる。
+        // 5穴のうち **高得点1＋中得点2**（User指示 2026-08-23。残り2穴は素通り＝採点なし）。
+        // 割り当ては実測分布から: 高得点は入りにくい穴、中得点はそこそこ入る穴に置く。
+        // 点数は全トリガーで一意（ログ集計の識別子。E下段45・B東90と衝突しない値を選んである）
         var thin = new Vector3(0.20f, 0.10f, 0.20f);
-        // 上段 az54.5（実測 2/12 ≈17%）= (5.00,0.70) + (0.194, 0.138)
-        ScoreMark(g, new Vector3(5.194f, 0.96f + LiftY, 0.838f), 200, new Color(1.0f, 0.35f, 0.30f), 0f, thin);
-        // 下段 az162.5（yaw36後・実測 4/23 ≈17%）= (5.30,0.25) + (0.072, -0.227)
-        ScoreMark(g, new Vector3(5.372f, -0.36f + LiftY, 0.023f), 45, new Color(0.92f, 0.92f, 0.95f), 0f, thin);
+        var hiCol = new Color(1.0f, 0.35f, 0.30f);
+        var midCol = new Color(1.0f, 0.83f, 0.25f);
+        float uy = 0.96f + LiftY, ly = -0.36f + LiftY;
+        // 上段（高得点チャレンジ段）: az54.5(17%)=200 / az126.5(25%)=88 / az342.5(33%)=84
+        ScoreMark(g, new Vector3(5.194f, uy, 0.838f), 200, hiCol, 0f, thin);
+        ScoreMark(g, new Vector3(5.191f, uy, 0.558f), 88, midCol, 0f, thin);
+        ScoreMark(g, new Vector3(4.928f, uy, 0.927f), 84, midCol, 180f, thin);
+        // 下段（通常抽選段・yaw36）: az162.5(17%)=48 / az306.5(13%)=32 / az18.5(35%)=28
+        ScoreMark(g, new Vector3(5.372f, ly, 0.023f), 48, hiCol, 0f, thin);
+        ScoreMark(g, new Vector3(5.108f, ly, 0.391f), 32, midCol, 180f, thin);
+        ScoreMark(g, new Vector3(5.376f, ly, 0.476f), 28, midCol, 0f, thin);
         g.rotation = Quaternion.Euler(0, yawDeg, 0);  // 180°=D西ミラー（原点ピボット）
         g.position = new Vector3(0, GLift, 0);        // G/B/D系の一括嵩上げ
     }
