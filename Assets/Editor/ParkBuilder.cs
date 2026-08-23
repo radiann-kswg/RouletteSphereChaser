@@ -50,13 +50,14 @@ public static class ParkBuilder
         BuildTowerF_JPSpinner(root, "TowerF_N", 180f);  // 北(+Z)
         // フェーズ5（User配置指示 2026-08-23）: ハズレルート接続型サルベージ抽選
         // 対称2基化（User案）: 180°回転でG西/F北のハズレルートにも同型を接続
-        // フェーズ6新フロー: F当選→E上段 / Fハズレ→C→E下段（C再配置済）。B/D はG系タスクで実装。
+        // フェーズ6新フロー: F当選→E上段 / Fハズレ→C→E下段、G当選→D上段 / Gハズレ→B→D下段
         BuildTowerC_Zigzag(root, "TowerC_S", -1f);
         BuildTowerC_Zigzag(root, "TowerC_N", +1f);
         BuildTowerE_Wheel(root, "TowerE_S", -1f);
         BuildTowerE_Wheel(root, "TowerE_N", +1f);
-        // BuildTowerB_Pachinko(root, "TowerB_E", 0f);   // G系フェーズで新座標へ
-        // BuildTowerB_Pachinko(root, "TowerB_W", 180f);
+        BuildTowerB_Pachinko(root, "TowerB_E", 0f);
+        BuildTowerB_Pachinko(root, "TowerB_W", 180f);
+        BuildFixedCameras(root);   // 抽選機ごとの定点カメラ（既定オフ）
         BuildTowerH_Garapon(root);                      // 赤: 大型ルーレット直下のガラポン挿入
 
         // フェーズ1スモーク用スポナー
@@ -503,36 +504,42 @@ public static class ParkBuilder
         g.rotation = Quaternion.Euler(0, yawDeg, 0);  // グループ一括回転（原点ピボット）
     }
 
-    // ---- タワーB「パチンコ」(青・x≈7,z≈0): G東ハズレのサルベージ抽選 ----
-    // G東の最終皿k3(世界(5.0,3.55,0.20))の下を全幅トレイで受ける（150当たり球も継続参加）。
-    // トレイ→V字壁→東スナウト→ピン盤天面フレア(4.8d受け口)へ落とし込み→2枚板ギャップ1.5d・
-    // 釘4段千鳥で拡散→3段ステップチャッカー（東下り3°・千鳥穴2.4d）。穴=採点、東端こぼれ=盆地（フェイルセーフ）。
-    // P(給球)≈G東到達12.5%/巡。配点はC/P則の暫定値→24球フェーズで実測再調整。
+    // ---- タワーB「パチンコ」フェーズ6版: Gマージトレイ・スパウト(6.78, 4.2, z0.2)の排出を受ける ----
+    // スパウト球(東向き~1m/s)の飛翔→ピン盤天面フレア(4.8d・中心7.15)へ直接落とし込み（受けトレイ省略）→
+    // 2枚板ギャップ+釘拡散→ステップチャッカー(yaw0=西下り反転)→西端排出(6.24, 1.47)→西行きトラフ→D下段(リム1.44想定)。
+    // 東端こぼれ・フレア外れ=盆地（フェイルセーフ）
     static void BuildTowerB_Pachinko(Transform root, string name, float yawDeg)
     {
         var g = Group(root, name);
-        InstantiateMech("Assets/Models/TowerB_CatchTray.fbx", "CatchTray", g,
-            new Vector3(5.0f, 2.86f + LiftY, 0.20f), Quaternion.Euler(-90f, 180f, 0),
-            Mat("TowerB_CatchTray", new Color(0.60f, 0.45f, 0.35f)));
+        // 高さ配分（実測ベース）: Gスパウト4.15の直下に盤天面4.10を置くのが上限。
+        // 盤1.74＋チャッカー0.55＝2.29を積むと排出は1.81。ここからD下段リム(1.55)へ渡す
         var pboard = InstantiateMech("Assets/Models/TowerB_PachiBoard.fbx", "PachiBoard", g,
-            new Vector3(7.30f, 1.10f + LiftY, 0.20f), Quaternion.Euler(-90f, 180f, 0),
+            new Vector3(7.15f, 1.12f + LiftY, 0.20f), Quaternion.Euler(-90f, 180f, 0),
             Mat("TowerB_PachiBoard", new Color(0.30f, 0.35f, 0.50f)));
-        // 釘上バランス静止対策: 盤ごと微振動（±0.4°・1.3s。頂部で±12mm相当の揺すり）
+        // 釘上バランス静止対策: 盤ごと微振動（±0.4°・1.3s）
         var posc = pboard.AddComponent<Oscillator>();
         posc.axis = Vector3.up;   // Euler(-90,180,0)配置のためローカルup=世界Z軸（盤面内の傾き揺れ）
         posc.angleA = -0.4f; posc.angleB = 0.4f; posc.period = 1.3f;
         var prb = pboard.GetComponent<Rigidbody>();
         prb.isKinematic = true;  // 非凸MeshCollider+非キネマRBはコライダ無効化される（エディタ時対策）
         prb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
+        // チャッカー yaw0=西下り（排出をD側へ）。天面ステップ(+0.55)=盤底(2.36)と面一
         InstantiateMech("Assets/Models/TowerB_StepChucker.fbx", "StepChucker", g,
-            new Vector3(7.30f, 0.45f + LiftY, 0.20f), Quaternion.Euler(-90f, 180f, 0),
+            new Vector3(7.15f, 0.57f + LiftY, 0.20f), Quaternion.Euler(-90f, 0, 0),
             Mat("TowerB_StepChucker", new Color(0.55f, 0.35f, 0.40f)));
-        // 穴スコア（西=通りにくい65 / 中35 / 東=通りやすい25。値は集計識別のため全トリガーで一意）
-        // トリガーは薄型・高め（床バウンドの再進入による二重加算防止）
+        // 穴スコア（yaw0反転後の実穴位置: 西6.70=最頻35 / 中7.18=65 / 東7.70=稀90）
         var thinTrig = new Vector3(0.26f, 0.12f, 0.26f);
-        ScoreMark(g, new Vector3(6.75f, 0.53f + LiftY, 0.28f), 35, new Color(1.0f, 0.83f, 0.25f), 0f, thinTrig);
-        ScoreMark(g, new Vector3(7.30f, 0.53f + LiftY, 0.12f), 65, new Color(0.92f, 0.92f, 0.95f), 0f, thinTrig);
-        ScoreMark(g, new Vector3(7.85f, 0.53f + LiftY, 0.28f), 90, new Color(0.92f, 0.92f, 0.95f), 0f, thinTrig);
+        ScoreMark(g, new Vector3(6.70f, 0.92f + LiftY, 0.20f), 35, new Color(1.0f, 0.83f, 0.25f), 0f, thinTrig);
+        ScoreMark(g, new Vector3(7.18f, 0.92f + LiftY, 0.20f), 65, new Color(0.92f, 0.92f, 0.95f), 0f, thinTrig);
+        ScoreMark(g, new Vector3(7.70f, 0.92f + LiftY, 0.20f), 90, new Color(0.92f, 0.92f, 0.95f), 0f, thinTrig);
+        // 採点後の回収: チャッカーの穴を抜けた球は真下へ落ちる（実測13/16が穴通過）。
+        // 直下に西下りの連絡トラフ2本を並べて全穴を受け、D下段リム(1.55)へ渡す。
+        // 東端こぼれ・トラフ外れは盆地（フェイルセーフ）
+        // 専用シュート（新造）: 全穴を覆う2.3m・側壁4.6d・東端バックストップ付き。
+        // 細いFeedTrough2本では落下球が横に弾け出て回収率25%だった実測を受けて置換
+        InstantiateMech("Assets/Models/TowerB_CatchChute.fbx", "CatchChute", g,
+            new Vector3(7.15f, 0.35f + LiftY, 0.20f), Quaternion.Euler(-90f, 0f, 0),
+            Mat("TowerB_CatchTray", new Color(0.60f, 0.45f, 0.35f)));
         g.rotation = Quaternion.Euler(0, yawDeg, 0);  // 180°=G西ミラー（原点ピボット）
     }
 
@@ -664,6 +671,52 @@ public static class ParkBuilder
             Quaternion.AngleAxis(-3f, Vector3.forward) * Quaternion.Euler(-90f, 0, 0), deckMat);
         ScoreMark(g, new Vector3(2.60f, 0.50f + LiftY, cz), 40, new Color(1.0f, 0.83f, 0.25f), 270f,
             new Vector3(0.18f, 0.12f, 0.18f));
+    }
+
+    // ---- 抽選機ごとの定点カメラ（User指示 2026-08-23・前セッションからの継続要望） ----
+    // 各機構を正面から捉える固定カメラを Cameras/ 配下に生成。既定は全て無効（enabled=false）で、
+    // 観賞時は Inspector か FollowCamera 側から任意の1台を有効化して切り替える。
+    // 位置は各塔の実測バウンズに基づく（塔ごとに z or x 方向へ引き、中心をやや上から見下ろす）。
+    static void BuildFixedCameras(Transform root)
+    {
+        var g = Group(root, "Cameras");
+        void Cam(string n, Vector3 pos, Vector3 look, float fov)
+        {
+            var go = new GameObject("Cam_" + n);
+            go.transform.SetParent(g);
+            go.transform.position = pos;
+            go.transform.LookAt(look);
+            var c = go.AddComponent<Camera>();
+            c.fieldOfView = fov;
+            c.farClipPlane = 60f;
+            c.depth = -10f;      // MainCameraより後ろ（有効化しても既定表示を奪わない）
+            c.enabled = false;   // 既定オフ
+        }
+        // タワーA（全景・看板）
+        Cam("A_Overview", new Vector3(0f, 10.6f, -9.5f), new Vector3(0f, 8.6f, 0f), 50f);
+        Cam("A_GrandRoulette", new Vector3(0f, 6.9f, -4.4f), new Vector3(0f, 5.9f, 0f), 45f);
+        // タワーH（中央・カラコロッタ＋ガラポン）
+        Cam("H_Garapon", new Vector3(0f, 4.9f, -4.2f), new Vector3(0f, 4.0f, 0f), 45f);
+        // F/E系（南北）: 南は-Z側から、北は+Z側から見る
+        for (int s = 0; s < 2; s++)
+        {
+            float sg = s == 0 ? -1f : 1f;
+            string sfx = s == 0 ? "S" : "N";
+            Cam("F_JPSpinner_" + sfx, new Vector3(0f, 7.2f, sg * 8.6f), new Vector3(0f, 6.5f, sg * 5f), 42f);
+            Cam("E_Wheel_" + sfx, new Vector3(1.4f, 3.0f, sg * 8.5f), new Vector3(1.4f, 2.5f, sg * 5f), 55f);
+            Cam("C_Zigzag_" + sfx, new Vector3(2.6f, 4.4f, sg * 8.4f), new Vector3(2.6f, 3.6f, sg * 5f), 55f);
+        }
+        // G/B/D系（東西）: 東は+X側から、西は-X側から見る
+        for (int s = 0; s < 2; s++)
+        {
+            float sg = s == 0 ? 1f : -1f;
+            string sfx = s == 0 ? "E" : "W";
+            Cam("G_Numa_" + sfx, new Vector3(sg * 5f, 6.4f, -4.8f), new Vector3(sg * 5f, 5.4f, 0f), 50f);
+            Cam("B_Pachinko_" + sfx, new Vector3(sg * 7.15f, 3.4f, -3.6f), new Vector3(sg * 7.15f, 2.9f, 0.2f), 50f);
+            Cam("D_Kuruun_" + sfx, new Vector3(sg * 5f, 2.6f, -3.4f), new Vector3(sg * 5f, 1.8f, 0f), 50f);
+        }
+        // 排水・リフト（循環の要）
+        Cam("DrainStation", new Vector3(11.2f, 1.5f, -3.2f), new Vector3(11.2f, 0.3f, 0f), 50f);
     }
 
     /// 機構系FBXの配置ヘルパ（回転指定つき）
