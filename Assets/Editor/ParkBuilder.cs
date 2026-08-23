@@ -57,6 +57,8 @@ public static class ParkBuilder
         BuildTowerE_Wheel(root, "TowerE_N", +1f);
         BuildTowerB_Pachinko(root, "TowerB_E", 0f);
         BuildTowerB_Pachinko(root, "TowerB_W", 180f);
+        BuildTowerD_Kuruun(root, "TowerD_E", 0f);
+        BuildTowerD_Kuruun(root, "TowerD_W", 180f);
         BuildFixedCameras(root);   // 抽選機ごとの定点カメラ（既定オフ）
         BuildTowerH_Garapon(root);                      // 赤: 大型ルーレット直下のガラポン挿入
 
@@ -84,6 +86,9 @@ public static class ParkBuilder
             hud.followCam = cam.GetComponent<FollowCamera>();
         }
 
+        // 罠20: 塔グループは生成後に一括Y回転しているので、同期しないとエディタ時のコライダが
+        // 回転前の位置に残る（検証レイキャストが別の塔を掴んで誤診の元になる）
+        Physics.SyncTransforms();
         EditorSceneManager.MarkAllScenesDirty();
         EditorSceneManager.SaveOpenScenes();
         Debug.Log("[ParkBuilder] phase1 build complete");
@@ -451,9 +456,13 @@ public static class ParkBuilder
         ScoreMark(g, new Vector3(0.25f, 4.16f + LiftY, 5.0f), 60, new Color(0.92f, 0.92f, 0.95f), 90f);
         ScoreMark(g, new Vector3(-0.20f, 3.40f + LiftY, 5.0f), 110, new Color(1.0f, 0.83f, 0.25f), 90f);  // 最終カップ=G当選（JPレール入口）
         // フェーズ6: 高壁マージトレイ（乖離シュートの放出球を全周で受ける・User赤シールド案の発展形）。
-        // 円錐床→スパウト(ローカル+z=世界±X外向き)→B受けへ。中央ボア0.40角+襟をK3当選穴(ローカルx-0.20)に整列
+        // 円錐床→スパウト(ローカル+z=世界±X外向き)→B受けへ。中央ボア＋襟をK3当選穴（＝JPレール軸）に整列。
+        // ボア実測(2026-08-23): 開口は 0.42(x) × 0.22(z) で、トレイ原点から **世界+Z へ0.10** ずれている。
+        // 原点をK3穴に合わせるとボアがJPチューブ断面(内径0.31)に片側だけ食い込み、
+        // 落下球が襟の棚(y4.24)に乗って停留した（実測 2/12）。ローカルx を +0.10 して
+        // ボア中心をチューブ軸(世界 z=0.20)へ寄せ、軸を挟む2.0d(0.20)のスロットを確保する。
         InstantiateMech("Assets/Models/TowerG_MergeTray.fbx", "MergeTray", g,
-            new Vector3(-0.20f, 2.91f + LiftY, 5.0f), Quaternion.Euler(-90f, -90f, 0),
+            new Vector3(-0.10f, 2.91f + LiftY, 5.0f), Quaternion.Euler(-90f, -90f, 0),
             Mat("TowerG_MergeTray", new Color(0.46f, 0.40f, 0.50f)));
         // G当選のJPレール: K3当選穴(底4.56)→ボア貫通→D上段ボウル(2.65)直上まで密閉2段
         var gtubeMat = Mat("TowerG_JPRail", new Color(1.0f, 0.55f, 0.25f));
@@ -541,6 +550,48 @@ public static class ParkBuilder
             new Vector3(7.15f, 0.35f + LiftY, 0.20f), Quaternion.Euler(-90f, 0f, 0),
             Mat("TowerB_CatchTray", new Color(0.60f, 0.45f, 0.35f)));
         g.rotation = Quaternion.Euler(0, yawDeg, 0);  // 180°=G西ミラー（原点ピボット）
+    }
+
+    // ---- タワーD「クルーンボウル」フェーズ6版: G系の終端（DESIGN G7/G8） ----
+    // 上段=高得点チャレンジ（G当選のみ。JPレール下端 world 2.96 からの落下を受ける）
+    // 下段=通常抽選（B_CatchChute 西端排出 world ~1.60 ＋ 上段5穴の落下が合流）
+    // メッシュ実測（TowerD_Kuruun.fbx / Euler(-90,0,0)基準・原点=トラフ床）:
+    //   外径1.72(r0.86) / 底 -0.12 / リム上端 +0.423 / 中央ドーム頂 +0.130
+    //   トラフ床= r0.15〜0.30 の平坦環(高さ0) / 穴5個 d0.18@r0.238 = az 342.5,54.5,126.5,198.5,270.5
+    // 配置の根拠:
+    //   ・上段中心を投下点(5.00,0.20)から +Z 0.50 ずらす → ドーム頂への無摂動投下を回避（罠15）
+    //     かつ 東リム 5.86 < CatchChute 西端 6.00 で非干渉
+    //   ・下段中心(5.30,0.25)・リム上端1.46 < シュート床1.53 → 潜り込ませてシュート排出を直受け
+    //   ・下段は yaw36（穴を上段と半ピッチずらす。同軸素通し防止＝G沼の千鳥則と同じ）
+    //   ・上段5穴の落下点は下段中心から最大0.77＝リム0.86の内側（全穴が下段に入る＝合流）
+    //   ・こぼれ（リム越え・シュート外れ）は盆地へ直落ち＝フェイルセーフ
+    static void BuildTowerD_Kuruun(Transform root, string name, float yawDeg)
+    {
+        var g = Group(root, name);
+        var dMat = Mat("TowerD_Kuruun", new Color(0.50f, 0.42f, 0.62f));
+        // 上段ボウル: 床 world 2.40 / リム上端 2.82（JPレール下端2.96の直下ぎりぎりまで持ち上げ＝塔を伸ばす）
+        InstantiateMech("Assets/Models/TowerD_Kuruun.fbx", "BowlUpper", g,
+            new Vector3(5.00f, 1.16f + LiftY, 0.70f), Quaternion.Euler(-90f, 0, 0), dMat);
+        // 下段ボウル: 床 world 1.08 / リム上端 1.50。ここは B_CatchChute 床(1.53)に張り付く＝上限
+        InstantiateMech("Assets/Models/TowerD_Kuruun.fbx", "BowlLower", g,
+            new Vector3(5.30f, -0.16f + LiftY, 0.25f), Quaternion.Euler(-90f, 36f, 0), dMat);
+        // 撹拌ローター（罠4の標準手当て）: トラフ床は穴と穴の間が1.1dの平坦地で、
+        // 静止ボウルだと ①球が平坦地に乗って停留 ②毎回同じ穴に入る（実測16/16が西穴＝罠23の再来）。
+        // 低速の掃引アームで球を穴リング上に送り続ける＝停留解消＋入る穴がランダム化（≈1/5）。
+        // 盤ごと微振動（Oscillator）は「振動軸=±X」が優先方位になり西穴に集中したため不採用。
+        Stirrer(g, "StirrerUpper", new Vector3(5.00f, 1.22f + LiftY, 0.70f));
+        Stirrer(g, "StirrerLower", new Vector3(5.30f, -0.10f + LiftY, 0.25f));
+        // 当たり穴の真下に薄型トリガー（穴0.18に対し0.20角。隣穴は0.28離れているので誤検出なし）。
+        // 当たり穴の選び方は実測ベース: 給球は毎回ほぼ同じ点(az180付近)に落ちるので、
+        // 撹拌アームの掃引方向に沿って穴の当選率が偏る。24球実測の分布
+        //   上段 az342:4 / 126:3 / 198:3 / 54:2 / 270:0   下段 az18:8 / 90:8 / 162:4 / 306:3 / 234:0
+        // から、目標の「5穴中1（≈20%）」に最も近い穴を当たりに割り当てる。
+        var thin = new Vector3(0.20f, 0.10f, 0.20f);
+        // 上段 az54.5（実測 2/12 ≈17%）= (5.00,0.70) + (0.194, 0.138)
+        ScoreMark(g, new Vector3(5.194f, 0.96f + LiftY, 0.838f), 200, new Color(1.0f, 0.35f, 0.30f), 0f, thin);
+        // 下段 az162.5（yaw36後・実測 4/23 ≈17%）= (5.30,0.25) + (0.072, -0.227)
+        ScoreMark(g, new Vector3(5.372f, -0.36f + LiftY, 0.023f), 45, new Color(0.92f, 0.92f, 0.95f), 0f, thin);
+        g.rotation = Quaternion.Euler(0, yawDeg, 0);  // 180°=D西ミラー（原点ピボット）
     }
 
     // ---- タワーC「ジグザグ」フェーズ6版: FハズレのMissTrayスパウト(東, x1.05, 床5.61)を受ける ----
@@ -720,6 +771,23 @@ public static class ParkBuilder
     }
 
     /// 機構系FBXの配置ヘルパ（回転指定つき）
+    /// 皿・ボウル用の低速撹拌ローター（DrainStirrer流用。罠4の標準手当て）。
+    /// 親=回転体（軸=世界Y）／子=メッシュ（Z-up規約補正）。XZのみ拡大して高さプロファイルは実測のまま使う。
+    static void Stirrer(Transform parent, string name, Vector3 pos, float xzScale = 1.25f, float degPerSec = 35f)
+    {
+        var st = new GameObject(name);
+        st.transform.SetParent(parent);
+        st.transform.position = pos;
+        st.transform.localScale = new Vector3(xzScale, 1f, xzScale);
+        st.AddComponent<Rotator>().degreesPerSecond = degPerSec;   // axis=up 既定
+        var rb = st.GetComponent<Rigidbody>();
+        rb.isKinematic = true;
+        rb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;  // 罠14
+        var mesh = InstantiateFbx("Assets/Models/DrainStirrer.fbx", "StirrerMesh", st.transform, Accent, true);
+        mesh.transform.localPosition = Vector3.zero;
+        mesh.transform.localRotation = Quaternion.Euler(90f, 0, 0);
+    }
+
     static GameObject InstantiateMech(string path, string name, Transform parent, Vector3 pos, Quaternion rot, Material mat)
     {
         var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
