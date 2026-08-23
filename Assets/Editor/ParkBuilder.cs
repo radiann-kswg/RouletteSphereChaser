@@ -417,9 +417,19 @@ public static class ParkBuilder
     static void BuildTowerG_Numa(Transform root, string name, float yawDeg)
     {
         var g = Group(root, name);
-        var board = InstantiateMech("Assets/Models/TowerG_NumaBoard.fbx", "NumaBoard", g,
-            new Vector3(0, 5.85f + LiftY, 5.0f), Quaternion.Euler(-90f, 180f, 0),
-            Mat("TowerG_NumaBoard", new Color(0.35f, 0.42f, 0.55f)));
+        // フェーズ6（User指示 2026-08-23）: 釘バラし盤は廃止（釘系はタワーBが担う。TowerG_NumaBoard.fbxは未使用残置）。
+        // 給球実測: HighLane+X終端=(4.82, 床8.20, z±1.40..1.65)・v≈1.1-1.4 → 着弾窓 x5.35-5.55/y6.95。
+        // 盤が担っていた飛翔捕捉の代替: FeedTrough×2を着弾窓に置き、6°チルトで皿中心側(z±0.6)へ流して投下。
+        // 取りこぼし（高速球）はMergeTray東壁(6.45)が受けてハズレ路へ＝フェイルセーフ
+        // ローカル系注意: グループyaw回転前。トラフ長手=ローカルx(=ワールドz)・チルト軸=ローカルforward。
+        // FeedTroughメッシュは原点=端・−ローカルx方向へ1.0伸びる（実測）。中心側(ローカル|x|小)が低くなる6°チルト
+        var ftMat = Mat("TowerF_CatchTray", new Color(0.55f, 0.50f, 0.42f));
+        InstantiateMech("Assets/Models/TowerDE_FeedTrough.fbx", "FeedGuide_S", g,
+            new Vector3(1.6f, 5.71f + LiftY, 5.46f),
+            Quaternion.AngleAxis(6f, Vector3.forward) * Quaternion.Euler(-90f, 0f, 0), ftMat);
+        InstantiateMech("Assets/Models/TowerDE_FeedTrough.fbx", "FeedGuide_N", g,
+            new Vector3(-0.6f, 5.71f + LiftY, 5.46f),
+            Quaternion.AngleAxis(-6f, Vector3.forward) * Quaternion.Euler(-90f, 0f, 0), ftMat);
         // v3「当たり穴＋ハズレ穴」方式（User原案）: 皿=リングトラフ＋中央クレーター縁(高0.055=確率ノブ)。
         // 当たり=縁を越えて中央穴(3.0d)へ→採点、ハズレ=トラフ床穴×2(3.2d, r0.39, 世界±X)から次皿へ素通り落下(採点なし)。
         // すり鉢単穴の「減速球は必ず中央へ」問題を構造で解消（旧壁ノッチ式は勝率75%超で廃止）。
@@ -438,7 +448,17 @@ public static class ParkBuilder
         }
         ScoreMark(g, new Vector3(0, 4.96f + LiftY, 5.0f), 20, new Color(0.92f, 0.92f, 0.95f), 90f);
         ScoreMark(g, new Vector3(0.25f, 4.16f + LiftY, 5.0f), 60, new Color(0.92f, 0.92f, 0.95f), 90f);
-        ScoreMark(g, new Vector3(-0.20f, 3.40f + LiftY, 5.0f), 110, new Color(1.0f, 0.83f, 0.25f), 90f);  // 最終カップ（機内P≈6%）
+        ScoreMark(g, new Vector3(-0.20f, 3.40f + LiftY, 5.0f), 110, new Color(1.0f, 0.83f, 0.25f), 90f);  // 最終カップ=G当選（JPレール入口）
+        // フェーズ6: 高壁マージトレイ（乖離シュートの放出球を全周で受ける・User赤シールド案の発展形）。
+        // 円錐床→スパウト(ローカル+z=世界±X外向き)→B受けへ。中央ボア0.40角+襟をK3当選穴(ローカルx-0.20)に整列
+        InstantiateMech("Assets/Models/TowerG_MergeTray.fbx", "MergeTray", g,
+            new Vector3(-0.20f, 2.91f + LiftY, 5.0f), Quaternion.Euler(-90f, -90f, 0),
+            Mat("TowerG_MergeTray", new Color(0.46f, 0.40f, 0.50f)));
+        // G当選のJPレール: K3当選穴(底4.56)→ボア貫通→D上段ボウル(2.65)直上まで密閉2段
+        var gtubeMat = Mat("TowerG_JPRail", new Color(1.0f, 0.55f, 0.25f));
+        foreach (var ty in new[] { 2.92f, 2.12f })
+            InstantiateMech("Assets/Models/TowerF_JPTube.fbx", "JPRail_" + ty, g,
+                new Vector3(-0.20f, ty + LiftY, 5.0f), Quaternion.Euler(-90f, 0, 0), gtubeMat);
         g.rotation = Quaternion.Euler(0, yawDeg, 0);  // グループ一括回転（原点ピボット）
     }
 
