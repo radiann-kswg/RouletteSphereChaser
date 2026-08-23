@@ -22,7 +22,7 @@ public class Oscillator : MonoBehaviour
 
     void FixedUpdate()
     {
-        float t = 0.5f + 0.5f * Mathf.Sin((Time.time / period + phase) * 2f * Mathf.PI);
+        float t = 0.5f + 0.5f * Mathf.Sin((Time.time / Mathf.Max(period, 0.01f) + phase) * 2f * Mathf.PI); // period=0のNaN回転防止
         float ang = Mathf.Lerp(angleA, angleB, t);
         rb.MoveRotation(baseRot * Quaternion.AngleAxis(ang, axis));
     }

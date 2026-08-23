@@ -17,6 +17,7 @@ public static class GitTools
         string msg = EditorPrefs.GetString("GitTools.Message", "");
         if (string.IsNullOrEmpty(msg)) msg = "WIP: 定期コミット";
         EditorPrefs.DeleteKey("GitTools.Message");
+        msg = msg.Replace('"', '\'').TrimEnd('\\'); // 引用符・末尾\で引数が壊れてコミット失敗するのを防ぐ
 
         UnityEngine.Debug.Log("[GitTools] add: " + Run(root, "add -A"));
         UnityEngine.Debug.Log("[GitTools] commit: " + Run(root,
