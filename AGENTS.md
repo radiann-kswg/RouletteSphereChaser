@@ -112,7 +112,22 @@ v1で一度学んだはずの失敗を、v2のフェーズ6でそっくり再演
 44. **「脇から抜ける」隙間は、動く側（ゲート・枠）でなく受け側（皿・樋）で埋める**。大型ルーレットのゲート枠を 0.39→0.68 に広げたら、皿の縁との間に**くぼみ**ができて4門すべてで球が座り込んだ（8球・実測）。正解は皿側のスパウト側壁を 0.10 → **0.30（3d）** へ立ち上げて、溝幅(0.198)をゲート開口(0.29)より狭い密閉トンネルにすること。**低い側壁(1.0d)は勢いの付いた球に跳び越えられる**前提で設計する。
 45. **貫通管まわりの襟は管に密着させる**。襟と管外壁の間に1d級の環状隙間があると、そこが楔ポケットになって球が座る（`TowerG_MergeTray` で11.7分ソーク中1球が7分停留）。密着(0.5d未満)させるか円錐フィレットで座面を消す。
 
-## 4. Unity MCP 運用
+45. **縮退面（面積0のポリゴン）はBlenderでは無害に見えるが、FBXに「長さ0の法線ベクトル」として書き出され、Unity側で反転として現れる**。Blenderは読み込み時に法線を再計算するので**Blenderでレンダしても再現しない**——これが誤診の元になる（`_Cull`やシェーディング方式を疑って2回外した）。Unityは`normalImportMode=Import`でファイルの法線をそのまま取り込み、さらに`weldVertices=1`で頂点をマージするため、壊れた法線が周囲の正常な頂点に伝播して継ぎ目が暗く/裏返って見える。
+    - 実測（LiftGuide 2026-08-24）: 縮退面212枚 → FBXにゼロ法線96本 → ブラケット継ぎ目8箇所（z≈0.5/3.75/5.37/7.0/8.62/10.25/11.88/13.49）が反転表示。`remove_doubles(1e-5)`→`dissolve_degenerate(1e-5)`→残存ゼロ面積面を明示削除→`recalc_face_normals` で 1566→1350面・**符号付き体積とバウンズは不変**（体積差4.4e-10）＝形を変えずに解消。
+    - **検査コマンド化すること**: エクスポート前に「面積<1e-9の面数」と「長さ<1e-6のループ法線数」を必ず数える（罠40の非多様体・体積チェックとセットで）。両方0でなければ出さない。
+    - **未修正で残っている同種の欠陥（2026-08-24 全FBXスイープ）**: `TowerA_Distributor.fbx`（縮退2982/4599・ゼロ法線1178・非正規化12＝最悪）／`TowerG_NumaKuruun_S.fbx`（縮退0だがゼロ法線380）。どちらも**コライダ付き**なのでクリーンアップ後は床高さ・穴内径の実測再検証が要る（LiftGuideは見た目専用だったので無検証で直せた）。
+
+## 4. Unity MCP / Blender MCP 運用
+
+**セットアップ（2026-08-24 実施済み）**
+
+- `uv` / `uvx` … `~/.local/bin/`（astral公式インストーラ）。`uv 0.12.5`。
+- unity-mcp … Unity側ブリッジを `Packages/manifest.json` に追加済み（`com.coplaydev.unity-mcp` = `https://github.com/CoplayDev/unity-mcp.git?path=/MCPForUnity#main`）。サーバは `uvx --from mcpforunityserver mcp-for-unity --transport stdio`（`mcp-for-unity-server 3.4.7` で疎通確認済み）。**初回はUnityで `Window > MCP for Unity` を開きセットアップウィザードを完了させること。**
+- blender-mcp … アドオンを `~/Library/Application Support/Blender/5.2/scripts/addons/blender_mcp.py` に設置＋userprefsで有効化済み（`BlenderMCP 1.29.0`・Blender 5.2.0 LTSで登録成功を確認）。**Blender GUIのNパネル「BlenderMCP」タブで `Start MCP Server` を押すまで接続できない**（`blender -b` では起動不可）。
+- MCPクライアント設定は `~/.claude.json` のトップレベル `mcpServers` にユーザースコープで登録（`uvx`は絶対パス指定。PATHに依存させない）。**設定はクライアント再起動後に有効。**
+- MCPが使えない状況でも、Blenderは `"/Users/snine9801/Library/Application Support/Steam/steamapps/common/Blender/Blender.app/Contents/MacOS/Blender" --background <blend> --python <script.py>` でヘッドレス実行できる（メッシュ検査・修正・FBX再出力はこれで完結する）。
+
+**運用**
 
 - シーン編集・検証は unity-mcp 経由（`Unity_RunCommand` / `Unity_ManageMenuItem` / `Unity_ReadConsole`）。
 - スクリプト編集直後は再コンパイルで一時的に「Unity not detected」になる。20〜40秒待って再試行。
@@ -153,6 +168,8 @@ v1で一度学んだはずの失敗を、v2のフェーズ6でそっくり再演
   - 新規/改修メッシュ: `TowerG_FeedCatch`（新造・G入口の受けパン）／`TowerH_MissPan`（新造）／`TowerF_MissTray`（スパウト口にV字フレア2段）／
     `TowerA_RouletteBowl`（4スパウトの側壁を0.30へ立ち上げ＝ゲート脇のすり抜け封じ）／`TowerA_ScoreGate`（三角化のみ・拡幅は撤回）。
   - **36球ソーク実測（500秒）**: 198巡・6682点（平均33.7/巡）・場外0・恒常滞留0〜1。
+- ✅ **LiftGuideのメッシュ反転を解消（2026-08-24）**: 原因は縮退面212枚→FBXにゼロ法線96本（**罠45**）。`ParkBase.blend` / `LiftGuide.fbx` を差し替え（1566→1350面・**体積とバウンズは不変**）。マテリアルの `_Cull=2` は正しいので変更なし。併せて `Docs/check_mesh_health.py`（エクスポート前検査）を追加、unity-mcp / blender-mcp を導入（4章）。
+  - **申し送り**: 同種の欠陥が `TowerA_Distributor.fbx`（縮退2982/4599・ゼロ法線1178・非多様体52）と `TowerG_NumaKuruun_S.fbx`（ゼロ法線380・非多様体21）に残存。**どちらもコライダ付きのため修正後は実測再検証が必須**。タワー全体の調整中につき着手保留（User指示 2026-08-24）。詳細は DESIGN-v2 6章「フェーズ6 積み残し」。
 - **次の作業: フェーズ7「負荷検証と配点の再計算」**（DESIGN-v2 6章）。36球10分連続で各トリガーの到達確率Pを採って **点数=C/P** で再配点する。
   残タスクは DESIGN-v2 6章「フェーズ6 積み残し」を参照。
 - ✅ ボールメッシュ/UV再設計済み（2026-08-22）: **メッシュはスフィア化キューブ（クアッド球, 8×8×6面）**（User参考`SphereCube_Test`準拠。極が無く円盤縁のメッシュが破綻しない）。**本体UVは「前後2円ディスク」方式**（参考`UVSphere_Test`準拠）。
