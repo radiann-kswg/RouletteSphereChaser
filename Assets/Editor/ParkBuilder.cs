@@ -53,6 +53,8 @@ public static class ParkBuilder
         // フェーズ6新フロー: F当選→E上段 / Fハズレ→C→E下段（C再配置済）。B/D はG系タスクで実装。
         BuildTowerC_Zigzag(root, "TowerC_S", -1f);
         BuildTowerC_Zigzag(root, "TowerC_N", +1f);
+        BuildTowerE_Wheel(root, "TowerE_S", -1f);
+        BuildTowerE_Wheel(root, "TowerE_N", +1f);
         // BuildTowerB_Pachinko(root, "TowerB_E", 0f);   // G系フェーズで新座標へ
         // BuildTowerB_Pachinko(root, "TowerB_W", 180f);
         BuildTowerH_Garapon(root);                      // 赤: 大型ルーレット直下のガラポン挿入
@@ -541,11 +543,14 @@ public static class ParkBuilder
         ScoreMark(g, new Vector3(4.15f, 2.95f + LiftY, cz), 25, new Color(1.0f, 0.83f, 0.25f), 180f,
             new Vector3(0.60f, 0.30f, 0.30f));
         // 戻りトラフ: 主面 z=±5 のまま西行き5.77m（yaw0=西端が低い実測プロファイル）。
-        // ジグザグ本体(底3.95)の下をくぐる: 壁天端3.88=0.5d級密閉、床〜E上段デッキ(3.9)ヘッドルーム0.4超。
-        // シーソーからのこぼれは東西どちらでも interior に落ちる。西端排出(x≈-1.0, 床≈3.15)→E車輪西側へ落下
-        // メッシュ原点は東端寄り（バウンズ中心=原点-2.51実測）→ +2.51補正でバウンズ中心1.75(x -1.14..4.62)
+        // フェーズ6改訂: 西端 x0.59 で止める＝E車輪(頂3.19・|x|<0.51が3.03超)と非干渉。
+        // 排出球は車輪の東上面(≈(0.4,3.09))へ投げ込まれ、カップ捕捉=当たり／弾かれ=下段デッキの通常抽選へ。
+        // メッシュ原点は東端寄り（バウンズ中心=原点-2.51実測）→ 補正込みでバウンズ 0.59..6.35
+        // 注: カウンターチルトは西部が持ち上がりジグザグ底(3.95)と干渉するため不採用。
+        // リコシェット対策は E 側のデッキ2枚直列で受けスパンを延ばす方式（BuildTowerE_Wheel参照）。
+        // 西端0.80: E車輪の「カップ掃引円 r1.02」（円盤0.88でなく！）がトラフ底3.03を切らない位置（x0.80で2.94）
         InstantiateMech("Assets/Models/TowerC_CatchTurn.fbx", "ReturnTrough", g,
-            new Vector3(4.26f, 1.85f + LiftY, cz), Quaternion.Euler(-90f, 0, 0),
+            new Vector3(6.19f, 1.85f + LiftY, cz), Quaternion.Euler(-90f, 0, 0),
             Mat("TowerC_CatchTurn", new Color(0.42f, 0.52f, 0.48f)));
     }
 
@@ -589,6 +594,56 @@ public static class ParkBuilder
         // 2択スイング当たり=東落ち（薄型トリガー）
         ScoreMark(g, new Vector3(1.075f, 1.76f + LiftY, 0f), 100, new Color(1.0f, 0.83f, 0.25f), 0f,
             new Vector3(0.26f, 0.12f, 0.30f));
+    }
+
+    // ---- タワーE「縦回転ポケット車輪」(0,±5): F系終端（フェーズ6・DESIGN F5〜F7） ----
+    // 車輪=2枚円盤+ポケット仕切り(φ1.76・隙間0.15にボール0.1)。западピックアップ: C戻りトラフ排出(-1.15,3.1)を
+    // 受けトレイ+ブリッジトラフで車輪西下(リム密閉0.05)へ送り、西側上昇→頂点越えの東こぼれ→下段デッキ。
+    // 上段デッキ(3.94)=JPチューブ直下の高得点チャレンジ(穴180)。ハズレは東端開放（TopSplit東壁は除去済み）→下段へ。
+    // 下段デッキ(2.0)=通常抽選(穴55)。通過=東端→盆地（フェイルセーフ）。
+    // 注意: 車輪底~1.43は盆地床(非LiftY系)との相対。LiftY変更時はここを再実測すること。
+    static void BuildTowerE_Wheel(Transform root, string name, float zSign)
+    {
+        float cz = 5.0f * zSign;
+        var g = Group(root, name);
+        var wheel = InstantiateMech("Assets/Models/TowerDE_BigWheel.fbx", "Wheel", g,
+            new Vector3(0, 1.07f + LiftY, cz), Quaternion.Euler(-90f, 0, 0),
+            Mat("TowerE_Wheel", new Color(0.30f, 0.50f, 0.62f)));
+        var wrot = wheel.AddComponent<Rotator>();
+        wrot.axis = Vector3.forward;
+        wrot.degreesPerSecond = -20f;  // 負=+Z視でCW=西側上昇（シミュ実測で確定した向き）
+        var wrb = wheel.GetComponent<Rigidbody>();
+        wrb.isKinematic = true;
+        wrb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
+        // フェーズ6改訂: 底面掬い機構は廃止（C排出3.1 > 下段デッキ2.0でリフト不要と判明）。
+        // 車輪は「投げ込み式の抽選機構」: Cトラフ排出球が東上面に着弾→カップ捕捉(≈22%)=当たり／弾かれ=下段デッキへ。
+        // 捕捉球は東下降でカップ口が下を向き、車輪際に低速リリース→Winトレイ(55)。弾かれ球は飛翔弧でトレイを飛び越す（罠31の逆用）。
+        var trayMechMat = Mat("TowerE_Pickup", new Color(0.55f, 0.45f, 0.35f));
+        InstantiateMech("Assets/Models/TowerDE_PickupTray.fbx", "WinTray", g,
+            new Vector3(0.88f, 1.06f + LiftY, cz),
+            Quaternion.AngleAxis(4f * zSign, Vector3.right) * Quaternion.Euler(-90f, zSign < 0 ? 0f : 180f, 0),
+            trayMechMat);
+        ScoreMark(g, new Vector3(0.88f, 1.16f + LiftY, cz), 55, new Color(1.0f, 0.83f, 0.25f), 270f,
+            new Vector3(0.24f, 0.12f, 0.40f));
+        // 上段デッキ（高得点チャレンジ・JPチューブ(底4.26)直下）: 東下り3°・穴=origin-0.30
+        var deckMat = Mat("TowerE_Deck", new Color(0.62f, 0.55f, 0.30f));
+        InstantiateMech("Assets/Models/TowerE_TopSplit.fbx", "UpperDeck", g,
+            new Vector3(0.62f, 2.66f + LiftY, cz),
+            Quaternion.AngleAxis(-3f, Vector3.forward) * Quaternion.Euler(-90f, 0, 0), deckMat);
+        ScoreMark(g, new Vector3(0.32f, 2.56f + LiftY, cz), 180, new Color(1.0f, 0.35f, 0.30f), 270f,
+            new Vector3(0.18f, 0.12f, 0.18f));
+        // 下段デッキ2枚直列（通常抽選・車輪で弾かれた球+上段ハズレを受ける）:
+        // 高速リコシェット球の着地分布(実測1.2〜2.8m)をカバー。A穴=45／B穴=40、通過=東端→盆地
+        InstantiateMech("Assets/Models/TowerE_TopSplit.fbx", "LowerDeckA", g,
+            new Vector3(1.80f, 0.72f + LiftY, cz),
+            Quaternion.AngleAxis(-3f, Vector3.forward) * Quaternion.Euler(-90f, 0, 0), deckMat);
+        ScoreMark(g, new Vector3(1.50f, 0.62f + LiftY, cz), 45, new Color(1.0f, 0.83f, 0.25f), 270f,
+            new Vector3(0.18f, 0.12f, 0.18f));
+        InstantiateMech("Assets/Models/TowerE_TopSplit.fbx", "LowerDeckB", g,
+            new Vector3(2.90f, 0.60f + LiftY, cz),
+            Quaternion.AngleAxis(-3f, Vector3.forward) * Quaternion.Euler(-90f, 0, 0), deckMat);
+        ScoreMark(g, new Vector3(2.60f, 0.50f + LiftY, cz), 40, new Color(1.0f, 0.83f, 0.25f), 270f,
+            new Vector3(0.18f, 0.12f, 0.18f));
     }
 
     /// 機構系FBXの配置ヘルパ（回転指定つき）
