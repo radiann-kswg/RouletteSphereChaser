@@ -6,7 +6,9 @@ using UnityEngine;
 public class RandomFollowCamera : MonoBehaviour
 {
     public float minHold = 20f, maxHold = 40f;
-    public float distance = 0.55f, height = 0.28f, smooth = 3.5f;
+    public float distance = 0.55f, height = 0.28f;
+    /// 追従の応答（小さいほど機敏）。速度先読みで遅れは消えるので、滑らかさ寄りの値でよい
+    public float smoothTime = 0.22f;
     /// 起動直後に全台がいっせいに切り替わらないよう、台ごとに初回だけずらす
     public float startOffset = 0f;
 
@@ -36,19 +38,39 @@ public class RandomFollowCamera : MonoBehaviour
             if (rb == null || !rb.isKinematic) { pick = b; break; }
             pick = pick ?? b;
         }
+        if (pick != target)
+        {
+            rig.Reset();                    // 乗り換え直後の速度推定を汚さない
+            SnapBehind(pick);               // パーク横断のホイップパンを避けて、その場でカットする
+        }
         target = pick;
         nextSwitch = Time.time + Random.Range(minHold, maxHold);
     }
 
+    /// 乗り換え先の後方へ瞬間移動する。ショットの切り替わりは「カット」であって「パン」ではない
+    void SnapBehind(LotteryBall b)
+    {
+        if (b == null) return;
+        Vector3 p = b.transform.position;
+        Vector3 back = Vector3.back;
+        var rb = b.GetComponent<Rigidbody>();
+        if (rb != null && rb.linearVelocity.sqrMagnitude > 0.01f)
+        {
+            var v = rb.linearVelocity; v.y = 0f;
+            if (v.sqrMagnitude > 0.01f) back = -v.normalized;   // 進行方向の後ろから見る
+        }
+        transform.position = p + back * distance + Vector3.up * height;
+        transform.rotation = Quaternion.LookRotation(p - transform.position, Vector3.up);
+    }
+
+    readonly BallCamRig rig = new();
+
     void LateUpdate()
     {
         if (target == null) return;
-        Vector3 p = target.transform.position;
-        Vector3 back = transform.position - p;
-        back.y = 0f;
-        back = back.sqrMagnitude < 0.001f ? Vector3.back : back.normalized;
-        Vector3 wantPos = p + back * distance + Vector3.up * height;
-        transform.position = Vector3.Lerp(transform.position, wantPos, smooth * Time.deltaTime);
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(p - wantPos), smooth * Time.deltaTime);
+        rig.distance = distance;
+        rig.height = height;
+        rig.smoothTime = smoothTime;
+        rig.Track(transform, target.transform.position, Time.deltaTime, target.GetComponent<Rigidbody>());
     }
 }

@@ -258,7 +258,12 @@ public static class ParkBuilder
         cam.transform.position = new Vector3(18f, 12f, 15f);
         cam.transform.LookAt(new Vector3(1f, 4f, 0));
         cam.farClipPlane = 100f;
-        if (cam.GetComponent<FollowCamera>() == null) cam.gameObject.AddComponent<FollowCamera>();
+        var follow = cam.GetComponent<FollowCamera>();
+        if (follow == null) follow = cam.gameObject.AddComponent<FollowCamera>();
+        // 既存コンポーネントのシリアライズ値に引きずられないよう毎回明示する
+        follow.distance = 0.55f;
+        follow.height = 0.28f;
+        follow.smoothTime = 0.22f;   // 速度先読みがあるので滑らかさ寄りでよい（BallCamRig参照）
         var hud = cam.GetComponent<BallHUD>();
         if (hud == null) hud = cam.gameObject.AddComponent<BallHUD>();
         hud.font = PenchantFont();

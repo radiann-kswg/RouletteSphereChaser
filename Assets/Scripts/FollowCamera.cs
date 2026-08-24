@@ -8,12 +8,15 @@ public class FollowCamera : MonoBehaviour
     public float distance = 0.5f;
     public float height = 0.25f;
     public float smooth = 4f;
+    /// 追従の応答（小さいほど機敏）。速度先読みで遅れは消えるので、滑らかさ寄りの値でよい
+    public float smoothTime = 0.22f;
 
     Vector3 overviewPos;
     Quaternion overviewRot;
     LotteryBall target;
     int index = -1;
     bool manualOverview;
+    readonly BallCamRig rig = new();
 
     /// HUD等が現在の追従対象を参照するためのアクセサ
     public LotteryBall Target => target;
@@ -56,24 +59,17 @@ public class FollowCamera : MonoBehaviour
 
     void LateUpdate()
     {
-        Vector3 wantPos;
-        Quaternion wantRot;
         if (target != null)
         {
-            Vector3 p = target.transform.position;
-            // ボールから見て外周側に引いた位置（水平方向は現在位置から補間で滑らかに回り込む）
-            Vector3 back = (transform.position - p);
-            back.y = 0f;
-            back = back.sqrMagnitude < 0.001f ? Vector3.back : back.normalized;
-            wantPos = p + back * distance + Vector3.up * height;
-            wantRot = Quaternion.LookRotation(p - wantPos);
+            // 定常遅れを残さない追従（リフト上昇に追いつくため。詳細は BallCamRig）
+            rig.distance = distance;
+            rig.height = height;
+            rig.smoothTime = smoothTime;
+            rig.Track(transform, target.transform.position, Time.deltaTime, target.GetComponent<Rigidbody>());
+            return;
         }
-        else
-        {
-            wantPos = overviewPos;
-            wantRot = overviewRot;
-        }
-        transform.position = Vector3.Lerp(transform.position, wantPos, smooth * Time.deltaTime);
-        transform.rotation = Quaternion.Slerp(transform.rotation, wantRot, smooth * Time.deltaTime);
+        rig.Reset();
+        transform.position = Vector3.Lerp(transform.position, overviewPos, smooth * Time.deltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, overviewRot, smooth * Time.deltaTime);
     }
 }

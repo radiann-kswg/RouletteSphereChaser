@@ -42,22 +42,22 @@ public class CameraCoverage : MonoBehaviour
     /// 日本語で出したくなったらCJK収録フォントを別途HUDへ割り当てること。
     public static readonly Dictionary<string, string> DisplayName = new()
     {
-        { "A_Overview", "TOWER A - SPIRAL OVERVIEW" },
-        { "A_GrandRoulette", "TOWER A - GRAND ROULETTE" },
-        { "H_Garapon", "TOWER H - GARAPON" },
-        { "F_JPSpinner_S", "TOWER F - JP SPINNER S" },
-        { "F_JPSpinner_N", "TOWER F - JP SPINNER N" },
-        { "E_PocketDisc_S", "TOWER E - POCKET DISC S" },
-        { "E_PocketDisc_N", "TOWER E - POCKET DISC N" },
-        { "C_Zigzag_S", "TOWER C - ZIGZAG S" },
-        { "C_Zigzag_N", "TOWER C - ZIGZAG N" },
-        { "G_Numa_E", "TOWER G - NUMA KURUUN E" },
-        { "G_Numa_W", "TOWER G - NUMA KURUUN W" },
-        { "B_Pachinko_E", "TOWER B - PACHINKO E" },
-        { "B_Pachinko_W", "TOWER B - PACHINKO W" },
-        { "D_Kuruun_E", "TOWER D - KURUUN E" },
-        { "D_Kuruun_W", "TOWER D - KURUUN W" },
-        { "DrainStation", "DRAIN STATION / LIFTS" },
+        { "A_Overview", "Tower A - Spiral Overview" },
+        { "A_GrandRoulette", "Tower A - Grand Roulette" },
+        { "H_Garapon", "Tower H - Garapon" },
+        { "F_JPSpinner_S", "Tower F - JP Spinner South" },
+        { "F_JPSpinner_N", "Tower F - JP Spinner North" },
+        { "E_PocketDisc_S", "Tower E - Pocket Disc South" },
+        { "E_PocketDisc_N", "Tower E - Pocket Disc North" },
+        { "C_Zigzag_S", "Tower C - Zigzag South" },
+        { "C_Zigzag_N", "Tower C - Zigzag North" },
+        { "G_Numa_E", "Tower G - Numa Kuruun East" },
+        { "G_Numa_W", "Tower G - Numa Kuruun West" },
+        { "B_Pachinko_E", "Tower B - Pachinko East" },
+        { "B_Pachinko_W", "Tower B - Pachinko West" },
+        { "D_Kuruun_E", "Tower D - Kuruun East" },
+        { "D_Kuruun_W", "Tower D - Kuruun West" },
+        { "DrainStation", "Drain Station / Lifts" },
     };
 
     /// `Cam_xxx` -> `xxx`

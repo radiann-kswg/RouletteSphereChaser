@@ -44,6 +44,11 @@ public class SoakRecorder : MonoBehaviour
     float shotAcc;
     int shotNo;
 
+    // 追従カメラが対象を画角内に保てているかの実測（リフト上昇に追いつくかの検証。User報告 2026-08-24）
+    int framedFree, offFree, framedLift, offLift;
+    float worstOffsetFree, worstOffsetLift;
+    float frameAcc;
+
     readonly Dictionary<LotteryBall, Track> tracks = new();
     readonly List<string> escapes = new(), stucks = new(), strandeds = new();
     float t;
@@ -156,6 +161,35 @@ public class SoakRecorder : MonoBehaviour
             }
         }
 
+        // 追従カメラの追随性: いま映しているのがボール追従なら、対象が画角のどこに居るか測る
+        frameAcc += Time.fixedDeltaTime;
+        if (frameAcc >= 0.25f)
+        {
+            frameAcc = 0f;
+            var liveCam = director != null ? director.Live : Camera.main;
+            var shown = liveCam;
+            var mixc = liveCam != null ? liveCam.GetComponent<RandomMixCamera>() : null;
+            if (mixc != null && mixc.Source != null) shown = mixc.Source;
+            LotteryBall tgt = null;
+            var rf = shown != null ? shown.GetComponent<RandomFollowCamera>() : null;
+            if (rf != null) tgt = rf.Target;
+            else if (shown != null)
+            {
+                var fc = shown.GetComponent<FollowCamera>();
+                if (fc != null) tgt = fc.Target;
+            }
+            if (tgt != null && liveCam != null)
+            {
+                var vp = liveCam.WorldToViewportPoint(tgt.transform.position);
+                bool on = vp.z > 0f && vp.x > 0.02f && vp.x < 0.98f && vp.y > 0.02f && vp.y < 0.98f;
+                float off = Mathf.Max(Mathf.Abs(vp.x - 0.5f), Mathf.Abs(vp.y - 0.5f));
+                var trb = tgt.GetComponent<Rigidbody>();
+                bool onLift = trb != null && trb.isKinematic;
+                if (onLift) { if (on) framedLift++; else offLift++; worstOffsetLift = Mathf.Max(worstOffsetLift, off); }
+                else { if (on) framedFree++; else offFree++; worstOffsetFree = Mathf.Max(worstOffsetFree, off); }
+            }
+        }
+
         // デモ演出がいま映しているショットを定期撮影（＝実際の見え方の記録にもなる）
         if (shotInterval > 0f)
         {
@@ -190,6 +224,14 @@ public class SoakRecorder : MonoBehaviour
         foreach (var b in balls) { totalLaps += b.laps; totalScore += b.totalScore + b.pendingPoints; }
         sb.AppendLine($" \"totalHits\": {totalHits}, \"totalLaps\": {totalLaps}, \"totalScore\": {totalScore},");
 
+        float fFree = framedFree + offFree, fLift = framedLift + offLift;
+        // ponytail: string.Format の後ろの方の書式指定が環境依存で落ちたので素直に連結する
+        sb.AppendLine(" \"followFraming\": {\"freeSamples\":" + (int)fFree
+            + ",\"freeInFrame\":" + (framedFree / Mathf.Max(1f, fFree)).ToString("F3")
+            + ",\"freeWorstOffset\":" + worstOffsetFree.ToString("F3")
+            + ",\"liftSamples\":" + (int)fLift
+            + ",\"liftInFrame\":" + (framedLift / Mathf.Max(1f, fLift)).ToString("F3")
+            + ",\"liftWorstOffset\":" + worstOffsetLift.ToString("F3") + "},");
         sb.AppendLine($" \"escapes\": [{string.Join(",", escapes)}],");
         sb.AppendLine($" \"stuck\": [{string.Join(",", stucks)}],");
         sb.AppendLine($" \"stranded\": [{string.Join(",", strandeds)}],");

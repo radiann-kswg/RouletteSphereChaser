@@ -35,8 +35,8 @@ public class BallHUD : MonoBehaviour
         while (t.parent != null && t.parent.name != "Park") { t = t.parent; group = t.name; }
 
         string text = gained > 0
-            ? $"BALL {b.number:00}   {z.name}   +{gained}" + (mult > 1 ? $"  (x{mult})" : "")
-            : $"BALL {b.number:00}   {z.name}   NEXT x{mult}";
+            ? $"Ball {b.number:00}   {z.name}   +{gained}" + (mult > 1 ? $"  (x{mult})" : "")
+            : $"Ball {b.number:00}   {z.name}   Next x{mult}";
         passes.Add(new Pass { group = group, text = text, time = Time.time });
         if (passes.Count > 200) passes.RemoveRange(0, 100);   // ponytail: 単純なリングでよい
     }
@@ -121,9 +121,9 @@ public class BallHUD : MonoBehaviour
         var b = externalTarget != null ? externalTarget : (followCam != null ? followCam.Target : null);
         if (b != null)
         {
-            title.text = $"BALL {b.number:00}";
+            title.text = $"Ball {b.number:00}";
             var mult = b.nextMultiplier > 1 ? $"  x{b.nextMultiplier}" : "";
-            body.text = $"LAP {b.laps}\nSCORE {b.pendingPoints}{mult}\nTOTAL {b.totalScore}";
+            body.text = $"Lap {b.laps}\nScore {b.pendingPoints}{mult}\nTotal {b.totalScore}";
         }
         else
         {
@@ -135,8 +135,8 @@ public class BallHUD : MonoBehaviour
                 laps += lb.laps;
                 n++;
             }
-            title.text = "OVERVIEW";
-            body.text = $"BALLS {n}\nLAPS {laps}\nTOTAL {total}";
+            title.text = "Overview";
+            body.text = $"Balls {n}\nLaps {laps}\nTotal {total}";
         }
         FitPanel();
     }

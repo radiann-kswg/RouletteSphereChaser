@@ -32,6 +32,20 @@ public class CameraDirector : MonoBehaviour
     /// 現在映しているカメラ（ソークのスクリーンショット用）
     public Camera Live => live != null ? live : mainCam;
 
+    static CameraDirector instance;
+    /// いま画面を作っているカメラ。`Billboard` などが正対先として参照する
+    public static Camera Active
+    {
+        get
+        {
+            if (instance != null && instance.Live != null) return instance.Live;
+            return Camera.main;
+        }
+    }
+
+    void OnEnable() { instance = this; }
+    void OnDisable() { if (instance == this) instance = null; }
+
     void Start()
     {
         mainCam = Camera.main;
