@@ -253,6 +253,30 @@
    }
   },
   {
+   "name": "HSlitCollar_Zm",
+   "path": "Park/TowerH/HSlitCollar_Zm",
+   "collider": "mesh",
+   "material": "TowerH_CatchFunnel",
+   "rgb": {
+    "r": 0.55,
+    "g": 0.4,
+    "b": 0.55,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "HSlitCollar_Zp",
+   "path": "Park/TowerH/HSlitCollar_Zp",
+   "collider": "mesh",
+   "material": "TowerH_CatchFunnel",
+   "rgb": {
+    "r": 0.55,
+    "g": 0.4,
+    "b": 0.55,
+    "a": 1.0
+   }
+  },
+  {
    "name": "HighLane_0.017",
    "path": "Park/TowerA23/Chain_45/HighLane_0",
    "collider": "mesh",
@@ -681,6 +705,18 @@
     "r": 0.75,
     "g": 0.3,
     "b": 0.28,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "MissOverflowGuard",
+   "path": "Park/TowerH/MissOverflowGuard",
+   "collider": "mesh",
+   "material": "TowerH_CatchFunnel",
+   "rgb": {
+    "r": 0.55,
+    "g": 0.4,
+    "b": 0.55,
     "a": 1.0
    }
   },

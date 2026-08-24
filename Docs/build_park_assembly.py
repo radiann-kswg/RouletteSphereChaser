@@ -87,6 +87,14 @@ def get_collection(path_parts, cache):
 
 
 def main():
+    # ★ これは**ブートストラップ専用**。以後の正本は ParkAssembly.blend 側にあり、
+    #   ここで作り直すと手で足したパーツ（タワーHの庇・襟など）が消える。
+    #   作り直したいときだけ globals()["PARK_FORCE"] = True を置いて実行すること。
+    if os.path.exists(OUT_BLEND) and not globals().get("PARK_FORCE"):
+        raise RuntimeError(
+            "ParkAssembly.blend は既にあり、こちらが配置のSSOTです。"
+            "作り直すと手で追加したパーツが失われます。どうしても再生成するなら PARK_FORCE=True を設定してください。")
+
     layout = json.load(open(os.path.join(DOCS, "park_layout.json"), encoding="utf-8"))
     markers = json.load(open(os.path.join(DOCS, "park_markers.json"), encoding="utf-8"))["markers"]
     calib = json.load(open(os.path.join(DOCS, "mesh_calib.json"), encoding="utf-8"))
