@@ -43,12 +43,19 @@ def main():
     layout = json.load(open(os.path.join(DOCS, "park_layout.json"), encoding="utf-8"))
     markers = json.load(open(os.path.join(DOCS, "park_markers.json"), encoding="utf-8"))["markers"]
 
-    meshes = {int(o.name.rsplit(".", 1)[1]): o
-              for o in bpy.context.scene.objects if o.type == 'MESH' and "unity_path" in o}
+    def slot(o):
+        """名前末尾の連番。ブートストラップ後に手で足したオブジェクトは連番を持たない→None。"""
+        tail = o.name.rsplit(".", 1)
+        return int(tail[1]) if len(tail) == 2 and tail[1].isdigit() else None
+
+    meshes = {slot(o): o
+              for o in bpy.context.scene.objects
+              if o.type == 'MESH' and "unity_path" in o and slot(o) is not None}
     # 得点表示(LBL)とウェイポイントは別採番なので機能マーカーだけ拾う
-    empties = {int(o.name.rsplit(".", 1)[1]): o
+    empties = {slot(o): o
                for o in bpy.context.scene.objects
-               if o.type == 'EMPTY' and "unity_path" in o and o.get("kind") in ("T", "ROT", "OSC", "LIFT", "LAP")}
+               if o.type == 'EMPTY' and "unity_path" in o and slot(o) is not None
+               and o.get("kind") in ("T", "ROT", "OSC", "LIFT", "LAP")}
 
     bad = []
     worst = 0.0

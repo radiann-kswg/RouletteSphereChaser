@@ -62,6 +62,8 @@ v1で一度学んだはずの失敗を、v2のフェーズ6でそっくり再演
 - `Assets/Scripts/SoakRecorder.cs` ＋ `Assets/Editor/SoakRunner.cs` … `Tools > Run Soak (36 balls)`。トリガー到達数に加えて**コースアウト・停止・迷子の球**を記録し `Docs/soak_*.json` に出す。演出カメラの定期スクショと異常時の集中スクショを `Docs/soak_shots/` へ保存
 - カメラ演出（2026-08-24・計25台）: `OrbitCamera`（定点16台を機構まわりに等速周回＋見下ろし角を上下に振る）／`RandomFixedCamera`×4（抽選機チャンネル）／`RandomFollowCamera`×4（ボールチャンネル）／`RandomMixCamera`×1（**Display 1 に出す親カメラ**。8チャンネルから自動選択）／`CameraDirector`（C=デモ切替 V=次のショット Tab・0=手動）。死角の実測は `CameraCoverage` → `Docs/camera_coverage.json`
 - `Docs/diff_scene.py` … 旧シーンのダンプと作り直したシーンの等価性検証（位置・回転・寸法・コンポーネント設定）
+- `Docs/fix_selfint_faces.py` … Unityに捨てられるN-gonの修復（重複頂点の溶接＋N-gonのpoke）。Δbounds・縮退面・非多様体を自動検算（罠50）
+- **`Docs/DESIGN-materials.md` … 外装（マテリアル／配色）の設計正本**（フェーズ9〜）。役割ごとの9パレットとシーン照明、第2段のテクスチャ計画
 - `PenchantManufacture_ImageAssets/` … **gitサブモジュール**（User作フォント・CC BY 4.0）。`Assets/Fonts/PenchantManufacture.otf` はここからのコピー。TMP SDFアセットはビルダーが自動生成（`Assets/Fonts/PenchantManufacture_SDF.asset`）
 - 得点表示の標準: **Blender製ScoreGate（チャッカー風）＋ボード上TMP SDFラベル**（深度テスト＋`_CullMode=2`背面カリング→壁越し・裏側の得点は見えない）。ボール番号アトラス`NumberAtlas.png`も同フォントで生成（上段=90番台・下段=0番台のUV反転レイアウト・白地黒丸黒数字。生成はPIL・4xスーパーサンプル）
 - クレジット: `PenchantManufacture image assets by RadianN_kswg / ラジアン（柏木主税） CC BY 4.0`
@@ -146,7 +148,19 @@ v1で一度学んだはずの失敗を、v2のフェーズ6でそっくり再演
 50. **Unityインポータの「A polygon ... is self-intersecting and has been discarded」は、コライダに穴が開く**。縮退面・ゼロ法線・非多様体がすべて0でも出るので、`check_mesh_health.py` では検出できない。**FBXを差し替えたらUnityのコンソールもセットで確認する**こと。現状の該当（2026-08-24）: `TowerG_NumaKuruun_L/M/S`（各20枚前後）と `LiftGuide`（8枚）。
     - 原因は2種類ある。**①非平面の大N-gon**（沼クルーンの23〜25角形）／**②円環状（穴あき）のN-gon**（LiftGuideのチューブ端キャップ）。
     - **どちらも「三角化すれば直る」は嘘**。①は非平面なので面が張り替わって形が変わり（実測 Δvol 3e-3・非多様体18→35）、②は `ngon_method='BEAUTY'` が円環を潰して **Δvol −15%・非多様体0→82** になる。**三角化する前に必ず平面性（面平面からの最大ズレ）と単純多角形かどうかを確認する。**
-    - 正解は作り直し。円環キャップは「内外2重リングの帯」として、非平面N-gonは `TowerG_MergeTray` と同じ「閉じたソリッドを個別に作って join」方式で。
+    - ✅ **解決（2026-08-24 フェーズ9-1）。作り直しは要らなかった**。正解は **N-gonを全部 `bmesh.ops.poke`（重心へのファン分割）すること**。
+      pokeは**境界の辺を1本も張り替えない**ので、非平面N-gonでも円環N-gonでもスリバーでも形が保たれる。
+      実測（`Docs/fix_selfint_faces.py`）: `NumaKuruun_L` Δvol −3.8e-05・`LiftGuide` Δvol −3.9e-11、**3メッシュとも Δbounds=0・非多様体の増加0・縮退面0**。
+      Unityの警告は **55件 → 0件**（`ParkAssembly.fbx` 再インポートで確認）。
+    - **三角化（`bmesh.ops.triangulate`）は使うな**。①非平面N-gonは面が張り替わって形が変わる ②**細いスリバーN-gonは面積0の三角形を量産する**
+      （LiftGuideで縮退面65枚＝罠49の材料を自分で作る）。`ngon_method` を BEAUTY→EAR_CLIP に変えても、
+      非多様体が 56→4 に減るだけで縮退面は消えない。**poke一択**。
+    - 併せて **面ループ内に完全同一座標の頂点が2回出てくる面**も捨てられる（`DrainStirrer` 8面）。
+      こちらは `remove_doubles(1e-6)` で解消する（面数もΔvolも不変の完全な修復）。
+    - 検査＋修復のコマンド化: `blender.exe --background <原本.blend> --python Docs/fix_selfint_faces.py -- --save [mesh名...]`。
+      Δbounds・縮退面・非多様体を自動検算し、NGなら保存しない。**GUIのBlenderを塞がずに走らせたいときは
+      `subprocess.run([bpy.app.binary_path, "--background", ...])` を `execute_blender_code` から叩く**
+      （`execute_blender_code_for_cli` は `BLENDER_PATH` 未設定で使えないため）。
     - 検算の注意: **Unity側で法線を検算するときは頂点を1000倍してから外積を取る**こと。機構FBXは1/100スケールで入るため、生の座標だと `Vector3.normalized` のイプシロンに埋もれて面法線が全部ゼロになり、「全メッシュ100%破綻」という嘘の結果が出る（本セッションで1回踏んだ）。
     - なお `ParkAssembly.fbx` への一本化でこの件数は**増えていない**（個別FBXと三角形数が全メッシュ一致することを実測確認済み・2026-08-24）。
 51. **UnityのFBXインポータは Empty(Null) ノードのスケールを「負値×100」で表現する**（2026-08-24実測: Blenderで 0.26 の箱が Unity で localScale −26 になる）。
@@ -284,6 +298,23 @@ v1で一度学んだはずの失敗を、v2のフェーズ6でそっくり再演
   - **等価性検証（`Docs/diff_scene.py`）失敗0**: メッシュ最大0.06mm／マーカー位置完全一致・回転4e-7／得点表示92件も一致。
   - **36球ソーク×4本（旧2・新2）で コースアウト0**。周回数118〜121で揃う。停止・迷子は**旧シーンでも同頻度**（同一座標で再現）＝
     既存のアーチ詰まり（罠4/罠23）であって移行の回帰ではない。
+- ✅ **フェーズ9-1 完了（2026-08-24）: メッシュ破綻の一掃と外装（配色）の第1段**。設計正本は `Docs/DESIGN-materials.md`。要点:
+  - **Unityインポータの self-intersecting 警告を 55件 → 0件**（プロジェクト開始以来はじめて0）。
+    直したのは `NumaKuruun_L/M/S`（各20件前後）・`DrainStirrer`（8件・10インスタンス）・`LiftGuide`（4件）。
+    **正解は poke**（罠50の追記を参照）。作り直しは不要だった。`Docs/fix_selfint_faces.py` に手順を固定。
+  - 反転して見える面（罠49のゼロ長法線）は**全メッシュで0件**を再確認（縮退面・NaN法線・非正規化法線とも0）。
+    面ワインディングの不整合も0（`recalc_face_normals` との比較で全40メッシュ一致）。
+  - `Docs/verify_park_assembly.py` が**連番を持たないオブジェクト**（`MissOverflowGuard` / `HSlitCollar_Zp` / `Zm`＝
+    ブートストラップ後に手で足した3件）で `IndexError` を出していたのを修正。以後は連番なしを黙って除外する。
+  - **配色は「役割ごと」に9パレットへ統一**（CABINET / CHROME / GOLD / JACKPOT / DECK / ROTOR / ROTOR_HI / SCORE / SHOWPIECE）。
+    45マテリアルに `_BaseColor` / `_Metallic` / `_Smoothness` / `_EmissionColor` を設定。**テクスチャはまだ貼っていない**（User方針: 先に配色を確定させる）。
+  - **シーンを「少し暗いゲームセンター」に**: Ambient=Flat `#1A202C`／`DarkArcadeSky.mat`（Exposure 0.15）／主灯 0.7・寒色／
+    天井スポット2灯（`ArcadeSpot_N` / `_S`）／`DarkArcadeVolume.asset`（Bloom＋Neutralトーンマップ）。
+    **これらは `Park` ルートの外に置く**こと（子にすると `ParkBuilder` の再ビルドで消える）。
+  - **36球ソーク（300秒）で回帰なし**: 119巡・7,360点（平均61.8/巡）・**コースアウト0・停止0・迷子0**。
+    フェーズ6.6以降で残っていた「停止・迷子 0〜1」も出なくなった（`Docs/soak_smooth.json`）。
+  - 暗所の知見: **高アルベドの金属は「白い樹脂」に見える**。天井スポットに正対する平板ほど顕著なので、
+    メタル系の地色は明るくせず（`#5E6773`）、スムースネスも上げすぎない（0.55）。逆に**見せ場は弱い自発光**で持ち上げる（大スパイラル）。
 - **作業手順（フェーズ8以降の標準）**: 形は原本`.blend` → 位置/トリガー/回転速度は`ParkAssembly.blend` →
   `Docs/verify_park_assembly.py` → `Docs/export_park_assembly.py` → Unityで `Tools > Build RouletteSphere Park (v2)` →
   `Tools > Run Soak (36 balls)`（**コースアウト0を必須条件**にする）。
@@ -292,7 +323,12 @@ v1で一度学んだはずの失敗を、v2のフェーズ6でそっくり再演
      計測は `Tools > Run Soak` の `zoneHits` をそのまま使える（`Docs/soak_after_10min.json` が10分版の初回データ）。
      倍率ゲート（MultGate）はPが小さいので、C/P計算では「倍率の期待上乗せ = (倍率-1)×通常段の平均獲得」を点数相当として扱うこと。
   2. **既存のアーチ詰まり潰し**（ソークで停止/迷子が出る箇所）。実測地点は `(-0.93, 0.72, 0.26)` 付近（旧新とも同座標で再現）とタワーGの沼クルーン。撹拌追加で対処する。
-  残タスクは DESIGN-v2 6章「フェーズ6 積み残し」も参照（GLift上限の解消・タワーH樋の化粧・沼クルーン/LiftGuideの自己交差N-gon作り直し=美化と同時）。
+  3. **フェーズ9-2「テクスチャ・装飾」**（`Docs/DESIGN-materials.md` 4章）。着工前にUser確認。
+     優先は 得点ゲートの発光パネル → 抽選盤のダイヤル → 金属のヘアライン。
+     あわせて**罠52で死角70%超と出た機構（パチンコ盤・沼クルーン・大ルーレット）の窓抜き・縁の低背化**を、
+     美化と可視性の同時解決として先に検討する。
+  残タスクは DESIGN-v2 6章「フェーズ6 積み残し」も参照（GLift上限の解消・タワーH樋の化粧）。
+  **自己交差N-gonの作り直しは不要になった**（フェーズ9-1でpokeにより解消済み）。
 - ✅ ボールメッシュ/UV再設計済み（2026-08-22）: **メッシュはスフィア化キューブ（クアッド球, 8×8×6面）**（User参考`SphereCube_Test`準拠。極が無く円盤縁のメッシュが破綻しない）。**本体UVは「前後2円ディスク」方式**（参考`UVSphere_Test`準拠）。
   - キャンバスは**2:1**（例2048×1024）。**左円=前半球**（Unity +Z 正面、方位等距離図法・円中心=顔の中心）、**右円=後半球**（左右鏡像=後ろから見た絵をそのまま描ける）。円は画像上で真円（UV空間ではu半径0.24/v半径0.48）
   - **番号パッチは上面/下面の「別UVデカール」**（2026-08-22改訂）。**本体メッシュは穴なしの全周384面**（極も本体UVが通っているのでキャラ絵を途切れず描ける）。その上に**球面から0.4%(0.2mm)浮かせた円盤シェル**（24分割×3リング＝片極72面、submesh1・不透明）を重ねる。旧仕様（25°コーンで極の面をsubmesh1に付け替え）は8分割グリッド上で**4×4マス−四隅＝十字形**になり丸数字に見えなかったため廃止。
