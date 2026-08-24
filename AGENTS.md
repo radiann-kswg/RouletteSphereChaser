@@ -70,6 +70,7 @@ v1で一度学んだはずの失敗を、v2のフェーズ6でそっくり再演
 - カメラ演出（2026-08-24・計25台）: `OrbitCamera`（定点16台を機構まわりに等速周回＋見下ろし角を上下に振る）／`RandomFixedCamera`×4（抽選機チャンネル）／`RandomFollowCamera`×4（ボールチャンネル）／`RandomMixCamera`×1（**Display 1 に出す親カメラ**。8チャンネルから自動選択）／`CameraDirector`（C=デモ切替 V=次のショット Tab・0=手動）。死角の実測は `CameraCoverage` → `Docs/camera_coverage.json`
 - `Docs/diff_scene.py` … 旧シーンのダンプと作り直したシーンの等価性検証（位置・回転・寸法・コンポーネント設定）
 - `Docs/fix_selfint_faces.py` … Unityに捨てられるN-gonの修復（重複頂点の溶接＋N-gonのpoke）。Δbounds・縮退面・非多様体を自動検算（罠50）
+- `Assets/Editor/ShowcaseCapture.cs` ＋ `Docs/screenshots/` … **README掲載画像**。`Tools > Capture Showcase Shots` で `park-wide` / `park-front` ＋抽選機6点を撮る（1600×900）
 - **`Docs/DESIGN-materials.md` … 外装（マテリアル／配色）の設計正本**（フェーズ9〜）。役割ごとの9パレットとシーン照明、第2段のテクスチャ計画
 - `PenchantManufacture_ImageAssets/` … **gitサブモジュール**（User作フォント・CC BY 4.0）。`Assets/Fonts/PenchantManufacture.otf` はここからのコピー。TMP SDFアセットはビルダーが自動生成（`Assets/Fonts/PenchantManufacture_SDF.asset`）
 - 得点表示の標準: **Blender製ScoreGate（チャッカー風）＋ボード上TMP SDFラベル**（深度テスト＋`_CullMode=2`背面カリング→壁越し・裏側の得点は見えない）。ボール番号アトラス`NumberAtlas.png`も同フォントで生成（上段=90番台・下段=0番台のUV反転レイアウト・白地黒丸黒数字。生成はPIL・4xスーパーサンプル）
@@ -357,6 +358,22 @@ v1で一度学んだはずの失敗を、v2のフェーズ6でそっくり再演
   - 次に効く透過候補（実測順）: `TowerD_Kuruun`(BowlLower) / `TowerB_CatchTray`(CatchChute) /
     `TowerF_CatchTray` / `TowerF_SpinnerDish` / `TowerE_Disc`(PocketDisc) / `TowerE_Pickup`(FeedPan)。
     **ただしパーク全体がガラスになると形が読めなくなる**ので、増やすときは1機構ずつ見た目を確認すること。
+- ✅ **フェーズ9-3 完了（2026-08-24）: パチンコ盤カメラの正面化・盤面文字色・README画像**。要点:
+  - **`OrbitCamera.azimuthAmplitude` を追加**（0＝従来の360°周回、>0＝配置時の方位を中心に往復）。
+    **平らな盤面の機構は正面からしか中が見えない**ので、周回させると一周のほとんどが裏側＝死角になる。
+    パチンコ盤を **±38°の振り子**にし、注視点を盤(y3.53)とステップチャッカー(y2.39)の中間 y3.0 へ。
+    盤に貼り付いた機構を今後足すときも周回ではなくこれを使うこと。
+  - `TowerB_CatchTray`（CatchChute）も透過に追加。盤を透かした後の Pachinko E/W の最大遮蔽者だったため（実測65/73）。
+  - **盤面印字ラベル（GateLabel）の色を藍 `#33407F` に**（User報告「白地に白で見づらい」）。
+    得点ゲートを白にした副作用。`ParkBuilder.GateLabelColor` の1箇所。**宙に浮くDropLabelはJSONの色のまま**（暗い背景の上なので）。
+    → **盤の色を変えたらラベル色も見直す**こと。
+  - **死角の最終値**（36球300秒）: Pachinko E/W **0.307 / 0.385**（初期 0.879 / 0.870）、
+    GrandRoulette **0.169**、Numa E/W **0.171 / 0.189**、Zigzag N/S **0.198 / 0.070**、Garapon **0.348**、Overview **0.331**。
+    **全16台の最悪が 0.496（JPSpinner_S）・平均 0.286**。次に効く透過候補は `TowerF_CatchTray`(CatchTray)・
+    `TowerF_SpinnerDish`・`TowerE_Pickup`(FeedPan)・`TowerE_Disc`(PocketDisc)・`TowerH_CatchFunnel`(MissPan)。
+  - **36球ソーク300秒で回帰なし**: 118巡・7,339点・コースアウト0・停止0・迷子0（`Docs/soak_phase9_3.json`）。
+  - **README を日英とも刷新**し、`Docs/screenshots/` の8点を掲載。コンセプト（1章の想定ユーザー）もREADMEに載せた。
+    撮影運用は6章。
 - **作業手順（フェーズ8以降の標準）**: 形は原本`.blend` → 位置/トリガー/回転速度は`ParkAssembly.blend` →
   `Docs/verify_park_assembly.py` → `Docs/export_park_assembly.py` → Unityで `Tools > Build RouletteSphere Park (v2)` →
   `Tools > Run Soak (36 balls)`（**コースアウト0を必須条件**にする）。
@@ -398,6 +415,15 @@ exit playmode → `AssetDatabase.Refresh` → 40秒待機（コンパイル完�
 ## 6. 運用ルール
 
 - 回答は日本語。`Library/` `Temp/` `Logs/` `obj/` `UserSettings/` は編集・コミット対象外。
+- **README掲載画像の更新（2026-08-24〜）**: 見た目に関わる変更（配色・照明・透過シェル・カメラ配置・造形）を入れたら、
+  節目で **`Tools > Capture Showcase Shots`** を実行して `Docs/screenshots/` を撮り直す。
+  - **構図は `ShowcaseCapture.cs` に固定**してある。手で撮ると画角がぶれて前後の差分が読めなくなるので、
+    アングルを変えたいときはスクリプト側を直す（＝次回以降も同じ画角になる）。
+  - **球が写った絵が欲しいので `Tools > Run Soak` の実行中に撮る**。定点カメラは
+    `OrbitCamera.SnapToBase()` で配置時の姿勢に戻してから撮るので、周回位相に左右されない。
+  - `*.png` は **git-lfs 管轄**。撮り直すたびにLFSへ履歴が積まれるので、**毎回ではなく節目で**撮ること。
+    ファイル名は固定（追加・改名しない）。README側のリンクを増やすときだけ `Shots` 表に足す。
+  - README は日英2本（`README.md` / `README.en.md`）。**画像を足したら両方に入れる。**
 - **ライセンス**: 本リポジトリは CC BY 4.0（表記: ラジアン(柏木主税) / RadianN_kswg）。**ボールスキンのみ対象外**で画像元のライセンス依存（`LICENSE` / `LICENSE-ASSETS.md`）。閲覧用ドキュメントは `README.md`（日）・`README.en.md`（英）。設計・運用の追記は本ファイルに行い、READMEには概要だけを置く。
 - `.meta` はUnityエディタに任せる。
 - **gitは節目ごとに定期コミットする**（User方針 2026-08-21）。サンドボックスのマウントはgit-lfs無し・削除不可でgit操作不能のため、**コミットはUnityメニュー `Tools > Git Commit All`（`Assets/Editor/GitTools.cs`）経由**で行う。メッセージは実行前に `EditorPrefs "GitTools.Message"` へ設定。pushはUserの指示があったときのみ。

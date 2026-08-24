@@ -120,9 +120,14 @@ URP/Lit の `_BaseColor` / `_Metallic` / `_Smoothness` / `_EmissionColor` のみ
 
 `TowerA_CollectorFunnel` / `TowerA_MiniKuruun` / `TowerA_MiniRouletteBowl` / `TowerA_GrandRouletteBowl` /
 `TowerB_PachiBoard` / `TowerG_NumaKuruun` / `TowerH_KarakoDish`（皿・盤 = alpha 0.22）、
-`TowerC_Zigzag` / `TowerC_CatchTurn` / `TowerG_MergeTray`（搬送トラフ = alpha 0.28）。
+`TowerC_Zigzag` / `TowerC_CatchTurn` / `TowerG_MergeTray` / `TowerB_CatchTray`（搬送トラフ = alpha 0.28）。
 
 - URP/Lit の Surface Type = Transparent / Blend = Alpha / ZWrite off / renderQueue = 3000。
+- **盤面に印字するラベル（`GateLabel`）は盤の色で決まる**。得点ゲートを白にしたので、文字は抽選盤と同じ藍
+  `#33407F`（`ParkBuilder.GateLabelColor`）。宙に浮く `DropLabel` は暗い背景の上なので `park_labels.json` の色のまま。
+  **盤の色を変えたらラベル色も見直すこと**（白地に白＝読めない、を一度やった）。
+- **平らな盤面の機構は正面からしか中が見えない**。定点カメラを360°周回させると一周のほとんどが裏＝死角になるので、
+  `OrbitCamera.azimuthAmplitude`（配置方位を中心に往復する振り子）を使う。パチンコ盤は ±38°。
 - **`SeeThrough` レイヤ**（index 8）を付ける。`CameraCoverage` のレイキャストはこのレイヤを除外するので、
   死角の実測値が「人間に見えるか」と一致する。**物理は素通しにしない**（レイヤは描画と計測のためだけ）。
 - レイヤ付けは `ParkBuilder` が `SeeThroughMats` を見て自動で行う。増やすときはその集合に足すだけ。

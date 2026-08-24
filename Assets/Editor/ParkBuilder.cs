@@ -42,6 +42,7 @@ public static class ParkBuilder
         "TowerC_Zigzag",              // Cam_C_Zigzag_N/S の最大（46/51）
         "TowerC_CatchTurn",           // 同 46/27
         "TowerG_MergeTray",           // Cam_G_Numa_W 12 / Cam_H_Garapon 29
+        "TowerB_CatchTray",           // CatchChute。盤を透かした後の Cam_B_Pachinko_E/W の最大（65/73）
     };
 
     [System.Serializable]
@@ -184,7 +185,11 @@ public static class ParkBuilder
                     tmp.fontSize = m.fontSize;
                     tmp.alignment = TMPro.TextAlignmentOptions.Center;
                     tmp.textWrappingMode = TMPro.TextWrappingModes.NoWrap;
-                    tmp.color = m.rgb;
+                    // **盤面に印字するラベル（GateLabel = 非ビルボード）は盤の色で決まる**。
+                    // 得点ゲートを白（SCORE `#E8F1FA`）にしたので、`park_labels.json` の金色のままだと
+                    // 白地に白で読めない（User報告 2026-08-24）。抽選盤と同じ藍（DECK `#33407F`）に上書きする。
+                    // 宙に浮くDropLabel（ビルボード）は暗い背景の上なので JSON の色をそのまま使う。
+                    tmp.color = m.billboard ? m.rgb : GateLabelColor;
                     tmp.rectTransform.sizeDelta = new Vector2(0.6f, 0.2f);
                     tmp.fontSharedMaterial = PenchantCullBack();   // 深度テスト＋背面カリング（壁の裏は見えない）
                     if (m.billboard) go.AddComponent<Billboard>();
@@ -353,6 +358,18 @@ public static class ParkBuilder
         { "DrainStation", 10f },
     };
 
+    /// 盤面印字ラベルの色。得点ゲートが白（DESIGN-materials 2章 SCORE）なので、
+    /// 抽選盤と同じ藍（DECK `#33407F`）で刷る。**盤の色を変えたらここも見直すこと。**
+    static readonly Color GateLabelColor = new Color(0.200f, 0.251f, 0.498f, 1f);
+
+    /// 方位の振り幅[deg]。**0（既定）＝360°周回**。値を入れると配置時の方位を中心に往復する。
+    /// **平らな盤面の機構は正面からしか中が見えない**ので、周回させると一周のほとんどが裏側＝死角になる。
+    /// パチンコ盤は周回のままだと死角0.88だった（2026-08-24実測）。
+    static readonly Dictionary<string, float> AzimuthAmp = new()
+    {
+        { "B_Pachinko_E", 38f }, { "B_Pachinko_W", 38f },
+    };
+
     /// 上下振り[m]。すり鉢・トラフ・盤面の内側を舐めるために見下ろし角も振る台だけ入れる
     static readonly Dictionary<string, float> ElevationAmp = new()
     {
@@ -401,6 +418,7 @@ public static class ParkBuilder
             // すり鉢・トラフの内側は方位を回すだけでは見えない。見下ろし角も振る（実測で決めた値）
             orb.elevationAmplitude = ElevationAmp.TryGetValue(n, out float amp) ? amp : 0f;
             orb.elevationPeriod = 17f;
+            orb.azimuthAmplitude = AzimuthAmp.TryGetValue(n, out float az) ? az : 0f;
 
             // 画角を担当範囲に合わせる。**死角の最大要因は「画角に入っていない」だった**（実測:
             // 大ルーレット76% / ガラポン83% が画角外）ので、focusRadius が必ず収まるFOVにする
@@ -427,7 +445,9 @@ public static class ParkBuilder
             float sg = s == 0 ? 1f : -1f;
             string sfx = s == 0 ? "E" : "W";
             Cam("G_Numa_" + sfx, new Vector3(sg * 5f, 6.4f, -4.8f), new Vector3(sg * 5f, 5.4f, 0f), 50f);
-            Cam("B_Pachinko_" + sfx, new Vector3(sg * 7.15f, 3.4f, -3.6f), new Vector3(sg * 7.15f, 2.9f, 0.2f), 50f);
+            // 盤面はZ面（法線±Z）。**正面（-Z側）に置いて方位は振り子**（AzimuthAmp）にする。
+            // 注視点は盤(y3.53)とステップチャッカー(y2.39)の中間。周回させると裏に回って死角0.88になった
+            Cam("B_Pachinko_" + sfx, new Vector3(sg * 7.15f, 3.7f, -3.4f), new Vector3(sg * 7.15f, 3.0f, 0.2f), 50f);
             Cam("D_Kuruun_" + sfx, new Vector3(sg * 5f, 2.6f, -3.4f), new Vector3(sg * 5f, 1.8f, 0f), 50f);
         }
         Cam("DrainStation", new Vector3(11.2f, 1.5f, -3.2f), new Vector3(11.2f, 0.3f, 0f), 50f);
