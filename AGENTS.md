@@ -159,8 +159,17 @@ v1で一度学んだはずの失敗を、v2のフェーズ6でそっくり再演
   設定していないうちは `execute_blender_code`（GUI接続側）を使うこと。GUI側で作業する場合は、開いているファイルを壊さないよう
   `bpy.ops.wm.read_homefile(use_empty=True)` の前に `bpy.data.is_dirty` を確認する。
 
+**Unity公式MCPとの同居（2026-08-24 確認）**
+
+本プロジェクトは `com.unity.ai.assistant` の**Unity公式MCPも有効**（`Unity.AI.MCP.ProjectSettings.v2` の `bridgeEnabled: true`）で、別のローカル環境から使っている。両者は**別系統・ポート非衝突**なので設定上は共存させたまま運用する。
+
+- ポート: MCP for Unity = **6400**（`~/.unity-mcp/unity-mcp-status-<hash>.json` の `unity_port`）／Unity公式 = relay **9002**・gateway **38000**。
+- **鉄則: 同じUnityエディタプロセスに同時に噛ませるのは1系統だけ**。公式側は `batchModeEnabled: true` + `autoApproveInBatchMode: true` なので、別環境のエージェントが無確認でスクリプト編集→再コンパイルを走らせると、こちらの検証ループ（exit play → Refresh → 待機 → ビルダー → play）と正面衝突する。Cowork側で作業する間は公式MCPを使う環境の作業を止めること（逆も同様）。
+- 公式MCPの `bridgeEnabled` は**切らない**（別環境で使用中・User判断 2026-08-24）。切り替えは設定ではなく運用で行う。
+
 **運用**
 
+- **作業開始時に `set_active_instance` で対象を明示する**。stdioのアクティブインスタンスは**セッションに固定**されるため、前セッションが `LotteryBallKit@...` を掴んだままだと `Unity instance '...' not found` で全ツールが落ちる（2026-08-24 実測）。接続中一覧は `mcpforunity://instances`、本プロジェクトは `RouletteSphereChaser@6ac0df7d`。
 - シーン編集・検証は unity-mcp 経由（`Unity_RunCommand` / `Unity_ManageMenuItem` / `Unity_ReadConsole`）。
 - スクリプト編集直後は再コンパイルで一時的に「Unity not detected」になる。20〜40秒待って再試行。
 - **プレイ中にスクリプトを編集しない**。exit → 待機（コンパイル完了確認）→ ビルダー再実行 → play の順を厳守。
