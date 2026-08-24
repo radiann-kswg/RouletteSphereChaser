@@ -50,7 +50,8 @@ public class BallHUD : MonoBehaviour
         if (b != null)
         {
             title.text = $"BALL {b.number:00}";
-            body.text = $"LAP {b.laps}\nSCORE {b.pendingPoints}\nTOTAL {b.totalScore}";
+            var mult = b.nextMultiplier > 1 ? $"  x{b.nextMultiplier}" : "";
+            body.text = $"LAP {b.laps}\nSCORE {b.pendingPoints}{mult}\nTOTAL {b.totalScore}";
         }
         else
         {

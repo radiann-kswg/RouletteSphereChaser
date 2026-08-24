@@ -11,6 +11,10 @@ public class LotteryBall : MonoBehaviour
     public int totalScore;
     public int laps;
 
+    /// 高得点チャレンジ段（タワーD/Eの上段）で獲得した倍率。
+    /// 直後の通常抽選段が加点するときに掛かって消費される（1に戻る）。1巡終了でもリセット。
+    public int nextMultiplier = 1;
+
     Renderer rend;
     static readonly int BaseMap = Shader.PropertyToID("_BaseMap");
     static readonly int BaseColor = Shader.PropertyToID("_BaseColor");
@@ -61,6 +65,7 @@ public class LotteryBall : MonoBehaviour
     {
         totalScore += pendingPoints;
         pendingPoints = 0;
+        nextMultiplier = 1;   // 使わずに1巡終えた倍率は持ち越さない
         laps++;
     }
 }

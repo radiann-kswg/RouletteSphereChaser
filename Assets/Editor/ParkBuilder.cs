@@ -414,6 +414,31 @@ public static class ParkBuilder
         tmp.fontSharedMaterial = PenchantCullBack();
     }
 
+    /// 高得点チャレンジ段の穴（タワーD/Eの上段）: 加点せず「次の通常抽選の倍率」を与える。
+    /// User仕様 2026-08-24 —— チャレンジ段で稼いだぶんが通常段の配当に掛かる。
+    static void MultMark(Transform parent, Vector3 pos, int mult, Vector3? triggerSize = null)
+    {
+        var go = Trigger(parent, "MultGate_x" + mult, pos, triggerSize ?? new Vector3(0.20f, 0.10f, 0.20f), 0, false);
+        var z = go.GetComponent<ScoreZone>();
+        z.points = 0;
+        z.grantMultiplier = mult;
+        var label = new GameObject("MultLabel_x" + mult);
+        label.transform.SetParent(parent);
+        label.transform.position = pos + Vector3.up * 0.25f;
+        label.transform.rotation = Quaternion.LookRotation(Vector3.back);
+        var tmp = label.AddComponent<TMPro.TextMeshPro>();
+        var fa = PenchantFont();
+        if (fa != null) tmp.font = fa;
+        tmp.text = "x" + mult;
+        tmp.fontSize = 1.5f;
+        tmp.alignment = TMPro.TextAlignmentOptions.Center;
+        tmp.textWrappingMode = TMPro.TextWrappingModes.NoWrap;
+        tmp.color = new Color(0.45f, 0.95f, 1.0f);   // 倍率は水色で得点と区別
+        tmp.rectTransform.sizeDelta = new Vector2(0.6f, 0.2f);
+        tmp.fontSharedMaterial = PenchantCullBack();
+        label.AddComponent<Billboard>();             // 回転体の子にも付くので常に正面を向かせる
+    }
+
     /// 落下系スコア地点: トリガー＋TMP得点表示（ゲート無し。深度テスト＋背面カリング）
     static void ScoreMark(Transform parent, Vector3 pos, int points, Color color, float labelAzDeg, Vector3? triggerSize = null)
     {
@@ -493,7 +518,10 @@ public static class ParkBuilder
             Mat("TowerG_MergeTray", new Color(0.46f, 0.40f, 0.50f)));
         // G当選のJPレール: K3当選穴(底4.56)→ボア貫通→D上段ボウル(2.65)直上まで密閉2段
         var gtubeMat = Mat("TowerG_JPRail", new Color(1.0f, 0.55f, 0.25f));
-        foreach (var ty in new[] { 2.92f, 2.12f })
+        // 2026-08-24 User指示: 当選ルートのパイプを短く。下段管を +0.40 上げて下端 world 3.26 → 3.66。
+        // 上段管(天端4.86=K3カップ底4.94の直下0.08で密閉)は動かせないので、2本を0.40だけ重ねる。
+        // D上段ボウルも同じ0.40だけ嵩上げして、パイプ下端との隙間0.12を維持する。
+        foreach (var ty in new[] { 2.92f, 2.52f })
             InstantiateMech("Assets/Models/TowerF_JPTube.fbx", "JPRail_" + ty, g,
                 new Vector3(-0.20f, ty + LiftY, 5.0f), Quaternion.Euler(-90f, 0, 0), gtubeMat);
         g.rotation = Quaternion.Euler(0, yawDeg, 0);  // グループ一括回転（原点ピボット）
@@ -534,9 +562,10 @@ public static class ParkBuilder
             Quaternion.AngleAxis(trayTilt, Vector3.forward) * Quaternion.Euler(-90f, 180f - yawDeg, 0), trayMat);
         // JPチューブ×3段（φ0.37外径・各0.8高。天端=皿底6.79の0.02下=密閉。ボアとの隙間0.015<0.5d）
         var tubeMat = Mat("TowerF_JPTube", new Color(1.0f, 0.55f, 0.25f));
-        // 2026-08-24: E が傾斜ポケット盤になり受け面が下がったため、2段(1.6m)延長して
-        // 給球パンへの落差を 2.5m → 1.3m に詰める（高所自由落下の跳ね出し対策）
-        float[] tubeY = { 5.13f, 4.33f, 3.53f, 2.73f, 1.93f };
+        // 2026-08-24 改訂2: E に高得点チャレンジ盤(中心 y3.85)を新設したので、
+        // **当選ルートのパイプを3段へ短縮**（下端 world 4.37）。その直下がチャレンジ盤の受け面で、
+        // 落差0.62＝跳ね出さない。以前の5段(下端2.77)は共用パンまで一気に降ろす構成だった。
+        float[] tubeY = { 5.13f, 4.33f, 3.53f };
         for (int i = 0; i < tubeY.Length; i++)
             InstantiateMech("Assets/Models/TowerF_JPTube.fbx", "JPTube_" + i, g,
                 new Vector3(0, tubeY[i] + LiftY, -5.0f), Quaternion.Euler(-90f, 0, 0), tubeMat);
@@ -606,9 +635,12 @@ public static class ParkBuilder
     {
         var g = Group(root, name);
         var dMat = Mat("TowerD_Kuruun", new Color(0.50f, 0.42f, 0.62f));
-        // 上段ボウル: 床 world 2.40 / リム上端 2.82（JPレール下端2.96の直下ぎりぎりまで持ち上げ＝塔を伸ばす）
+        // 上段ボウル（高得点チャレンジ）: 2026-08-24 に +0.40 嵩上げ（User指示「パイプを短く／ボウルを上へ」）。
+        // 床 world 2.70 → 3.10 / リム上端 3.14 → 3.54。JPレール下端も 3.26 → 3.66 に上げて隙間0.12を維持。
+        // これ以上（1段=0.80）上げると下段ボウルへの落差が 0.88 → 1.68m になり、リム0.44の
+        // 下段から跳ね出すので不可。0.40 が上限（Gマージトレイ底4.39とのクリアランスも0.85→0.45に減る）。
         InstantiateMech("Assets/Models/TowerD_Kuruun.fbx", "BowlUpper", g,
-            new Vector3(5.00f, 1.16f + LiftY, 0.70f), Quaternion.Euler(-90f, 0, 0), dMat);
+            new Vector3(5.00f, 1.56f + LiftY, 0.70f), Quaternion.Euler(-90f, 0, 0), dMat);
         // 下段ボウル: 床 world 1.08+GLift / リム上端 1.50+GLift。B_CatchChute 床(1.53+GLift)の
         // わずかに下へ潜り込ませ、シュート排出球をリム越しでなく「懐へ」落とす。
         // 以前は盆地床とのクリアランス確保のため3°チルトを掛けていたが、GLiftで系ごと0.30上がって
@@ -620,7 +652,7 @@ public static class ParkBuilder
         // 静止ボウルだと ①球が平坦地に乗って停留 ②毎回同じ穴に入る（実測16/16が西穴＝罠23の再来）。
         // 低速の掃引アームで球を穴リング上に送り続ける＝停留解消＋入る穴がランダム化（≈1/5）。
         // 盤ごと微振動（Oscillator）は「振動軸=±X」が優先方位になり西穴に集中したため不採用。
-        Stirrer(g, "StirrerUpper", new Vector3(5.00f, 1.22f + LiftY, 0.70f));
+        Stirrer(g, "StirrerUpper", new Vector3(5.00f, 1.62f + LiftY, 0.70f));
         Stirrer(g, "StirrerLower", new Vector3(5.30f, -0.10f + LiftY, 0.25f));
         // 当たり穴の真下に薄型トリガー（穴0.18に対し0.20角。隣穴は0.28離れているので誤検出なし）。
         // 当たり穴の選び方は実測ベース: 給球は毎回ほぼ同じ点(az180付近)に落ちるので、
@@ -630,18 +662,32 @@ public static class ParkBuilder
         // 5穴のうち **高得点1＋中得点2**（User指示 2026-08-23。残り2穴は素通り＝採点なし）。
         // 割り当ては実測分布から: 高得点は入りにくい穴、中得点はそこそこ入る穴に置く。
         // 点数は全トリガーで一意（ログ集計の識別子。E下段45・B東90と衝突しない値を選んである）
+        // ★2026-08-24 User指示で仕様変更:
+        //   ・上段（高得点チャレンジ）は**加点しない**。5穴すべてが「次の抽選の倍率」を与える。
+        //   ・下段（通常抽選）は5穴すべてが加点し、上段でもらった倍率が掛かる。
+        //   → チャレンジ段で外しても素通りにならず、倍率だけ低い状態で下段の抽選に進む。
+        // 穴位置は中心から r0.238 の5等配（72°ピッチ）。基準角は既設マーカーの実測から取った。
         var thin = new Vector3(0.20f, 0.10f, 0.20f);
         var hiCol = new Color(1.0f, 0.35f, 0.30f);
         var midCol = new Color(1.0f, 0.83f, 0.25f);
-        float uy = 0.96f + LiftY, ly = -0.36f + LiftY;
-        // 上段（高得点チャレンジ段）: az54.5(17%)=200 / az126.5(25%)=88 / az342.5(33%)=84
-        ScoreMark(g, new Vector3(5.194f, uy, 0.838f), 200, hiCol, 0f, thin);
-        ScoreMark(g, new Vector3(5.191f, uy, 0.558f), 88, midCol, 0f, thin);
-        ScoreMark(g, new Vector3(4.928f, uy, 0.927f), 84, midCol, 180f, thin);
-        // 下段（通常抽選段・yaw36）: az162.5(17%)=48 / az306.5(13%)=32 / az18.5(35%)=28
-        ScoreMark(g, new Vector3(5.372f, ly, 0.023f), 48, hiCol, 0f, thin);
-        ScoreMark(g, new Vector3(5.108f, ly, 0.391f), 32, midCol, 180f, thin);
-        ScoreMark(g, new Vector3(5.376f, ly, 0.476f), 28, midCol, 0f, thin);
+        float uy = 1.36f + LiftY, ly = -0.36f + LiftY;   // uy は上段ボウルの +0.40 嵩上げに追随
+        const float DHoleR = 0.238f;
+        // 上段: 基準35.4°から72°ピッチ。24球実測の到達率 17/25/25/0/33% に対し、入りにくい穴ほど高倍率
+        int[] upMult = { 5, 3, 4, 6, 2 };
+        for (int i = 0; i < 5; i++)
+        {
+            float a = (35.4f + 72f * i) * Mathf.Deg2Rad;
+            MultMark(g, new Vector3(5.00f + DHoleR * Mathf.Cos(a), uy, 0.70f + DHoleR * Mathf.Sin(a)), upMult[i], thin);
+        }
+        // 下段（yaw36）: 基準−72.4°から72°ピッチ。既設3穴(48/28/32)の値は据え置き、残り2穴に新値44/52。
+        // 実測到達率 13/35/35/17/0% → 入りにくい穴ほど高得点（フェーズ7でC/P再計算する暫定値）
+        int[] loPts = { 48, 44, 28, 32, 52 };
+        for (int i = 0; i < 5; i++)
+        {
+            float a = (-72.4f + 72f * i) * Mathf.Deg2Rad;
+            var p = new Vector3(5.30f + DHoleR * Mathf.Cos(a), ly, 0.25f + DHoleR * Mathf.Sin(a));
+            ScoreMark(g, p, loPts[i], loPts[i] >= 48 ? hiCol : midCol, 35.4f + 72f * i, thin);
+        }
         g.rotation = Quaternion.Euler(0, yawDeg, 0);  // 180°=D西ミラー（原点ピボット）
         g.position = new Vector3(0, GLift, 0);        // G/B/D系の一括嵩上げ
     }
@@ -767,65 +813,77 @@ public static class ParkBuilder
     // ・排出: ポケットは盤を貫通し、球は裏面側(−法線)へ抜けて盆地へ自由落下＝フェイルセーフ絶対則を維持。
     // 配点は暫定（全トリガー一意値）。フェーズ7の36球ソークで各ポケットの実測Pを採って C/P に揃える。
     const float DiscTiltDeg = 45f;
-    static void BuildTowerE_Disc(Transform root, string name, float zSign)
+
+    /// 傾斜ポケット盤を1基建てる。`mult` を渡すと高得点チャレンジ段（全ポケットが倍率）、
+    /// `pts` を渡すと通常抽選段（全ポケットが加点）。どちらも**全8口に処理を付ける**（User指示 2026-08-24）。
+    static Transform BuildEDisc(Transform g, string pivotName, Vector3 C, float degPerSec, int[] pts, int[] mult, Color discCol)
     {
-        float cz = 5.0f * zSign;
-        var g = Group(root, name);
         float t = DiscTiltDeg * Mathf.Deg2Rad;
         Vector3 nrm = new Vector3(-Mathf.Sin(t), Mathf.Cos(t), 0f);   // 盤の法線（−X＝給球側へ倒す）
         Vector3 up = new Vector3(Mathf.Sin(t), Mathf.Cos(t), 0f);     // 盤面上の「上」方向（+X・上）
-        // 盤中心 (1.45, 1.60): 天端リム2.69 が C戻りトラフ底(≈2.90)の下、盤の最下端0.85 が
-        // 盆地床(x0.79で0.56)から0.29 上。低い側(−X)が給球パンの真下に来る（2026-08-24 実測前の設計値）
-        Vector3 C = new Vector3(1.45f, 0.36f + LiftY, cz);
         Quaternion rot = Quaternion.LookRotation(nrm, up);
-
-        // 回転体（皿＋穴＋ギア＋点数トリガーが一体で回る）。
-        // ★スケール1のピボットを噛ませる: 機構FBXのプレハブ根は localScale=100 なので、
-        //   直下に Trigger() をぶら下げると localScale がそのまま100倍されて20m角の巨大トリガーになる
-        //   （2026-08-24 実測: 6トリガーが盤ごと飲み込み1000回超の多重加算＝罠6の派生）。
-        var pivot = new GameObject("DiscPivot").transform;
+        // ★スケール1のピボットを噛ませる（罠46）: 機構FBXのプレハブ根は localScale=100 なので、
+        //   直下に Trigger() をぶら下げると 20m角の巨大トリガーになる。
+        var pivot = new GameObject(pivotName).transform;
         pivot.SetParent(g);
         pivot.SetPositionAndRotation(C, rot);
         var drot = pivot.gameObject.AddComponent<Rotator>();
         drot.axis = Vector3.forward;      // メッシュ局所+Z＝盤の法線
-        drot.degreesPerSecond = 18f;      // 遅め＝抽選時間を見せる（罠4の遠心域には入れない）
+        drot.degreesPerSecond = degPerSec;
         var drb = pivot.GetComponent<Rigidbody>();
         drb.isKinematic = true;
         drb.useGravity = false;
         drb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
-        InstantiateMech("Assets/Models/TowerE_PocketDisc.fbx", "PocketDisc", pivot, C, rot,
-            Mat("TowerE_Disc", new Color(0.52f, 0.44f, 0.34f)));
+        InstantiateMech("Assets/Models/TowerE_PocketDisc.fbx", "PocketDisc", pivot, C, rot, discCol == default ? Mat("TowerE_Disc", new Color(0.52f, 0.44f, 0.34f)) : Mat("TowerE_DiscHi", discCol));
         InstantiateMech("Assets/Models/TowerE_StarGear.fbx", "StarGear", pivot, C, rot,
             Mat("TowerE_Gear", new Color(0.80f, 0.62f, 0.22f)));
+        // ポケット裏の判定（皿の子＝穴と一緒に回る）。局所角 45k・口の角幅でPを作る
+        // （k0=9° / k1,k2=14° / k3..k7=22.5°）。
+        var box = new Vector3(0.20f, 0.20f, 0.20f);
+        for (int k = 0; k < 8; k++)
+        {
+            float a = (45f * k) * Mathf.Deg2Rad;
+            // X-mirror（罠19）: メッシュ公称角 a の口は Unity では局所 −sin(a) 側に出る
+            Vector3 p = C + rot * new Vector3(-0.78f * Mathf.Sin(a), 0.78f * Mathf.Cos(a), -0.17f);
+            if (mult != null) MultMark(pivot, p, mult[k], box);
+            else ScoreMark(pivot, p, pts[k], pts[k] >= 100 ? new Color(1.0f, 0.35f, 0.30f) : new Color(1.0f, 0.83f, 0.25f), 0f, box);
+        }
+        return pivot;
+    }
 
-        // 給球パン（固定）: 西高(−0.35, 1.95) → 東低(1.02, 1.65) の12°シュート。
-        // メッシュはZ-up・局所+Xが長手（低い側が+X端・開放）
+    static void BuildTowerE_Disc(Transform root, string name, float zSign)
+    {
+        float cz = 5.0f * zSign;
+        var g = Group(root, name);
+
+        // ---- 通常抽選盤（下段・中心 world (1.45, 1.60)） ----
+        // 天端リム2.69 が C戻りトラフ底(≈2.90)の下、最下端0.85 が盆地床(x0.79で0.56)から0.29 上。
+        // 全8口が加点。9°口=180 / 14°口=55,45 / 22.5°口×5=38,36,34,33,30（等確率なのでほぼ同値）
+        BuildEDisc(g, "DiscPivot", new Vector3(1.45f, 0.36f + LiftY, cz), 18f,
+            new[] { 180, 55, 45, 38, 36, 34, 33, 30 }, null, default);
+
+        // ---- 高得点チャレンジ盤（上段・中心 world (0.10, 3.85)） ----
+        // JPチューブを3段へ短縮した下端 4.37 の直下。x0 の落下は盤面 r0.14（ハブ円錐の斜面）に
+        // 落差0.62で着地し、回転する円錐で振られてチャンネルへ下る。
+        // 排出は全8口とも下段の給球パン（x−1.05〜0.95・広い側は半幅0.80）へ落ちる＝
+        // 「チャレンジ→通常」が必ず繋がる（User指示 2026-08-24）。
+        // 全8口が倍率: 9°口=x6 / 14°口=x5,x4 / 22.5°口×5=x2
+        BuildEDisc(g, "DiscPivotHi", new Vector3(0.10f, 2.61f + LiftY, cz), 22f,
+            null, new[] { 6, 5, 4, 2, 2, 2, 2, 2 }, new Color(0.62f, 0.38f, 0.34f));
+
+        // ---- 給球パン（固定・両系統の合流点） ----
+        // 西高(−1.05, 2.10) → 東低の落とし口(0.95, 1.66) の12.4°シュート。
+        // 受けるのは ①C戻りトラフ西端排出（Fハズレ系） ②チャレンジ盤8口の排出（F当選系）の2つ。
+        // メッシュは長さ2.05・**西側は半幅0.80／落とし口へ0.34にテーパー**（チャレンジ盤の
+        // 排出はz方向に±0.78散るので広い側で受け、落とし口は盤のチャンネルに合わせて絞る）。
         // 注: 機構系FBXは X-mirror（罠19）。メッシュの長手 +X は Unity では局所 −X になるので、
-        // 「局所+Z=パンの上／局所+X=西上がり」になる姿勢を直接指定する
-        // 西端 (−1.05, 2.10) → 東端の落とし口 (0.95, 1.66)。長さ1.40→2.05・内幅0.52→0.68へ拡大
-        // （2026-08-24 User報告: C戻りトラフの排出が遅いと着弾が東へ寄り、旧パン東端0.60を越えて
-        //   盤とパンの隙間からコースアウトしていた。落とし口を x0.95 まで延ばして塞ぐ）。
-        // 落とし口は c=0.40 でリム天端0.55より内側・ハブ円錐(その位置で0.15)より上＝干渉なし。
-        // 投下球は盤面 r≈0.71（低い側）に着地し、そこから r0.83 のチャンネルまで転がる
+        // 「局所+Z=パンの上／局所+X=西上がり」になる姿勢を直接指定する。
         Vector3 panPos = new Vector3(-1.052f, 0.859f + LiftY, cz);
         float ps = 12.4f * Mathf.Deg2Rad;
         Quaternion panRot = Quaternion.LookRotation(
             new Vector3(Mathf.Sin(ps), Mathf.Cos(ps), 0f), Vector3.forward);
         InstantiateMech("Assets/Models/TowerE_FeedPan.fbx", "FeedPan", g, panPos, panRot,
             Mat("TowerE_Pickup", new Color(0.55f, 0.45f, 0.35f)));
-
-        // ポケット裏のスコアトリガー（皿の子＝穴と一緒に回る）。局所角 45k。
-        // 口の角幅で P を作る: k0=9°(当たり)／k1,k2=14°(中)／k3..k7=22.5°(素通り=トリガー無し)
-        int[] slotPts = { 180, 55, 45, 0, 0, 0, 0, 0 };
-        for (int k = 0; k < 8; k++)
-        {
-            if (slotPts[k] == 0) continue;
-            float a = (45f * k) * Mathf.Deg2Rad;
-            // X-mirror（罠19）: メッシュ公称角 a の口は Unity では局所 −sin(a) 側に出る
-            Vector3 p = C + rot * new Vector3(-0.78f * Mathf.Sin(a), 0.78f * Mathf.Cos(a), -0.17f);
-            var col = slotPts[k] >= 100 ? new Color(1.0f, 0.35f, 0.30f) : new Color(1.0f, 0.83f, 0.25f);
-            ScoreMark(pivot, p, slotPts[k], col, 0f, new Vector3(0.20f, 0.20f, 0.20f));
-        }
     }
 
     // ---- 旧タワーE「縦回転ポケット車輪」(0,±5): フェーズ6版（2026-08-24に傾斜ポケット盤へ置換・参照用に残置） ----
