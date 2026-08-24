@@ -224,6 +224,51 @@ E のポケット入賞は6分で 45×5／55×2／180×3。給球パンの落と
 
 併せてやる美化系の懸案: 沼クルーンL/M/S・LiftGuideの自己交差N-gon作り直し（罠50）／タワーH樋の化粧／実機メダルゲーム風テクスチャ。
 
+#### フェーズ8-1 完了（2026-08-24）: ブートストラップ＝`ParkAssembly.blend` の自動生成
+
+上記手順1（ブートストラップ）まで実施。**配置SSOTはこの時点で `BlenderSources/ParkAssembly.blend` に移った**。
+
+**生成物**
+
+| ファイル | 中身 |
+| --- | --- |
+| `BlenderSources/ParkAssembly.blend` | メッシュ123＋機能マーカー123。メッシュは5つの原本.blendから**ライブラリリンク**（User選択・相対パス`//`）。Unityの階層をそのままコレクション階層に再現 |
+| `Docs/park_layout.json` | Unity `ParkScene_v2` の全FBXインスタンス（パス／FBX／メッシュ名／localToWorldMatrix／ローカル・ワールドAABB／コライダ種別） |
+| `Docs/park_markers.json` | ScoreZone(92)・Rotator(23)・Oscillator(5)・BallLift(2)・LapGate(1) の変換とパラメータ |
+| `Docs/mesh_calib.json` | FBXごとの実測変換C（規約名・符号・スケール・両案の残差） |
+| `Docs/mesh_stats_unity.json` / `mesh_stats_blender.json` | 校正の生データ |
+| `Docs/build_park_assembly.py` | 上記から ParkAssembly.blend を組み立て直すスクリプト（冪等） |
+| `Docs/verify_park_assembly.py` | 等価性＋AABB重なりの検証スクリプト |
+
+**確定した座標規約（実測・38メッシュ全件で残差 ≤ 1e-6 m）**
+
+- 「Blenderローカル頂点 → Unityメッシュローカル頂点」の変換 C は**2種類しかない**:
+  - **base系** = `ParkBase.blend` の4オブジェクト（ParkBase / DrainStation / DrainStirrer / LiftGuide）: `C = s·diag( 1, 1, −1)`
+  - **mech系** = **それ以外すべて**: `C = s·diag(−1, 1, 1)`（罠19の「X-mirror」の正体）
+  - `s` はFBXインポータのスケール係数。旧世代FBXが `1.0`、新世代が `0.01`（プレハブ根 localScale=100 と対）
+  - 2案が同値になるのは `TowerF_JPTube`（180°回転で不変＝無害）と `TowerH_Drum` のみ。
+    ドラムは頂点集合の符号付きモーメント `Σz²x` をUnity/Blenderで突き合わせて **mech系と確定**（844頂点・完全一致）
+- **アセンブリが採る唯一の全体規約 G**: `unity = (bx, bz, by)`（y と z の入れ替え・自己逆行列・det −1）。
+  Blender標準の「+Z上／+Y前」→ Unityの「+Y上／+Z前」。以後 per-part の軸規約は不要。
+- したがって各インスタンスの Blender 行列は **`T = G · M · C`**（M = Unityの `localToWorldMatrix`）。
+  det(T) > 0 なので Blender 側に負スケールのオブジェクトは出ない。
+
+**等価性検証の結果**
+
+- 全123インスタンスのワールドAABB（中心・半径）が Unity と **最大 0.076 mm** で一致（＝float32ダンプの精度限界）。
+- 全123マーカーの原点が **最大 3.8e-7 m** で一致。
+- AABB重なりペア = **106**（同軸に重ねる設計＝ボウル＋ホイール等を含む。以後この数の増加を干渉の目安に使う）。
+- 再読込テスト: リンク5本すべて相対パスで解決・非リンクメッシュ0。
+
+**次の一手（フェーズ8-2）**
+
+1. 組み立て済み全体を**単一FBX**で書き出し、Unityにインポートして規約Gを実測確認する。
+   Gの実現が1箇所ズレていても**全体の1変換の直し**で済む（これが移行の狙い）。
+2. `ParkBuilder` を「解釈器」へ縮退。マーカーEmptyのカスタムプロパティ
+   （`points` / `grantMultiplier` / `rot_axis` / `rot_dps` / `osc_*` / `lift_*` / `lapGate` / `unity_path`）を読んで
+   コンポーネントを付けるだけにする。回転体にはスケール1ピボットを自動で噛ませる（罠46）。
+3. 移行後に36球ソークで回帰なしを確認 → 以後の配置調整・干渉検査・美化はBlender側で行う。
+
 ### フェーズ6.7（2026-08-24）: 高得点チャレンジの「倍率」化 ＋ D/E二段化の最終構造（User指示・タワー構造の最終調整）
 
 **順路の最終形**: F/G当選 → **短縮したパイプ** → **高得点チャレンジ段** → （全穴が）→ **通常抽選段** → 盆地。

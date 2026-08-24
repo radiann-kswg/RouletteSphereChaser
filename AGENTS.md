@@ -57,6 +57,7 @@ v1で一度学んだはずの失敗を、v2のフェーズ6でそっくり再演
 - `Assets/LotteryBallKit/` … ボール移植キット（unitypackage出力元。CC BY 4.0・`LICENSE.md`同梱）
 - `Assets/Models/ParkBase.fbx` / `DrainStation.fbx` / `LiftGuide.fbx` / `DrainStirrer.fbx` … 土台・回収系（原本 `BlenderSources/ParkBase.blend`。Basin=ParkBase.fbx）
 - `BlenderSources/LotteryBall.blend` … Blender原本（ボール＋すり鉢）
+- **`BlenderSources/ParkAssembly.blend` … 配置のSSOT（2026-08-24〜）**。メッシュは5つの原本.blendから**ライブラリリンク**（相対パス）。Unityの階層＝コレクション階層。機能マーカー（スコアトリガー・回転体・リフト）はEmpty＋カスタムプロパティ。生成/検証は `Docs/build_park_assembly.py` / `Docs/verify_park_assembly.py`（冪等）。入力は `Docs/park_layout.json` / `park_markers.json` / `mesh_calib.json`
 - `PenchantManufacture_ImageAssets/` … **gitサブモジュール**（User作フォント・CC BY 4.0）。`Assets/Fonts/PenchantManufacture.otf` はここからのコピー。TMP SDFアセットはビルダーが自動生成（`Assets/Fonts/PenchantManufacture_SDF.asset`）
 - 得点表示の標準: **Blender製ScoreGate（チャッカー風）＋ボード上TMP SDFラベル**（深度テスト＋`_CullMode=2`背面カリング→壁越し・裏側の得点は見えない）。ボール番号アトラス`NumberAtlas.png`も同フォントで生成（上段=90番台・下段=0番台のUV反転レイアウト・白地黒丸黒数字。生成はPIL・4xスーパーサンプル）
 - クレジット: `PenchantManufacture image assets by RadianN_kswg / ラジアン（柏木主税） CC BY 4.0`
@@ -85,6 +86,13 @@ v1で一度学んだはずの失敗を、v2のフェーズ6でそっくり再演
 17. 撹拌腕の低速送り（〜0.3m/s）では**+0.06mの登り床すら越えられない**。排出樋（スナウト）は緩い下り一直線に。
 18. **投下点の固定オフセットは分配方位バイアス**になる（西側スパイラル0件の実測）。分岐盤への投下は中心＋解放ジッタで一様化する。
 19. **Blender右手系→Unity左手系の座標規約（2026-08-22確定）**: ベース系（ParkBase.blend）は**Blender Z-up規約**で作成する＝blender X=Unity X／blender Z=Unity Y(上)／blender Y=−Unity Z（純回転・det+1）。Unityインポータは`bakeAxisConversion=ON`、配置は`InstantiateFbx`の`Euler(90,0,0)`で world=(x, y, −z)。**Z反転が1軸残る**ため、ベース系メッシュはZ対称で作る（Z非対称の造形を入れるときは要実測・要補正見直し）。機構系（TowerA.blend）はbake無し＋`Euler(-90,yaw,0)`だが、**こちらもX-mirror**（HighLaneで実測発覚。回転対称メッシュとカイラリティ実測合わせのため長く見えなかった）：**blender+Xの向き = world方位 180°−yaw → 方位azに向けるには yaw=180−az**。新規FBXは必ずインスタンス後にレイキャスト/バウンズで実測確認。
+    - ✅ **数値で確定（2026-08-24・38メッシュ全件で残差 ≤1e-6 m）**: 「Blenderローカル頂点→Unityメッシュローカル頂点」の変換 C は**2種類しかない**。
+      **base系**＝`ParkBase.blend` の4オブジェクト（ParkBase / DrainStation / DrainStirrer / LiftGuide）は `C = s·diag(1, 1, −1)`、
+      **mech系**＝**それ以外すべて**は `C = s·diag(−1, 1, 1)`（これが「X-mirror」の正体）。`s` はFBXインポータのスケール係数（旧世代 1.0 ／ 新世代 0.01＋プレハブ根 localScale=100）。
+      実測値は `Docs/mesh_calib.json`。2案が同値なのは `TowerF_JPTube`（180°回転で不変＝無害）と `TowerH_Drum`（頂点モーメント突合で mech 系と確定）だけ。
+    - **フェーズ8以降はこの per-part 規約を使わない**。`BlenderSources/ParkAssembly.blend` は全体で唯一の規約
+      **G: `unity = (bx, bz, by)`**（y↔z 入替・自己逆行列・det −1）を採り、各インスタンスの行列は `T = G · M · C`（M = Unityの `localToWorldMatrix`）で置いてある。
+      **新規メッシュは ParkAssembly.blend に直接置く**（＝考える規約は G だけ）。単体FBXを個別にUnityへ持ち込む旧方式は使わない。
 20. **エディットモードでコライダ追加後にTransformを動かしたら`Physics.SyncTransforms()`**を呼んでから検証レイキャストすること（未同期だとコライダが旧位置に残り「すり抜け」に見える。プレイ中は自動同期）。
 21. **BlenderのFBXエクスポート前は必ず`select_all(action='DESELECT')`→対象のみ選択**。前回選択が残ったまま`use_selection=True`で出すと**別オブジェクトが混入**する（ScoreGateにHighLaneが混入し全ゲートが幽霊コライダで通路を塞いだ実測事故）。エクスポート後はUnityのプレハブ子メッシュ名で混入チェック。
 22. **FBX差し替え直後のビルダー実行は再インポート完了前の旧プレハブを掴むことがある**。`AssetDatabase.ImportAsset(path, ForceUpdate)`で強制再インポートしてからビルドする。
@@ -145,7 +153,11 @@ v1で一度学んだはずの失敗を、v2のフェーズ6でそっくり再演
 - unity-mcp … Unity側ブリッジを `Packages/manifest.json` に追加済み（`com.coplaydev.unity-mcp` = `https://github.com/CoplayDev/unity-mcp.git?path=/MCPForUnity#main`）。サーバは `uvx --from mcpforunityserver mcp-for-unity --transport stdio`（`mcp-for-unity-server 3.4.7` で疎通確認済み）。**初回はUnityで `Window > MCP for Unity` を開きセットアップウィザードを完了させること。**
 - blender-mcp … アドオンを `~/Library/Application Support/Blender/5.2/scripts/addons/blender_mcp.py` に設置＋userprefsで有効化済み（`BlenderMCP 1.29.0`・Blender 5.2.0 LTSで登録成功を確認）。**Blender GUIのNパネル「BlenderMCP」タブで `Start MCP Server` を押すまで接続できない**（`blender -b` では起動不可）。
 - MCPクライアント設定は `~/.claude.json` のトップレベル `mcpServers` にユーザースコープで登録（`uvx`は絶対パス指定。PATHに依存させない）。**設定はクライアント再起動後に有効。**
-- MCPが使えない状況でも、Blenderは `"/Users/snine9801/Library/Application Support/Steam/steamapps/common/Blender/Blender.app/Contents/MacOS/Blender" --background <blend> --python <script.py>` でヘッドレス実行できる（メッシュ検査・修正・FBX再出力はこれで完結する）。
+- MCPが使えない状況でも、Blenderは `<Blender本体> --background <blend> --python <script.py>` でヘッドレス実行できる（メッシュ検査・修正・FBX再出力はこれで完結する）。
+  実測パス（2026-08-24・Windows環境）: `C:\Program Files (x86)\Steam\steamapps\common\Blender\blender.exe`（Blender 5.2.0 LTS）。
+  **`execute_blender_code_for_cli` は環境変数 `BLENDER_PATH` 未設定だと "Blender executable not found at 'blender'" で落ちる**。
+  設定していないうちは `execute_blender_code`（GUI接続側）を使うこと。GUI側で作業する場合は、開いているファイルを壊さないよう
+  `bpy.ops.wm.read_homefile(use_empty=True)` の前に `bpy.data.is_dirty` を確認する。
 
 **運用**
 
@@ -214,12 +226,18 @@ v1で一度学んだはずの失敗を、v2のフェーズ6でそっくり再演
   - **D**: JPレール下段+0.40・上段ボウル+0.40嵩上げ（0.40が上限）。
   - **D/E全8基の全穴に処理**（素通り廃止）。割当はDESIGN-v2の表を参照（暫定・C/P再計算対象）。
   - テスト球注入で E: 150→x2→180×2=360 ／ D: x6→52×6=312 の全連鎖を確認。36球ソーク回帰なし。
+- ✅ **フェーズ8-1 完了（2026-08-24）: 配置管理のBlender移行・ブートストラップ**。詳細は `Docs/DESIGN-v2.md` 6章「フェーズ8-1」。要点:
+  - **配置のSSOTは `BlenderSources/ParkAssembly.blend` に移った**。メッシュ123＋機能マーカー123（Empty）。メッシュは5つの原本.blendから**リンク**（User選択・相対パス）なので、原本を直せば自動反映される。
+  - 罠19の per-part 座標規約を**数値で潰した**（上記 3章-19 の追記。base系4件／mech系それ以外／全体規約 G は1つだけ）。
+  - **等価性検証: 全123インスタンスのワールドAABBがUnityと最大 0.076 mm 一致・全123マーカー原点が 3.8e-7 m 一致・失敗0**（`Docs/verify_park_assembly.py`）。
+    AABB重なりペアの基準値は **106**（同軸重ね設計を含む。以後この増加を干渉の目安に使う）。
 - **次の作業**:
-  1. **フェーズ7「負荷検証と配点の再計算」**（DESIGN-v2 6章）。36球10分連続で各トリガーの到達確率Pを採って **点数=C/P** で再配点する。
+  1. **フェーズ8-2「単一FBX化とParkBuilder縮退」**（DESIGN-v2 6章「フェーズ8-1」末尾）。
+     ①組み立て済み全体を単一FBXで書き出し→Unityで規約Gを実測確認（ズレても直すのは全体の1変換だけ）
+     ②`ParkBuilder` をマーカーEmptyのカスタムプロパティを読む「解釈器」へ縮退（回転体はスケール1ピボット必須＝罠46）
+     ③36球ソークで回帰なしを確認。
+  2. **フェーズ7「負荷検証と配点の再計算」**（DESIGN-v2 6章）。36球10分連続で各トリガーの到達確率Pを採って **点数=C/P** で再配点する。
      倍率ゲート（MultGate）はPが小さいので、C/P計算では「倍率の期待上乗せ = (倍率-1)×通常段の平均獲得」を点数相当として扱うこと。
-  2. **フェーズ8「美化」の最初に配置管理をBlenderへ移行**（User合意 2026-08-24・DESIGN-v2 6章「フェーズ8」参照）:
-     Unity現行シーン→`park_layout.json`ダンプ→`ParkAssembly.blend`自動組み立て→以後Blenderが配置SSOT→
-     組み立て済み全体を単一FBXで出し、ParkBuilderは「コンポーネントを付けるだけの解釈器」へ縮退。移行直後に旧シーンとの等価性確認。
   残タスクは DESIGN-v2 6章「フェーズ6 積み残し」も参照（GLift上限の解消・タワーH樋の化粧・沼クルーン/LiftGuideの自己交差N-gon作り直し=美化と同時）。
 - ✅ ボールメッシュ/UV再設計済み（2026-08-22）: **メッシュはスフィア化キューブ（クアッド球, 8×8×6面）**（User参考`SphereCube_Test`準拠。極が無く円盤縁のメッシュが破綻しない）。**本体UVは「前後2円ディスク」方式**（参考`UVSphere_Test`準拠）。
   - キャンバスは**2:1**（例2048×1024）。**左円=前半球**（Unity +Z 正面、方位等距離図法・円中心=顔の中心）、**右円=後半球**（左右鏡像=後ろから見た絵をそのまま描ける）。円は画像上で真円（UV空間ではu半径0.24/v半径0.48）

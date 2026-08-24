@@ -1,0 +1,496 @@
+{
+ "DrainStation": {
+  "blenderObj": "DrainStation",
+  "conv": "base",
+  "sign": [
+   1,
+   1,
+   -1
+  ],
+  "scale": 0.009999946140907719,
+  "residBase": 5.019571637427701e-07,
+  "residMech": 0.22499968018596583,
+  "ambiguous": false
+ },
+ "DrainStirrer": {
+  "blenderObj": "DrainStirrer",
+  "conv": "base",
+  "sign": [
+   1,
+   1,
+   -1
+  ],
+  "scale": 1.0,
+  "residBase": 8.940696655246327e-10,
+  "residMech": 0.05400000089406967,
+  "ambiguous": false
+ },
+ "LiftGuide": {
+  "blenderObj": "LiftGuide",
+  "conv": "base",
+  "sign": [
+   1,
+   1,
+   -1
+  ],
+  "scale": 0.01,
+  "residBase": 5.960464543805499e-12,
+  "residMech": 0.14,
+  "ambiguous": false
+ },
+ "LiftTopRail": {
+  "blenderObj": "LiftTopRail",
+  "conv": "mech",
+  "sign": [
+   -1,
+   1,
+   1
+  ],
+  "scale": 0.01,
+  "residBase": 0.125,
+  "residMech": 2.7418136596844486e-09,
+  "ambiguous": false
+ },
+ "ParkBase": {
+  "blenderObj": "ParkBase",
+  "conv": "base",
+  "sign": [
+   1,
+   1,
+   -1
+  ],
+  "scale": 0.01,
+  "residBase": 1.907348626262184e-09,
+  "residMech": 0.02620000047683716,
+  "ambiguous": false
+ },
+ "TowerA_Agitator": {
+  "blenderObj": "AgitatorA",
+  "conv": "mech",
+  "sign": [
+   -1,
+   1,
+   1
+  ],
+  "scale": 1.0000000201075914,
+  "residBase": 0.3376363643124651,
+  "residMech": 3.643124650738738e-07,
+  "ambiguous": false
+ },
+ "TowerA_CollectorFunnel": {
+  "blenderObj": "CollectorFunnel",
+  "conv": "mech",
+  "sign": [
+   -1,
+   1,
+   1
+  ],
+  "scale": 1.0000000232603496,
+  "residBase": 0.751762,
+  "residMech": 3.076327791395883e-07,
+  "ambiguous": false
+ },
+ "TowerA_Distributor": {
+  "blenderObj": "DistributorA",
+  "conv": "mech",
+  "sign": [
+   -1,
+   1,
+   1
+  ],
+  "scale": 0.010000108730729753,
+  "residBase": 0.0023000314484642186,
+  "residMech": 4.684887055754613e-07,
+  "ambiguous": false
+ },
+ "TowerA_HighLane": {
+  "blenderObj": "HighLane",
+  "conv": "mech",
+  "sign": [
+   -1,
+   1,
+   1
+  ],
+  "scale": 0.9999998690401641,
+  "residBase": 2.20003094972211,
+  "residMech": 4.0633405801182576e-07,
+  "ambiguous": false
+ },
+ "TowerA_MiniKuruun": {
+  "blenderObj": "MiniKuruun",
+  "conv": "mech",
+  "sign": [
+   -1,
+   1,
+   1
+  ],
+  "scale": 0.9999999750905969,
+  "residBase": 0.9010163321170724,
+  "residMech": 3.3211707239910737e-07,
+  "ambiguous": false
+ },
+ "TowerA_MiniRouletteBowl": {
+  "blenderObj": "MiniRouletteBowl",
+  "conv": "mech",
+  "sign": [
+   -1,
+   1,
+   1
+  ],
+  "scale": 0.9999998181775637,
+  "residBase": 0.3006370082027864,
+  "residMech": 2.38644887295969e-07,
+  "ambiguous": false
+ },
+ "TowerA_MiniRouletteWheel": {
+  "blenderObj": "MiniRouletteWheel",
+  "conv": "mech",
+  "sign": [
+   -1,
+   1,
+   1
+  ],
+  "scale": 0.999999985098839,
+  "residBase": 0.4439999999254942,
+  "residMech": 2.825364427971877e-07,
+  "ambiguous": false
+ },
+ "TowerA_RouletteBowl": {
+  "blenderObj": "RouletteBowl",
+  "conv": "mech",
+  "sign": [
+   -1,
+   1,
+   1
+  ],
+  "scale": 0.009999897986035478,
+  "residBase": 0.0037783994732907174,
+  "residMech": 3.994732907172671e-07,
+  "ambiguous": false
+ },
+ "TowerA_RouletteWheel": {
+  "blenderObj": "RouletteWheel",
+  "conv": "mech",
+  "sign": [
+   -1,
+   1,
+   1
+  ],
+  "scale": 0.9999999728383905,
+  "residBase": 0.5740000209747985,
+  "residMech": 2.0974798453643473e-08,
+  "ambiguous": false
+ },
+ "TowerA_ScoreGate": {
+  "blenderObj": "ScoreGate",
+  "conv": "mech",
+  "sign": [
+   -1,
+   1,
+   1
+  ],
+  "scale": 0.009999999864059585,
+  "residBase": 0.004100000028756627,
+  "residMech": 9.803395356784705e-11,
+  "ambiguous": false
+ },
+ "TowerA_Spiral3": {
+  "blenderObj": "Spiral3",
+  "conv": "mech",
+  "sign": [
+   -1,
+   1,
+   1
+  ],
+  "scale": 0.009999868270206706,
+  "residBase": 0.01868603939973027,
+  "residMech": 7.524838784717103e-08,
+  "ambiguous": false
+ },
+ "TowerB_CatchChute": {
+  "blenderObj": "TowerB_CatchChute",
+  "conv": "mech",
+  "sign": [
+   -1,
+   1,
+   1
+  ],
+  "scale": 0.010000001454757643,
+  "residBase": 0.004000000752635031,
+  "residMech": 1.4345526763021033e-09,
+  "ambiguous": false
+ },
+ "TowerB_PachiBoard": {
+  "blenderObj": "BPachiBoard",
+  "conv": "mech",
+  "sign": [
+   -1,
+   1,
+   1
+  ],
+  "scale": 0.010000131558824045,
+  "residBase": 0.017369502230013215,
+  "residMech": 1e-06,
+  "ambiguous": false
+ },
+ "TowerB_StepChucker": {
+  "blenderObj": "BStepChucker",
+  "conv": "mech",
+  "sign": [
+   -1,
+   1,
+   1
+  ],
+  "scale": 0.010000171149211676,
+  "residBase": 0.005500094251277752,
+  "residMech": 1.5541199090141067e-07,
+  "ambiguous": false
+ },
+ "TowerC_CatchTurn": {
+  "blenderObj": "CCatchTurn",
+  "conv": "mech",
+  "sign": [
+   -1,
+   1,
+   1
+  ],
+  "scale": 0.010000041898929961,
+  "residBase": 0.040166771964935205,
+  "residMech": 2.2803506479667293e-07,
+  "ambiguous": false
+ },
+ "TowerC_Seesaw": {
+  "blenderObj": "CSeesaw",
+  "conv": "mech",
+  "sign": [
+   -1,
+   1,
+   1
+  ],
+  "scale": 0.010000000223517424,
+  "residBase": 0.00040000001862645196,
+  "residMech": 1.1175871166002604e-10,
+  "ambiguous": false
+ },
+ "TowerC_ZigzagShort": {
+  "blenderObj": "TowerC_ZigzagShort",
+  "conv": "mech",
+  "sign": [
+   -1,
+   1,
+   1
+  ],
+  "scale": 0.009999808958029028,
+  "residBase": 0.015368414618450255,
+  "residMech": 1e-06,
+  "ambiguous": false
+ },
+ "TowerD_Kuruun": {
+  "blenderObj": "TowerD_Kuruun",
+  "conv": "mech",
+  "sign": [
+   -1,
+   1,
+   1
+  ],
+  "scale": 0.00999999983366146,
+  "residBase": 0.0032000000467827146,
+  "residMech": 9.703081567391525e-11,
+  "ambiguous": false
+ },
+ "TowerE_FeedPan": {
+  "blenderObj": "TowerE_FeedPan",
+  "conv": "mech",
+  "sign": [
+   -1,
+   1,
+   1
+  ],
+  "scale": 0.010000000232429602,
+  "residBase": 0.020099999999643514,
+  "residMech": 1.1621480080353797e-10,
+  "ambiguous": false
+ },
+ "TowerE_PocketDisc": {
+  "blenderObj": "TowerE_PocketDisc",
+  "conv": "mech",
+  "sign": [
+   -1,
+   1,
+   1
+  ],
+  "scale": 0.01,
+  "residBase": 0.00490000011920929,
+  "residMech": 1.1920929000874825e-10,
+  "ambiguous": false
+ },
+ "TowerE_StarGear": {
+  "blenderObj": "TowerE_StarGear",
+  "conv": "mech",
+  "sign": [
+   -1,
+   1,
+   1
+  ],
+  "scale": 0.009999559792993065,
+  "residBase": 0.0013999911913897096,
+  "residMech": 3.8711474997527723e-07,
+  "ambiguous": false
+ },
+ "TowerF_CatchTray": {
+  "blenderObj": "FCatchTray",
+  "conv": "mech",
+  "sign": [
+   -1,
+   1,
+   1
+  ],
+  "scale": 1.000000027177248,
+  "residBase": 0.6000000401482074,
+  "residMech": 4.014820742526126e-08,
+  "ambiguous": false
+ },
+ "TowerF_JPTube": {
+  "blenderObj": "TowerF_JPTube",
+  "conv": "base",
+  "sign": [
+   1,
+   1,
+   -1
+  ],
+  "scale": 0.00999999985098839,
+  "residBase": 3.725290475403709e-12,
+  "residMech": 3.725290475403709e-12,
+  "ambiguous": true
+ },
+ "TowerF_MissTray": {
+  "blenderObj": "TowerF_MissTray",
+  "conv": "mech",
+  "sign": [
+   -1,
+   1,
+   1
+  ],
+  "scale": 0.009999999701976785,
+  "residBase": 0.004000000119209287,
+  "residMech": 2.261940471471463e-07,
+  "ambiguous": false
+ },
+ "TowerF_SpinnerDish": {
+  "blenderObj": "JPSpinnerDish",
+  "conv": "mech",
+  "sign": [
+   -1,
+   1,
+   1
+  ],
+  "scale": 0.00999999970504919,
+  "residBase": 0.0032350524305790255,
+  "residMech": 5.243057902551071e-08,
+  "ambiguous": false
+ },
+ "TowerG_FeedCatch": {
+  "blenderObj": "TowerG_FeedCatch",
+  "conv": "mech",
+  "sign": [
+   -1,
+   1,
+   1
+  ],
+  "scale": 0.010000000454130648,
+  "residBase": 0.0105,
+  "residMech": 1.3907751122629874e-10,
+  "ambiguous": false
+ },
+ "TowerG_MergeTray": {
+  "blenderObj": "TowerG_MergeTray",
+  "conv": "mech",
+  "sign": [
+   -1,
+   1,
+   1
+  ],
+  "scale": 0.010000000054186041,
+  "residBase": 0.022400000010159883,
+  "residMech": 3.522092652252784e-10,
+  "ambiguous": false
+ },
+ "TowerG_NumaKuruun_L": {
+  "blenderObj": "NumaKuruun_L",
+  "conv": "mech",
+  "sign": [
+   -1,
+   1,
+   1
+  ],
+  "scale": 0.00999984170472803,
+  "residBase": 0.0017832575332880677,
+  "residMech": 2.5753328806782036e-07,
+  "ambiguous": false
+ },
+ "TowerG_NumaKuruun_M": {
+  "blenderObj": "NumaKuruun_M",
+  "conv": "mech",
+  "sign": [
+   -1,
+   1,
+   1
+  ],
+  "scale": 0.009999675194544314,
+  "residBase": 0.0017409435593825915,
+  "residMech": 5.680059594719011e-07,
+  "ambiguous": false
+ },
+ "TowerG_NumaKuruun_S": {
+  "blenderObj": "NumaKuruun_S",
+  "conv": "mech",
+  "sign": [
+   -1,
+   1,
+   1
+  ],
+  "scale": 0.01000037476382892,
+  "residBase": 0.0017856237312191357,
+  "residMech": 6.237312191355315e-07,
+  "ambiguous": false
+ },
+ "TowerH_Drum": {
+  "blenderObj": "HDrum",
+  "conv": "base",
+  "sign": [
+   1,
+   1,
+   -1
+  ],
+  "scale": 0.010000000264909539,
+  "residBase": 1.953707850881059e-10,
+  "residMech": 1.953707850881059e-10,
+  "ambiguous": true
+ },
+ "TowerH_KarakoDish": {
+  "blenderObj": "HKarakoDish",
+  "conv": "mech",
+  "sign": [
+   -1,
+   1,
+   1
+  ],
+  "scale": 0.010000104791045216,
+  "residBase": 0.008900261945525827,
+  "residMech": 2.6194552582873773e-07,
+  "ambiguous": false
+ },
+ "TowerH_MissPan": {
+  "blenderObj": "TowerH_MissPan",
+  "conv": "mech",
+  "sign": [
+   -1,
+   1,
+   1
+  ],
+  "scale": 0.010000000366797827,
+  "residBase": 0.001800000137549185,
+  "residMech": 2.1348550552705015e-07,
+  "ambiguous": false
+ }
+}
