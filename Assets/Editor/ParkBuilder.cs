@@ -679,8 +679,11 @@ public static class ParkBuilder
         // 注: カウンターチルトは西部が持ち上がりジグザグ底(3.95)と干渉するため不採用。
         // リコシェット対策は E 側のデッキ2枚直列で受けスパンを延ばす方式（BuildTowerE_Wheel参照）。
         // 西端0.80: E車輪の「カップ掃引円 r1.02」（円盤0.88でなく！）がトラフ底3.03を切らない位置（x0.80で2.94）
+        // 2026-08-24: 東側が1.15m余っていた（タワーEの位置調整の名残・User指摘）ので
+        // メッシュの長手だけ0.8倍（5.77→4.61m・断面と高さはそのまま＝勾配7.0°→8.7°）。
+        // 西端の排出点(x0.80・床3.03)を保つために設置xを 6.19 → 5.11 へ寄せる。東端は 6.56→5.41。
         InstantiateMech("Assets/Models/TowerC_CatchTurn.fbx", "ReturnTrough", g,
-            new Vector3(6.19f, 1.85f + LiftY, cz), Quaternion.Euler(-90f, 0, 0),
+            new Vector3(5.11f, 1.85f + LiftY, cz), Quaternion.Euler(-90f, 0, 0),
             Mat("TowerC_CatchTurn", new Color(0.42f, 0.52f, 0.48f)));
     }
 
@@ -799,10 +802,12 @@ public static class ParkBuilder
         // メッシュはZ-up・局所+Xが長手（低い側が+X端・開放）
         // 注: 機構系FBXは X-mirror（罠19）。メッシュの長手 +X は Unity では局所 −X になるので、
         // 「局所+Z=パンの上／局所+X=西上がり」になる姿勢を直接指定する
-        // 西端 (−0.75, 2.04) → 東端の落とし口 (0.62, 1.74)。落とし口を盤の中央まで伸ばすと
-        // ハブ円錐の上へ投げてしまい絵的にも塞ぐので、リム天端の手前(c=0.68>0.55)で止める。
-        // 投下球は盤面 r≈0.61（低い側）に着地し、そこから r0.83 のチャンネルまで転がる
-        Vector3 panPos = new Vector3(-0.747f, 0.797f + LiftY, cz);
+        // 西端 (−1.05, 2.10) → 東端の落とし口 (0.95, 1.66)。長さ1.40→2.05・内幅0.52→0.68へ拡大
+        // （2026-08-24 User報告: C戻りトラフの排出が遅いと着弾が東へ寄り、旧パン東端0.60を越えて
+        //   盤とパンの隙間からコースアウトしていた。落とし口を x0.95 まで延ばして塞ぐ）。
+        // 落とし口は c=0.40 でリム天端0.55より内側・ハブ円錐(その位置で0.15)より上＝干渉なし。
+        // 投下球は盤面 r≈0.71（低い側）に着地し、そこから r0.83 のチャンネルまで転がる
+        Vector3 panPos = new Vector3(-1.052f, 0.859f + LiftY, cz);
         float ps = 12.4f * Mathf.Deg2Rad;
         Quaternion panRot = Quaternion.LookRotation(
             new Vector3(Mathf.Sin(ps), Mathf.Cos(ps), 0f), Vector3.forward);

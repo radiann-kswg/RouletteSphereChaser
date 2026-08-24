@@ -1,13 +1,25 @@
 """メッシュ健全性チェック（AGENTS.md 罠40・罠45）。エクスポート前後に必ず通すこと。
 
 判定するもの:
-  - 縮退面（面積 < 1e-9）      … FBXにゼロ長法線として書き出され、Unityで反転に見える（罠45）
+  - 縮退面（面積 < 1e-9）      … FBXにゼロ長法線として書き出され、Unityで反転に見える（罠49）
   - 極小面（面積 < 1e-6）      … 参考値。多くても直ちに害は無いが要注意
   - ゼロ長／NaN／非正規化の法線 … 1本でもあればエクスポート不可
   - 非多様体エッジ・符号付き体積 … ブーリアン＋ベベルの破綻検出（罠40）
 
+注意（2026-08-24 実測）:
+  - **.blend が OK でも FBX が NG になることがある。判定は必ず書き出したFBXに対して行うこと。**
+    Blenderは読み込み時にループ法線を再計算するので、.blend側ではゼロ法線が見えない
+    （`TowerG_NumaKuruun_S`: .blend ゼロ法線0 / FBX ゼロ法線380）。
+  - 縮退面0なのにゼロ法線が出る場合は**「薄い壁＋スムーズシェード」**を疑う。厚み0.005級のシェルだと
+    内外の面法線が打ち消し合って頂点法線が長さ0になる。当該面を `use_smooth = False` にすれば解消（罠49）。
+  - このスクリプトは Unity インポータの「self-intersecting polygon discarded」までは見ない。
+    非平面の大N-gonがあるメッシュは、Unity側のコンソールも併せて確認すること。
+
 使い方:
+  # macOS
   BL="/Users/snine9801/Library/Application Support/Steam/steamapps/common/Blender/Blender.app/Contents/MacOS/Blender"
+  # Windows (PowerShell)
+  # $BL = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Blender\\blender.exe"
 
   # .blend の全メッシュを検査
   "$BL" --background BlenderSources/ParkBase.blend --python Docs/check_mesh_health.py -- blend
@@ -19,6 +31,10 @@
   for f in Assets/Models/*.fbx; do
     "$BL" --background --python Docs/check_mesh_health.py -- fbx "$f" 2>/dev/null | grep -E "^  "
   done
+
+  # Blender MCP が繋がっているなら execute_blender_code に同じ判定式を流すのが速い（全54ファイルで数十秒）。
+  # bpy.ops.wm.read_homefile(use_empty=True, use_factory_startup=True) → import_scene.fbx をファイルごとに繰り返す
+  # （`read_factory_settings` はMCPのサンドボックスで禁止されている）。
 
 終了コード: 問題ゼロなら 0、1つでも NG があれば 1。
 """
