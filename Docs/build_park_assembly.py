@@ -90,6 +90,8 @@ def main():
     layout = json.load(open(os.path.join(DOCS, "park_layout.json"), encoding="utf-8"))
     markers = json.load(open(os.path.join(DOCS, "park_markers.json"), encoding="utf-8"))["markers"]
     calib = json.load(open(os.path.join(DOCS, "mesh_calib.json"), encoding="utf-8"))
+    mats = json.load(open(os.path.join(DOCS, "park_materials.json"), encoding="utf-8"))
+    labels = json.load(open(os.path.join(DOCS, "park_labels.json"), encoding="utf-8"))["labels"]
 
     bpy.ops.wm.read_homefile(use_empty=True)
     bpy.context.scene.name = "ParkAssembly"
@@ -126,12 +128,15 @@ def main():
         ob["fbx"] = inst["fbx"]
         ob["conv"] = cal["conv"]
         ob["collider"] = inst["collider"]
+        mi = mats.get(inst["path"], {})
+        ob["material"] = mi.get("mat", "")
+        ob["material_rgb"] = mi.get("rgb", [0.5, 0.5, 0.5])
         get_collection(rel[:-1] if len(rel) > 1 else ["_root"], cache).objects.link(ob)
         placed += 1
 
     # ---- 機能マーカー（スコアトリガー・回転体・リフト等）は Empty で表現 ----
-    # Unity のトリガーは 1辺1 のキューブ * localScale。Blender の CUBE エンプティは半径1なので 0.5 を噛ませる。
-    half = Matrix.Diagonal((0.5, 0.5, 0.5, 1.0))
+    # Empty の変換は Unity の localToWorldMatrix をそのまま写す（スケール＝トリガー箱の寸法）。
+    # Blender の CUBE エンプティは半径 display_size なので 0.5 にすると Unity の 1辺1 キューブと一致する。
     mcol = bpy.data.collections.new("_Markers")
     bpy.context.scene.collection.children.link(mcol)
     mcache = {"": mcol}
@@ -144,9 +149,10 @@ def main():
                 "LAP" if "lapGate" in mk else "X")
         e = bpy.data.objects.new("%s_%s.%03d" % (kind, rel[-1], idx), None)
         e.empty_display_type = 'CUBE' if mk["isTrigger"] else 'PLAIN_AXES'
-        e.empty_display_size = 1.0
-        e.matrix_world = G @ u_matrix(mk["m"]) @ (half if mk["isTrigger"] else Matrix.Identity(4))
+        e.empty_display_size = 0.5 if mk["isTrigger"] else 0.15
+        e.matrix_world = G @ u_matrix(mk["m"])
         e["unity_path"] = mk["path"]
+        e["kind"] = kind
         if "scoreZone" in mk:
             e["points"] = mk["scoreZone"]["points"]
             e["grantMultiplier"] = mk["scoreZone"]["grantMultiplier"]
@@ -159,7 +165,6 @@ def main():
         if "ballLift" in mk:
             e["lift_speed"] = mk["ballLift"]["speed"]
             e["lift_jitter"] = mk["ballLift"]["releaseJitter"]
-            e["lift_waypoints"] = json.dumps(mk["ballLift"]["waypoints"])
         if "lapGate" in mk:
             e["lapGate"] = True
         sub = "/".join(rel[:-1])
@@ -168,9 +173,36 @@ def main():
             mcol.children.link(c)
             mcache[sub] = c
         mcache[sub].objects.link(e)
+        # リフトのウェイポイントも子 Empty に。これで搬送経路まで Blender 側が正になる
+        if "ballLift" in mk:
+            for wi, w in enumerate(mk["ballLift"]["waypoints"]):
+                wp = bpy.data.objects.new("W%d_%s.%03d" % (wi, rel[-1], idx), None)
+                wp.empty_display_type = 'SPHERE'
+                wp.empty_display_size = 0.15
+                wp.location = (w[0], w[2], w[1])   # unity -> blender（G は自己逆行列）
+                wp["kind"] = "waypoint"
+                mcache[sub].objects.link(wp)
+                wp.parent = e
+                wp.matrix_parent_inverse = e.matrix_world.inverted()
+
+    # ---- 得点表示（TMP）も配置物なので Empty で持つ ----
+    lcol = bpy.data.collections.new("_Labels")
+    bpy.context.scene.collection.children.link(lcol)
+    for idx, lb in enumerate(labels):
+        e = bpy.data.objects.new("LBL_%s.%03d" % (lb["path"].split("/")[-1], idx), None)
+        e.empty_display_type = 'SINGLE_ARROW'
+        e.empty_display_size = 0.2
+        e.matrix_world = G @ u_matrix(lb["m"])
+        e["kind"] = "LBL"
+        e["unity_path"] = lb["path"]
+        e["text"] = lb["text"]
+        e["fontSize"] = lb["fontSize"]
+        e["color"] = lb["color"]
+        e["billboard"] = bool(lb["billboard"])
+        lcol.objects.link(e)
 
     bpy.ops.wm.save_as_mainfile(filepath=OUT_BLEND, relative_remap=True)
-    return {"placed": placed, "markers": len(markers), "out": OUT_BLEND}
+    return {"placed": placed, "markers": len(markers), "labels": len(labels), "out": OUT_BLEND}
 
 
 result = main()

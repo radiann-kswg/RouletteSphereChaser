@@ -45,8 +45,10 @@ def main():
 
     meshes = {int(o.name.rsplit(".", 1)[1]): o
               for o in bpy.context.scene.objects if o.type == 'MESH' and "unity_path" in o}
+    # 得点表示(LBL)とウェイポイントは別採番なので機能マーカーだけ拾う
     empties = {int(o.name.rsplit(".", 1)[1]): o
-               for o in bpy.context.scene.objects if o.type == 'EMPTY' and "unity_path" in o}
+               for o in bpy.context.scene.objects
+               if o.type == 'EMPTY' and "unity_path" in o and o.get("kind") in ("T", "ROT", "OSC", "LIFT", "LAP")}
 
     bad = []
     worst = 0.0
@@ -77,6 +79,22 @@ def main():
         if err > TOL:
             bad.append((err, mk["path"], "marker"))
 
+    labels = json.load(open(os.path.join(DOCS, "park_labels.json"), encoding="utf-8"))["labels"]
+    lempties = {int(o.name.rsplit(".", 1)[1]): o
+                for o in bpy.context.scene.objects if o.type == 'EMPTY' and o.get("kind") == "LBL"}
+    lworst = 0.0
+    for idx, lb in enumerate(labels):
+        ob = lempties.get(idx)
+        if ob is None:
+            bad.append((999.0, lb["path"], "missing label"))
+            continue
+        p = to_unity(ob.matrix_world.translation)
+        up = (lb["m"][3], lb["m"][7], lb["m"][11])
+        err = max(abs(p[i] - up[i]) for i in range(3))
+        lworst = max(lworst, err)
+        if err > TOL:
+            bad.append((err, lb["path"], "label"))
+
     # AABB重なりの棚卸し（当たり判定ではなく監視用の目安）
     boxes = []
     for idx, ob in meshes.items():
@@ -94,8 +112,10 @@ def main():
     return {
         "instances": len(layout["instances"]),
         "markers": len(markers),
+        "labels": len(labels),
         "maxInstanceErr": round(worst, 8),
         "maxMarkerErr": round(mworst, 8),
+        "maxLabelErr": round(lworst, 8),
         "failures": [[round(b[0], 6), b[1], b[2]] for b in bad[:20]],
         "aabbOverlapPairs": overlaps,
         "ok": len(bad) == 0,

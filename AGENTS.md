@@ -57,7 +57,10 @@ v1で一度学んだはずの失敗を、v2のフェーズ6でそっくり再演
 - `Assets/LotteryBallKit/` … ボール移植キット（unitypackage出力元。CC BY 4.0・`LICENSE.md`同梱）
 - `Assets/Models/ParkBase.fbx` / `DrainStation.fbx` / `LiftGuide.fbx` / `DrainStirrer.fbx` … 土台・回収系（原本 `BlenderSources/ParkBase.blend`。Basin=ParkBase.fbx）
 - `BlenderSources/LotteryBall.blend` … Blender原本（ボール＋すり鉢）
-- **`BlenderSources/ParkAssembly.blend` … 配置のSSOT（2026-08-24〜）**。メッシュは5つの原本.blendから**ライブラリリンク**（相対パス）。Unityの階層＝コレクション階層。機能マーカー（スコアトリガー・回転体・リフト）はEmpty＋カスタムプロパティ。生成/検証は `Docs/build_park_assembly.py` / `Docs/verify_park_assembly.py`（冪等）。入力は `Docs/park_layout.json` / `park_markers.json` / `mesh_calib.json`
+- **`BlenderSources/ParkAssembly.blend` … 配置のSSOT（2026-08-24〜）**。メッシュは5つの原本.blendから**ライブラリリンク**（相対パス）。Unityの階層＝コレクション階層。機能マーカー（スコアトリガー・回転体・リフト・得点表示）はEmpty＋カスタムプロパティ。生成/検証は `Docs/build_park_assembly.py` / `Docs/verify_park_assembly.py`（冪等）。入力は `Docs/park_layout.json` / `park_markers.json` / `park_materials.json` / `park_labels.json` / `mesh_calib.json`
+- `Assets/Models/ParkAssembly.fbx` ＋ `ParkAssembly.params.json` … 上記から `Docs/export_park_assembly.py` が出す**唯一の配置成果物**。`ParkBuilder` はこれを読むだけ
+- `Assets/Scripts/SoakRecorder.cs` ＋ `Assets/Editor/SoakRunner.cs` … `Tools > Run Soak (36 balls)`。トリガー到達数に加えて**コースアウト・停止・迷子の球**を記録し `Docs/soak_*.json` に出す
+- `Docs/diff_scene.py` … 旧シーンのダンプと作り直したシーンの等価性検証（位置・回転・寸法・コンポーネント設定）
 - `PenchantManufacture_ImageAssets/` … **gitサブモジュール**（User作フォント・CC BY 4.0）。`Assets/Fonts/PenchantManufacture.otf` はここからのコピー。TMP SDFアセットはビルダーが自動生成（`Assets/Fonts/PenchantManufacture_SDF.asset`）
 - 得点表示の標準: **Blender製ScoreGate（チャッカー風）＋ボード上TMP SDFラベル**（深度テスト＋`_CullMode=2`背面カリング→壁越し・裏側の得点は見えない）。ボール番号アトラス`NumberAtlas.png`も同フォントで生成（上段=90番台・下段=0番台のUV反転レイアウト・白地黒丸黒数字。生成はPIL・4xスーパーサンプル）
 - クレジット: `PenchantManufacture image assets by RadianN_kswg / ラジアン（柏木主税） CC BY 4.0`
@@ -144,6 +147,12 @@ v1で一度学んだはずの失敗を、v2のフェーズ6でそっくり再演
     - **どちらも「三角化すれば直る」は嘘**。①は非平面なので面が張り替わって形が変わり（実測 Δvol 3e-3・非多様体18→35）、②は `ngon_method='BEAUTY'` が円環を潰して **Δvol −15%・非多様体0→82** になる。**三角化する前に必ず平面性（面平面からの最大ズレ）と単純多角形かどうかを確認する。**
     - 正解は作り直し。円環キャップは「内外2重リングの帯」として、非平面N-gonは `TowerG_MergeTray` と同じ「閉じたソリッドを個別に作って join」方式で。
     - 検算の注意: **Unity側で法線を検算するときは頂点を1000倍してから外積を取る**こと。機構FBXは1/100スケールで入るため、生の座標だと `Vector3.normalized` のイプシロンに埋もれて面法線が全部ゼロになり、「全メッシュ100%破綻」という嘘の結果が出る（本セッションで1回踏んだ）。
+    - なお `ParkAssembly.fbx` への一本化でこの件数は**増えていない**（個別FBXと三角形数が全メッシュ一致することを実測確認済み・2026-08-24）。
+51. **UnityのFBXインポータは Empty(Null) ノードのスケールを「負値×100」で表現する**（2026-08-24実測: Blenderで 0.26 の箱が Unity で localScale −26 になる）。
+    軸変換をスケールに畳み込むためで、**取り込んだEmptyの `rotation` と `localScale` は信用できない**（`position` だけは正しく入る。メッシュノードは正常）。
+    トリガー寸法・回転体の姿勢をEmptyから読むと箱が100倍になり回転も裏返る。**マーカーの姿勢は数値（行列）で渡すこと**——
+    `Docs/export_park_assembly.py` が Unity 座標の localToWorldMatrix を `params.json` に書き、`ParkBuilder` はそれを使う。
+    そのうえで **JSONの位置とFBX Emptyの位置を突き合わせて 1mm 以上ズレたらエラー**にしてある（規約Gのズレを自動検出する仕掛け）。
 
 ## 4. Unity MCP / Blender MCP 運用
 
@@ -240,13 +249,23 @@ v1で一度学んだはずの失敗を、v2のフェーズ6でそっくり再演
   - 罠19の per-part 座標規約を**数値で潰した**（上記 3章-19 の追記。base系4件／mech系それ以外／全体規約 G は1つだけ）。
   - **等価性検証: 全123インスタンスのワールドAABBがUnityと最大 0.076 mm 一致・全123マーカー原点が 3.8e-7 m 一致・失敗0**（`Docs/verify_park_assembly.py`）。
     AABB重なりペアの基準値は **106**（同軸重ね設計を含む。以後この増加を干渉の目安に使う）。
+- ✅ **フェーズ8-2 完了（2026-08-24）: 単一FBX化と `ParkBuilder` の解釈器化**。詳細は `Docs/DESIGN-v2.md` 6章「フェーズ8-2」。要点:
+  - **`ParkBuilder.cs` は 1056行 → 約300行**。**座標を一切計算しない**（`Assets/Models/ParkAssembly.fbx` ＋ `ParkAssembly.params.json` を読むだけ）。
+  - **規約Gの実現値**: FBX往復で180°ヨーが1回入る。`ParkBuilder.RootFix = Quaternion.Euler(0,180,0)` で戻すと `unity = (bx, bz, by)`。
+    90°刻み全24回転の総当たりで実測し、全123インスタンスで最大 **0.063 mm** 一致。**ズレたら直すのはこの1行だけ**。
+  - **罠51を発見**（上記3章）: UnityのFBXインポータはEmptyノードのスケールを負値×100で表現する。マーカーの姿勢は行列で渡すこと。
+  - 回転体は全28基を**スケール1ピボット＋メッシュ子**へ統一（罠46）。旧シーンでスケール100のまま回していた13基を是正。
+  - **等価性検証（`Docs/diff_scene.py`）失敗0**: メッシュ最大0.06mm／マーカー位置完全一致・回転4e-7／得点表示92件も一致。
+  - **36球ソーク×4本（旧2・新2）で コースアウト0**。周回数118〜121で揃う。停止・迷子は**旧シーンでも同頻度**（同一座標で再現）＝
+    既存のアーチ詰まり（罠4/罠23）であって移行の回帰ではない。
+- **作業手順（フェーズ8以降の標準）**: 形は原本`.blend` → 位置/トリガー/回転速度は`ParkAssembly.blend` →
+  `Docs/verify_park_assembly.py` → `Docs/export_park_assembly.py` → Unityで `Tools > Build RouletteSphere Park (v2)` →
+  `Tools > Run Soak (36 balls)`（**コースアウト0を必須条件**にする）。
 - **次の作業**:
-  1. **フェーズ8-2「単一FBX化とParkBuilder縮退」**（DESIGN-v2 6章「フェーズ8-1」末尾）。
-     ①組み立て済み全体を単一FBXで書き出し→Unityで規約Gを実測確認（ズレても直すのは全体の1変換だけ）
-     ②`ParkBuilder` をマーカーEmptyのカスタムプロパティを読む「解釈器」へ縮退（回転体はスケール1ピボット必須＝罠46）
-     ③36球ソークで回帰なしを確認。
-  2. **フェーズ7「負荷検証と配点の再計算」**（DESIGN-v2 6章）。36球10分連続で各トリガーの到達確率Pを採って **点数=C/P** で再配点する。
+  1. **フェーズ7「負荷検証と配点の再計算」**（DESIGN-v2 6章）。36球10分連続で各トリガーの到達確率Pを採って **点数=C/P** で再配点する。
+     計測は `Tools > Run Soak` の `zoneHits` をそのまま使える（`Docs/soak_after_10min.json` が10分版の初回データ）。
      倍率ゲート（MultGate）はPが小さいので、C/P計算では「倍率の期待上乗せ = (倍率-1)×通常段の平均獲得」を点数相当として扱うこと。
+  2. **既存のアーチ詰まり潰し**（ソークで停止/迷子が出る箇所）。実測地点は `(-0.93, 0.72, 0.26)` 付近（旧新とも同座標で再現）とタワーGの沼クルーン。撹拌追加で対処する。
   残タスクは DESIGN-v2 6章「フェーズ6 積み残し」も参照（GLift上限の解消・タワーH樋の化粧・沼クルーン/LiftGuideの自己交差N-gon作り直し=美化と同時）。
 - ✅ ボールメッシュ/UV再設計済み（2026-08-22）: **メッシュはスフィア化キューブ（クアッド球, 8×8×6面）**（User参考`SphereCube_Test`準拠。極が無く円盤縁のメッシュが破綻しない）。**本体UVは「前後2円ディスク」方式**（参考`UVSphere_Test`準拠）。
   - キャンバスは**2:1**（例2048×1024）。**左円=前半球**（Unity +Z 正面、方位等距離図法・円中心=顔の中心）、**右円=後半球**（左右鏡像=後ろから見た絵をそのまま描ける）。円は画像上で真円（UV空間ではu半径0.24/v半径0.48）

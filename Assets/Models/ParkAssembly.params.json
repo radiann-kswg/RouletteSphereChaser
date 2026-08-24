@@ -1,0 +1,10759 @@
+{
+ "meshes": [
+  {
+   "name": "AgitatorA.011",
+   "path": "Park/TowerA/AgitatorA",
+   "collider": "mesh",
+   "material": "Greybox_Accent",
+   "rgb": {
+    "r": 0.95,
+    "g": 0.55,
+    "b": 0.15,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "BowlLower.111",
+   "path": "Park/TowerD_E/BowlLower",
+   "collider": "mesh",
+   "material": "TowerD_Kuruun",
+   "rgb": {
+    "r": 0.5,
+    "g": 0.42,
+    "b": 0.62,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "BowlLower.115",
+   "path": "Park/TowerD_W/BowlLower",
+   "collider": "mesh",
+   "material": "TowerD_Kuruun",
+   "rgb": {
+    "r": 0.5,
+    "g": 0.42,
+    "b": 0.62,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "BowlUpper.110",
+   "path": "Park/TowerD_E/BowlUpper",
+   "collider": "mesh",
+   "material": "TowerD_Kuruun",
+   "rgb": {
+    "r": 0.5,
+    "g": 0.42,
+    "b": 0.62,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "BowlUpper.114",
+   "path": "Park/TowerD_W/BowlUpper",
+   "collider": "mesh",
+   "material": "TowerD_Kuruun",
+   "rgb": {
+    "r": 0.5,
+    "g": 0.42,
+    "b": 0.62,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "CatchChute.106",
+   "path": "Park/TowerB_E/CatchChute",
+   "collider": "mesh",
+   "material": "TowerB_CatchTray",
+   "rgb": {
+    "r": 0.6,
+    "g": 0.45,
+    "b": 0.35,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "CatchChute.109",
+   "path": "Park/TowerB_W/CatchChute",
+   "collider": "mesh",
+   "material": "TowerB_CatchTray",
+   "rgb": {
+    "r": 0.6,
+    "g": 0.45,
+    "b": 0.35,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "CatchTray.076",
+   "path": "Park/TowerF_S/CatchTray",
+   "collider": "mesh",
+   "material": "TowerF_CatchTray",
+   "rgb": {
+    "r": 0.55,
+    "g": 0.5,
+    "b": 0.42,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "CatchTray.082",
+   "path": "Park/TowerF_N/CatchTray",
+   "collider": "mesh",
+   "material": "TowerF_CatchTray",
+   "rgb": {
+    "r": 0.55,
+    "g": 0.5,
+    "b": 0.42,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "CollectorFunnel.052",
+   "path": "Park/TowerA23/CollectorFunnel",
+   "collider": "mesh",
+   "material": "TowerA_CollectorFunnel",
+   "rgb": {
+    "r": 0.55,
+    "g": 0.5,
+    "b": 0.68,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "DistributorA.010",
+   "path": "Park/TowerA/DistributorA",
+   "collider": "mesh",
+   "material": "TowerA_Distributor",
+   "rgb": {
+    "r": 0.55,
+    "g": 0.68,
+    "b": 0.75,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "DrainStation.001",
+   "path": "Park/DrainStation/DrainStation",
+   "collider": "mesh",
+   "material": "DrainStation",
+   "rgb": {
+    "r": 0.42,
+    "g": 0.45,
+    "b": 0.52,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "Drum.119",
+   "path": "Park/TowerH/Drum",
+   "collider": "mesh",
+   "material": "TowerH_Drum",
+   "rgb": {
+    "r": 0.8,
+    "g": 0.55,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "FeedGuide_N.061",
+   "path": "Park/TowerG_E/FeedGuide_N",
+   "collider": "mesh",
+   "material": "TowerF_CatchTray",
+   "rgb": {
+    "r": 0.55,
+    "g": 0.5,
+    "b": 0.42,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "FeedGuide_N.069",
+   "path": "Park/TowerG_W/FeedGuide_N",
+   "collider": "mesh",
+   "material": "TowerF_CatchTray",
+   "rgb": {
+    "r": 0.55,
+    "g": 0.5,
+    "b": 0.42,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "FeedGuide_S.060",
+   "path": "Park/TowerG_E/FeedGuide_S",
+   "collider": "mesh",
+   "material": "TowerF_CatchTray",
+   "rgb": {
+    "r": 0.55,
+    "g": 0.5,
+    "b": 0.42,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "FeedGuide_S.068",
+   "path": "Park/TowerG_W/FeedGuide_S",
+   "collider": "mesh",
+   "material": "TowerF_CatchTray",
+   "rgb": {
+    "r": 0.55,
+    "g": 0.5,
+    "b": 0.42,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "FeedPan.098",
+   "path": "Park/TowerE_S/FeedPan",
+   "collider": "mesh",
+   "material": "TowerE_Pickup",
+   "rgb": {
+    "r": 0.55,
+    "g": 0.45,
+    "b": 0.35,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "FeedPan.103",
+   "path": "Park/TowerE_N/FeedPan",
+   "collider": "mesh",
+   "material": "TowerE_Pickup",
+   "rgb": {
+    "r": 0.55,
+    "g": 0.45,
+    "b": 0.35,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "GrandRouletteBowl.054",
+   "path": "Park/TowerA23/GrandRouletteBowl",
+   "collider": "mesh",
+   "material": "TowerA_GrandRouletteBowl",
+   "rgb": {
+    "r": 0.28,
+    "g": 0.4,
+    "b": 0.3,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "GrandRouletteWheel.055",
+   "path": "Park/TowerA23/GrandRouletteWheel",
+   "collider": "mesh",
+   "material": "TowerA_GrandRouletteWheel",
+   "rgb": {
+    "r": 0.7,
+    "g": 0.28,
+    "b": 0.3,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "HighLane_0.017",
+   "path": "Park/TowerA23/Chain_45/HighLane_0",
+   "collider": "mesh",
+   "material": "TowerA_HighLane",
+   "rgb": {
+    "r": 0.85,
+    "g": 0.72,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "HighLane_0.047",
+   "path": "Park/TowerA23/Chain_315/HighLane_0",
+   "collider": "mesh",
+   "material": "TowerA_HighLane",
+   "rgb": {
+    "r": 0.85,
+    "g": 0.72,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "HighLane_180.030",
+   "path": "Park/TowerA23/Chain_135/HighLane_180",
+   "collider": "mesh",
+   "material": "TowerA_HighLane",
+   "rgb": {
+    "r": 0.85,
+    "g": 0.72,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "HighLane_180.039",
+   "path": "Park/TowerA23/Chain_225/HighLane_180",
+   "collider": "mesh",
+   "material": "TowerA_HighLane",
+   "rgb": {
+    "r": 0.85,
+    "g": 0.72,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "HighLane_270.041",
+   "path": "Park/TowerA23/Chain_225/HighLane_270",
+   "collider": "mesh",
+   "material": "TowerA_HighLane",
+   "rgb": {
+    "r": 0.85,
+    "g": 0.72,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "HighLane_270.051",
+   "path": "Park/TowerA23/Chain_315/HighLane_270",
+   "collider": "mesh",
+   "material": "TowerA_HighLane",
+   "rgb": {
+    "r": 0.85,
+    "g": 0.72,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "HighLane_90.019",
+   "path": "Park/TowerA23/Chain_45/HighLane_90",
+   "collider": "mesh",
+   "material": "TowerA_HighLane",
+   "rgb": {
+    "r": 0.85,
+    "g": 0.72,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "HighLane_90.028",
+   "path": "Park/TowerA23/Chain_135/HighLane_90",
+   "collider": "mesh",
+   "material": "TowerA_HighLane",
+   "rgb": {
+    "r": 0.85,
+    "g": 0.72,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "JPRail_2.52.067",
+   "path": "Park/TowerG_E/JPRail_2.52",
+   "collider": "mesh",
+   "material": "TowerG_JPRail",
+   "rgb": {
+    "r": 1.0,
+    "g": 0.55,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "JPRail_2.52.075",
+   "path": "Park/TowerG_W/JPRail_2.52",
+   "collider": "mesh",
+   "material": "TowerG_JPRail",
+   "rgb": {
+    "r": 1.0,
+    "g": 0.55,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "JPRail_2.92.066",
+   "path": "Park/TowerG_E/JPRail_2.92",
+   "collider": "mesh",
+   "material": "TowerG_JPRail",
+   "rgb": {
+    "r": 1.0,
+    "g": 0.55,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "JPRail_2.92.074",
+   "path": "Park/TowerG_W/JPRail_2.92",
+   "collider": "mesh",
+   "material": "TowerG_JPRail",
+   "rgb": {
+    "r": 1.0,
+    "g": 0.55,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "JPTube_0.079",
+   "path": "Park/TowerF_S/JPTube_0",
+   "collider": "mesh",
+   "material": "TowerF_JPTube",
+   "rgb": {
+    "r": 1.0,
+    "g": 0.55,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "JPTube_0.085",
+   "path": "Park/TowerF_N/JPTube_0",
+   "collider": "mesh",
+   "material": "TowerF_JPTube",
+   "rgb": {
+    "r": 1.0,
+    "g": 0.55,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "JPTube_1.080",
+   "path": "Park/TowerF_S/JPTube_1",
+   "collider": "mesh",
+   "material": "TowerF_JPTube",
+   "rgb": {
+    "r": 1.0,
+    "g": 0.55,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "JPTube_1.086",
+   "path": "Park/TowerF_N/JPTube_1",
+   "collider": "mesh",
+   "material": "TowerF_JPTube",
+   "rgb": {
+    "r": 1.0,
+    "g": 0.55,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "JPTube_2.081",
+   "path": "Park/TowerF_S/JPTube_2",
+   "collider": "mesh",
+   "material": "TowerF_JPTube",
+   "rgb": {
+    "r": 1.0,
+    "g": 0.55,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "JPTube_2.087",
+   "path": "Park/TowerF_N/JPTube_2",
+   "collider": "mesh",
+   "material": "TowerF_JPTube",
+   "rgb": {
+    "r": 1.0,
+    "g": 0.55,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "KarakoDish.118",
+   "path": "Park/TowerH/KarakoDish",
+   "collider": "mesh",
+   "material": "TowerH_KarakoDish",
+   "rgb": {
+    "r": 0.55,
+    "g": 0.4,
+    "b": 0.55,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LiftN_Guide.003",
+   "path": "Park/Lifts/LiftN_Guide",
+   "collider": "none",
+   "material": "LiftGuide",
+   "rgb": {
+    "r": 0.35,
+    "g": 0.35,
+    "b": 0.4,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LiftS_Guide.004",
+   "path": "Park/Lifts/LiftS_Guide",
+   "collider": "none",
+   "material": "LiftGuide",
+   "rgb": {
+    "r": 0.35,
+    "g": 0.35,
+    "b": 0.4,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LiftTopRail.005",
+   "path": "Park/Lifts/LiftTopRail",
+   "collider": "none",
+   "material": "LiftGuide",
+   "rgb": {
+    "r": 0.35,
+    "g": 0.35,
+    "b": 0.4,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "MergeTray.065",
+   "path": "Park/TowerG_E/MergeTray",
+   "collider": "mesh",
+   "material": "TowerG_MergeTray",
+   "rgb": {
+    "r": 0.46,
+    "g": 0.4,
+    "b": 0.5,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "MergeTray.073",
+   "path": "Park/TowerG_W/MergeTray",
+   "collider": "mesh",
+   "material": "TowerG_MergeTray",
+   "rgb": {
+    "r": 0.46,
+    "g": 0.4,
+    "b": 0.5,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "MiniKuruun.012",
+   "path": "Park/TowerA23/Chain_45/MiniKuruun",
+   "collider": "mesh",
+   "material": "TowerA_MiniKuruun",
+   "rgb": {
+    "r": 0.72,
+    "g": 0.55,
+    "b": 0.62,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "MiniKuruun.022",
+   "path": "Park/TowerA23/Chain_135/MiniKuruun",
+   "collider": "mesh",
+   "material": "TowerA_MiniKuruun",
+   "rgb": {
+    "r": 0.72,
+    "g": 0.55,
+    "b": 0.62,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "MiniKuruun.032",
+   "path": "Park/TowerA23/Chain_225/MiniKuruun",
+   "collider": "mesh",
+   "material": "TowerA_MiniKuruun",
+   "rgb": {
+    "r": 0.72,
+    "g": 0.55,
+    "b": 0.62,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "MiniKuruun.042",
+   "path": "Park/TowerA23/Chain_315/MiniKuruun",
+   "collider": "mesh",
+   "material": "TowerA_MiniKuruun",
+   "rgb": {
+    "r": 0.72,
+    "g": 0.55,
+    "b": 0.62,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "MiniRouletteBowl.014",
+   "path": "Park/TowerA23/Chain_45/MiniRouletteBowl",
+   "collider": "mesh",
+   "material": "TowerA_MiniRouletteBowl",
+   "rgb": {
+    "r": 0.3,
+    "g": 0.45,
+    "b": 0.3,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "MiniRouletteBowl.024",
+   "path": "Park/TowerA23/Chain_135/MiniRouletteBowl",
+   "collider": "mesh",
+   "material": "TowerA_MiniRouletteBowl",
+   "rgb": {
+    "r": 0.3,
+    "g": 0.45,
+    "b": 0.3,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "MiniRouletteBowl.034",
+   "path": "Park/TowerA23/Chain_225/MiniRouletteBowl",
+   "collider": "mesh",
+   "material": "TowerA_MiniRouletteBowl",
+   "rgb": {
+    "r": 0.3,
+    "g": 0.45,
+    "b": 0.3,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "MiniRouletteBowl.044",
+   "path": "Park/TowerA23/Chain_315/MiniRouletteBowl",
+   "collider": "mesh",
+   "material": "TowerA_MiniRouletteBowl",
+   "rgb": {
+    "r": 0.3,
+    "g": 0.45,
+    "b": 0.3,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "MiniRouletteWheel.015",
+   "path": "Park/TowerA23/Chain_45/MiniRouletteWheel",
+   "collider": "mesh",
+   "material": "TowerA_MiniRouletteWheel",
+   "rgb": {
+    "r": 0.75,
+    "g": 0.3,
+    "b": 0.28,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "MiniRouletteWheel.025",
+   "path": "Park/TowerA23/Chain_135/MiniRouletteWheel",
+   "collider": "mesh",
+   "material": "TowerA_MiniRouletteWheel",
+   "rgb": {
+    "r": 0.75,
+    "g": 0.3,
+    "b": 0.28,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "MiniRouletteWheel.035",
+   "path": "Park/TowerA23/Chain_225/MiniRouletteWheel",
+   "collider": "mesh",
+   "material": "TowerA_MiniRouletteWheel",
+   "rgb": {
+    "r": 0.75,
+    "g": 0.3,
+    "b": 0.28,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "MiniRouletteWheel.045",
+   "path": "Park/TowerA23/Chain_315/MiniRouletteWheel",
+   "collider": "mesh",
+   "material": "TowerA_MiniRouletteWheel",
+   "rgb": {
+    "r": 0.75,
+    "g": 0.3,
+    "b": 0.28,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "MissPan.121",
+   "path": "Park/TowerH/MissPan",
+   "collider": "mesh",
+   "material": "TowerH_CatchFunnel",
+   "rgb": {
+    "r": 0.55,
+    "g": 0.4,
+    "b": 0.55,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "MissTray.078",
+   "path": "Park/TowerF_S/MissTray",
+   "collider": "mesh",
+   "material": "TowerF_MissTray",
+   "rgb": {
+    "r": 0.4,
+    "g": 0.32,
+    "b": 0.45,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "MissTray.084",
+   "path": "Park/TowerF_N/MissTray",
+   "collider": "mesh",
+   "material": "TowerF_MissTray",
+   "rgb": {
+    "r": 0.4,
+    "g": 0.32,
+    "b": 0.45,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "NumaKuruun_1.062",
+   "path": "Park/TowerG_E/NumaKuruun_1",
+   "collider": "mesh",
+   "material": "TowerG_NumaKuruun",
+   "rgb": {
+    "r": 0.45,
+    "g": 0.55,
+    "b": 0.4,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "NumaKuruun_1.070",
+   "path": "Park/TowerG_W/NumaKuruun_1",
+   "collider": "mesh",
+   "material": "TowerG_NumaKuruun",
+   "rgb": {
+    "r": 0.45,
+    "g": 0.55,
+    "b": 0.4,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "NumaKuruun_2.063",
+   "path": "Park/TowerG_E/NumaKuruun_2",
+   "collider": "mesh",
+   "material": "TowerG_NumaKuruun",
+   "rgb": {
+    "r": 0.45,
+    "g": 0.55,
+    "b": 0.4,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "NumaKuruun_2.071",
+   "path": "Park/TowerG_W/NumaKuruun_2",
+   "collider": "mesh",
+   "material": "TowerG_NumaKuruun",
+   "rgb": {
+    "r": 0.45,
+    "g": 0.55,
+    "b": 0.4,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "NumaKuruun_3.064",
+   "path": "Park/TowerG_E/NumaKuruun_3",
+   "collider": "mesh",
+   "material": "TowerG_NumaKuruun",
+   "rgb": {
+    "r": 0.45,
+    "g": 0.55,
+    "b": 0.4,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "NumaKuruun_3.072",
+   "path": "Park/TowerG_W/NumaKuruun_3",
+   "collider": "mesh",
+   "material": "TowerG_NumaKuruun",
+   "rgb": {
+    "r": 0.45,
+    "g": 0.55,
+    "b": 0.4,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "PachiBoard.104",
+   "path": "Park/TowerB_E/PachiBoard",
+   "collider": "mesh",
+   "material": "TowerB_PachiBoard",
+   "rgb": {
+    "r": 0.3,
+    "g": 0.35,
+    "b": 0.5,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "PachiBoard.107",
+   "path": "Park/TowerB_W/PachiBoard",
+   "collider": "mesh",
+   "material": "TowerB_PachiBoard",
+   "rgb": {
+    "r": 0.3,
+    "g": 0.35,
+    "b": 0.5,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ParkBase.000",
+   "path": "Park/Basin/ParkBase",
+   "collider": "mesh",
+   "material": "ParkBase",
+   "rgb": {
+    "r": 0.55,
+    "g": 0.55,
+    "b": 0.58,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "PocketDisc.094",
+   "path": "Park/TowerE_S/DiscPivot/PocketDisc",
+   "collider": "mesh",
+   "material": "TowerE_Disc",
+   "rgb": {
+    "r": 0.52,
+    "g": 0.44,
+    "b": 0.34,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "PocketDisc.096",
+   "path": "Park/TowerE_S/DiscPivotHi/PocketDisc",
+   "collider": "mesh",
+   "material": "TowerE_DiscHi",
+   "rgb": {
+    "r": 0.62,
+    "g": 0.38,
+    "b": 0.34,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "PocketDisc.099",
+   "path": "Park/TowerE_N/DiscPivot/PocketDisc",
+   "collider": "mesh",
+   "material": "TowerE_Disc",
+   "rgb": {
+    "r": 0.52,
+    "g": 0.44,
+    "b": 0.34,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "PocketDisc.101",
+   "path": "Park/TowerE_N/DiscPivotHi/PocketDisc",
+   "collider": "mesh",
+   "material": "TowerE_DiscHi",
+   "rgb": {
+    "r": 0.62,
+    "g": 0.38,
+    "b": 0.34,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ReturnTrough.090",
+   "path": "Park/TowerC_S/ReturnTrough",
+   "collider": "mesh",
+   "material": "TowerC_CatchTurn",
+   "rgb": {
+    "r": 0.42,
+    "g": 0.52,
+    "b": 0.48,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ReturnTrough.093",
+   "path": "Park/TowerC_N/ReturnTrough",
+   "collider": "mesh",
+   "material": "TowerC_CatchTurn",
+   "rgb": {
+    "r": 0.42,
+    "g": 0.52,
+    "b": 0.48,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ScoreGate_10.016",
+   "path": "Park/TowerA23/Chain_45/ScoreGate_10",
+   "collider": "mesh",
+   "material": "TowerA_ScoreGate",
+   "rgb": {
+    "r": 0.8,
+    "g": 0.66,
+    "b": 0.3,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ScoreGate_10.018",
+   "path": "Park/TowerA23/Chain_45/ScoreGate_10",
+   "collider": "mesh",
+   "material": "TowerA_ScoreGate",
+   "rgb": {
+    "r": 0.8,
+    "g": 0.66,
+    "b": 0.3,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ScoreGate_10.020",
+   "path": "Park/TowerA23/Chain_45/ScoreGate_10",
+   "collider": "mesh",
+   "material": "TowerA_ScoreGate",
+   "rgb": {
+    "r": 0.8,
+    "g": 0.66,
+    "b": 0.3,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ScoreGate_10.021",
+   "path": "Park/TowerA23/Chain_45/ScoreGate_10",
+   "collider": "mesh",
+   "material": "TowerA_ScoreGate",
+   "rgb": {
+    "r": 0.8,
+    "g": 0.66,
+    "b": 0.3,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ScoreGate_10.026",
+   "path": "Park/TowerA23/Chain_135/ScoreGate_10",
+   "collider": "mesh",
+   "material": "TowerA_ScoreGate",
+   "rgb": {
+    "r": 0.8,
+    "g": 0.66,
+    "b": 0.3,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ScoreGate_10.027",
+   "path": "Park/TowerA23/Chain_135/ScoreGate_10",
+   "collider": "mesh",
+   "material": "TowerA_ScoreGate",
+   "rgb": {
+    "r": 0.8,
+    "g": 0.66,
+    "b": 0.3,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ScoreGate_10.029",
+   "path": "Park/TowerA23/Chain_135/ScoreGate_10",
+   "collider": "mesh",
+   "material": "TowerA_ScoreGate",
+   "rgb": {
+    "r": 0.8,
+    "g": 0.66,
+    "b": 0.3,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ScoreGate_10.031",
+   "path": "Park/TowerA23/Chain_135/ScoreGate_10",
+   "collider": "mesh",
+   "material": "TowerA_ScoreGate",
+   "rgb": {
+    "r": 0.8,
+    "g": 0.66,
+    "b": 0.3,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ScoreGate_10.036",
+   "path": "Park/TowerA23/Chain_225/ScoreGate_10",
+   "collider": "mesh",
+   "material": "TowerA_ScoreGate",
+   "rgb": {
+    "r": 0.8,
+    "g": 0.66,
+    "b": 0.3,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ScoreGate_10.037",
+   "path": "Park/TowerA23/Chain_225/ScoreGate_10",
+   "collider": "mesh",
+   "material": "TowerA_ScoreGate",
+   "rgb": {
+    "r": 0.8,
+    "g": 0.66,
+    "b": 0.3,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ScoreGate_10.038",
+   "path": "Park/TowerA23/Chain_225/ScoreGate_10",
+   "collider": "mesh",
+   "material": "TowerA_ScoreGate",
+   "rgb": {
+    "r": 0.8,
+    "g": 0.66,
+    "b": 0.3,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ScoreGate_10.040",
+   "path": "Park/TowerA23/Chain_225/ScoreGate_10",
+   "collider": "mesh",
+   "material": "TowerA_ScoreGate",
+   "rgb": {
+    "r": 0.8,
+    "g": 0.66,
+    "b": 0.3,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ScoreGate_10.046",
+   "path": "Park/TowerA23/Chain_315/ScoreGate_10",
+   "collider": "mesh",
+   "material": "TowerA_ScoreGate",
+   "rgb": {
+    "r": 0.8,
+    "g": 0.66,
+    "b": 0.3,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ScoreGate_10.048",
+   "path": "Park/TowerA23/Chain_315/ScoreGate_10",
+   "collider": "mesh",
+   "material": "TowerA_ScoreGate",
+   "rgb": {
+    "r": 0.8,
+    "g": 0.66,
+    "b": 0.3,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ScoreGate_10.049",
+   "path": "Park/TowerA23/Chain_315/ScoreGate_10",
+   "collider": "mesh",
+   "material": "TowerA_ScoreGate",
+   "rgb": {
+    "r": 0.8,
+    "g": 0.66,
+    "b": 0.3,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ScoreGate_10.050",
+   "path": "Park/TowerA23/Chain_315/ScoreGate_10",
+   "collider": "mesh",
+   "material": "TowerA_ScoreGate",
+   "rgb": {
+    "r": 0.8,
+    "g": 0.66,
+    "b": 0.3,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ScoreGate_10.056",
+   "path": "Park/TowerA23/ScoreGate_10",
+   "collider": "mesh",
+   "material": "TowerA_ScoreGate",
+   "rgb": {
+    "r": 0.8,
+    "g": 0.66,
+    "b": 0.3,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ScoreGate_10.057",
+   "path": "Park/TowerA23/ScoreGate_10",
+   "collider": "mesh",
+   "material": "TowerA_ScoreGate",
+   "rgb": {
+    "r": 0.8,
+    "g": 0.66,
+    "b": 0.3,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ScoreGate_10.059",
+   "path": "Park/TowerA23/ScoreGate_10",
+   "collider": "mesh",
+   "material": "TowerA_ScoreGate",
+   "rgb": {
+    "r": 0.8,
+    "g": 0.66,
+    "b": 0.3,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ScoreGate_20.058",
+   "path": "Park/TowerA23/ScoreGate_20",
+   "collider": "mesh",
+   "material": "TowerA_ScoreGate",
+   "rgb": {
+    "r": 0.8,
+    "g": 0.66,
+    "b": 0.3,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "Seesaw.089",
+   "path": "Park/TowerC_S/Seesaw",
+   "collider": "mesh",
+   "material": "TowerC_Seesaw",
+   "rgb": {
+    "r": 0.75,
+    "g": 0.6,
+    "b": 0.3,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "Seesaw.092",
+   "path": "Park/TowerC_N/Seesaw",
+   "collider": "mesh",
+   "material": "TowerC_Seesaw",
+   "rgb": {
+    "r": 0.75,
+    "g": 0.6,
+    "b": 0.3,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "SpinnerDish.077",
+   "path": "Park/TowerF_S/SpinnerDish",
+   "collider": "mesh",
+   "material": "TowerF_SpinnerDish",
+   "rgb": {
+    "r": 0.75,
+    "g": 0.55,
+    "b": 0.2,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "SpinnerDish.083",
+   "path": "Park/TowerF_N/SpinnerDish",
+   "collider": "mesh",
+   "material": "TowerF_SpinnerDish",
+   "rgb": {
+    "r": 0.75,
+    "g": 0.55,
+    "b": 0.2,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "SpiralA_135.007",
+   "path": "Park/TowerA/SpiralA_135",
+   "collider": "mesh",
+   "material": "TowerA_Spiral",
+   "rgb": {
+    "r": 0.78,
+    "g": 0.64,
+    "b": 0.45,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "SpiralA_225.008",
+   "path": "Park/TowerA/SpiralA_225",
+   "collider": "mesh",
+   "material": "TowerA_Spiral",
+   "rgb": {
+    "r": 0.78,
+    "g": 0.64,
+    "b": 0.45,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "SpiralA_315.009",
+   "path": "Park/TowerA/SpiralA_315",
+   "collider": "mesh",
+   "material": "TowerA_Spiral",
+   "rgb": {
+    "r": 0.78,
+    "g": 0.64,
+    "b": 0.45,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "SpiralA_45.006",
+   "path": "Park/TowerA/SpiralA_45",
+   "collider": "mesh",
+   "material": "TowerA_Spiral",
+   "rgb": {
+    "r": 0.78,
+    "g": 0.64,
+    "b": 0.45,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "StarGear.095",
+   "path": "Park/TowerE_S/DiscPivot/StarGear",
+   "collider": "mesh",
+   "material": "TowerE_Gear",
+   "rgb": {
+    "r": 0.8,
+    "g": 0.62,
+    "b": 0.22,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "StarGear.097",
+   "path": "Park/TowerE_S/DiscPivotHi/StarGear",
+   "collider": "mesh",
+   "material": "TowerE_Gear",
+   "rgb": {
+    "r": 0.8,
+    "g": 0.62,
+    "b": 0.22,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "StarGear.100",
+   "path": "Park/TowerE_N/DiscPivot/StarGear",
+   "collider": "mesh",
+   "material": "TowerE_Gear",
+   "rgb": {
+    "r": 0.8,
+    "g": 0.62,
+    "b": 0.22,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "StarGear.102",
+   "path": "Park/TowerE_N/DiscPivotHi/StarGear",
+   "collider": "mesh",
+   "material": "TowerE_Gear",
+   "rgb": {
+    "r": 0.8,
+    "g": 0.62,
+    "b": 0.22,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "StepChucker.105",
+   "path": "Park/TowerB_E/StepChucker",
+   "collider": "mesh",
+   "material": "TowerB_StepChucker",
+   "rgb": {
+    "r": 0.55,
+    "g": 0.35,
+    "b": 0.4,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "StepChucker.108",
+   "path": "Park/TowerB_W/StepChucker",
+   "collider": "mesh",
+   "material": "TowerB_StepChucker",
+   "rgb": {
+    "r": 0.55,
+    "g": 0.35,
+    "b": 0.4,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "StirrerMesh.002",
+   "path": "Park/DrainStation/DrainStirrer/StirrerMesh",
+   "collider": "mesh",
+   "material": "Greybox_Accent",
+   "rgb": {
+    "r": 0.95,
+    "g": 0.55,
+    "b": 0.15,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "StirrerMesh.013",
+   "path": "Park/TowerA23/Chain_45/KuruunStirrer/StirrerMesh",
+   "collider": "mesh",
+   "material": "Greybox_Accent",
+   "rgb": {
+    "r": 0.95,
+    "g": 0.55,
+    "b": 0.15,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "StirrerMesh.023",
+   "path": "Park/TowerA23/Chain_135/KuruunStirrer/StirrerMesh",
+   "collider": "mesh",
+   "material": "Greybox_Accent",
+   "rgb": {
+    "r": 0.95,
+    "g": 0.55,
+    "b": 0.15,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "StirrerMesh.033",
+   "path": "Park/TowerA23/Chain_225/KuruunStirrer/StirrerMesh",
+   "collider": "mesh",
+   "material": "Greybox_Accent",
+   "rgb": {
+    "r": 0.95,
+    "g": 0.55,
+    "b": 0.15,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "StirrerMesh.043",
+   "path": "Park/TowerA23/Chain_315/KuruunStirrer/StirrerMesh",
+   "collider": "mesh",
+   "material": "Greybox_Accent",
+   "rgb": {
+    "r": 0.95,
+    "g": 0.55,
+    "b": 0.15,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "StirrerMesh.053",
+   "path": "Park/TowerA23/FunnelStirrer/StirrerMesh",
+   "collider": "mesh",
+   "material": "Greybox_Accent",
+   "rgb": {
+    "r": 0.95,
+    "g": 0.55,
+    "b": 0.15,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "StirrerMesh.112",
+   "path": "Park/TowerD_E/StirrerUpper/StirrerMesh",
+   "collider": "mesh",
+   "material": "Greybox_Accent",
+   "rgb": {
+    "r": 0.95,
+    "g": 0.55,
+    "b": 0.15,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "StirrerMesh.113",
+   "path": "Park/TowerD_E/StirrerLower/StirrerMesh",
+   "collider": "mesh",
+   "material": "Greybox_Accent",
+   "rgb": {
+    "r": 0.95,
+    "g": 0.55,
+    "b": 0.15,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "StirrerMesh.116",
+   "path": "Park/TowerD_W/StirrerUpper/StirrerMesh",
+   "collider": "mesh",
+   "material": "Greybox_Accent",
+   "rgb": {
+    "r": 0.95,
+    "g": 0.55,
+    "b": 0.15,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "StirrerMesh.117",
+   "path": "Park/TowerD_W/StirrerLower/StirrerMesh",
+   "collider": "mesh",
+   "material": "Greybox_Accent",
+   "rgb": {
+    "r": 0.95,
+    "g": 0.55,
+    "b": 0.15,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "Swing.120",
+   "path": "Park/TowerH/Swing",
+   "collider": "mesh",
+   "material": "TowerH_Swing",
+   "rgb": {
+    "r": 0.6,
+    "g": 0.7,
+    "b": 0.45,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "SwingCatch.122",
+   "path": "Park/TowerH/SwingCatch",
+   "collider": "mesh",
+   "material": "TowerH_Swing",
+   "rgb": {
+    "r": 0.6,
+    "g": 0.7,
+    "b": 0.45,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "Zigzag.088",
+   "path": "Park/TowerC_S/Zigzag",
+   "collider": "mesh",
+   "material": "TowerC_Zigzag",
+   "rgb": {
+    "r": 0.3,
+    "g": 0.45,
+    "b": 0.55,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "Zigzag.091",
+   "path": "Park/TowerC_N/Zigzag",
+   "collider": "mesh",
+   "material": "TowerC_Zigzag",
+   "rgb": {
+    "r": 0.3,
+    "g": 0.45,
+    "b": 0.55,
+    "a": 1.0
+   }
+  }
+ ],
+ "markers": [
+  {
+   "name": "LAP_LapGate.001",
+   "path": "Park/DrainStation/LapGate",
+   "kind": "LAP",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.10000000149011612,
+    -1.056037797593707e-15,
+    -3.3220654671595184e-08,
+    11.869999885559082,
+    0.0,
+    0.1599999964237213,
+    -2.8689202125065094e-08,
+    0.10000000149011612,
+    8.742278012618954e-09,
+    1.2079663491704196e-08,
+    0.3799999952316284,
+    0.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_100.091",
+   "path": "Park/TowerH/DropLabel_100",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "100",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    4.371138828673793e-08,
+    -1.0,
+    1.2549999952316284,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    3.25,
+    1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    0.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.83,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_110.022",
+   "path": "Park/TowerG_E/DropLabel_110",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "110",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    4.371138828673793e-08,
+    -1.0,
+    5.179999828338623,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    5.190001010894775,
+    1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    0.19999900460243225
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.83,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_110.025",
+   "path": "Park/TowerG_W/DropLabel_110",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "110",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    -4.371138828673793e-08,
+    1.0,
+    -5.179999828338623,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    5.190001010894775,
+    -1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    -0.20000100135803223
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.83,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_15.027",
+   "path": "Park/TowerF_S/DropLabel_15",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "15",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    4.371138828673793e-08,
+    -1.0,
+    1.2300000190734863,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    5.989999771118164,
+    1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    -5.0
+   ],
+   "rgb": {
+    "r": 0.92,
+    "g": 0.92,
+    "b": 0.95,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_15.029",
+   "path": "Park/TowerF_N/DropLabel_15",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "15",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    4.371138828673793e-08,
+    -1.0,
+    1.2300000190734863,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    5.989999771118164,
+    1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    5.0
+   ],
+   "rgb": {
+    "r": 0.92,
+    "g": 0.92,
+    "b": 0.95,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_150.026",
+   "path": "Park/TowerF_S/DropLabel_150",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "150",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    1.0,
+    -6.6002361555513294e-15,
+    -8.742277657347586e-08,
+    0.0,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    4.909999847412109,
+    8.742277657347586e-08,
+    7.549790126404332e-08,
+    1.0,
+    -5.179999828338623
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.35,
+    "b": 0.3,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_150.028",
+   "path": "Park/TowerF_N/DropLabel_150",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "150",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    -1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    4.909999847412109,
+    0.0,
+    -7.549790126404332e-08,
+    -1.0,
+    5.179999828338623
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.35,
+    "b": 0.3,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_180.032",
+   "path": "Park/TowerE_S/DiscPivot/DropLabel_180",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "180",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    4.371138828673793e-08,
+    -1.0,
+    2.3017520904541016,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    2.2813351154327393,
+    1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    -5.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.35,
+    "b": 0.3,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_180.048",
+   "path": "Park/TowerE_N/DiscPivot/DropLabel_180",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "180",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    4.371138828673793e-08,
+    -1.0,
+    2.3017520904541016,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    2.2813351154327393,
+    1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    5.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.35,
+    "b": 0.3,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_20.020",
+   "path": "Park/TowerG_E/DropLabel_20",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "20",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    4.371138828673793e-08,
+    -1.0,
+    5.179999828338623,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    6.75,
+    1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    -9.999999974752427e-07
+   ],
+   "rgb": {
+    "r": 0.92,
+    "g": 0.92,
+    "b": 0.95,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_20.023",
+   "path": "Park/TowerG_W/DropLabel_20",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "20",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    -4.371138828673793e-08,
+    1.0,
+    -5.179999828338623,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    6.75,
+    -1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    -9.999999974752427e-07
+   ],
+   "rgb": {
+    "r": 0.92,
+    "g": 0.92,
+    "b": 0.95,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_25.030",
+   "path": "Park/TowerC_S/DropLabel_25",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "25",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    -4.371138828673793e-08,
+    1.0,
+    3.9700000286102295,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    4.440000057220459,
+    -1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    -5.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.83,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_25.031",
+   "path": "Park/TowerC_N/DropLabel_25",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "25",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    -4.371138828673793e-08,
+    1.0,
+    3.9700000286102295,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    4.440000057220459,
+    -1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    5.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.83,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_28.077",
+   "path": "Park/TowerD_E/DropLabel_28",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "28",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    -0.010472061112523079,
+    7.487285103024988e-08,
+    0.9999449849128723,
+    5.195134162902832,
+    -5.929172175456188e-08,
+    1.0,
+    -7.54978870531886e-08,
+    1.4299999475479126,
+    -0.9999449849128723,
+    -6.007910258176707e-08,
+    -0.010472061112523079,
+    0.4777179956436157
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.83,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_28.087",
+   "path": "Park/TowerD_W/DropLabel_28",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "28",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.010472028516232967,
+    -7.487285813567723e-08,
+    -0.9999449849128723,
+    -5.195134162902832,
+    -5.929172175456188e-08,
+    1.0,
+    -7.54978870531886e-08,
+    1.4299999475479126,
+    0.9999449849128723,
+    6.007909547633972e-08,
+    0.010472028516232967,
+    -0.47771701216697693
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.83,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_30.039",
+   "path": "Park/TowerE_S/DiscPivot/DropLabel_30",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "30",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    4.371138828673793e-08,
+    -1.0,
+    2.1402080059051514,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    2.1197919845581055,
+    1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    -4.448456764221191
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.83,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_30.055",
+   "path": "Park/TowerE_N/DiscPivot/DropLabel_30",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "30",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    4.371138828673793e-08,
+    -1.0,
+    2.1402080059051514,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    2.1197919845581055,
+    1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    5.551543235778809
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.83,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_32.078",
+   "path": "Park/TowerD_E/DropLabel_32",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "32",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.9477679133415222,
+    -1.3942149656998026e-08,
+    0.3189590275287628,
+    5.051023006439209,
+    0.0,
+    1.0,
+    4.371136341774218e-08,
+    1.4299999475479126,
+    -0.3189590275287628,
+    -4.1428275920907254e-08,
+    0.9477679133415222,
+    0.22063499689102173
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.83,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_32.088",
+   "path": "Park/TowerD_W/DropLabel_32",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "32",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    -0.9477679133415222,
+    1.3942148768819607e-08,
+    -0.31895899772644043,
+    -5.051023006439209,
+    0.0,
+    1.0,
+    4.371136341774218e-08,
+    1.4299999475479126,
+    0.31895899772644043,
+    4.1428275920907254e-08,
+    -0.9477679133415222,
+    -0.22063499689102173
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.83,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_33.038",
+   "path": "Park/TowerE_S/DiscPivot/DropLabel_33",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "33",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    4.371138828673793e-08,
+    -1.0,
+    1.7502080202102661,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    1.7297919988632202,
+    1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    -4.219998836517334
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.83,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_33.054",
+   "path": "Park/TowerE_N/DiscPivot/DropLabel_33",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "33",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    4.371138828673793e-08,
+    -1.0,
+    1.7502080202102661,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    1.7297919988632202,
+    1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    5.780001163482666
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.83,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_34.037",
+   "path": "Park/TowerE_S/DiscPivot/DropLabel_34",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "34",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    4.371138828673793e-08,
+    -1.0,
+    1.3602080345153809,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    1.339792013168335,
+    1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    -4.448456764221191
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.83,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_34.053",
+   "path": "Park/TowerE_N/DiscPivot/DropLabel_34",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "34",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    4.371138828673793e-08,
+    -1.0,
+    1.3602080345153809,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    1.339792013168335,
+    1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    5.551543235778809
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.83,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_35.064",
+   "path": "Park/TowerB_E/DropLabel_35",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "35",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    4.371138828673793e-08,
+    -1.0,
+    6.880000114440918,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    2.7100000381469727,
+    1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    0.20000000298023224
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.83,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_35.067",
+   "path": "Park/TowerB_W/DropLabel_35",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "35",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    -4.371138828673793e-08,
+    1.0,
+    -6.880000114440918,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    2.7100000381469727,
+    -1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    -0.19999900460243225
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.83,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_36.036",
+   "path": "Park/TowerE_S/DiscPivot/DropLabel_36",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "36",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    4.371138828673793e-08,
+    -1.0,
+    1.1986650228500366,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    1.1782490015029907,
+    1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    -5.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.83,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_36.052",
+   "path": "Park/TowerE_N/DiscPivot/DropLabel_36",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "36",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    4.371138828673793e-08,
+    -1.0,
+    1.1986650228500366,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    1.1782490015029907,
+    1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    5.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.83,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_38.035",
+   "path": "Park/TowerE_S/DiscPivot/DropLabel_38",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "38",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    4.371138828673793e-08,
+    -1.0,
+    1.3602080345153809,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    1.339792013168335,
+    1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    -5.551543235778809
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.83,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_38.051",
+   "path": "Park/TowerE_N/DiscPivot/DropLabel_38",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "38",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    4.371138828673793e-08,
+    -1.0,
+    1.3602080345153809,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    1.339792013168335,
+    1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    4.448456764221191
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.83,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_44.076",
+   "path": "Park/TowerD_E/DropLabel_44",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "44",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    -0.9542400240898132,
+    -1.3071500326589103e-08,
+    0.2990410029888153,
+    5.484167098999023,
+    0.0,
+    1.0,
+    4.371137762859689e-08,
+    1.4299999475479126,
+    -0.2990410029888153,
+    4.17111678530091e-08,
+    -0.9542400240898132,
+    0.42010200023651123
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.83,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_44.086",
+   "path": "Park/TowerD_W/DropLabel_44",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "44",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.9542400240898132,
+    1.3071496773875424e-08,
+    -0.29904091358184814,
+    -5.484167098999023,
+    0.0,
+    1.0,
+    4.371137762859689e-08,
+    1.4299999475479126,
+    0.29904091358184814,
+    -4.17111678530091e-08,
+    0.9542400240898132,
+    -0.42010098695755005
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.83,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_45.034",
+   "path": "Park/TowerE_S/DiscPivot/DropLabel_45",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "45",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    4.371138828673793e-08,
+    -1.0,
+    1.7502080202102661,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    1.7297919988632202,
+    1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    -5.780001163482666
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.83,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_45.050",
+   "path": "Park/TowerE_N/DiscPivot/DropLabel_45",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "45",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    4.371138828673793e-08,
+    -1.0,
+    1.7502080202102661,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    1.7297919988632202,
+    1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    4.219998836517334
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.83,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_48.075",
+   "path": "Park/TowerD_E/DropLabel_48",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "48",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    -0.5792808532714844,
+    1.1040547320817495e-07,
+    -0.8151280283927917,
+    5.518686771392822,
+    -3.866128039931027e-08,
+    1.0,
+    1.6292068494294654e-07,
+    1.4299999475479126,
+    0.8151280283927917,
+    1.2589072184709948e-07,
+    -0.5792808532714844,
+    0.12741099298000336
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.35,
+    "b": 0.3,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_48.085",
+   "path": "Park/TowerD_W/DropLabel_48",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "48",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.5792810320854187,
+    -1.1040544478646552e-07,
+    0.8151278495788574,
+    -5.518686771392822,
+    -3.866127684659659e-08,
+    1.0,
+    1.6292068494294654e-07,
+    1.4299999475479126,
+    -0.8151278495788574,
+    -1.2589075026880892e-07,
+    0.5792810320854187,
+    -0.12741099298000336
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.35,
+    "b": 0.3,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_52.079",
+   "path": "Park/TowerD_E/DropLabel_52",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "52",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.5962250232696533,
+    1.0821371887459463e-07,
+    -0.8028179407119751,
+    5.250988960266113,
+    3.7874784197811096e-08,
+    1.0,
+    1.629207559972201e-07,
+    1.4299999475479126,
+    0.8028179407119751,
+    -1.2754385636526422e-07,
+    0.5962250232696533,
+    0.004133999813348055
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.35,
+    "b": 0.3,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_52.089",
+   "path": "Park/TowerD_W/DropLabel_52",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "52",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    -0.5962249040603638,
+    -1.0821372598002199e-07,
+    0.8028180003166199,
+    -5.250988960266113,
+    3.7874787750524774e-08,
+    1.0,
+    1.629207559972201e-07,
+    1.4299999475479126,
+    -0.8028180003166199,
+    1.2754385636526422e-07,
+    -0.5962249040603638,
+    -0.004133999813348055
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.35,
+    "b": 0.3,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_55.033",
+   "path": "Park/TowerE_S/DiscPivot/DropLabel_55",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "55",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    4.371138828673793e-08,
+    -1.0,
+    2.1402080059051514,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    2.1197919845581055,
+    1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    -5.551543235778809
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.83,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_55.049",
+   "path": "Park/TowerE_N/DiscPivot/DropLabel_55",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "55",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    4.371138828673793e-08,
+    -1.0,
+    2.1402080059051514,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    2.1197919845581055,
+    1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    4.448456764221191
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.83,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_60.021",
+   "path": "Park/TowerG_E/DropLabel_60",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "60",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    4.371138828673793e-08,
+    -1.0,
+    5.179999828338623,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    5.949999809265137,
+    1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    -0.2500010132789612
+   ],
+   "rgb": {
+    "r": 0.92,
+    "g": 0.92,
+    "b": 0.95,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_60.024",
+   "path": "Park/TowerG_W/DropLabel_60",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "60",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    -4.371138828673793e-08,
+    1.0,
+    -5.179999828338623,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    5.949999809265137,
+    -1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    0.2499990016222
+   ],
+   "rgb": {
+    "r": 0.92,
+    "g": 0.92,
+    "b": 0.95,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_65.065",
+   "path": "Park/TowerB_E/DropLabel_65",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "65",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    4.371138828673793e-08,
+    -1.0,
+    7.360000133514404,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    2.7100000381469727,
+    1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    0.20000000298023224
+   ],
+   "rgb": {
+    "r": 0.92,
+    "g": 0.92,
+    "b": 0.95,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_65.068",
+   "path": "Park/TowerB_W/DropLabel_65",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "65",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    -4.371138828673793e-08,
+    1.0,
+    -7.360000133514404,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    2.7100000381469727,
+    -1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    -0.19999900460243225
+   ],
+   "rgb": {
+    "r": 0.92,
+    "g": 0.92,
+    "b": 0.95,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_75.090",
+   "path": "Park/TowerH/DropLabel_75",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "75",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    4.371138828673793e-08,
+    -1.0,
+    0.7549999952316284,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    4.909999847412109,
+    1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    0.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.83,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_90.066",
+   "path": "Park/TowerB_E/DropLabel_90",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "90",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    4.371138828673793e-08,
+    -1.0,
+    7.880000114440918,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    2.7100000381469727,
+    1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    0.20000000298023224
+   ],
+   "rgb": {
+    "r": 0.92,
+    "g": 0.92,
+    "b": 0.95,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_DropLabel_90.069",
+   "path": "Park/TowerB_W/DropLabel_90",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "90",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    -4.371138828673793e-08,
+    1.0,
+    -7.880000114440918,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    2.7100000381469727,
+    -1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    -0.19999900460243225
+   ],
+   "rgb": {
+    "r": 0.92,
+    "g": 0.92,
+    "b": 0.95,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_GateLabel_10.000",
+   "path": "Park/TowerA23/Chain_45/GateLabel_10",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "10",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    -4.371138828673793e-08,
+    1.0,
+    2.835279941558838,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    8.734999656677246,
+    -1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    1.5202800035476685
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.83,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_GateLabel_10.001",
+   "path": "Park/TowerA23/Chain_45/GateLabel_10",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "10",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    1.0,
+    -6.6002361555513294e-15,
+    -8.742277657347586e-08,
+    1.5202800035476685,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    8.734999656677246,
+    8.742277657347586e-08,
+    7.549790126404332e-08,
+    1.0,
+    2.835279941558838
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.83,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_GateLabel_10.002",
+   "path": "Park/TowerA23/Chain_45/GateLabel_10",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "10",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    4.371138828673793e-08,
+    -1.0,
+    0.5252799987792969,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    8.774999618530273,
+    1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    1.5202800035476685
+   ],
+   "rgb": {
+    "r": 0.92,
+    "g": 0.92,
+    "b": 0.95,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_GateLabel_10.003",
+   "path": "Park/TowerA23/Chain_45/GateLabel_10",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "10",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    -1.0,
+    0.0,
+    0.0,
+    1.5202800035476685,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    8.774999618530273,
+    0.0,
+    -7.549790126404332e-08,
+    -1.0,
+    0.5252799987792969
+   ],
+   "rgb": {
+    "r": 0.92,
+    "g": 0.92,
+    "b": 0.95,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_GateLabel_10.004",
+   "path": "Park/TowerA23/Chain_135/GateLabel_10",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "10",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    -4.371138828673793e-08,
+    1.0,
+    -0.5252799987792969,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    8.774999618530273,
+    -1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    1.5202800035476685
+   ],
+   "rgb": {
+    "r": 0.92,
+    "g": 0.92,
+    "b": 0.95,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_GateLabel_10.005",
+   "path": "Park/TowerA23/Chain_135/GateLabel_10",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "10",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    1.0,
+    -6.6002361555513294e-15,
+    -8.742277657347586e-08,
+    -1.5202800035476685,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    8.734999656677246,
+    8.742277657347586e-08,
+    7.549790126404332e-08,
+    1.0,
+    2.835279941558838
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.83,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_GateLabel_10.006",
+   "path": "Park/TowerA23/Chain_135/GateLabel_10",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "10",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    4.371138828673793e-08,
+    -1.0,
+    -2.835279941558838,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    8.734999656677246,
+    1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    1.5202800035476685
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.83,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_GateLabel_10.007",
+   "path": "Park/TowerA23/Chain_135/GateLabel_10",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "10",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    -1.0,
+    0.0,
+    0.0,
+    -1.5202800035476685,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    8.774999618530273,
+    0.0,
+    -7.549790126404332e-08,
+    -1.0,
+    0.5252799987792969
+   ],
+   "rgb": {
+    "r": 0.92,
+    "g": 0.92,
+    "b": 0.95,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_GateLabel_10.008",
+   "path": "Park/TowerA23/Chain_225/GateLabel_10",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "10",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    -4.371138828673793e-08,
+    1.0,
+    -0.5252799987792969,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    8.774999618530273,
+    -1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    -1.5202800035476685
+   ],
+   "rgb": {
+    "r": 0.92,
+    "g": 0.92,
+    "b": 0.95,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_GateLabel_10.009",
+   "path": "Park/TowerA23/Chain_225/GateLabel_10",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "10",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    1.0,
+    -6.6002361555513294e-15,
+    -8.742277657347586e-08,
+    -1.5202800035476685,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    8.774999618530273,
+    8.742277657347586e-08,
+    7.549790126404332e-08,
+    1.0,
+    -0.5252799987792969
+   ],
+   "rgb": {
+    "r": 0.92,
+    "g": 0.92,
+    "b": 0.95,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_GateLabel_10.010",
+   "path": "Park/TowerA23/Chain_225/GateLabel_10",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "10",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    4.371138828673793e-08,
+    -1.0,
+    -2.835279941558838,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    8.734999656677246,
+    1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    -1.5202800035476685
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.83,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_GateLabel_10.011",
+   "path": "Park/TowerA23/Chain_225/GateLabel_10",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "10",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    -1.0,
+    0.0,
+    0.0,
+    -1.5202800035476685,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    8.734999656677246,
+    0.0,
+    -7.549790126404332e-08,
+    -1.0,
+    -2.8352789878845215
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.83,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_GateLabel_10.012",
+   "path": "Park/TowerA23/Chain_315/GateLabel_10",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "10",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    -4.371138828673793e-08,
+    1.0,
+    2.8352789878845215,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    8.734999656677246,
+    -1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    -1.5202800035476685
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.83,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_GateLabel_10.013",
+   "path": "Park/TowerA23/Chain_315/GateLabel_10",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "10",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    1.0,
+    -6.6002361555513294e-15,
+    -8.742277657347586e-08,
+    1.520279049873352,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    8.774999618530273,
+    8.742277657347586e-08,
+    7.549790126404332e-08,
+    1.0,
+    -0.5252799987792969
+   ],
+   "rgb": {
+    "r": 0.92,
+    "g": 0.92,
+    "b": 0.95,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_GateLabel_10.014",
+   "path": "Park/TowerA23/Chain_315/GateLabel_10",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "10",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    4.371138828673793e-08,
+    -1.0,
+    0.5252799987792969,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    8.774999618530273,
+    1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    -1.5202800035476685
+   ],
+   "rgb": {
+    "r": 0.92,
+    "g": 0.92,
+    "b": 0.95,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_GateLabel_10.015",
+   "path": "Park/TowerA23/Chain_315/GateLabel_10",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "10",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    -1.0,
+    0.0,
+    0.0,
+    1.520279049873352,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    8.734999656677246,
+    0.0,
+    -7.549790126404332e-08,
+    -1.0,
+    -2.835279941558838
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.83,
+    "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_GateLabel_10.016",
+   "path": "Park/TowerA23/GateLabel_10",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "10",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    -4.371138828673793e-08,
+    1.0,
+    1.684999942779541,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    6.554999828338623,
+    -1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    0.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.45,
+    "b": 0.35,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_GateLabel_10.017",
+   "path": "Park/TowerA23/GateLabel_10",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "10",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    1.0,
+    -6.6002361555513294e-15,
+    -8.742277657347586e-08,
+    0.0,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    6.554999828338623,
+    8.742277657347586e-08,
+    7.549790126404332e-08,
+    1.0,
+    1.684999942779541
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.45,
+    "b": 0.35,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_GateLabel_10.019",
+   "path": "Park/TowerA23/GateLabel_10",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "10",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    -1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    6.554999828338623,
+    0.0,
+    -7.549790126404332e-08,
+    -1.0,
+    -1.684999942779541
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.45,
+    "b": 0.35,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_GateLabel_20.018",
+   "path": "Park/TowerA23/GateLabel_20",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "20",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    4.371138828673793e-08,
+    -1.0,
+    -1.684999942779541,
+    0.0,
+    1.0,
+    4.371138828673793e-08,
+    6.554999828338623,
+    1.0,
+    -1.910685676922942e-15,
+    4.371138828673793e-08,
+    0.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 0.45,
+    "b": 0.35,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_MultLabel_x2.043",
+   "path": "Park/TowerE_S/DiscPivotHi/MultLabel_x2",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "x2",
+   "fontSize": 1.5,
+   "billboard": true,
+   "m": [
+    -1.0,
+    0.0,
+    0.0,
+    -0.16979199647903442,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    3.589792013168335,
+    0.0,
+    -7.549790126404332e-08,
+    -1.0,
+    -5.551543235778809
+   ],
+   "rgb": {
+    "r": 0.45,
+    "g": 0.95,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_MultLabel_x2.044",
+   "path": "Park/TowerE_S/DiscPivotHi/MultLabel_x2",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "x2",
+   "fontSize": 1.5,
+   "billboard": true,
+   "m": [
+    -1.0,
+    0.0,
+    0.0,
+    -0.33133500814437866,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    3.4282479286193848,
+    0.0,
+    -7.549790126404332e-08,
+    -1.0,
+    -5.0
+   ],
+   "rgb": {
+    "r": 0.45,
+    "g": 0.95,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_MultLabel_x2.045",
+   "path": "Park/TowerE_S/DiscPivotHi/MultLabel_x2",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "x2",
+   "fontSize": 1.5,
+   "billboard": true,
+   "m": [
+    -1.0,
+    0.0,
+    0.0,
+    -0.16979199647903442,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    3.589792013168335,
+    0.0,
+    -7.549790126404332e-08,
+    -1.0,
+    -4.448456764221191
+   ],
+   "rgb": {
+    "r": 0.45,
+    "g": 0.95,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_MultLabel_x2.046",
+   "path": "Park/TowerE_S/DiscPivotHi/MultLabel_x2",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "x2",
+   "fontSize": 1.5,
+   "billboard": true,
+   "m": [
+    -1.0,
+    0.0,
+    0.0,
+    0.22020800411701202,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    3.9797921180725098,
+    0.0,
+    -7.549790126404332e-08,
+    -1.0,
+    -4.219998836517334
+   ],
+   "rgb": {
+    "r": 0.45,
+    "g": 0.95,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_MultLabel_x2.047",
+   "path": "Park/TowerE_S/DiscPivotHi/MultLabel_x2",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "x2",
+   "fontSize": 1.5,
+   "billboard": true,
+   "m": [
+    -1.0,
+    0.0,
+    0.0,
+    0.6102079749107361,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    4.3697919845581055,
+    0.0,
+    -7.549790126404332e-08,
+    -1.0,
+    -4.448456764221191
+   ],
+   "rgb": {
+    "r": 0.45,
+    "g": 0.95,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_MultLabel_x2.059",
+   "path": "Park/TowerE_N/DiscPivotHi/MultLabel_x2",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "x2",
+   "fontSize": 1.5,
+   "billboard": true,
+   "m": [
+    -1.0,
+    0.0,
+    0.0,
+    -0.16979199647903442,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    3.589792013168335,
+    0.0,
+    -7.549790126404332e-08,
+    -1.0,
+    4.448456764221191
+   ],
+   "rgb": {
+    "r": 0.45,
+    "g": 0.95,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_MultLabel_x2.060",
+   "path": "Park/TowerE_N/DiscPivotHi/MultLabel_x2",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "x2",
+   "fontSize": 1.5,
+   "billboard": true,
+   "m": [
+    -1.0,
+    0.0,
+    0.0,
+    -0.33133500814437866,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    3.4282479286193848,
+    0.0,
+    -7.549790126404332e-08,
+    -1.0,
+    5.0
+   ],
+   "rgb": {
+    "r": 0.45,
+    "g": 0.95,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_MultLabel_x2.061",
+   "path": "Park/TowerE_N/DiscPivotHi/MultLabel_x2",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "x2",
+   "fontSize": 1.5,
+   "billboard": true,
+   "m": [
+    -1.0,
+    0.0,
+    0.0,
+    -0.16979199647903442,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    3.589792013168335,
+    0.0,
+    -7.549790126404332e-08,
+    -1.0,
+    5.551543235778809
+   ],
+   "rgb": {
+    "r": 0.45,
+    "g": 0.95,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_MultLabel_x2.062",
+   "path": "Park/TowerE_N/DiscPivotHi/MultLabel_x2",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "x2",
+   "fontSize": 1.5,
+   "billboard": true,
+   "m": [
+    -1.0,
+    0.0,
+    0.0,
+    0.22020800411701202,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    3.9797921180725098,
+    0.0,
+    -7.549790126404332e-08,
+    -1.0,
+    5.780001163482666
+   ],
+   "rgb": {
+    "r": 0.45,
+    "g": 0.95,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_MultLabel_x2.063",
+   "path": "Park/TowerE_N/DiscPivotHi/MultLabel_x2",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "x2",
+   "fontSize": 1.5,
+   "billboard": true,
+   "m": [
+    -1.0,
+    0.0,
+    0.0,
+    0.6102079749107361,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    4.3697919845581055,
+    0.0,
+    -7.549790126404332e-08,
+    -1.0,
+    5.551543235778809
+   ],
+   "rgb": {
+    "r": 0.45,
+    "g": 0.95,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_MultLabel_x2.074",
+   "path": "Park/TowerD_E/MultLabel_x2",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "x2",
+   "fontSize": 1.5,
+   "billboard": true,
+   "m": [
+    -1.0,
+    0.0,
+    0.0,
+    5.191071033477783,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    3.1500000953674316,
+    0.0,
+    -7.549790126404332e-08,
+    -1.0,
+    0.5580989718437195
+   ],
+   "rgb": {
+    "r": 0.45,
+    "g": 0.95,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_MultLabel_x2.084",
+   "path": "Park/TowerD_W/MultLabel_x2",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "x2",
+   "fontSize": 1.5,
+   "billboard": true,
+   "m": [
+    1.0,
+    -6.6002361555513294e-15,
+    -8.742277657347586e-08,
+    -5.191071033477783,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    3.1500000953674316,
+    8.742277657347586e-08,
+    7.549790126404332e-08,
+    1.0,
+    -0.5580980181694031
+   ],
+   "rgb": {
+    "r": 0.45,
+    "g": 0.95,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_MultLabel_x3.071",
+   "path": "Park/TowerD_E/MultLabel_x3",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "x3",
+   "fontSize": 1.5,
+   "billboard": true,
+   "m": [
+    -1.0,
+    0.0,
+    0.0,
+    4.92882776260376,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    3.1500000953674316,
+    0.0,
+    -7.549790126404332e-08,
+    -1.0,
+    0.9271090030670166
+   ],
+   "rgb": {
+    "r": 0.45,
+    "g": 0.95,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_MultLabel_x3.081",
+   "path": "Park/TowerD_W/MultLabel_x3",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "x3",
+   "fontSize": 1.5,
+   "billboard": true,
+   "m": [
+    1.0,
+    -6.6002361555513294e-15,
+    -8.742277657347586e-08,
+    -4.92882776260376,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    3.1500000953674316,
+    8.742277657347586e-08,
+    7.549790126404332e-08,
+    1.0,
+    -0.9271090030670166
+   ],
+   "rgb": {
+    "r": 0.45,
+    "g": 0.95,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_MultLabel_x4.042",
+   "path": "Park/TowerE_S/DiscPivotHi/MultLabel_x4",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "x4",
+   "fontSize": 1.5,
+   "billboard": true,
+   "m": [
+    -1.0,
+    0.0,
+    0.0,
+    0.22020800411701202,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    3.9797921180725098,
+    0.0,
+    -7.549790126404332e-08,
+    -1.0,
+    -5.780001163482666
+   ],
+   "rgb": {
+    "r": 0.45,
+    "g": 0.95,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_MultLabel_x4.058",
+   "path": "Park/TowerE_N/DiscPivotHi/MultLabel_x4",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "x4",
+   "fontSize": 1.5,
+   "billboard": true,
+   "m": [
+    -1.0,
+    0.0,
+    0.0,
+    0.22020800411701202,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    3.9797921180725098,
+    0.0,
+    -7.549790126404332e-08,
+    -1.0,
+    4.219998836517334
+   ],
+   "rgb": {
+    "r": 0.45,
+    "g": 0.95,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_MultLabel_x4.072",
+   "path": "Park/TowerD_E/MultLabel_x4",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "x4",
+   "fontSize": 1.5,
+   "billboard": true,
+   "m": [
+    -1.0,
+    0.0,
+    0.0,
+    4.762012958526611,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    3.1500000953674316,
+    0.0,
+    -7.549790126404332e-08,
+    -1.0,
+    0.7024919986724854
+   ],
+   "rgb": {
+    "r": 0.45,
+    "g": 0.95,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_MultLabel_x4.082",
+   "path": "Park/TowerD_W/MultLabel_x4",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "x4",
+   "fontSize": 1.5,
+   "billboard": true,
+   "m": [
+    1.0,
+    -6.6002361555513294e-15,
+    -8.742277657347586e-08,
+    -4.762012958526611,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    3.1500000953674316,
+    8.742277657347586e-08,
+    7.549790126404332e-08,
+    1.0,
+    -0.7024919986724854
+   ],
+   "rgb": {
+    "r": 0.45,
+    "g": 0.95,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_MultLabel_x5.041",
+   "path": "Park/TowerE_S/DiscPivotHi/MultLabel_x5",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "x5",
+   "fontSize": 1.5,
+   "billboard": true,
+   "m": [
+    -1.0,
+    0.0,
+    0.0,
+    0.6102079749107361,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    4.3697919845581055,
+    0.0,
+    -7.549790126404332e-08,
+    -1.0,
+    -5.551543235778809
+   ],
+   "rgb": {
+    "r": 0.45,
+    "g": 0.95,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_MultLabel_x5.057",
+   "path": "Park/TowerE_N/DiscPivotHi/MultLabel_x5",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "x5",
+   "fontSize": 1.5,
+   "billboard": true,
+   "m": [
+    -1.0,
+    0.0,
+    0.0,
+    0.6102079749107361,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    4.3697919845581055,
+    0.0,
+    -7.549790126404332e-08,
+    -1.0,
+    4.448456764221191
+   ],
+   "rgb": {
+    "r": 0.45,
+    "g": 0.95,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_MultLabel_x5.070",
+   "path": "Park/TowerD_E/MultLabel_x5",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "x5",
+   "fontSize": 1.5,
+   "billboard": true,
+   "m": [
+    -1.0,
+    0.0,
+    0.0,
+    5.193999767303467,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    3.1500000953674316,
+    0.0,
+    -7.549790126404332e-08,
+    -1.0,
+    0.8378689885139465
+   ],
+   "rgb": {
+    "r": 0.45,
+    "g": 0.95,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_MultLabel_x5.080",
+   "path": "Park/TowerD_W/MultLabel_x5",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "x5",
+   "fontSize": 1.5,
+   "billboard": true,
+   "m": [
+    1.0,
+    -6.6002361555513294e-15,
+    -8.742277657347586e-08,
+    -5.193999767303467,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    3.1500000953674316,
+    8.742277657347586e-08,
+    7.549790126404332e-08,
+    1.0,
+    -0.8378689885139465
+   ],
+   "rgb": {
+    "r": 0.45,
+    "g": 0.95,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_MultLabel_x6.040",
+   "path": "Park/TowerE_S/DiscPivotHi/MultLabel_x6",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "x6",
+   "fontSize": 1.5,
+   "billboard": true,
+   "m": [
+    -1.0,
+    0.0,
+    0.0,
+    0.7717519998550415,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    4.53133487701416,
+    0.0,
+    -7.549790126404332e-08,
+    -1.0,
+    -5.0
+   ],
+   "rgb": {
+    "r": 0.45,
+    "g": 0.95,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_MultLabel_x6.056",
+   "path": "Park/TowerE_N/DiscPivotHi/MultLabel_x6",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "x6",
+   "fontSize": 1.5,
+   "billboard": true,
+   "m": [
+    -1.0,
+    0.0,
+    0.0,
+    0.7717519998550415,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    4.53133487701416,
+    0.0,
+    -7.549790126404332e-08,
+    -1.0,
+    5.0
+   ],
+   "rgb": {
+    "r": 0.45,
+    "g": 0.95,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_MultLabel_x6.073",
+   "path": "Park/TowerD_E/MultLabel_x6",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "x6",
+   "fontSize": 1.5,
+   "billboard": true,
+   "m": [
+    -1.0,
+    0.0,
+    0.0,
+    4.924088001251221,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    3.1500000953674316,
+    0.0,
+    -7.549790126404332e-08,
+    -1.0,
+    0.47443100810050964
+   ],
+   "rgb": {
+    "r": 0.45,
+    "g": 0.95,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LBL_MultLabel_x6.083",
+   "path": "Park/TowerD_W/MultLabel_x6",
+   "kind": "LBL",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "x6",
+   "fontSize": 1.5,
+   "billboard": true,
+   "m": [
+    1.0,
+    -6.6002361555513294e-15,
+    -8.742277657347586e-08,
+    -4.924088001251221,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    3.1500000953674316,
+    8.742277657347586e-08,
+    7.549790126404332e-08,
+    1.0,
+    -0.47443100810050964
+   ],
+   "rgb": {
+    "r": 0.45,
+    "g": 0.95,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LIFT_LiftN.002",
+   "path": "Park/Lifts/LiftN",
+   "kind": "LIFT",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 1.7,
+   "releaseJitter": 0.6,
+   "waypoints": [
+    {
+     "x": 12.329999923706055,
+     "y": 13.999999046325684,
+     "z": 0.09000105410814285
+    },
+    {
+     "x": -9.240329855442209e-14,
+     "y": 13.999999046325684,
+     "z": -1.9541516849130858e-08
+    },
+    {
+     "x": -8.910318365301997e-14,
+     "y": 13.499999046325684,
+     "z": -5.729043550672941e-08
+    }
+   ],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.1599999964237213,
+    -7.920283217255006e-16,
+    -1.311341701892843e-08,
+    12.329999923706055,
+    0.0,
+    0.11999999731779099,
+    -1.1324686077784918e-08,
+    0.07999999821186066,
+    1.3987643932011906e-08,
+    9.059747618778147e-09,
+    0.15000000596046448,
+    0.09000000357627869
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "LIFT_LiftS.003",
+   "path": "Park/Lifts/LiftS",
+   "kind": "LIFT",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 1.7,
+   "releaseJitter": 0.6,
+   "waypoints": [
+    {
+     "x": 12.329999923706055,
+     "y": 13.999999046325684,
+     "z": -0.08999895304441452
+    },
+    {
+     "x": -9.240329855442209e-14,
+     "y": 13.999999046325684,
+     "z": -3.4442678042978514e-08
+    },
+    {
+     "x": -8.910318365301997e-14,
+     "y": 13.499999046325684,
+     "z": -7.219159670057707e-08
+    }
+   ],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.1599999964237213,
+    -7.920283217255006e-16,
+    -1.311341701892843e-08,
+    12.329999923706055,
+    0.0,
+    0.11999999731779099,
+    -1.1324686077784918e-08,
+    0.07999999821186066,
+    1.3987643932011906e-08,
+    9.059747618778147e-09,
+    0.15000000596046448,
+    -0.09000000357627869
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "OSC_PachiBoard.087",
+   "path": "Park/TowerB_E/PachiBoard",
+   "kind": "OSC",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": -0.4,
+   "b": 0.4,
+   "period": 1.3,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    -100.0,
+    9.000000318337698e-06,
+    -7.868050286817529e-13,
+    7.150000095367432,
+    0.0,
+    8.742277714191005e-06,
+    100.0,
+    2.6600000858306885,
+    9.000000318337698e-06,
+    100.0,
+    -8.742277714191005e-06,
+    0.20000000298023224
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "OSC_PachiBoard.091",
+   "path": "Park/TowerB_W/PachiBoard",
+   "kind": "OSC",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": -0.4,
+   "b": 0.4,
+   "period": 1.3,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    100.0,
+    -1.6999998479150236e-05,
+    -8.742277714191005e-06,
+    -7.150000095367432,
+    8.742277714191005e-06,
+    0.0,
+    100.0,
+    2.6600000858306885,
+    -1.6999998479150236e-05,
+    -100.0,
+    1.4861872583288305e-12,
+    -0.19999900460243225
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "OSC_Seesaw.047",
+   "path": "Park/TowerC_S/Seesaw",
+   "kind": "OSC",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": -11.0,
+   "b": 11.0,
+   "period": 4.5,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    -100.0,
+    9.000000318337698e-06,
+    -7.868050286817529e-13,
+    3.6500000953674316,
+    0.0,
+    8.742277714191005e-06,
+    100.0,
+    4.329999923706055,
+    9.000000318337698e-06,
+    100.0,
+    -8.742277714191005e-06,
+    -5.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "OSC_Seesaw.049",
+   "path": "Park/TowerC_N/Seesaw",
+   "kind": "OSC",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": -11.0,
+   "b": 11.0,
+   "period": 4.5,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    -100.0,
+    9.000000318337698e-06,
+    -7.868050286817529e-13,
+    3.6500000953674316,
+    0.0,
+    8.742277714191005e-06,
+    100.0,
+    4.329999923706055,
+    9.000000318337698e-06,
+    100.0,
+    -8.742277714191005e-06,
+    5.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "OSC_Swing.121",
+   "path": "Park/TowerH/Swing",
+   "kind": "OSC",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": -11.0,
+   "b": 11.0,
+   "period": 3.8,
+   "phase": 0.5,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    -100.0,
+    9.000000318337698e-06,
+    -7.868050286817529e-13,
+    0.574999988079071,
+    0.0,
+    8.742277714191005e-06,
+    100.0,
+    3.299999952316284,
+    9.000000318337698e-06,
+    100.0,
+    -8.742277714191005e-06,
+    0.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ROT_AgitatorA.004",
+   "path": "Park/TowerA/AgitatorA",
+   "kind": "ROT",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 1.0
+   },
+   "dps": 18.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    1.0,
+    0.0,
+    8.742277657347586e-08,
+    0.0,
+    -8.742277657347586e-08,
+    0.0,
+    1.0,
+    12.850000381469727,
+    0.0,
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ROT_DiscPivot.051",
+   "path": "Park/TowerE_S/DiscPivot",
+   "kind": "ROT",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 1.0
+   },
+   "dps": 18.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    0.7071069478988647,
+    -0.7071069478988647,
+    1.4500000476837158,
+    0.0,
+    0.7071069478988647,
+    0.7071069478988647,
+    1.600000023841858,
+    1.0,
+    -3.090862676913275e-08,
+    3.090862676913275e-08,
+    -5.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ROT_DiscPivot.069",
+   "path": "Park/TowerE_N/DiscPivot",
+   "kind": "ROT",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 1.0
+   },
+   "dps": 18.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    0.7071069478988647,
+    -0.7071069478988647,
+    1.4500000476837158,
+    0.0,
+    0.7071069478988647,
+    0.7071069478988647,
+    1.600000023841858,
+    1.0,
+    -3.090862676913275e-08,
+    3.090862676913275e-08,
+    5.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ROT_DiscPivotHi.060",
+   "path": "Park/TowerE_S/DiscPivotHi",
+   "kind": "ROT",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 1.0
+   },
+   "dps": 22.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    0.7071069478988647,
+    -0.7071069478988647,
+    0.10000000149011612,
+    0.0,
+    0.7071069478988647,
+    0.7071069478988647,
+    3.8499999046325684,
+    1.0,
+    -3.090862676913275e-08,
+    3.090862676913275e-08,
+    -5.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ROT_DiscPivotHi.078",
+   "path": "Park/TowerE_N/DiscPivotHi",
+   "kind": "ROT",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 1.0
+   },
+   "dps": 22.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    4.371138828673793e-08,
+    0.7071069478988647,
+    -0.7071069478988647,
+    0.10000000149011612,
+    0.0,
+    0.7071069478988647,
+    0.7071069478988647,
+    3.8499999046325684,
+    1.0,
+    -3.090862676913275e-08,
+    3.090862676913275e-08,
+    5.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ROT_DrainStirrer.000",
+   "path": "Park/DrainStation/DrainStirrer",
+   "kind": "ROT",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 24.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    1.6994930505752563,
+    0.02443229779601097,
+    -3.0959489549786667e-07,
+    11.600000381469727,
+    -0.0415349006652832,
+    0.999701976776123,
+    -2.768824742815923e-07,
+    0.09000000357627869,
+    3.027376749287214e-07,
+    1.672729865731526e-07,
+    1.7000000476837158,
+    0.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ROT_Drum.120",
+   "path": "Park/TowerH/Drum",
+   "kind": "ROT",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 25.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    -100.0,
+    9.000000318337698e-06,
+    -7.868050286817529e-13,
+    0.574999988079071,
+    0.0,
+    8.742277714191005e-06,
+    100.0,
+    4.130000114440918,
+    9.000000318337698e-06,
+    100.0,
+    -8.742277714191005e-06,
+    0.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ROT_FunnelStirrer.029",
+   "path": "Park/TowerA23/FunnelStirrer",
+   "kind": "ROT",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 12.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    1.0,
+    -6.6002361555513294e-15,
+    -8.742277657347586e-08,
+    0.0,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    7.480000019073486,
+    8.742277657347586e-08,
+    7.549790126404332e-08,
+    1.0,
+    0.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ROT_GrandRouletteWheel.030",
+   "path": "Park/TowerA23/GrandRouletteWheel",
+   "kind": "ROT",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 1.0
+   },
+   "dps": 15.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    1.0,
+    0.0,
+    8.742277657347586e-08,
+    0.0,
+    -8.742277657347586e-08,
+    0.0,
+    1.0,
+    6.239999771118164,
+    0.0,
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ROT_KuruunStirrer.005",
+   "path": "Park/TowerA23/Chain_45/KuruunStirrer",
+   "kind": "ROT",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 12.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    1.0,
+    -6.6002361555513294e-15,
+    -8.742277657347586e-08,
+    1.5202800035476685,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    9.779999732971191,
+    8.742277657347586e-08,
+    7.549790126404332e-08,
+    1.0,
+    1.5202800035476685
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ROT_KuruunStirrer.011",
+   "path": "Park/TowerA23/Chain_135/KuruunStirrer",
+   "kind": "ROT",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 12.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    1.0,
+    -6.6002361555513294e-15,
+    -8.742277657347586e-08,
+    -1.5202800035476685,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    9.779999732971191,
+    8.742277657347586e-08,
+    7.549790126404332e-08,
+    1.0,
+    1.5202800035476685
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ROT_KuruunStirrer.017",
+   "path": "Park/TowerA23/Chain_225/KuruunStirrer",
+   "kind": "ROT",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 12.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    1.0,
+    -6.6002361555513294e-15,
+    -8.742277657347586e-08,
+    -1.5202800035476685,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    9.779999732971191,
+    8.742277657347586e-08,
+    7.549790126404332e-08,
+    1.0,
+    -1.5202800035476685
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ROT_KuruunStirrer.023",
+   "path": "Park/TowerA23/Chain_315/KuruunStirrer",
+   "kind": "ROT",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 12.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    1.0,
+    -6.6002361555513294e-15,
+    -8.742277657347586e-08,
+    1.520279049873352,
+    0.0,
+    1.0,
+    -7.549790126404332e-08,
+    9.779999732971191,
+    8.742277657347586e-08,
+    7.549790126404332e-08,
+    1.0,
+    -1.5202800035476685
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ROT_MiniRouletteWheel.006",
+   "path": "Park/TowerA23/Chain_45/MiniRouletteWheel",
+   "kind": "ROT",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 1.0
+   },
+   "dps": 18.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    1.0,
+    0.0,
+    8.742277657347586e-08,
+    1.5202800035476685,
+    -8.742277657347586e-08,
+    0.0,
+    1.0,
+    8.489999771118164,
+    0.0,
+    -1.0,
+    0.0,
+    1.5202800035476685
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ROT_MiniRouletteWheel.012",
+   "path": "Park/TowerA23/Chain_135/MiniRouletteWheel",
+   "kind": "ROT",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 1.0
+   },
+   "dps": 18.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    1.0,
+    0.0,
+    8.742277657347586e-08,
+    -1.5202800035476685,
+    -8.742277657347586e-08,
+    0.0,
+    1.0,
+    8.489999771118164,
+    0.0,
+    -1.0,
+    0.0,
+    1.5202800035476685
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ROT_MiniRouletteWheel.018",
+   "path": "Park/TowerA23/Chain_225/MiniRouletteWheel",
+   "kind": "ROT",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 1.0
+   },
+   "dps": 18.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    1.0,
+    0.0,
+    8.742277657347586e-08,
+    -1.5202800035476685,
+    -8.742277657347586e-08,
+    0.0,
+    1.0,
+    8.489999771118164,
+    0.0,
+    -1.0,
+    0.0,
+    -1.5202800035476685
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ROT_MiniRouletteWheel.024",
+   "path": "Park/TowerA23/Chain_315/MiniRouletteWheel",
+   "kind": "ROT",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 1.0
+   },
+   "dps": 18.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    1.0,
+    0.0,
+    8.742277657347586e-08,
+    1.520279049873352,
+    -8.742277657347586e-08,
+    0.0,
+    1.0,
+    8.489999771118164,
+    0.0,
+    -1.0,
+    0.0,
+    -1.5202800035476685
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ROT_SpinnerDish.041",
+   "path": "Park/TowerF_S/SpinnerDish",
+   "kind": "ROT",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 1.0
+   },
+   "dps": 22.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    100.0,
+    1.0490733715756706e-12,
+    -8.742277714191005e-06,
+    0.0,
+    8.742277714191005e-06,
+    -1.1999999514955562e-05,
+    100.0,
+    6.789999961853027,
+    0.0,
+    -100.0,
+    -1.1999999514955562e-05,
+    -5.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ROT_SpinnerDish.044",
+   "path": "Park/TowerF_N/SpinnerDish",
+   "kind": "ROT",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 1.0
+   },
+   "dps": 22.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    -100.0,
+    9.000000318337698e-06,
+    8.189621940671299e-13,
+    0.0,
+    -5.399999566425839e-13,
+    -1.5099580195965245e-05,
+    100.0,
+    6.789999961853027,
+    9.000000318337698e-06,
+    100.0,
+    1.5099580195965245e-05,
+    5.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ROT_StirrerLower.096",
+   "path": "Park/TowerD_E/StirrerLower",
+   "kind": "ROT",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 35.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    1.25,
+    -6.6002361555513294e-15,
+    -1.092784742695585e-07,
+    5.300000190734863,
+    0.0,
+    1.0,
+    -9.437237480369731e-08,
+    1.440000057220459,
+    1.092784742695585e-07,
+    7.549790126404332e-08,
+    1.25,
+    0.25
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ROT_StirrerLower.108",
+   "path": "Park/TowerD_W/StirrerLower",
+   "kind": "ROT",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 35.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    -1.25,
+    0.0,
+    0.0,
+    -5.300000190734863,
+    0.0,
+    1.0,
+    -9.437237480369731e-08,
+    1.440000057220459,
+    0.0,
+    -7.549790126404332e-08,
+    -1.25,
+    -0.25
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ROT_StirrerUpper.095",
+   "path": "Park/TowerD_E/StirrerUpper",
+   "kind": "ROT",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 35.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    1.25,
+    -6.6002361555513294e-15,
+    -1.092784742695585e-07,
+    5.0,
+    0.0,
+    1.0,
+    -9.437237480369731e-08,
+    3.1600000858306885,
+    1.092784742695585e-07,
+    7.549790126404332e-08,
+    1.25,
+    0.699999988079071
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ROT_StirrerUpper.107",
+   "path": "Park/TowerD_W/StirrerUpper",
+   "kind": "ROT",
+   "points": 0,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 35.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    -1.25,
+    0.0,
+    0.0,
+    -5.0,
+    0.0,
+    1.0,
+    -9.437237480369731e-08,
+    3.1600000858306885,
+    0.0,
+    -7.549790126404332e-08,
+    -1.25,
+    -0.699999988079071
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_100.122",
+   "path": "Park/TowerH/DropScore_100",
+   "kind": "T",
+   "points": 100,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.25999999046325684,
+    -7.920283217255006e-16,
+    -2.622683403785686e-08,
+    1.0750000476837158,
+    0.0,
+    0.11999999731779099,
+    -2.2649372155569836e-08,
+    3.0,
+    2.272992105645244e-08,
+    9.059747618778147e-09,
+    0.30000001192092896,
+    0.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_110.037",
+   "path": "Park/TowerG_E/DropScore_110",
+   "kind": "T",
+   "points": 110,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    1.311341701892843e-08,
+    -1.136496052822622e-08,
+    0.30000001192092896,
+    5.0,
+    0.0,
+    0.25999999046325684,
+    1.311341701892843e-08,
+    4.940001010894775,
+    -0.30000001192092896,
+    -4.967782590593059e-16,
+    1.311341701892843e-08,
+    0.19999900460243225
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_110.040",
+   "path": "Park/TowerG_W/DropScore_110",
+   "kind": "T",
+   "points": 110,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    1.311341701892843e-08,
+    1.136496052822622e-08,
+    -0.30000001192092896,
+    -5.0,
+    0.0,
+    0.25999999046325684,
+    1.311341701892843e-08,
+    4.940001010894775,
+    0.30000001192092896,
+    -4.967782590593059e-16,
+    1.311341701892843e-08,
+    -0.20000100135803223
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_15.043",
+   "path": "Park/TowerF_S/DropScore_15",
+   "kind": "T",
+   "points": 15,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.25999999046325684,
+    -9.24033112599163e-16,
+    -2.9723743466547603e-08,
+    1.0499999523162842,
+    0.0,
+    0.14000000059604645,
+    -2.5669287140317465e-08,
+    5.739999771118164,
+    2.272992105645244e-08,
+    1.0569705999330381e-08,
+    0.3400000035762787,
+    -5.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_15.046",
+   "path": "Park/TowerF_N/DropScore_15",
+   "kind": "T",
+   "points": 15,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    -0.25999999046325684,
+    0.0,
+    0.0,
+    1.0499999523162842,
+    0.0,
+    0.14000000059604645,
+    -2.5669287140317465e-08,
+    5.739999771118164,
+    0.0,
+    -1.0569705999330381e-08,
+    -0.3400000035762787,
+    5.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_150.042",
+   "path": "Park/TowerF_S/DropScore_150",
+   "kind": "T",
+   "points": 150,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -9.24033112599163e-16,
+    -1.7484556025237907e-08,
+    0.0,
+    0.0,
+    0.14000000059604645,
+    -1.5099580252808664e-08,
+    4.659999847412109,
+    1.7484556025237907e-08,
+    1.0569705999330381e-08,
+    0.20000000298023224,
+    -5.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_150.045",
+   "path": "Park/TowerF_N/DropScore_150",
+   "kind": "T",
+   "points": 150,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    -0.20000000298023224,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.14000000059604645,
+    -1.5099580252808664e-08,
+    4.659999847412109,
+    0.0,
+    -1.0569705999330381e-08,
+    -0.20000000298023224,
+    5.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_180.052",
+   "path": "Park/TowerE_S/DiscPivot/DropScore_180",
+   "kind": "T",
+   "points": 180,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -1.3200472734619132e-15,
+    -1.7484556025237907e-08,
+    2.1217520236968994,
+    0.0,
+    0.20000000298023224,
+    -1.5099580252808664e-08,
+    2.0313351154327393,
+    1.7484556025237907e-08,
+    1.5099580252808664e-08,
+    0.20000000298023224,
+    -5.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_180.070",
+   "path": "Park/TowerE_N/DiscPivot/DropScore_180",
+   "kind": "T",
+   "points": 180,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -1.3200472734619132e-15,
+    -1.7484556025237907e-08,
+    2.1217520236968994,
+    0.0,
+    0.20000000298023224,
+    -1.5099580252808664e-08,
+    2.0313351154327393,
+    1.7484556025237907e-08,
+    1.5099580252808664e-08,
+    0.20000000298023224,
+    5.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_20.035",
+   "path": "Park/TowerG_E/DropScore_20",
+   "kind": "T",
+   "points": 20,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    1.311341701892843e-08,
+    -1.136496052822622e-08,
+    0.30000001192092896,
+    5.0,
+    0.0,
+    0.25999999046325684,
+    1.311341701892843e-08,
+    6.5,
+    -0.30000001192092896,
+    -4.967782590593059e-16,
+    1.311341701892843e-08,
+    -9.999999974752427e-07
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_20.038",
+   "path": "Park/TowerG_W/DropScore_20",
+   "kind": "T",
+   "points": 20,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    1.311341701892843e-08,
+    1.136496052822622e-08,
+    -0.30000001192092896,
+    -5.0,
+    0.0,
+    0.25999999046325684,
+    1.311341701892843e-08,
+    6.5,
+    0.30000001192092896,
+    -4.967782590593059e-16,
+    1.311341701892843e-08,
+    -9.999999974752427e-07
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_25.048",
+   "path": "Park/TowerC_S/DropScore_25",
+   "kind": "T",
+   "points": 25,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.6000000238418579,
+    -1.9800710160719883e-15,
+    -2.622683403785686e-08,
+    4.150000095367432,
+    0.0,
+    0.30000001192092896,
+    -2.2649372155569836e-08,
+    4.190000057220459,
+    5.245366807571372e-08,
+    2.2649372155569836e-08,
+    0.30000001192092896,
+    -5.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_25.050",
+   "path": "Park/TowerC_N/DropScore_25",
+   "kind": "T",
+   "points": 25,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.6000000238418579,
+    -1.9800710160719883e-15,
+    -2.622683403785686e-08,
+    4.150000095367432,
+    0.0,
+    0.30000001192092896,
+    -2.2649372155569836e-08,
+    4.190000057220459,
+    5.245366807571372e-08,
+    2.2649372155569836e-08,
+    0.30000001192092896,
+    5.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_28.104",
+   "path": "Park/TowerD_E/DropScore_28",
+   "kind": "T",
+   "points": 28,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -6.600236367309566e-16,
+    -1.7484556025237907e-08,
+    5.375123977661133,
+    0.0,
+    0.10000000149011612,
+    -1.5099580252808664e-08,
+    1.1799999475479126,
+    1.7484556025237907e-08,
+    7.549790126404332e-09,
+    0.20000000298023224,
+    0.475832998752594
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_28.116",
+   "path": "Park/TowerD_W/DropScore_28",
+   "kind": "T",
+   "points": 28,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    -0.20000000298023224,
+    0.0,
+    0.0,
+    -5.375123977661133,
+    0.0,
+    0.10000000149011612,
+    -1.5099580252808664e-08,
+    1.1799999475479126,
+    0.0,
+    -7.549790126404332e-09,
+    -0.20000000298023224,
+    -0.4758319854736328
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_30.059",
+   "path": "Park/TowerE_S/DiscPivot/DropScore_30",
+   "kind": "T",
+   "points": 30,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -1.3200472734619132e-15,
+    -1.7484556025237907e-08,
+    1.9602080583572388,
+    0.0,
+    0.20000000298023224,
+    -1.5099580252808664e-08,
+    1.8697919845581055,
+    1.7484556025237907e-08,
+    1.5099580252808664e-08,
+    0.20000000298023224,
+    -4.448456764221191
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_30.077",
+   "path": "Park/TowerE_N/DiscPivot/DropScore_30",
+   "kind": "T",
+   "points": 30,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -1.3200472734619132e-15,
+    -1.7484556025237907e-08,
+    1.9602080583572388,
+    0.0,
+    0.20000000298023224,
+    -1.5099580252808664e-08,
+    1.8697919845581055,
+    1.7484556025237907e-08,
+    1.5099580252808664e-08,
+    0.20000000298023224,
+    5.551543235778809
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_32.105",
+   "path": "Park/TowerD_E/DropScore_32",
+   "kind": "T",
+   "points": 32,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -6.600236367309566e-16,
+    -1.7484556025237907e-08,
+    5.108436107635498,
+    0.0,
+    0.10000000149011612,
+    -1.5099580252808664e-08,
+    1.1799999475479126,
+    1.7484556025237907e-08,
+    7.549790126404332e-09,
+    0.20000000298023224,
+    0.39123401045799255
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_32.117",
+   "path": "Park/TowerD_W/DropScore_32",
+   "kind": "T",
+   "points": 32,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    -0.20000000298023224,
+    0.0,
+    0.0,
+    -5.108436107635498,
+    0.0,
+    0.10000000149011612,
+    -1.5099580252808664e-08,
+    1.1799999475479126,
+    0.0,
+    -7.549790126404332e-09,
+    -0.20000000298023224,
+    -0.39123299717903137
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_33.058",
+   "path": "Park/TowerE_S/DiscPivot/DropScore_33",
+   "kind": "T",
+   "points": 33,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -1.3200472734619132e-15,
+    -1.7484556025237907e-08,
+    1.570207953453064,
+    0.0,
+    0.20000000298023224,
+    -1.5099580252808664e-08,
+    1.4797919988632202,
+    1.7484556025237907e-08,
+    1.5099580252808664e-08,
+    0.20000000298023224,
+    -4.219998836517334
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_33.076",
+   "path": "Park/TowerE_N/DiscPivot/DropScore_33",
+   "kind": "T",
+   "points": 33,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -1.3200472734619132e-15,
+    -1.7484556025237907e-08,
+    1.570207953453064,
+    0.0,
+    0.20000000298023224,
+    -1.5099580252808664e-08,
+    1.4797919988632202,
+    1.7484556025237907e-08,
+    1.5099580252808664e-08,
+    0.20000000298023224,
+    5.780001163482666
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_34.057",
+   "path": "Park/TowerE_S/DiscPivot/DropScore_34",
+   "kind": "T",
+   "points": 34,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -1.3200472734619132e-15,
+    -1.7484556025237907e-08,
+    1.1802079677581787,
+    0.0,
+    0.20000000298023224,
+    -1.5099580252808664e-08,
+    1.089792013168335,
+    1.7484556025237907e-08,
+    1.5099580252808664e-08,
+    0.20000000298023224,
+    -4.448456764221191
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_34.075",
+   "path": "Park/TowerE_N/DiscPivot/DropScore_34",
+   "kind": "T",
+   "points": 34,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -1.3200472734619132e-15,
+    -1.7484556025237907e-08,
+    1.1802079677581787,
+    0.0,
+    0.20000000298023224,
+    -1.5099580252808664e-08,
+    1.089792013168335,
+    1.7484556025237907e-08,
+    1.5099580252808664e-08,
+    0.20000000298023224,
+    5.551543235778809
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_35.088",
+   "path": "Park/TowerB_E/DropScore_35",
+   "kind": "T",
+   "points": 35,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.25999999046325684,
+    -7.920283217255006e-16,
+    -2.272992105645244e-08,
+    6.699999809265137,
+    0.0,
+    0.11999999731779099,
+    -1.9629453618108528e-08,
+    2.4600000381469727,
+    2.272992105645244e-08,
+    9.059747618778147e-09,
+    0.25999999046325684,
+    0.20000000298023224
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_35.092",
+   "path": "Park/TowerB_W/DropScore_35",
+   "kind": "T",
+   "points": 35,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    -0.25999999046325684,
+    0.0,
+    0.0,
+    -6.699999809265137,
+    0.0,
+    0.11999999731779099,
+    -1.9629453618108528e-08,
+    2.4600000381469727,
+    0.0,
+    -9.059747618778147e-09,
+    -0.25999999046325684,
+    -0.19999900460243225
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_36.056",
+   "path": "Park/TowerE_S/DiscPivot/DropScore_36",
+   "kind": "T",
+   "points": 36,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -1.3200472734619132e-15,
+    -1.7484556025237907e-08,
+    1.0186649560928345,
+    0.0,
+    0.20000000298023224,
+    -1.5099580252808664e-08,
+    0.9282490015029907,
+    1.7484556025237907e-08,
+    1.5099580252808664e-08,
+    0.20000000298023224,
+    -5.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_36.074",
+   "path": "Park/TowerE_N/DiscPivot/DropScore_36",
+   "kind": "T",
+   "points": 36,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -1.3200472734619132e-15,
+    -1.7484556025237907e-08,
+    1.0186649560928345,
+    0.0,
+    0.20000000298023224,
+    -1.5099580252808664e-08,
+    0.9282490015029907,
+    1.7484556025237907e-08,
+    1.5099580252808664e-08,
+    0.20000000298023224,
+    5.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_38.055",
+   "path": "Park/TowerE_S/DiscPivot/DropScore_38",
+   "kind": "T",
+   "points": 38,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -1.3200472734619132e-15,
+    -1.7484556025237907e-08,
+    1.1802079677581787,
+    0.0,
+    0.20000000298023224,
+    -1.5099580252808664e-08,
+    1.089792013168335,
+    1.7484556025237907e-08,
+    1.5099580252808664e-08,
+    0.20000000298023224,
+    -5.551543235778809
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_38.073",
+   "path": "Park/TowerE_N/DiscPivot/DropScore_38",
+   "kind": "T",
+   "points": 38,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -1.3200472734619132e-15,
+    -1.7484556025237907e-08,
+    1.1802079677581787,
+    0.0,
+    0.20000000298023224,
+    -1.5099580252808664e-08,
+    1.089792013168335,
+    1.7484556025237907e-08,
+    1.5099580252808664e-08,
+    0.20000000298023224,
+    4.448456764221191
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_44.103",
+   "path": "Park/TowerD_E/DropScore_44",
+   "kind": "T",
+   "points": 44,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -6.600236367309566e-16,
+    -1.7484556025237907e-08,
+    5.537993907928467,
+    0.0,
+    0.10000000149011612,
+    -1.5099580252808664e-08,
+    1.1799999475479126,
+    1.7484556025237907e-08,
+    7.549790126404332e-09,
+    0.20000000298023224,
+    0.2483389973640442
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_44.115",
+   "path": "Park/TowerD_W/DropScore_44",
+   "kind": "T",
+   "points": 44,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    -0.20000000298023224,
+    0.0,
+    0.0,
+    -5.537993907928467,
+    0.0,
+    0.10000000149011612,
+    -1.5099580252808664e-08,
+    1.1799999475479126,
+    0.0,
+    -7.549790126404332e-09,
+    -0.20000000298023224,
+    -0.2483379989862442
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_45.054",
+   "path": "Park/TowerE_S/DiscPivot/DropScore_45",
+   "kind": "T",
+   "points": 45,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -1.3200472734619132e-15,
+    -1.7484556025237907e-08,
+    1.570207953453064,
+    0.0,
+    0.20000000298023224,
+    -1.5099580252808664e-08,
+    1.4797919988632202,
+    1.7484556025237907e-08,
+    1.5099580252808664e-08,
+    0.20000000298023224,
+    -5.780001163482666
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_45.072",
+   "path": "Park/TowerE_N/DiscPivot/DropScore_45",
+   "kind": "T",
+   "points": 45,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -1.3200472734619132e-15,
+    -1.7484556025237907e-08,
+    1.570207953453064,
+    0.0,
+    0.20000000298023224,
+    -1.5099580252808664e-08,
+    1.4797919988632202,
+    1.7484556025237907e-08,
+    1.5099580252808664e-08,
+    0.20000000298023224,
+    4.219998836517334
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_48.102",
+   "path": "Park/TowerD_E/DropScore_48",
+   "kind": "T",
+   "points": 48,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -6.600236367309566e-16,
+    -1.7484556025237907e-08,
+    5.371963977813721,
+    0.0,
+    0.10000000149011612,
+    -1.5099580252808664e-08,
+    1.1799999475479126,
+    1.7484556025237907e-08,
+    7.549790126404332e-09,
+    0.20000000298023224,
+    0.023141000419855118
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_48.114",
+   "path": "Park/TowerD_W/DropScore_48",
+   "kind": "T",
+   "points": 48,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    -0.20000000298023224,
+    0.0,
+    0.0,
+    -5.371963977813721,
+    0.0,
+    0.10000000149011612,
+    -1.5099580252808664e-08,
+    1.1799999475479126,
+    0.0,
+    -7.549790126404332e-09,
+    -0.20000000298023224,
+    -0.02314000017940998
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_52.106",
+   "path": "Park/TowerD_E/DropScore_52",
+   "kind": "T",
+   "points": 52,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -6.600236367309566e-16,
+    -1.7484556025237907e-08,
+    5.106482028961182,
+    0.0,
+    0.10000000149011612,
+    -1.5099580252808664e-08,
+    1.1799999475479126,
+    1.7484556025237907e-08,
+    7.549790126404332e-09,
+    0.20000000298023224,
+    0.11145500093698502
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_52.118",
+   "path": "Park/TowerD_W/DropScore_52",
+   "kind": "T",
+   "points": 52,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    -0.20000000298023224,
+    0.0,
+    0.0,
+    -5.106482028961182,
+    0.0,
+    0.10000000149011612,
+    -1.5099580252808664e-08,
+    1.1799999475479126,
+    0.0,
+    -7.549790126404332e-09,
+    -0.20000000298023224,
+    -0.11145400255918503
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_55.053",
+   "path": "Park/TowerE_S/DiscPivot/DropScore_55",
+   "kind": "T",
+   "points": 55,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -1.3200472734619132e-15,
+    -1.7484556025237907e-08,
+    1.9602080583572388,
+    0.0,
+    0.20000000298023224,
+    -1.5099580252808664e-08,
+    1.8697919845581055,
+    1.7484556025237907e-08,
+    1.5099580252808664e-08,
+    0.20000000298023224,
+    -5.551543235778809
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_55.071",
+   "path": "Park/TowerE_N/DiscPivot/DropScore_55",
+   "kind": "T",
+   "points": 55,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -1.3200472734619132e-15,
+    -1.7484556025237907e-08,
+    1.9602080583572388,
+    0.0,
+    0.20000000298023224,
+    -1.5099580252808664e-08,
+    1.8697919845581055,
+    1.7484556025237907e-08,
+    1.5099580252808664e-08,
+    0.20000000298023224,
+    4.448456764221191
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_60.036",
+   "path": "Park/TowerG_E/DropScore_60",
+   "kind": "T",
+   "points": 60,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    1.311341701892843e-08,
+    -1.136496052822622e-08,
+    0.30000001192092896,
+    5.0,
+    0.0,
+    0.25999999046325684,
+    1.311341701892843e-08,
+    5.699999809265137,
+    -0.30000001192092896,
+    -4.967782590593059e-16,
+    1.311341701892843e-08,
+    -0.2500010132789612
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_60.039",
+   "path": "Park/TowerG_W/DropScore_60",
+   "kind": "T",
+   "points": 60,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    1.311341701892843e-08,
+    1.136496052822622e-08,
+    -0.30000001192092896,
+    -5.0,
+    0.0,
+    0.25999999046325684,
+    1.311341701892843e-08,
+    5.699999809265137,
+    0.30000001192092896,
+    -4.967782590593059e-16,
+    1.311341701892843e-08,
+    0.2499990016222
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_65.089",
+   "path": "Park/TowerB_E/DropScore_65",
+   "kind": "T",
+   "points": 65,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.25999999046325684,
+    -7.920283217255006e-16,
+    -2.272992105645244e-08,
+    7.179999828338623,
+    0.0,
+    0.11999999731779099,
+    -1.9629453618108528e-08,
+    2.4600000381469727,
+    2.272992105645244e-08,
+    9.059747618778147e-09,
+    0.25999999046325684,
+    0.20000000298023224
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_65.093",
+   "path": "Park/TowerB_W/DropScore_65",
+   "kind": "T",
+   "points": 65,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    -0.25999999046325684,
+    0.0,
+    0.0,
+    -7.179999828338623,
+    0.0,
+    0.11999999731779099,
+    -1.9629453618108528e-08,
+    2.4600000381469727,
+    0.0,
+    -9.059747618778147e-09,
+    -0.25999999046325684,
+    -0.19999900460243225
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_75.119",
+   "path": "Park/TowerH/DropScore_75",
+   "kind": "T",
+   "points": 75,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -9.24033112599163e-16,
+    -1.7484556025237907e-08,
+    0.574999988079071,
+    0.0,
+    0.14000000059604645,
+    -1.5099580252808664e-08,
+    4.659999847412109,
+    1.7484556025237907e-08,
+    1.0569705999330381e-08,
+    0.20000000298023224,
+    0.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_90.090",
+   "path": "Park/TowerB_E/DropScore_90",
+   "kind": "T",
+   "points": 90,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.25999999046325684,
+    -7.920283217255006e-16,
+    -2.272992105645244e-08,
+    7.699999809265137,
+    0.0,
+    0.11999999731779099,
+    -1.9629453618108528e-08,
+    2.4600000381469727,
+    2.272992105645244e-08,
+    9.059747618778147e-09,
+    0.25999999046325684,
+    0.20000000298023224
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_DropScore_90.094",
+   "path": "Park/TowerB_W/DropScore_90",
+   "kind": "T",
+   "points": 90,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    -0.25999999046325684,
+    0.0,
+    0.0,
+    -7.699999809265137,
+    0.0,
+    0.11999999731779099,
+    -1.9629453618108528e-08,
+    2.4600000381469727,
+    0.0,
+    -9.059747618778147e-09,
+    -0.25999999046325684,
+    -0.19999900460243225
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_GateScore_10.007",
+   "path": "Park/TowerA23/Chain_45/GateScore_10",
+   "kind": "T",
+   "points": 10,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.25999999046325684,
+    -1.848066225198326e-15,
+    -2.272992105645244e-08,
+    2.8702800273895264,
+    0.0,
+    0.2800000011920929,
+    -1.9629453618108528e-08,
+    8.469999313354492,
+    2.272992105645244e-08,
+    2.1139411998660762e-08,
+    0.25999999046325684,
+    1.5202800035476685
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_GateScore_10.008",
+   "path": "Park/TowerA23/Chain_45/GateScore_10",
+   "kind": "T",
+   "points": 10,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.25999999046325684,
+    -1.848066225198326e-15,
+    -2.272992105645244e-08,
+    1.5202800035476685,
+    0.0,
+    0.2800000011920929,
+    -1.9629453618108528e-08,
+    8.469999313354492,
+    2.272992105645244e-08,
+    2.1139411998660762e-08,
+    0.25999999046325684,
+    2.8702800273895264
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_GateScore_10.009",
+   "path": "Park/TowerA23/Chain_45/GateScore_10",
+   "kind": "T",
+   "points": 10,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.25999999046325684,
+    -1.848066225198326e-15,
+    -2.272992105645244e-08,
+    0.49028000235557556,
+    0.0,
+    0.2800000011920929,
+    -1.9629453618108528e-08,
+    8.50999927520752,
+    2.272992105645244e-08,
+    2.1139411998660762e-08,
+    0.25999999046325684,
+    1.5202800035476685
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_GateScore_10.010",
+   "path": "Park/TowerA23/Chain_45/GateScore_10",
+   "kind": "T",
+   "points": 10,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.25999999046325684,
+    -1.848066225198326e-15,
+    -2.272992105645244e-08,
+    1.5202800035476685,
+    0.0,
+    0.2800000011920929,
+    -1.9629453618108528e-08,
+    8.50999927520752,
+    2.272992105645244e-08,
+    2.1139411998660762e-08,
+    0.25999999046325684,
+    0.49028000235557556
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_GateScore_10.013",
+   "path": "Park/TowerA23/Chain_135/GateScore_10",
+   "kind": "T",
+   "points": 10,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.25999999046325684,
+    -1.848066225198326e-15,
+    -2.272992105645244e-08,
+    -0.49028000235557556,
+    0.0,
+    0.2800000011920929,
+    -1.9629453618108528e-08,
+    8.50999927520752,
+    2.272992105645244e-08,
+    2.1139411998660762e-08,
+    0.25999999046325684,
+    1.5202800035476685
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_GateScore_10.014",
+   "path": "Park/TowerA23/Chain_135/GateScore_10",
+   "kind": "T",
+   "points": 10,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.25999999046325684,
+    -1.848066225198326e-15,
+    -2.272992105645244e-08,
+    -1.5202800035476685,
+    0.0,
+    0.2800000011920929,
+    -1.9629453618108528e-08,
+    8.469999313354492,
+    2.272992105645244e-08,
+    2.1139411998660762e-08,
+    0.25999999046325684,
+    2.8702800273895264
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_GateScore_10.015",
+   "path": "Park/TowerA23/Chain_135/GateScore_10",
+   "kind": "T",
+   "points": 10,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.25999999046325684,
+    -1.848066225198326e-15,
+    -2.272992105645244e-08,
+    -2.8702800273895264,
+    0.0,
+    0.2800000011920929,
+    -1.9629453618108528e-08,
+    8.469999313354492,
+    2.272992105645244e-08,
+    2.1139411998660762e-08,
+    0.25999999046325684,
+    1.5202800035476685
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_GateScore_10.016",
+   "path": "Park/TowerA23/Chain_135/GateScore_10",
+   "kind": "T",
+   "points": 10,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.25999999046325684,
+    -1.848066225198326e-15,
+    -2.272992105645244e-08,
+    -1.5202800035476685,
+    0.0,
+    0.2800000011920929,
+    -1.9629453618108528e-08,
+    8.50999927520752,
+    2.272992105645244e-08,
+    2.1139411998660762e-08,
+    0.25999999046325684,
+    0.49028000235557556
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_GateScore_10.019",
+   "path": "Park/TowerA23/Chain_225/GateScore_10",
+   "kind": "T",
+   "points": 10,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.25999999046325684,
+    -1.848066225198326e-15,
+    -2.272992105645244e-08,
+    -0.49028000235557556,
+    0.0,
+    0.2800000011920929,
+    -1.9629453618108528e-08,
+    8.50999927520752,
+    2.272992105645244e-08,
+    2.1139411998660762e-08,
+    0.25999999046325684,
+    -1.5202800035476685
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_GateScore_10.020",
+   "path": "Park/TowerA23/Chain_225/GateScore_10",
+   "kind": "T",
+   "points": 10,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.25999999046325684,
+    -1.848066225198326e-15,
+    -2.272992105645244e-08,
+    -1.5202800035476685,
+    0.0,
+    0.2800000011920929,
+    -1.9629453618108528e-08,
+    8.50999927520752,
+    2.272992105645244e-08,
+    2.1139411998660762e-08,
+    0.25999999046325684,
+    -0.49028000235557556
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_GateScore_10.021",
+   "path": "Park/TowerA23/Chain_225/GateScore_10",
+   "kind": "T",
+   "points": 10,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.25999999046325684,
+    -1.848066225198326e-15,
+    -2.272992105645244e-08,
+    -2.8702800273895264,
+    0.0,
+    0.2800000011920929,
+    -1.9629453618108528e-08,
+    8.469999313354492,
+    2.272992105645244e-08,
+    2.1139411998660762e-08,
+    0.25999999046325684,
+    -1.5202800035476685
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_GateScore_10.022",
+   "path": "Park/TowerA23/Chain_225/GateScore_10",
+   "kind": "T",
+   "points": 10,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.25999999046325684,
+    -1.848066225198326e-15,
+    -2.272992105645244e-08,
+    -1.5202800035476685,
+    0.0,
+    0.2800000011920929,
+    -1.9629453618108528e-08,
+    8.469999313354492,
+    2.272992105645244e-08,
+    2.1139411998660762e-08,
+    0.25999999046325684,
+    -2.8702800273895264
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_GateScore_10.025",
+   "path": "Park/TowerA23/Chain_315/GateScore_10",
+   "kind": "T",
+   "points": 10,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.25999999046325684,
+    -1.848066225198326e-15,
+    -2.272992105645244e-08,
+    2.87027907371521,
+    0.0,
+    0.2800000011920929,
+    -1.9629453618108528e-08,
+    8.469999313354492,
+    2.272992105645244e-08,
+    2.1139411998660762e-08,
+    0.25999999046325684,
+    -1.5202800035476685
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_GateScore_10.026",
+   "path": "Park/TowerA23/Chain_315/GateScore_10",
+   "kind": "T",
+   "points": 10,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.25999999046325684,
+    -1.848066225198326e-15,
+    -2.272992105645244e-08,
+    1.520279049873352,
+    0.0,
+    0.2800000011920929,
+    -1.9629453618108528e-08,
+    8.50999927520752,
+    2.272992105645244e-08,
+    2.1139411998660762e-08,
+    0.25999999046325684,
+    -0.49028000235557556
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_GateScore_10.027",
+   "path": "Park/TowerA23/Chain_315/GateScore_10",
+   "kind": "T",
+   "points": 10,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.25999999046325684,
+    -1.848066225198326e-15,
+    -2.272992105645244e-08,
+    0.4902789890766144,
+    0.0,
+    0.2800000011920929,
+    -1.9629453618108528e-08,
+    8.50999927520752,
+    2.272992105645244e-08,
+    2.1139411998660762e-08,
+    0.25999999046325684,
+    -1.5202800035476685
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_GateScore_10.028",
+   "path": "Park/TowerA23/Chain_315/GateScore_10",
+   "kind": "T",
+   "points": 10,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.25999999046325684,
+    -1.848066225198326e-15,
+    -2.272992105645244e-08,
+    1.520279049873352,
+    0.0,
+    0.2800000011920929,
+    -1.9629453618108528e-08,
+    8.469999313354492,
+    2.272992105645244e-08,
+    2.1139411998660762e-08,
+    0.25999999046325684,
+    -2.8702800273895264
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_GateScore_10.031",
+   "path": "Park/TowerA23/GateScore_10",
+   "kind": "T",
+   "points": 10,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.5,
+    -3.9601420321439765e-15,
+    -4.371138828673793e-08,
+    1.7200000286102295,
+    0.0,
+    0.6000000238418579,
+    -3.774895063202166e-08,
+    6.289999961853027,
+    4.371138828673793e-08,
+    4.529874431113967e-08,
+    0.5,
+    0.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_GateScore_10.032",
+   "path": "Park/TowerA23/GateScore_10",
+   "kind": "T",
+   "points": 10,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.5,
+    -3.9601420321439765e-15,
+    -4.371138828673793e-08,
+    0.0,
+    0.0,
+    0.6000000238418579,
+    -3.774895063202166e-08,
+    6.289999961853027,
+    4.371138828673793e-08,
+    4.529874431113967e-08,
+    0.5,
+    1.7200000286102295
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_GateScore_10.034",
+   "path": "Park/TowerA23/GateScore_10",
+   "kind": "T",
+   "points": 10,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.5,
+    -3.9601420321439765e-15,
+    -4.371138828673793e-08,
+    0.0,
+    0.0,
+    0.6000000238418579,
+    -3.774895063202166e-08,
+    6.289999961853027,
+    4.371138828673793e-08,
+    4.529874431113967e-08,
+    0.5,
+    -1.7200000286102295
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_GateScore_20.033",
+   "path": "Park/TowerA23/GateScore_20",
+   "kind": "T",
+   "points": 20,
+   "grantMultiplier": 0,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.5,
+    -3.9601420321439765e-15,
+    -4.371138828673793e-08,
+    -1.7200000286102295,
+    0.0,
+    0.6000000238418579,
+    -3.774895063202166e-08,
+    6.289999961853027,
+    4.371138828673793e-08,
+    4.529874431113967e-08,
+    0.5,
+    0.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_MultGate_x2.064",
+   "path": "Park/TowerE_S/DiscPivotHi/MultGate_x2",
+   "kind": "T",
+   "points": 0,
+   "grantMultiplier": 2,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -1.3200472734619132e-15,
+    -1.7484556025237907e-08,
+    -0.16979199647903442,
+    0.0,
+    0.20000000298023224,
+    -1.5099580252808664e-08,
+    3.339792013168335,
+    1.7484556025237907e-08,
+    1.5099580252808664e-08,
+    0.20000000298023224,
+    -5.551543235778809
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_MultGate_x2.065",
+   "path": "Park/TowerE_S/DiscPivotHi/MultGate_x2",
+   "kind": "T",
+   "points": 0,
+   "grantMultiplier": 2,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -1.3200472734619132e-15,
+    -1.7484556025237907e-08,
+    -0.33133500814437866,
+    0.0,
+    0.20000000298023224,
+    -1.5099580252808664e-08,
+    3.1782479286193848,
+    1.7484556025237907e-08,
+    1.5099580252808664e-08,
+    0.20000000298023224,
+    -5.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_MultGate_x2.066",
+   "path": "Park/TowerE_S/DiscPivotHi/MultGate_x2",
+   "kind": "T",
+   "points": 0,
+   "grantMultiplier": 2,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -1.3200472734619132e-15,
+    -1.7484556025237907e-08,
+    -0.16979199647903442,
+    0.0,
+    0.20000000298023224,
+    -1.5099580252808664e-08,
+    3.339792013168335,
+    1.7484556025237907e-08,
+    1.5099580252808664e-08,
+    0.20000000298023224,
+    -4.448456764221191
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_MultGate_x2.067",
+   "path": "Park/TowerE_S/DiscPivotHi/MultGate_x2",
+   "kind": "T",
+   "points": 0,
+   "grantMultiplier": 2,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -1.3200472734619132e-15,
+    -1.7484556025237907e-08,
+    0.22020800411701202,
+    0.0,
+    0.20000000298023224,
+    -1.5099580252808664e-08,
+    3.7297921180725098,
+    1.7484556025237907e-08,
+    1.5099580252808664e-08,
+    0.20000000298023224,
+    -4.219998836517334
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_MultGate_x2.068",
+   "path": "Park/TowerE_S/DiscPivotHi/MultGate_x2",
+   "kind": "T",
+   "points": 0,
+   "grantMultiplier": 2,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -1.3200472734619132e-15,
+    -1.7484556025237907e-08,
+    0.6102079749107361,
+    0.0,
+    0.20000000298023224,
+    -1.5099580252808664e-08,
+    4.1197919845581055,
+    1.7484556025237907e-08,
+    1.5099580252808664e-08,
+    0.20000000298023224,
+    -4.448456764221191
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_MultGate_x2.082",
+   "path": "Park/TowerE_N/DiscPivotHi/MultGate_x2",
+   "kind": "T",
+   "points": 0,
+   "grantMultiplier": 2,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -1.3200472734619132e-15,
+    -1.7484556025237907e-08,
+    -0.16979199647903442,
+    0.0,
+    0.20000000298023224,
+    -1.5099580252808664e-08,
+    3.339792013168335,
+    1.7484556025237907e-08,
+    1.5099580252808664e-08,
+    0.20000000298023224,
+    4.448456764221191
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_MultGate_x2.083",
+   "path": "Park/TowerE_N/DiscPivotHi/MultGate_x2",
+   "kind": "T",
+   "points": 0,
+   "grantMultiplier": 2,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -1.3200472734619132e-15,
+    -1.7484556025237907e-08,
+    -0.33133500814437866,
+    0.0,
+    0.20000000298023224,
+    -1.5099580252808664e-08,
+    3.1782479286193848,
+    1.7484556025237907e-08,
+    1.5099580252808664e-08,
+    0.20000000298023224,
+    5.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_MultGate_x2.084",
+   "path": "Park/TowerE_N/DiscPivotHi/MultGate_x2",
+   "kind": "T",
+   "points": 0,
+   "grantMultiplier": 2,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -1.3200472734619132e-15,
+    -1.7484556025237907e-08,
+    -0.16979199647903442,
+    0.0,
+    0.20000000298023224,
+    -1.5099580252808664e-08,
+    3.339792013168335,
+    1.7484556025237907e-08,
+    1.5099580252808664e-08,
+    0.20000000298023224,
+    5.551543235778809
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_MultGate_x2.085",
+   "path": "Park/TowerE_N/DiscPivotHi/MultGate_x2",
+   "kind": "T",
+   "points": 0,
+   "grantMultiplier": 2,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -1.3200472734619132e-15,
+    -1.7484556025237907e-08,
+    0.22020800411701202,
+    0.0,
+    0.20000000298023224,
+    -1.5099580252808664e-08,
+    3.7297921180725098,
+    1.7484556025237907e-08,
+    1.5099580252808664e-08,
+    0.20000000298023224,
+    5.780001163482666
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_MultGate_x2.086",
+   "path": "Park/TowerE_N/DiscPivotHi/MultGate_x2",
+   "kind": "T",
+   "points": 0,
+   "grantMultiplier": 2,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -1.3200472734619132e-15,
+    -1.7484556025237907e-08,
+    0.6102079749107361,
+    0.0,
+    0.20000000298023224,
+    -1.5099580252808664e-08,
+    4.1197919845581055,
+    1.7484556025237907e-08,
+    1.5099580252808664e-08,
+    0.20000000298023224,
+    5.551543235778809
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_MultGate_x2.101",
+   "path": "Park/TowerD_E/MultGate_x2",
+   "kind": "T",
+   "points": 0,
+   "grantMultiplier": 2,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -6.600236367309566e-16,
+    -1.7484556025237907e-08,
+    5.191071033477783,
+    0.0,
+    0.10000000149011612,
+    -1.5099580252808664e-08,
+    2.9000000953674316,
+    1.7484556025237907e-08,
+    7.549790126404332e-09,
+    0.20000000298023224,
+    0.5580989718437195
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_MultGate_x2.113",
+   "path": "Park/TowerD_W/MultGate_x2",
+   "kind": "T",
+   "points": 0,
+   "grantMultiplier": 2,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    -0.20000000298023224,
+    0.0,
+    0.0,
+    -5.191071033477783,
+    0.0,
+    0.10000000149011612,
+    -1.5099580252808664e-08,
+    2.9000000953674316,
+    0.0,
+    -7.549790126404332e-09,
+    -0.20000000298023224,
+    -0.5580980181694031
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_MultGate_x3.098",
+   "path": "Park/TowerD_E/MultGate_x3",
+   "kind": "T",
+   "points": 0,
+   "grantMultiplier": 3,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -6.600236367309566e-16,
+    -1.7484556025237907e-08,
+    4.92882776260376,
+    0.0,
+    0.10000000149011612,
+    -1.5099580252808664e-08,
+    2.9000000953674316,
+    1.7484556025237907e-08,
+    7.549790126404332e-09,
+    0.20000000298023224,
+    0.9271090030670166
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_MultGate_x3.110",
+   "path": "Park/TowerD_W/MultGate_x3",
+   "kind": "T",
+   "points": 0,
+   "grantMultiplier": 3,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    -0.20000000298023224,
+    0.0,
+    0.0,
+    -4.92882776260376,
+    0.0,
+    0.10000000149011612,
+    -1.5099580252808664e-08,
+    2.9000000953674316,
+    0.0,
+    -7.549790126404332e-09,
+    -0.20000000298023224,
+    -0.9271090030670166
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_MultGate_x4.063",
+   "path": "Park/TowerE_S/DiscPivotHi/MultGate_x4",
+   "kind": "T",
+   "points": 0,
+   "grantMultiplier": 4,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -1.3200472734619132e-15,
+    -1.7484556025237907e-08,
+    0.22020800411701202,
+    0.0,
+    0.20000000298023224,
+    -1.5099580252808664e-08,
+    3.7297921180725098,
+    1.7484556025237907e-08,
+    1.5099580252808664e-08,
+    0.20000000298023224,
+    -5.780001163482666
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_MultGate_x4.081",
+   "path": "Park/TowerE_N/DiscPivotHi/MultGate_x4",
+   "kind": "T",
+   "points": 0,
+   "grantMultiplier": 4,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -1.3200472734619132e-15,
+    -1.7484556025237907e-08,
+    0.22020800411701202,
+    0.0,
+    0.20000000298023224,
+    -1.5099580252808664e-08,
+    3.7297921180725098,
+    1.7484556025237907e-08,
+    1.5099580252808664e-08,
+    0.20000000298023224,
+    4.219998836517334
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_MultGate_x4.099",
+   "path": "Park/TowerD_E/MultGate_x4",
+   "kind": "T",
+   "points": 0,
+   "grantMultiplier": 4,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -6.600236367309566e-16,
+    -1.7484556025237907e-08,
+    4.762012958526611,
+    0.0,
+    0.10000000149011612,
+    -1.5099580252808664e-08,
+    2.9000000953674316,
+    1.7484556025237907e-08,
+    7.549790126404332e-09,
+    0.20000000298023224,
+    0.7024919986724854
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_MultGate_x4.111",
+   "path": "Park/TowerD_W/MultGate_x4",
+   "kind": "T",
+   "points": 0,
+   "grantMultiplier": 4,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    -0.20000000298023224,
+    0.0,
+    0.0,
+    -4.762012958526611,
+    0.0,
+    0.10000000149011612,
+    -1.5099580252808664e-08,
+    2.9000000953674316,
+    0.0,
+    -7.549790126404332e-09,
+    -0.20000000298023224,
+    -0.7024919986724854
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_MultGate_x5.062",
+   "path": "Park/TowerE_S/DiscPivotHi/MultGate_x5",
+   "kind": "T",
+   "points": 0,
+   "grantMultiplier": 5,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -1.3200472734619132e-15,
+    -1.7484556025237907e-08,
+    0.6102079749107361,
+    0.0,
+    0.20000000298023224,
+    -1.5099580252808664e-08,
+    4.1197919845581055,
+    1.7484556025237907e-08,
+    1.5099580252808664e-08,
+    0.20000000298023224,
+    -5.551543235778809
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_MultGate_x5.080",
+   "path": "Park/TowerE_N/DiscPivotHi/MultGate_x5",
+   "kind": "T",
+   "points": 0,
+   "grantMultiplier": 5,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -1.3200472734619132e-15,
+    -1.7484556025237907e-08,
+    0.6102079749107361,
+    0.0,
+    0.20000000298023224,
+    -1.5099580252808664e-08,
+    4.1197919845581055,
+    1.7484556025237907e-08,
+    1.5099580252808664e-08,
+    0.20000000298023224,
+    4.448456764221191
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_MultGate_x5.097",
+   "path": "Park/TowerD_E/MultGate_x5",
+   "kind": "T",
+   "points": 0,
+   "grantMultiplier": 5,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -6.600236367309566e-16,
+    -1.7484556025237907e-08,
+    5.193999767303467,
+    0.0,
+    0.10000000149011612,
+    -1.5099580252808664e-08,
+    2.9000000953674316,
+    1.7484556025237907e-08,
+    7.549790126404332e-09,
+    0.20000000298023224,
+    0.8378689885139465
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_MultGate_x5.109",
+   "path": "Park/TowerD_W/MultGate_x5",
+   "kind": "T",
+   "points": 0,
+   "grantMultiplier": 5,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    -0.20000000298023224,
+    0.0,
+    0.0,
+    -5.193999767303467,
+    0.0,
+    0.10000000149011612,
+    -1.5099580252808664e-08,
+    2.9000000953674316,
+    0.0,
+    -7.549790126404332e-09,
+    -0.20000000298023224,
+    -0.8378689885139465
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_MultGate_x6.061",
+   "path": "Park/TowerE_S/DiscPivotHi/MultGate_x6",
+   "kind": "T",
+   "points": 0,
+   "grantMultiplier": 6,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -1.3200472734619132e-15,
+    -1.7484556025237907e-08,
+    0.7717519998550415,
+    0.0,
+    0.20000000298023224,
+    -1.5099580252808664e-08,
+    4.28133487701416,
+    1.7484556025237907e-08,
+    1.5099580252808664e-08,
+    0.20000000298023224,
+    -5.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_MultGate_x6.079",
+   "path": "Park/TowerE_N/DiscPivotHi/MultGate_x6",
+   "kind": "T",
+   "points": 0,
+   "grantMultiplier": 6,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -1.3200472734619132e-15,
+    -1.7484556025237907e-08,
+    0.7717519998550415,
+    0.0,
+    0.20000000298023224,
+    -1.5099580252808664e-08,
+    4.28133487701416,
+    1.7484556025237907e-08,
+    1.5099580252808664e-08,
+    0.20000000298023224,
+    5.0
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_MultGate_x6.100",
+   "path": "Park/TowerD_E/MultGate_x6",
+   "kind": "T",
+   "points": 0,
+   "grantMultiplier": 6,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    0.20000000298023224,
+    -6.600236367309566e-16,
+    -1.7484556025237907e-08,
+    4.924088001251221,
+    0.0,
+    0.10000000149011612,
+    -1.5099580252808664e-08,
+    2.9000000953674316,
+    1.7484556025237907e-08,
+    7.549790126404332e-09,
+    0.20000000298023224,
+    0.47443100810050964
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "T_MultGate_x6.112",
+   "path": "Park/TowerD_W/MultGate_x6",
+   "kind": "T",
+   "points": 0,
+   "grantMultiplier": 6,
+   "axis": {
+    "x": 0.0,
+    "y": 1.0,
+    "z": 0.0
+   },
+   "dps": 0.0,
+   "a": 0.0,
+   "b": 0.0,
+   "period": 0.0,
+   "phase": 0.0,
+   "speed": 0.0,
+   "releaseJitter": 0.0,
+   "waypoints": [],
+   "text": "",
+   "fontSize": 1.5,
+   "billboard": false,
+   "m": [
+    -0.20000000298023224,
+    0.0,
+    0.0,
+    -4.924088001251221,
+    0.0,
+    0.10000000149011612,
+    -1.5099580252808664e-08,
+    2.9000000953674316,
+    0.0,
+    -7.549790126404332e-09,
+    -0.20000000298023224,
+    -0.47443100810050964
+   ],
+   "rgb": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   }
+  }
+ ]
+}
