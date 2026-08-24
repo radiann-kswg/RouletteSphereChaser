@@ -77,6 +77,7 @@ public class CameraCoverage : MonoBehaviour
         public float radius;       // 同・半径
         public int inRegion, outOfFrustum, occluded, seen;
         public readonly HashSet<Vector3Int> visited = new(), everSeen = new();
+        public readonly Dictionary<string, int> blockers = new();   // 遮蔽したコライダ名 -> 回数
     }
 
     readonly List<Cov> covs = new();
@@ -125,10 +126,33 @@ public class CameraCoverage : MonoBehaviour
                 // 球の手前に何かあるか。球の表面ぶんだけ手前で止めて自分自身を拾わない
                 Vector3 d = p - eye;
                 float dist = d.magnitude - 0.06f;
-                if (dist > 0f && Physics.Raycast(eye, d.normalized, dist, ~0, QueryTriggerInteraction.Ignore)) c.occluded++;
+                // 透過アクリルのシェル（SeeThroughレイヤ）は視界を塞がないので数えない。
+                // 物理コライダとしては生きているのでボールの通り道は変わらない。
+                int mask = ~0;
+                int st = LayerMask.NameToLayer("SeeThrough");
+                if (st >= 0) mask &= ~(1 << st);
+                if (dist > 0f && Physics.Raycast(eye, d.normalized, out var hit, dist, mask, QueryTriggerInteraction.Ignore))
+                {
+                    c.occluded++;
+                    // 「何に隠されたか」を数える。これが無いと、どのメッシュを抜けばいいのか当て推量になる
+                    string k = hit.collider.name;
+                    c.blockers.TryGetValue(k, out int n);
+                    c.blockers[k] = n + 1;
+                }
                 else { c.seen++; c.everSeen.Add(cell); }
             }
         }
+    }
+
+    /// 遮蔽回数の多い順に上位5件。「どのメッシュを透かす/抜くか」を決めるための実測値
+    static string TopBlockers(Cov c)
+    {
+        var top = new List<KeyValuePair<string, int>>(c.blockers);
+        top.Sort((a, b) => b.Value.CompareTo(a.Value));
+        var parts = new List<string>();
+        for (int i = 0; i < top.Count && i < 5; i++)
+            parts.Add("\"" + top[i].Key + "\":" + top[i].Value);
+        return string.Join(",", parts);
     }
 
     /// SoakRecorder から呼ばれる（ソーク終了時）
@@ -150,7 +174,8 @@ public class CameraCoverage : MonoBehaviour
                    + ",\"cellsSeen\":" + c.everSeen.Count
                    + ",\"blindSpot\":" + (1f - c.everSeen.Count / cells).ToString("F4")
                    + ",\"orbitDps\":" + (orb != null ? orb.degreesPerSecond : 0f).ToString("F1")
-                   + ",\"radius\":" + c.radius.ToString("F2") + "}");
+                   + ",\"radius\":" + c.radius.ToString("F2")
+                   + ",\"blockers\":{" + TopBlockers(c) + "}}");
         }
         var sb = new StringBuilder();
         sb.AppendLine("{ \"cameras\": [");

@@ -26,6 +26,24 @@ public static class ParkBuilder
     /// **ズレたときに直すのはここ1行だけ**（罠19のper-part規約はもう存在しない）。
     static readonly Quaternion RootFix = Quaternion.Euler(0f, 180f, 0f);
 
+    /// 透過アクリルにするシェル。**選定は勘ではなく実測**——`Docs/camera_coverage.json` の
+    /// `blockers`（何に遮蔽されたかの回数）で上位に出たメッシュを並べてある。
+    /// コンセプト「中が見えることを機構の見栄えより優先する」（DESIGN-v2 1.0章）の実装。
+    public const string SeeThroughLayer = "SeeThrough";
+    public static readonly System.Collections.Generic.HashSet<string> SeeThroughMats = new()
+    {
+        "TowerA_CollectorFunnel",     // Cam_A_GrandRoulette の遮蔽 770/1234 = 最大の犯人
+        "TowerA_MiniKuruun",          // Cam_A_Overview 2328
+        "TowerA_MiniRouletteBowl",    // 同 632
+        "TowerA_GrandRouletteBowl",   // Cam_A_GrandRoulette 216
+        "TowerB_PachiBoard",          // Cam_B_Pachinko_E/W の最大
+        "TowerG_NumaKuruun",          // 沼クルーン（User指名）
+        "TowerH_KarakoDish",          // Cam_H_Garapon 88
+        "TowerC_Zigzag",              // Cam_C_Zigzag_N/S の最大（46/51）
+        "TowerC_CatchTurn",           // 同 46/27
+        "TowerG_MergeTray",           // Cam_G_Numa_W 12 / Cam_H_Garapon 29
+    };
+
     [System.Serializable]
     class MeshRow { public string name, path, collider, material; public Color rgb; }
 
@@ -188,6 +206,13 @@ public static class ParkBuilder
 
             var r = t.GetComponent<Renderer>();
             if (r != null) r.sharedMaterial = Mat(mr.material, mr.rgb);
+            // 透過アクリルのシェルは「見えている」扱いにする（死角の実測でカウントしない）。
+            // 物理は素通しにしないので、レイヤは描画とCameraCoverageのためだけ。
+            if (SeeThroughMats.Contains(mr.material))
+            {
+                int layer = LayerMask.NameToLayer(SeeThroughLayer);
+                if (layer >= 0) t.gameObject.layer = layer;
+            }
             if (mr.collider == "mesh")
             {
                 var mf = t.GetComponent<MeshFilter>();
