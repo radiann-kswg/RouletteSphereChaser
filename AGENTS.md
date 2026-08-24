@@ -59,7 +59,8 @@ v1で一度学んだはずの失敗を、v2のフェーズ6でそっくり再演
 - `BlenderSources/LotteryBall.blend` … Blender原本（ボール＋すり鉢）
 - **`BlenderSources/ParkAssembly.blend` … 配置のSSOT（2026-08-24〜）**。メッシュは5つの原本.blendから**ライブラリリンク**（相対パス）。Unityの階層＝コレクション階層。機能マーカー（スコアトリガー・回転体・リフト・得点表示）はEmpty＋カスタムプロパティ。生成/検証は `Docs/build_park_assembly.py` / `Docs/verify_park_assembly.py`（冪等）。入力は `Docs/park_layout.json` / `park_markers.json` / `park_materials.json` / `park_labels.json` / `mesh_calib.json`
 - `Assets/Models/ParkAssembly.fbx` ＋ `ParkAssembly.params.json` … 上記から `Docs/export_park_assembly.py` が出す**唯一の配置成果物**。`ParkBuilder` はこれを読むだけ
-- `Assets/Scripts/SoakRecorder.cs` ＋ `Assets/Editor/SoakRunner.cs` … `Tools > Run Soak (36 balls)`。トリガー到達数に加えて**コースアウト・停止・迷子の球**を記録し `Docs/soak_*.json` に出す
+- `Assets/Scripts/SoakRecorder.cs` ＋ `Assets/Editor/SoakRunner.cs` … `Tools > Run Soak (36 balls)`。トリガー到達数に加えて**コースアウト・停止・迷子の球**を記録し `Docs/soak_*.json` に出す。演出カメラの定期スクショと異常時の集中スクショを `Docs/soak_shots/` へ保存
+- カメラ演出（2026-08-24・計25台）: `OrbitCamera`（定点16台を機構まわりに等速周回＋見下ろし角を上下に振る）／`RandomFixedCamera`×4（抽選機チャンネル）／`RandomFollowCamera`×4（ボールチャンネル）／`RandomMixCamera`×1（**Display 1 に出す親カメラ**。8チャンネルから自動選択）／`CameraDirector`（C=デモ切替 V=次のショット Tab・0=手動）。死角の実測は `CameraCoverage` → `Docs/camera_coverage.json`
 - `Docs/diff_scene.py` … 旧シーンのダンプと作り直したシーンの等価性検証（位置・回転・寸法・コンポーネント設定）
 - `PenchantManufacture_ImageAssets/` … **gitサブモジュール**（User作フォント・CC BY 4.0）。`Assets/Fonts/PenchantManufacture.otf` はここからのコピー。TMP SDFアセットはビルダーが自動生成（`Assets/Fonts/PenchantManufacture_SDF.asset`）
 - 得点表示の標準: **Blender製ScoreGate（チャッカー風）＋ボード上TMP SDFラベル**（深度テスト＋`_CullMode=2`背面カリング→壁越し・裏側の得点は見えない）。ボール番号アトラス`NumberAtlas.png`も同フォントで生成（上段=90番台・下段=0番台のUV反転レイアウト・白地黒丸黒数字。生成はPIL・4xスーパーサンプル）
@@ -153,6 +154,14 @@ v1で一度学んだはずの失敗を、v2のフェーズ6でそっくり再演
     トリガー寸法・回転体の姿勢をEmptyから読むと箱が100倍になり回転も裏返る。**マーカーの姿勢は数値（行列）で渡すこと**——
     `Docs/export_park_assembly.py` が Unity 座標の localToWorldMatrix を `params.json` に書き、`ParkBuilder` はそれを使う。
     そのうえで **JSONの位置とFBX Emptyの位置を突き合わせて 1mm 以上ズレたらエラー**にしてある（規約Gのズレを自動検出する仕掛け）。
+52. **定点カメラの死角の最大要因は「遮蔽」ではなく「そもそも画角に入っていない」**（2026-08-24実測: ガラポン83%・大ルーレット76%が画角外）。
+    先に**担当範囲が必ず収まるFOVへ自動調整**すること。そのうえで残るのが本当の遮蔽で、**方位の周回だけでは
+    すり鉢・トラフの内側は永久に見えない**ので見下ろし角も上下に振る（`OrbitCamera.elevationAmplitude`）。
+    それでも死角70%超が残る機構（パチンコ盤・沼クルーン・大ルーレット）は**造形が球を囲っている**のが原因で、
+    カメラワークでは解決しない＝美化フェーズで窓抜き・縁の低背化を検討する。
+53. **`PenchantManufacture` はCJK未収録**。HUDに日本語を入れると豆腐になる（User報告 2026-08-24）。
+    機構名などのUI文字列は英名で持つこと。日本語を出すならCJK収録フォントを別途HUDへ割り当てる。
+    あわせて**TMPの裏に半透明の黒板を敷く**こと（明るい機構の上だと白文字が飛ぶ。`BallHUD` が文字量に応じて自動伸縮）。
 
 ## 4. Unity MCP / Blender MCP 運用
 

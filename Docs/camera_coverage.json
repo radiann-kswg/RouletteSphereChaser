@@ -1,0 +1,18 @@
+{ "cameras": [
+  {"cam":"Cam_A_Overview","samples":21062,"seen":3272,"outOfFrustum":135,"occluded":17655,"timeCoverage":0.1554,"cellsVisited":3387,"cellsSeen":1158,"blindSpot":0.6581,"orbitDps":5.0,"radius":6.00},
+  {"cam":"Cam_A_GrandRoulette","samples":4036,"seen":371,"outOfFrustum":20,"occluded":3645,"timeCoverage":0.0919,"cellsVisited":894,"cellsSeen":203,"blindSpot":0.7729,"orbitDps":9.0,"radius":2.50},
+  {"cam":"Cam_H_Garapon","samples":799,"seen":251,"outOfFrustum":1,"occluded":547,"timeCoverage":0.3141,"cellsVisited":329,"cellsSeen":139,"blindSpot":0.5775,"orbitDps":12.0,"radius":2.50},
+  {"cam":"Cam_F_JPSpinner_S","samples":378,"seen":127,"outOfFrustum":3,"occluded":248,"timeCoverage":0.3360,"cellsVisited":160,"cellsSeen":81,"blindSpot":0.4938,"orbitDps":12.0,"radius":2.50},
+  {"cam":"Cam_E_PocketDisc_S","samples":688,"seen":223,"outOfFrustum":14,"occluded":451,"timeCoverage":0.3241,"cellsVisited":268,"cellsSeen":127,"blindSpot":0.5261,"orbitDps":12.0,"radius":2.50},
+  {"cam":"Cam_C_Zigzag_S","samples":360,"seen":107,"outOfFrustum":7,"occluded":246,"timeCoverage":0.2972,"cellsVisited":97,"cellsSeen":47,"blindSpot":0.5155,"orbitDps":10.0,"radius":2.50},
+  {"cam":"Cam_F_JPSpinner_N","samples":235,"seen":77,"outOfFrustum":4,"occluded":154,"timeCoverage":0.3277,"cellsVisited":111,"cellsSeen":55,"blindSpot":0.5045,"orbitDps":12.0,"radius":2.50},
+  {"cam":"Cam_E_PocketDisc_N","samples":246,"seen":98,"outOfFrustum":0,"occluded":148,"timeCoverage":0.3984,"cellsVisited":171,"cellsSeen":73,"blindSpot":0.5731,"orbitDps":12.0,"radius":2.50},
+  {"cam":"Cam_C_Zigzag_N","samples":266,"seen":69,"outOfFrustum":2,"occluded":195,"timeCoverage":0.2594,"cellsVisited":87,"cellsSeen":43,"blindSpot":0.5057,"orbitDps":10.0,"radius":2.50},
+  {"cam":"Cam_G_Numa_E","samples":1688,"seen":184,"outOfFrustum":0,"occluded":1504,"timeCoverage":0.1090,"cellsVisited":42,"cellsSeen":10,"blindSpot":0.7619,"orbitDps":12.0,"radius":2.50},
+  {"cam":"Cam_B_Pachinko_E","samples":40,"seen":3,"outOfFrustum":0,"occluded":37,"timeCoverage":0.0750,"cellsVisited":26,"cellsSeen":3,"blindSpot":0.8846,"orbitDps":14.0,"radius":2.06},
+  {"cam":"Cam_D_Kuruun_E","samples":385,"seen":308,"outOfFrustum":10,"occluded":67,"timeCoverage":0.8000,"cellsVisited":115,"cellsSeen":92,"blindSpot":0.2000,"orbitDps":14.0,"radius":2.50},
+  {"cam":"Cam_G_Numa_W","samples":938,"seen":116,"outOfFrustum":0,"occluded":822,"timeCoverage":0.1237,"cellsVisited":98,"cellsSeen":26,"blindSpot":0.7347,"orbitDps":12.0,"radius":2.50},
+  {"cam":"Cam_B_Pachinko_W","samples":941,"seen":24,"outOfFrustum":1,"occluded":916,"timeCoverage":0.0255,"cellsVisited":94,"cellsSeen":19,"blindSpot":0.7979,"orbitDps":14.0,"radius":2.15},
+  {"cam":"Cam_D_Kuruun_W","samples":239,"seen":96,"outOfFrustum":2,"occluded":141,"timeCoverage":0.4017,"cellsVisited":168,"cellsSeen":78,"blindSpot":0.5357,"orbitDps":14.0,"radius":2.50},
+  {"cam":"Cam_DrainStation","samples":6179,"seen":2042,"outOfFrustum":34,"occluded":4103,"timeCoverage":0.3305,"cellsVisited":138,"cellsSeen":123,"blindSpot":0.1087,"orbitDps":10.0,"radius":2.50}
+] }

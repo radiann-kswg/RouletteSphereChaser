@@ -33,11 +33,80 @@ public class SoakRecorder : MonoBehaviour
     /// 別シーン同士は接触処理順が変わるので、種を揃えても軌道は一致しない点に注意。
     public int seed = 12345;
 
+    [Header("カメラ撮影")]
+    public float shotInterval = 15f;      // デモ演出のいまのショットを定期撮影
+    public bool shotOnAnomaly = true;     // コースアウト/停止/迷子を見つけたら集中撮影
+    public string shotDir = "Docs/soak_shots";
+    public int shotWidth = 960, shotHeight = 540;
+
+    CameraDirector director;
+    CameraCoverage coverage;
+    float shotAcc;
+    int shotNo;
+
     readonly Dictionary<LotteryBall, Track> tracks = new();
     readonly List<string> escapes = new(), stucks = new(), strandeds = new();
     float t;
 
     void Awake() { Random.InitState(seed); }
+
+    void Start()
+    {
+        director = Object.FindFirstObjectByType<CameraDirector>();
+        coverage = gameObject.AddComponent<CameraCoverage>();
+        System.IO.Directory.CreateDirectory(ShotPath(""));
+    }
+
+    string ShotPath(string file)
+    {
+        return System.IO.Path.Combine(Application.dataPath, "..", shotDir, file);
+    }
+
+    /// 指定カメラの絵をPNGで保存する。カメラの enabled 状態に関係なく描ける
+    void Shot(Camera cam, string tag)
+    {
+        if (cam == null) return;
+        var rt = new RenderTexture(shotWidth, shotHeight, 24);
+        var prev = cam.targetTexture;
+        cam.targetTexture = rt;
+        cam.Render();
+        cam.targetTexture = prev;
+
+        var prevActive = RenderTexture.active;
+        RenderTexture.active = rt;
+        var tex = new Texture2D(shotWidth, shotHeight, TextureFormat.RGB24, false);
+        tex.ReadPixels(new Rect(0, 0, shotWidth, shotHeight), 0, 0);
+        tex.Apply();
+        RenderTexture.active = prevActive;
+
+        string name = string.Format("{0}_{1:D3}_{2:F0}s_{3}_{4}.png", label, ++shotNo, t, tag, cam.name);
+        System.IO.File.WriteAllBytes(ShotPath(name), tex.EncodeToPNG());
+        Destroy(tex);
+        rt.Release();
+        Destroy(rt);
+    }
+
+    /// 異常が起きた球を、一番よく映せるカメラで押さえる（近い定点カメラ＋メインの追従）
+    void ShotAnomaly(LotteryBall b, string why)
+    {
+        if (!shotOnAnomaly) return;
+        Camera best = null;
+        float bestScore = float.MaxValue;
+        var park = GameObject.Find("Park");
+        var cams = park != null ? park.transform.Find("Cameras") : null;
+        if (cams != null)
+            foreach (Transform ct in cams)
+            {
+                var c = ct.GetComponent<Camera>();
+                if (c == null || c.GetComponent<RandomFollowCamera>() != null) continue;
+                var vp = c.WorldToViewportPoint(b.transform.position);
+                if (vp.z <= 0f) continue;                       // カメラの後ろ
+                if (vp.x < 0f || vp.x > 1f || vp.y < 0f || vp.y > 1f) continue;  // 画角外
+                float d = Vector3.Distance(c.transform.position, b.transform.position);
+                if (d < bestScore) { bestScore = d; best = c; }
+            }
+        Shot(best != null ? best : Camera.main, why + "_" + b.name);
+    }
 
     void FixedUpdate()
     {
@@ -58,6 +127,7 @@ public class SoakRecorder : MonoBehaviour
                 tr.reportedEscape = true;
                 escapes.Add(Row(ball, p, "outOfBounds"));
                 Debug.LogWarning($"[Soak] ESCAPE {ball.name} at {p} t={t:F1}");
+                ShotAnomaly(ball, "ESCAPE");
             }
 
             // 2) 止まったまま（リフト搬送中の isKinematic は除外）
@@ -68,6 +138,7 @@ public class SoakRecorder : MonoBehaviour
                 tr.reportedStuck = true;
                 stucks.Add(Row(ball, p, "stuck"));
                 Debug.LogWarning($"[Soak] STUCK {ball.name} at {p} t={t:F1}");
+                ShotAnomaly(ball, "STUCK");
             }
 
             // 3) 得点も周回もしないまま長時間＝どこかで脱線して滞留している
@@ -81,6 +152,18 @@ public class SoakRecorder : MonoBehaviour
                 tr.reportedStranded = true;
                 strandeds.Add(Row(ball, p, "stranded"));
                 Debug.LogWarning($"[Soak] STRANDED {ball.name} at {p} t={t:F1}");
+                ShotAnomaly(ball, "STRANDED");
+            }
+        }
+
+        // デモ演出がいま映しているショットを定期撮影（＝実際の見え方の記録にもなる）
+        if (shotInterval > 0f)
+        {
+            shotAcc += Time.fixedDeltaTime;
+            if (shotAcc >= shotInterval)
+            {
+                shotAcc = 0f;
+                Shot(director != null ? director.Live : Camera.main, "live");
             }
         }
 
@@ -125,7 +208,8 @@ public class SoakRecorder : MonoBehaviour
         sb.AppendLine("}");
 
         System.IO.File.WriteAllText(System.IO.Path.Combine(Application.dataPath, "..", outPath), sb.ToString());
-        Debug.Log($"[Soak] done label={label} hits={totalHits} laps={totalLaps} escapes={escapes.Count} stuck={stucks.Count} stranded={strandeds.Count}");
+        if (coverage != null) coverage.Dump();
+        Debug.Log($"[Soak] done label={label} hits={totalHits} laps={totalLaps} escapes={escapes.Count} stuck={stucks.Count} stranded={strandeds.Count} shots={shotNo}");
         enabled = false;
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;

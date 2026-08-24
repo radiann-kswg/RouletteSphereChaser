@@ -14,6 +14,10 @@ public class ScoreZone : MonoBehaviour
     /// 到達回数（フェーズ7の「点数 = C / P」再計算用。プレイ中のみ加算・保存しない）
     [System.NonSerialized] public int hits;
 
+    /// 通過ログの配信（抽選機カメラ表示中のHUDが拾う）。引数は 通過したゾーン / ボール / 実際の獲得点。
+    /// 倍率ゲートのときは gained=0 で multiplier>0 になる。
+    public static event System.Action<ScoreZone, LotteryBall, int, int> OnPassed;
+
     void OnTriggerEnter(Collider other)
     {
         var rb = other.attachedRigidbody;
@@ -26,6 +30,7 @@ public class ScoreZone : MonoBehaviour
         {
             ball.nextMultiplier = grantMultiplier;
             Debug.Log($"[Mult] {name} x{grantMultiplier} -> {ball.name}");
+            OnPassed?.Invoke(this, ball, 0, grantMultiplier);
             return;
         }
 
@@ -34,6 +39,7 @@ public class ScoreZone : MonoBehaviour
         ball.pendingPoints += gained;
         if (m > 1) Debug.Log($"[Score] {name} +{points}x{m}={gained} -> {ball.name} (pend={ball.pendingPoints})");
         else       Debug.Log($"[Score] {name} +{points} -> {ball.name} (pend={ball.pendingPoints})");
+        OnPassed?.Invoke(this, ball, gained, m);
         ball.nextMultiplier = 1;   // 倍率は1回で消費
     }
 }

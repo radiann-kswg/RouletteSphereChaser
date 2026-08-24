@@ -200,8 +200,11 @@ public static class ParkBuilder
 
         Object.DestroyImmediate(asm);   // 空になったFBXルートは捨てる
 
-        BuildFixedCameras(root);
+        var camGroup = BuildFixedCameras(root);
+        BuildRoamCameras(camGroup);
         BuildSpawnerAndCamera(root);
+        if (GameObject.Find("CameraDirector") == null)
+            new GameObject("CameraDirector").AddComponent<CameraDirector>();
 
         // 罠20: 生成直後はエディタ時コライダが同期していない。検証レイキャストが誤診する
         Physics.SyncTransforms();
@@ -303,8 +306,49 @@ public static class ParkBuilder
         return m;
     }
 
-    /// 抽選機ごとの定点カメラ（既定オフ）。見るための道具なので配置SSOTの対象外＝ここに残す
-    static void BuildFixedCameras(Transform root)
+    /// 定点カメラの周回速度[deg/s]。名前は `Cam_` を除いた部分。**0 なら回さない**。
+    /// 死角の有無は `Docs/camera_coverage.json`（`Tools > Run Soak` が実測）を見て決める。
+    /// 一周25〜45秒＝観賞に耐える速さ。全景系はゆっくり回す。
+    static readonly Dictionary<string, float> OrbitDps = new()
+    {
+        { "A_Overview", 5f },
+        { "A_GrandRoulette", 9f },
+        { "H_Garapon", 12f },
+        { "F_JPSpinner_S", 12f }, { "F_JPSpinner_N", 12f },
+        { "E_PocketDisc_S", 12f }, { "E_PocketDisc_N", 12f },
+        { "C_Zigzag_S", 10f }, { "C_Zigzag_N", 10f },
+        { "G_Numa_E", 12f }, { "G_Numa_W", 12f },
+        { "B_Pachinko_E", 14f }, { "B_Pachinko_W", 14f },
+        { "D_Kuruun_E", 14f }, { "D_Kuruun_W", 14f },
+        { "DrainStation", 10f },
+    };
+
+    /// 上下振り[m]。すり鉢・トラフ・盤面の内側を舐めるために見下ろし角も振る台だけ入れる
+    static readonly Dictionary<string, float> ElevationAmp = new()
+    {
+        { "H_Garapon", 0.7f },
+        { "G_Numa_E", 0.6f }, { "G_Numa_W", 0.6f },
+        { "C_Zigzag_S", 0.6f }, { "C_Zigzag_N", 0.6f },
+        { "B_Pachinko_E", 0.5f }, { "B_Pachinko_W", 0.5f },
+        { "D_Kuruun_E", 0.5f }, { "D_Kuruun_W", 0.5f },
+        { "E_PocketDisc_S", 0.6f }, { "E_PocketDisc_N", 0.6f },
+        { "F_JPSpinner_S", 0.6f }, { "F_JPSpinner_N", 0.6f },
+        { "DrainStation", 0.5f },
+        { "A_GrandRoulette", 0.8f },
+    };
+
+    /// 担当範囲の半径の上限[m]。既定は機構スケール、全景系だけ広く取る
+    static readonly Dictionary<string, float> FocusCap = new()
+    {
+        { "A_Overview", 6f },
+        // 排水は Lifts(高さ14m) も担当グループに入るが、カメラは喉元の寄りショット。
+        // 4mにするとFOVが88°の魚眼になったので機構スケールに戻す
+        { "DrainStation", 2.5f },
+    };
+
+    /// 抽選機ごとの定点カメラ（既定オフ）。見る/魅せるための道具なので配置SSOTの対象外＝ここに残す。
+    /// 死角のある台には `OrbitCamera` を付けて、担当機構のバウンズ中心を軸に等速で周回させる。
+    static Transform BuildFixedCameras(Transform root)
     {
         var g = Group(root, "Cameras");
         void Cam(string n, Vector3 pos, Vector3 look, float fov)
@@ -317,7 +361,25 @@ public static class ParkBuilder
             c.fieldOfView = fov;
             c.farClipPlane = 60f;
             c.depth = -10f;      // MainCameraより後ろ（有効化しても既定表示を奪わない）
-            c.enabled = false;   // 既定オフ
+            c.enabled = false;   // 既定オフ（CameraDirectorが1台ずつ点ける）
+            // 注視点＝機構の中心。半径・高さ・開始角は配置から自動取得される。
+            // focusRadius は担当グループの実バウンズから決め、死角の実測（CameraCoverage）の母数になる
+            var orb = go.AddComponent<OrbitCamera>();
+            orb.pivot = look;
+            orb.degreesPerSecond = OrbitDps.TryGetValue(n, out float dps) ? dps : 0f;
+            orb.focusRadius = FocusRadius(root, n, look);
+            // すり鉢・トラフの内側は方位を回すだけでは見えない。見下ろし角も振る（実測で決めた値）
+            orb.elevationAmplitude = ElevationAmp.TryGetValue(n, out float amp) ? amp : 0f;
+            orb.elevationPeriod = 17f;
+
+            // 画角を担当範囲に合わせる。**死角の最大要因は「画角に入っていない」だった**（実測:
+            // 大ルーレット76% / ガラポン83% が画角外）ので、focusRadius が必ず収まるFOVにする
+            float dist = Vector3.Distance(pos, look);
+            if (dist > 0.01f)
+            {
+                float need = 2f * Mathf.Atan(Mathf.Min(orb.focusRadius / dist, 3f)) * Mathf.Rad2Deg;
+                c.fieldOfView = Mathf.Clamp(Mathf.Max(fov, need * 1.05f), fov, 88f);
+            }
         }
         Cam("A_Overview", new Vector3(0f, 10.6f, -9.5f), new Vector3(0f, 8.6f, 0f), 50f);
         Cam("A_GrandRoulette", new Vector3(0f, 6.9f, -4.4f), new Vector3(0f, 5.9f, 0f), 45f);
@@ -339,5 +401,64 @@ public static class ParkBuilder
             Cam("D_Kuruun_" + sfx, new Vector3(sg * 5f, 2.6f, -3.4f), new Vector3(sg * 5f, 1.8f, 0f), 50f);
         }
         Cam("DrainStation", new Vector3(11.2f, 1.5f, -3.2f), new Vector3(11.2f, 0.3f, 0f), 50f);
+        return g;
+    }
+
+    /// カメラが「映すべき」半径。担当グループ（`CameraCoverage.Assign`）の実メッシュが
+    /// 注視点からどこまで広がっているかで決める。死角の実測はこの球の中に居た球だけを母数にする。
+    static float FocusRadius(Transform root, string camKey, Vector3 look)
+    {
+        if (!CameraCoverage.Assign.TryGetValue(camKey, out var groups)) return 2f;
+        float r = 0f;
+        foreach (var name in groups)
+        {
+            var go = root.Find(name);
+            if (go == null) continue;
+            foreach (var rend in go.GetComponentsInChildren<Renderer>(true))
+            {
+                if (rend.GetComponent<TMPro.TextMeshPro>() != null) continue;
+                r = Mathf.Max(r, Vector3.Distance(look, rend.bounds.center) + rend.bounds.extents.magnitude);
+            }
+        }
+        // 既定は機構スケール(2.5m)で頭打ち。塔全体を担当する全景系だけ FocusCap で広げる
+        return Mathf.Clamp(r, 0.8f, FocusCap.TryGetValue(camKey, out float cap) ? cap : 2.5f);
+    }
+
+    /// 演出用のローミングカメラ（User要望 2026-08-24）。
+    /// **抽選機チャンネル4台**（数十秒ごとに別の抽選機へ乗り換える）と
+    /// **ボールチャンネル4台**（数十秒ごとに別のボールへ乗り換える）を別建てで用意する。
+    /// デモプレイ演出のショット源であり、ソークでは脱線した球を拾う目にもなる。
+    static void BuildRoamCameras(Transform g)
+    {
+        const int count = 4;
+
+        Camera NewCam(string name, Vector3 pos, float fov)
+        {
+            var go = new GameObject(name);
+            go.transform.SetParent(g);
+            go.transform.position = pos;
+            var c = go.AddComponent<Camera>();
+            c.fieldOfView = fov;
+            c.farClipPlane = 60f;
+            c.depth = -10f;
+            c.enabled = false;   // CameraDirector が1台ずつ点ける
+            return c;
+        }
+
+        for (int i = 0; i < count; i++)
+        {
+            var mech = NewCam("Cam_Mech_" + (i + 1), new Vector3(0f, 6f, -6f), 45f).gameObject
+                       .AddComponent<RandomFixedCamera>();
+            mech.minHold = 20f; mech.maxHold = 40f;
+            mech.startOffset = i * (30f / count);   // 台ごとに位相をずらして同時切替を避ける
+
+            var ball = NewCam("Cam_Ball_" + (i + 1), new Vector3(0f, 6f, -6f), 45f).gameObject
+                       .AddComponent<RandomFollowCamera>();
+            ball.minHold = 20f; ball.maxHold = 40f;
+            ball.startOffset = 10f + i * (30f / count);
+        }
+
+        // Display 1 に出す親カメラ。上の8チャンネルから自動で選んで映す（計9台構成）
+        NewCam("Cam_Mix", new Vector3(0f, 6f, -6f), 45f).gameObject.AddComponent<RandomMixCamera>();
     }
 }
