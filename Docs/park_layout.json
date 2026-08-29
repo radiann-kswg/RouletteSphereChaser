@@ -1,169 +1,6944 @@
 {
-  "scene": "Assets/Scenes/ParkScene_v2.unity",
-  "instances": [
-    {"path":"Park/Basin/ParkBase","fbx":"Assets/Models/ParkBase.fbx","mesh":"ParkBase","pos":[0.000000,0.000000,0.000000],"rotEuler":[90.000000,0.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[100.000000,0.000000,0.000000,0.000000,0.000000,-0.000012,-100.000000,0.000000,0.000000,100.000000,-0.000012,0.000000],"meshLocalCenter":[0.008000,0.000000,-0.013100],"meshLocalExtents":[0.130000,0.080000,0.013900],"worldCenter":[0.800000,1.310000,0.000000],"worldExtents":[13.000000,1.390001,8.000001],"vertexCount":1970,"collider":"mesh"},
-    {"path":"Park/DrainStation/DrainStation","fbx":"Assets/Models/DrainStation.fbx","mesh":"DrainStation","pos":[0.000000,0.000000,0.000000],"rotEuler":[90.000000,0.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[100.000000,0.000000,0.000000,0.000000,0.000000,-0.000012,-100.000000,0.000000,0.000000,100.000000,-0.000012,0.000000],"meshLocalCenter":[0.112500,0.000000,-0.001450],"meshLocalExtents":[0.013001,0.006500,0.002053],"worldCenter":[11.250030,0.145003,-0.000034],"worldExtents":[1.300107,0.205349,0.650034],"vertexCount":1553,"collider":"mesh"},
-    {"path":"Park/DrainStation/DrainStirrer/StirrerMesh","fbx":"Assets/Models/DrainStirrer.fbx","mesh":"DrainStirrer","pos":[11.600000,0.090000,0.000000],"rotEuler":[88.600030,270.000000,270.000000],"lossyScale":[1.700000,1.700001,1.000000],"m":[1.699493,0.000000,-0.024432,11.600000,-0.041535,0.000000,-0.999702,0.090000,0.000000,1.700000,0.000000,0.000000],"meshLocalCenter":[0.000000,0.000000,-0.027000],"meshLocalExtents":[0.250000,0.250000,0.058000],"worldCenter":[11.600660,0.116992,0.000000],"worldExtents":[0.426290,0.068366,0.425000],"vertexCount":610,"collider":"mesh"},
-    {"path":"Park/Lifts/LiftN_Guide","fbx":"Assets/Models/LiftGuide.fbx","mesh":"LiftGuide","pos":[12.330000,0.000000,0.090000],"rotEuler":[90.000000,0.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[100.000000,0.000000,0.000000,12.330000,0.000000,-0.000012,-100.000000,0.000000,0.000000,100.000000,-0.000012,0.090000],"meshLocalCenter":[0.000000,0.000000,-0.070000],"meshLocalExtents":[0.001100,0.000150,0.070000],"worldCenter":[12.330000,7.000001,0.090001],"worldExtents":[0.110000,7.000001,0.015001],"vertexCount":2659,"collider":"none"},
-    {"path":"Park/Lifts/LiftS_Guide","fbx":"Assets/Models/LiftGuide.fbx","mesh":"LiftGuide","pos":[12.330000,0.000000,-0.090000],"rotEuler":[90.000000,0.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[100.000000,0.000000,0.000000,12.330000,0.000000,-0.000012,-100.000000,0.000000,0.000000,100.000000,-0.000012,-0.090000],"meshLocalCenter":[0.000000,0.000000,-0.070000],"meshLocalExtents":[0.001100,0.000150,0.070000],"worldCenter":[12.330000,7.000001,-0.089999],"worldExtents":[0.110000,7.000001,0.015001],"vertexCount":2659,"collider":"none"},
-    {"path":"Park/Lifts/LiftTopRail","fbx":"Assets/Models/LiftTopRail.fbx","mesh":"LiftTopRail","pos":[0.000000,13.900000,0.000000],"rotEuler":[270.000000,180.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[-100.000000,0.000009,0.000000,0.000000,0.000000,-0.000012,100.000000,13.900000,0.000009,100.000000,-0.000012,0.000000],"meshLocalCenter":[-0.062500,0.000000,-0.000150],"meshLocalExtents":[0.062500,0.001750,0.000400],"worldCenter":[6.250001,13.885000,-0.000001],"worldExtents":[6.250001,0.040000,0.175001],"vertexCount":3352,"collider":"none"},
-    {"path":"Park/TowerA/SpiralA_45","fbx":"Assets/Models/TowerA_Spiral3.fbx","mesh":"Spiral3","pos":[1.520280,12.450000,1.520280],"rotEuler":[270.000000,345.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[96.592580,25.881900,0.000000,1.520280,0.000000,0.000000,100.000000,12.450000,25.881900,-96.592580,0.000000,1.520280],"meshLocalCenter":[0.000000,0.000000,-0.009343],"meshLocalExtents":[0.010994,0.010994,0.012343],"worldCenter":[1.520280,11.515680,1.520280],"worldExtents":[1.346493,1.234316,1.346493],"vertexCount":1464,"collider":"mesh"},
-    {"path":"Park/TowerA/SpiralA_135","fbx":"Assets/Models/TowerA_Spiral3.fbx","mesh":"Spiral3","pos":[-1.520280,12.450000,1.520280],"rotEuler":[270.000000,255.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[-25.881920,96.592590,0.000000,-1.520280,0.000000,-0.000012,100.000000,12.450000,96.592590,25.881910,-0.000012,1.520280],"meshLocalCenter":[0.000000,0.000000,-0.009343],"meshLocalExtents":[0.010994,0.010994,0.012343],"worldCenter":[-1.520280,11.515680,1.520280],"worldExtents":[1.346493,1.234317,1.346493],"vertexCount":1464,"collider":"mesh"},
-    {"path":"Park/TowerA/SpiralA_225","fbx":"Assets/Models/TowerA_Spiral3.fbx","mesh":"Spiral3","pos":[-1.520280,12.450000,-1.520280],"rotEuler":[270.000000,165.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[-96.592580,-25.881910,0.000000,-1.520280,0.000000,0.000000,100.000000,12.450000,-25.881910,96.592580,0.000000,-1.520280],"meshLocalCenter":[0.000000,0.000000,-0.009343],"meshLocalExtents":[0.010994,0.010994,0.012343],"worldCenter":[-1.520280,11.515680,-1.520280],"worldExtents":[1.346493,1.234316,1.346493],"vertexCount":1464,"collider":"mesh"},
-    {"path":"Park/TowerA/SpiralA_315","fbx":"Assets/Models/TowerA_Spiral3.fbx","mesh":"Spiral3","pos":[1.520279,12.450000,-1.520280],"rotEuler":[270.000000,75.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[25.881900,-96.592590,0.000000,1.520279,0.000000,-0.000012,100.000000,12.450000,-96.592590,-25.881910,-0.000012,-1.520280],"meshLocalCenter":[0.000000,0.000000,-0.009343],"meshLocalExtents":[0.010994,0.010994,0.012343],"worldCenter":[1.520279,11.515680,-1.520280],"worldExtents":[1.346493,1.234317,1.346493],"vertexCount":1464,"collider":"mesh"},
-    {"path":"Park/TowerA/DistributorA","fbx":"Assets/Models/TowerA_Distributor.fbx","mesh":"DistributorA","pos":[0.000000,12.850000,0.000000],"rotEuler":[270.000000,315.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[70.710670,70.710690,0.000000,0.000000,0.000000,-0.000012,100.000000,12.850000,70.710690,-70.710690,-0.000012,0.000000],"meshLocalCenter":[0.000000,0.000000,0.001150],"meshLocalExtents":[0.010720,0.010720,0.001750],"worldCenter":[0.000000,12.964980,0.000000],"worldExtents":[1.516020,0.175023,1.516021],"vertexCount":2768,"collider":"mesh"},
-    {"path":"Park/TowerA/AgitatorA","fbx":"Assets/Models/TowerA_Agitator.fbx","mesh":"AgitatorA","pos":[0.000000,12.850000,0.000000],"rotEuler":[270.000000,0.000000,0.000000],"lossyScale":[1.000000,1.000000,1.000000],"m":[1.000000,0.000000,0.000000,0.000000,0.000000,0.000000,1.000000,12.850000,0.000000,-1.000000,0.000000,0.000000],"meshLocalCenter":[0.000000,0.000000,0.168818],"meshLocalExtents":[0.830000,0.830000,0.153182],"worldCenter":[0.000000,13.018820,0.000000],"worldExtents":[0.830000,0.153182,0.830000],"vertexCount":540,"collider":"mesh"},
-    {"path":"Park/TowerA23/Chain_45/MiniKuruun","fbx":"Assets/Models/TowerA_MiniKuruun.fbx","mesh":"MiniKuruun","pos":[1.520280,9.690000,1.520280],"rotEuler":[270.000000,0.000000,0.000000],"lossyScale":[1.000000,1.000000,1.000000],"m":[1.000000,0.000000,0.000000,1.520280,0.000000,0.000000,1.000000,9.690000,0.000000,-1.000000,0.000000,1.520280],"meshLocalCenter":[0.000000,0.000000,0.450508],"meshLocalExtents":[1.340000,1.340000,0.450508],"worldCenter":[1.520280,10.140510,1.520280],"worldExtents":[1.340000,0.450508,1.340000],"vertexCount":970,"collider":"mesh"},
-    {"path":"Park/TowerA23/Chain_45/KuruunStirrer/StirrerMesh","fbx":"Assets/Models/DrainStirrer.fbx","mesh":"DrainStirrer","pos":[1.520280,9.780000,1.520280],"rotEuler":[90.000000,0.000000,0.000000],"lossyScale":[1.000000,1.000000,1.000000],"m":[1.000000,0.000000,0.000000,1.520280,0.000000,0.000000,-1.000000,9.780000,0.000000,1.000000,0.000000,1.520280],"meshLocalCenter":[0.000000,0.000000,-0.027000],"meshLocalExtents":[0.250000,0.250000,0.058000],"worldCenter":[1.520280,9.807000,1.520280],"worldExtents":[0.250000,0.058000,0.250000],"vertexCount":610,"collider":"mesh"},
-    {"path":"Park/TowerA23/Chain_45/MiniRouletteBowl","fbx":"Assets/Models/TowerA_MiniRouletteBowl.fbx","mesh":"MiniRouletteBowl","pos":[1.520280,8.490000,1.520280],"rotEuler":[270.000000,0.000000,0.000000],"lossyScale":[1.000000,1.000000,1.000000],"m":[1.000000,0.000000,0.000000,1.520280,0.000000,0.000000,1.000000,8.490000,0.000000,-1.000000,0.000000,1.520280],"meshLocalCenter":[0.000000,0.000000,0.150318],"meshLocalExtents":[1.013812,1.013812,0.192318],"worldCenter":[1.520280,8.640318,1.520280],"worldExtents":[1.013812,0.192319,1.013812],"vertexCount":1093,"collider":"mesh"},
-    {"path":"Park/TowerA23/Chain_45/MiniRouletteWheel","fbx":"Assets/Models/TowerA_MiniRouletteWheel.fbx","mesh":"MiniRouletteWheel","pos":[1.520280,8.490000,1.520280],"rotEuler":[270.000000,0.000000,0.000000],"lossyScale":[1.000000,1.000000,1.000000],"m":[1.000000,0.000000,0.000000,1.520280,0.000000,0.000000,1.000000,8.490000,0.000000,-1.000000,0.000000,1.520280],"meshLocalCenter":[0.000000,0.000000,0.222000],"meshLocalExtents":[0.800000,0.698820,0.210000],"worldCenter":[1.520280,8.712000,1.520280],"worldExtents":[0.800000,0.210000,0.698820],"vertexCount":470,"collider":"mesh"},
-    {"path":"Park/TowerA23/Chain_45/ScoreGate_10","fbx":"Assets/Models/TowerA_ScoreGate.fbx","mesh":"ScoreGate","pos":[2.870280,8.320000,1.520280],"rotEuler":[270.000000,180.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[-100.000000,0.000009,0.000000,2.870280,0.000000,-0.000012,100.000000,8.320000,0.000009,100.000000,-0.000012,1.520280],"meshLocalCenter":[0.000000,0.000000,0.002050],"meshLocalExtents":[0.000250,0.001950,0.002850],"worldCenter":[2.870280,8.525000,1.520280],"worldExtents":[0.025000,0.285000,0.195000],"vertexCount":968,"collider":"mesh"},
-    {"path":"Park/TowerA23/Chain_45/HighLane_0","fbx":"Assets/Models/TowerA_HighLane.fbx","mesh":"HighLane","pos":[2.620280,8.340000,1.520280],"rotEuler":[270.000000,180.000000,0.000000],"lossyScale":[1.000000,1.000000,1.000000],"m":[-1.000000,0.000000,0.000000,2.620280,0.000000,0.000000,1.000000,8.340000,0.000000,1.000000,0.000000,1.520280],"meshLocalCenter":[-1.100016,0.000000,-0.010407],"meshLocalExtents":[1.100722,0.125000,0.150407],"worldCenter":[3.720296,8.329594,1.520280],"worldExtents":[1.100722,0.150407,0.125000],"vertexCount":160,"collider":"mesh"},
-    {"path":"Park/TowerA23/Chain_45/ScoreGate_10","fbx":"Assets/Models/TowerA_ScoreGate.fbx","mesh":"ScoreGate","pos":[1.520280,8.320000,2.870280],"rotEuler":[270.000000,90.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[0.000000,-100.000000,0.000000,1.520280,0.000000,0.000000,100.000000,8.320000,-100.000000,0.000000,0.000000,2.870280],"meshLocalCenter":[0.000000,0.000000,0.002050],"meshLocalExtents":[0.000250,0.001950,0.002850],"worldCenter":[1.520280,8.525000,2.870280],"worldExtents":[0.195000,0.285000,0.025000],"vertexCount":968,"collider":"mesh"},
-    {"path":"Park/TowerA23/Chain_45/HighLane_90","fbx":"Assets/Models/TowerA_HighLane.fbx","mesh":"HighLane","pos":[1.520280,8.340000,2.620280],"rotEuler":[270.000000,90.000000,0.000000],"lossyScale":[1.000000,1.000000,1.000000],"m":[0.000000,-1.000000,0.000000,1.520280,0.000000,0.000000,1.000000,8.340000,-1.000000,0.000000,0.000000,2.620280],"meshLocalCenter":[-1.100016,0.000000,-0.010407],"meshLocalExtents":[1.100722,0.125000,0.150407],"worldCenter":[1.520280,8.329594,3.720295],"worldExtents":[0.125000,0.150407,1.100722],"vertexCount":160,"collider":"mesh"},
-    {"path":"Park/TowerA23/Chain_45/ScoreGate_10","fbx":"Assets/Models/TowerA_ScoreGate.fbx","mesh":"ScoreGate","pos":[0.490280,8.360000,1.520280],"rotEuler":[270.000000,0.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[100.000000,0.000000,0.000000,0.490280,0.000000,-0.000012,100.000000,8.360000,0.000000,-100.000000,-0.000012,1.520280],"meshLocalCenter":[0.000000,0.000000,0.002050],"meshLocalExtents":[0.000250,0.001950,0.002850],"worldCenter":[0.490280,8.565000,1.520280],"worldExtents":[0.025000,0.285000,0.195000],"vertexCount":968,"collider":"mesh"},
-    {"path":"Park/TowerA23/Chain_45/ScoreGate_10","fbx":"Assets/Models/TowerA_ScoreGate.fbx","mesh":"ScoreGate","pos":[1.520280,8.360000,0.490280],"rotEuler":[270.000000,270.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[0.000000,100.000000,0.000000,1.520280,0.000000,0.000000,100.000000,8.360000,100.000000,0.000000,0.000000,0.490280],"meshLocalCenter":[0.000000,0.000000,0.002050],"meshLocalExtents":[0.000250,0.001950,0.002850],"worldCenter":[1.520280,8.565000,0.490280],"worldExtents":[0.195000,0.285000,0.025000],"vertexCount":968,"collider":"mesh"},
-    {"path":"Park/TowerA23/Chain_135/MiniKuruun","fbx":"Assets/Models/TowerA_MiniKuruun.fbx","mesh":"MiniKuruun","pos":[-1.520280,9.690000,1.520280],"rotEuler":[270.000000,0.000000,0.000000],"lossyScale":[1.000000,1.000000,1.000000],"m":[1.000000,0.000000,0.000000,-1.520280,0.000000,0.000000,1.000000,9.690000,0.000000,-1.000000,0.000000,1.520280],"meshLocalCenter":[0.000000,0.000000,0.450508],"meshLocalExtents":[1.340000,1.340000,0.450508],"worldCenter":[-1.520280,10.140510,1.520280],"worldExtents":[1.340000,0.450508,1.340000],"vertexCount":970,"collider":"mesh"},
-    {"path":"Park/TowerA23/Chain_135/KuruunStirrer/StirrerMesh","fbx":"Assets/Models/DrainStirrer.fbx","mesh":"DrainStirrer","pos":[-1.520280,9.780000,1.520280],"rotEuler":[90.000000,0.000000,0.000000],"lossyScale":[1.000000,1.000000,1.000000],"m":[1.000000,0.000000,0.000000,-1.520280,0.000000,0.000000,-1.000000,9.780000,0.000000,1.000000,0.000000,1.520280],"meshLocalCenter":[0.000000,0.000000,-0.027000],"meshLocalExtents":[0.250000,0.250000,0.058000],"worldCenter":[-1.520280,9.807000,1.520280],"worldExtents":[0.250000,0.058000,0.250000],"vertexCount":610,"collider":"mesh"},
-    {"path":"Park/TowerA23/Chain_135/MiniRouletteBowl","fbx":"Assets/Models/TowerA_MiniRouletteBowl.fbx","mesh":"MiniRouletteBowl","pos":[-1.520280,8.490000,1.520280],"rotEuler":[270.000000,0.000000,0.000000],"lossyScale":[1.000000,1.000000,1.000000],"m":[1.000000,0.000000,0.000000,-1.520280,0.000000,0.000000,1.000000,8.490000,0.000000,-1.000000,0.000000,1.520280],"meshLocalCenter":[0.000000,0.000000,0.150318],"meshLocalExtents":[1.013812,1.013812,0.192318],"worldCenter":[-1.520280,8.640318,1.520280],"worldExtents":[1.013812,0.192319,1.013812],"vertexCount":1093,"collider":"mesh"},
-    {"path":"Park/TowerA23/Chain_135/MiniRouletteWheel","fbx":"Assets/Models/TowerA_MiniRouletteWheel.fbx","mesh":"MiniRouletteWheel","pos":[-1.520280,8.490000,1.520280],"rotEuler":[270.000000,0.000000,0.000000],"lossyScale":[1.000000,1.000000,1.000000],"m":[1.000000,0.000000,0.000000,-1.520280,0.000000,0.000000,1.000000,8.490000,0.000000,-1.000000,0.000000,1.520280],"meshLocalCenter":[0.000000,0.000000,0.222000],"meshLocalExtents":[0.800000,0.698820,0.210000],"worldCenter":[-1.520280,8.712000,1.520280],"worldExtents":[0.800000,0.210000,0.698820],"vertexCount":470,"collider":"mesh"},
-    {"path":"Park/TowerA23/Chain_135/ScoreGate_10","fbx":"Assets/Models/TowerA_ScoreGate.fbx","mesh":"ScoreGate","pos":[-0.490280,8.360000,1.520280],"rotEuler":[270.000000,180.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[-100.000000,0.000009,0.000000,-0.490280,0.000000,-0.000012,100.000000,8.360000,0.000009,100.000000,-0.000012,1.520280],"meshLocalCenter":[0.000000,0.000000,0.002050],"meshLocalExtents":[0.000250,0.001950,0.002850],"worldCenter":[-0.490280,8.565000,1.520280],"worldExtents":[0.025000,0.285000,0.195000],"vertexCount":968,"collider":"mesh"},
-    {"path":"Park/TowerA23/Chain_135/ScoreGate_10","fbx":"Assets/Models/TowerA_ScoreGate.fbx","mesh":"ScoreGate","pos":[-1.520280,8.320000,2.870280],"rotEuler":[270.000000,90.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[0.000000,-100.000000,0.000000,-1.520280,0.000000,0.000000,100.000000,8.320000,-100.000000,0.000000,0.000000,2.870280],"meshLocalCenter":[0.000000,0.000000,0.002050],"meshLocalExtents":[0.000250,0.001950,0.002850],"worldCenter":[-1.520280,8.525000,2.870280],"worldExtents":[0.195000,0.285000,0.025000],"vertexCount":968,"collider":"mesh"},
-    {"path":"Park/TowerA23/Chain_135/HighLane_90","fbx":"Assets/Models/TowerA_HighLane.fbx","mesh":"HighLane","pos":[-1.520280,8.340000,2.620280],"rotEuler":[270.000000,90.000000,0.000000],"lossyScale":[1.000000,1.000000,1.000000],"m":[0.000000,-1.000000,0.000000,-1.520280,0.000000,0.000000,1.000000,8.340000,-1.000000,0.000000,0.000000,2.620280],"meshLocalCenter":[-1.100016,0.000000,-0.010407],"meshLocalExtents":[1.100722,0.125000,0.150407],"worldCenter":[-1.520280,8.329594,3.720295],"worldExtents":[0.125000,0.150407,1.100722],"vertexCount":160,"collider":"mesh"},
-    {"path":"Park/TowerA23/Chain_135/ScoreGate_10","fbx":"Assets/Models/TowerA_ScoreGate.fbx","mesh":"ScoreGate","pos":[-2.870280,8.320000,1.520280],"rotEuler":[270.000000,0.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[100.000000,0.000000,0.000000,-2.870280,0.000000,-0.000012,100.000000,8.320000,0.000000,-100.000000,-0.000012,1.520280],"meshLocalCenter":[0.000000,0.000000,0.002050],"meshLocalExtents":[0.000250,0.001950,0.002850],"worldCenter":[-2.870280,8.525000,1.520280],"worldExtents":[0.025000,0.285000,0.195000],"vertexCount":968,"collider":"mesh"},
-    {"path":"Park/TowerA23/Chain_135/HighLane_180","fbx":"Assets/Models/TowerA_HighLane.fbx","mesh":"HighLane","pos":[-2.620280,8.340000,1.520280],"rotEuler":[270.000000,0.000000,0.000000],"lossyScale":[1.000000,1.000000,1.000000],"m":[1.000000,0.000000,0.000000,-2.620280,0.000000,0.000000,1.000000,8.340000,0.000000,-1.000000,0.000000,1.520280],"meshLocalCenter":[-1.100016,0.000000,-0.010407],"meshLocalExtents":[1.100722,0.125000,0.150407],"worldCenter":[-3.720295,8.329594,1.520280],"worldExtents":[1.100722,0.150407,0.125000],"vertexCount":160,"collider":"mesh"},
-    {"path":"Park/TowerA23/Chain_135/ScoreGate_10","fbx":"Assets/Models/TowerA_ScoreGate.fbx","mesh":"ScoreGate","pos":[-1.520280,8.360000,0.490280],"rotEuler":[270.000000,270.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[0.000000,100.000000,0.000000,-1.520280,0.000000,0.000000,100.000000,8.360000,100.000000,0.000000,0.000000,0.490280],"meshLocalCenter":[0.000000,0.000000,0.002050],"meshLocalExtents":[0.000250,0.001950,0.002850],"worldCenter":[-1.520280,8.565000,0.490280],"worldExtents":[0.195000,0.285000,0.025000],"vertexCount":968,"collider":"mesh"},
-    {"path":"Park/TowerA23/Chain_225/MiniKuruun","fbx":"Assets/Models/TowerA_MiniKuruun.fbx","mesh":"MiniKuruun","pos":[-1.520280,9.690000,-1.520280],"rotEuler":[270.000000,0.000000,0.000000],"lossyScale":[1.000000,1.000000,1.000000],"m":[1.000000,0.000000,0.000000,-1.520280,0.000000,0.000000,1.000000,9.690000,0.000000,-1.000000,0.000000,-1.520280],"meshLocalCenter":[0.000000,0.000000,0.450508],"meshLocalExtents":[1.340000,1.340000,0.450508],"worldCenter":[-1.520280,10.140510,-1.520280],"worldExtents":[1.340000,0.450508,1.340000],"vertexCount":970,"collider":"mesh"},
-    {"path":"Park/TowerA23/Chain_225/KuruunStirrer/StirrerMesh","fbx":"Assets/Models/DrainStirrer.fbx","mesh":"DrainStirrer","pos":[-1.520280,9.780000,-1.520280],"rotEuler":[90.000000,0.000000,0.000000],"lossyScale":[1.000000,1.000000,1.000000],"m":[1.000000,0.000000,0.000000,-1.520280,0.000000,0.000000,-1.000000,9.780000,0.000000,1.000000,0.000000,-1.520280],"meshLocalCenter":[0.000000,0.000000,-0.027000],"meshLocalExtents":[0.250000,0.250000,0.058000],"worldCenter":[-1.520280,9.807000,-1.520280],"worldExtents":[0.250000,0.058000,0.250000],"vertexCount":610,"collider":"mesh"},
-    {"path":"Park/TowerA23/Chain_225/MiniRouletteBowl","fbx":"Assets/Models/TowerA_MiniRouletteBowl.fbx","mesh":"MiniRouletteBowl","pos":[-1.520280,8.490000,-1.520280],"rotEuler":[270.000000,0.000000,0.000000],"lossyScale":[1.000000,1.000000,1.000000],"m":[1.000000,0.000000,0.000000,-1.520280,0.000000,0.000000,1.000000,8.490000,0.000000,-1.000000,0.000000,-1.520280],"meshLocalCenter":[0.000000,0.000000,0.150318],"meshLocalExtents":[1.013812,1.013812,0.192318],"worldCenter":[-1.520280,8.640318,-1.520280],"worldExtents":[1.013812,0.192319,1.013812],"vertexCount":1093,"collider":"mesh"},
-    {"path":"Park/TowerA23/Chain_225/MiniRouletteWheel","fbx":"Assets/Models/TowerA_MiniRouletteWheel.fbx","mesh":"MiniRouletteWheel","pos":[-1.520280,8.490000,-1.520280],"rotEuler":[270.000000,0.000000,0.000000],"lossyScale":[1.000000,1.000000,1.000000],"m":[1.000000,0.000000,0.000000,-1.520280,0.000000,0.000000,1.000000,8.490000,0.000000,-1.000000,0.000000,-1.520280],"meshLocalCenter":[0.000000,0.000000,0.222000],"meshLocalExtents":[0.800000,0.698820,0.210000],"worldCenter":[-1.520280,8.712000,-1.520280],"worldExtents":[0.800000,0.210000,0.698820],"vertexCount":470,"collider":"mesh"},
-    {"path":"Park/TowerA23/Chain_225/ScoreGate_10","fbx":"Assets/Models/TowerA_ScoreGate.fbx","mesh":"ScoreGate","pos":[-0.490280,8.360000,-1.520280],"rotEuler":[270.000000,180.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[-100.000000,0.000009,0.000000,-0.490280,0.000000,-0.000012,100.000000,8.360000,0.000009,100.000000,-0.000012,-1.520280],"meshLocalCenter":[0.000000,0.000000,0.002050],"meshLocalExtents":[0.000250,0.001950,0.002850],"worldCenter":[-0.490280,8.565000,-1.520280],"worldExtents":[0.025000,0.285000,0.195000],"vertexCount":968,"collider":"mesh"},
-    {"path":"Park/TowerA23/Chain_225/ScoreGate_10","fbx":"Assets/Models/TowerA_ScoreGate.fbx","mesh":"ScoreGate","pos":[-1.520280,8.360000,-0.490280],"rotEuler":[270.000000,90.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[0.000000,-100.000000,0.000000,-1.520280,0.000000,0.000000,100.000000,8.360000,-100.000000,0.000000,0.000000,-0.490280],"meshLocalCenter":[0.000000,0.000000,0.002050],"meshLocalExtents":[0.000250,0.001950,0.002850],"worldCenter":[-1.520280,8.565000,-0.490280],"worldExtents":[0.195000,0.285000,0.025000],"vertexCount":968,"collider":"mesh"},
-    {"path":"Park/TowerA23/Chain_225/ScoreGate_10","fbx":"Assets/Models/TowerA_ScoreGate.fbx","mesh":"ScoreGate","pos":[-2.870280,8.320000,-1.520280],"rotEuler":[270.000000,0.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[100.000000,0.000000,0.000000,-2.870280,0.000000,-0.000012,100.000000,8.320000,0.000000,-100.000000,-0.000012,-1.520280],"meshLocalCenter":[0.000000,0.000000,0.002050],"meshLocalExtents":[0.000250,0.001950,0.002850],"worldCenter":[-2.870280,8.525000,-1.520280],"worldExtents":[0.025000,0.285000,0.195000],"vertexCount":968,"collider":"mesh"},
-    {"path":"Park/TowerA23/Chain_225/HighLane_180","fbx":"Assets/Models/TowerA_HighLane.fbx","mesh":"HighLane","pos":[-2.620280,8.340000,-1.520280],"rotEuler":[270.000000,0.000000,0.000000],"lossyScale":[1.000000,1.000000,1.000000],"m":[1.000000,0.000000,0.000000,-2.620280,0.000000,0.000000,1.000000,8.340000,0.000000,-1.000000,0.000000,-1.520280],"meshLocalCenter":[-1.100016,0.000000,-0.010407],"meshLocalExtents":[1.100722,0.125000,0.150407],"worldCenter":[-3.720295,8.329594,-1.520280],"worldExtents":[1.100722,0.150407,0.125000],"vertexCount":160,"collider":"mesh"},
-    {"path":"Park/TowerA23/Chain_225/ScoreGate_10","fbx":"Assets/Models/TowerA_ScoreGate.fbx","mesh":"ScoreGate","pos":[-1.520280,8.320000,-2.870280],"rotEuler":[270.000000,270.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[0.000000,100.000000,0.000000,-1.520280,0.000000,0.000000,100.000000,8.320000,100.000000,0.000000,0.000000,-2.870280],"meshLocalCenter":[0.000000,0.000000,0.002050],"meshLocalExtents":[0.000250,0.001950,0.002850],"worldCenter":[-1.520280,8.525000,-2.870280],"worldExtents":[0.195000,0.285000,0.025000],"vertexCount":968,"collider":"mesh"},
-    {"path":"Park/TowerA23/Chain_225/HighLane_270","fbx":"Assets/Models/TowerA_HighLane.fbx","mesh":"HighLane","pos":[-1.520280,8.340000,-2.620280],"rotEuler":[270.000000,270.000000,0.000000],"lossyScale":[1.000000,1.000000,1.000000],"m":[0.000000,1.000000,0.000000,-1.520280,0.000000,0.000000,1.000000,8.340000,1.000000,0.000000,0.000000,-2.620280],"meshLocalCenter":[-1.100016,0.000000,-0.010407],"meshLocalExtents":[1.100722,0.125000,0.150407],"worldCenter":[-1.520280,8.329594,-3.720295],"worldExtents":[0.125000,0.150407,1.100722],"vertexCount":160,"collider":"mesh"},
-    {"path":"Park/TowerA23/Chain_315/MiniKuruun","fbx":"Assets/Models/TowerA_MiniKuruun.fbx","mesh":"MiniKuruun","pos":[1.520279,9.690000,-1.520280],"rotEuler":[270.000000,0.000000,0.000000],"lossyScale":[1.000000,1.000000,1.000000],"m":[1.000000,0.000000,0.000000,1.520279,0.000000,0.000000,1.000000,9.690000,0.000000,-1.000000,0.000000,-1.520280],"meshLocalCenter":[0.000000,0.000000,0.450508],"meshLocalExtents":[1.340000,1.340000,0.450508],"worldCenter":[1.520279,10.140510,-1.520280],"worldExtents":[1.340000,0.450508,1.340000],"vertexCount":970,"collider":"mesh"},
-    {"path":"Park/TowerA23/Chain_315/KuruunStirrer/StirrerMesh","fbx":"Assets/Models/DrainStirrer.fbx","mesh":"DrainStirrer","pos":[1.520279,9.780000,-1.520280],"rotEuler":[90.000000,0.000000,0.000000],"lossyScale":[1.000000,1.000000,1.000000],"m":[1.000000,0.000000,0.000000,1.520279,0.000000,0.000000,-1.000000,9.780000,0.000000,1.000000,0.000000,-1.520280],"meshLocalCenter":[0.000000,0.000000,-0.027000],"meshLocalExtents":[0.250000,0.250000,0.058000],"worldCenter":[1.520279,9.807000,-1.520280],"worldExtents":[0.250000,0.058000,0.250000],"vertexCount":610,"collider":"mesh"},
-    {"path":"Park/TowerA23/Chain_315/MiniRouletteBowl","fbx":"Assets/Models/TowerA_MiniRouletteBowl.fbx","mesh":"MiniRouletteBowl","pos":[1.520279,8.490000,-1.520280],"rotEuler":[270.000000,0.000000,0.000000],"lossyScale":[1.000000,1.000000,1.000000],"m":[1.000000,0.000000,0.000000,1.520279,0.000000,0.000000,1.000000,8.490000,0.000000,-1.000000,0.000000,-1.520280],"meshLocalCenter":[0.000000,0.000000,0.150318],"meshLocalExtents":[1.013812,1.013812,0.192318],"worldCenter":[1.520279,8.640318,-1.520280],"worldExtents":[1.013812,0.192319,1.013812],"vertexCount":1093,"collider":"mesh"},
-    {"path":"Park/TowerA23/Chain_315/MiniRouletteWheel","fbx":"Assets/Models/TowerA_MiniRouletteWheel.fbx","mesh":"MiniRouletteWheel","pos":[1.520279,8.490000,-1.520280],"rotEuler":[270.000000,0.000000,0.000000],"lossyScale":[1.000000,1.000000,1.000000],"m":[1.000000,0.000000,0.000000,1.520279,0.000000,0.000000,1.000000,8.490000,0.000000,-1.000000,0.000000,-1.520280],"meshLocalCenter":[0.000000,0.000000,0.222000],"meshLocalExtents":[0.800000,0.698820,0.210000],"worldCenter":[1.520279,8.712000,-1.520280],"worldExtents":[0.800000,0.210000,0.698820],"vertexCount":470,"collider":"mesh"},
-    {"path":"Park/TowerA23/Chain_315/ScoreGate_10","fbx":"Assets/Models/TowerA_ScoreGate.fbx","mesh":"ScoreGate","pos":[2.870279,8.320000,-1.520280],"rotEuler":[270.000000,180.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[-100.000000,0.000009,0.000000,2.870279,0.000000,-0.000012,100.000000,8.320000,0.000009,100.000000,-0.000012,-1.520280],"meshLocalCenter":[0.000000,0.000000,0.002050],"meshLocalExtents":[0.000250,0.001950,0.002850],"worldCenter":[2.870279,8.525000,-1.520280],"worldExtents":[0.025000,0.285000,0.195000],"vertexCount":968,"collider":"mesh"},
-    {"path":"Park/TowerA23/Chain_315/HighLane_0","fbx":"Assets/Models/TowerA_HighLane.fbx","mesh":"HighLane","pos":[2.620279,8.340000,-1.520280],"rotEuler":[270.000000,180.000000,0.000000],"lossyScale":[1.000000,1.000000,1.000000],"m":[-1.000000,0.000000,0.000000,2.620279,0.000000,0.000000,1.000000,8.340000,0.000000,1.000000,0.000000,-1.520280],"meshLocalCenter":[-1.100016,0.000000,-0.010407],"meshLocalExtents":[1.100722,0.125000,0.150407],"worldCenter":[3.720295,8.329594,-1.520280],"worldExtents":[1.100722,0.150407,0.125000],"vertexCount":160,"collider":"mesh"},
-    {"path":"Park/TowerA23/Chain_315/ScoreGate_10","fbx":"Assets/Models/TowerA_ScoreGate.fbx","mesh":"ScoreGate","pos":[1.520279,8.360000,-0.490280],"rotEuler":[270.000000,90.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[0.000000,-100.000000,0.000000,1.520279,0.000000,0.000000,100.000000,8.360000,-100.000000,0.000000,0.000000,-0.490280],"meshLocalCenter":[0.000000,0.000000,0.002050],"meshLocalExtents":[0.000250,0.001950,0.002850],"worldCenter":[1.520279,8.565000,-0.490280],"worldExtents":[0.195000,0.285000,0.025000],"vertexCount":968,"collider":"mesh"},
-    {"path":"Park/TowerA23/Chain_315/ScoreGate_10","fbx":"Assets/Models/TowerA_ScoreGate.fbx","mesh":"ScoreGate","pos":[0.490279,8.360000,-1.520280],"rotEuler":[270.000000,0.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[100.000000,0.000000,0.000000,0.490279,0.000000,-0.000012,100.000000,8.360000,0.000000,-100.000000,-0.000012,-1.520280],"meshLocalCenter":[0.000000,0.000000,0.002050],"meshLocalExtents":[0.000250,0.001950,0.002850],"worldCenter":[0.490279,8.565000,-1.520280],"worldExtents":[0.025000,0.285000,0.195000],"vertexCount":968,"collider":"mesh"},
-    {"path":"Park/TowerA23/Chain_315/ScoreGate_10","fbx":"Assets/Models/TowerA_ScoreGate.fbx","mesh":"ScoreGate","pos":[1.520279,8.320000,-2.870280],"rotEuler":[270.000000,270.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[0.000000,100.000000,0.000000,1.520279,0.000000,0.000000,100.000000,8.320000,100.000000,0.000000,0.000000,-2.870280],"meshLocalCenter":[0.000000,0.000000,0.002050],"meshLocalExtents":[0.000250,0.001950,0.002850],"worldCenter":[1.520279,8.525000,-2.870280],"worldExtents":[0.195000,0.285000,0.025000],"vertexCount":968,"collider":"mesh"},
-    {"path":"Park/TowerA23/Chain_315/HighLane_270","fbx":"Assets/Models/TowerA_HighLane.fbx","mesh":"HighLane","pos":[1.520279,8.340000,-2.620280],"rotEuler":[270.000000,270.000000,0.000000],"lossyScale":[1.000000,1.000000,1.000000],"m":[0.000000,1.000000,0.000000,1.520279,0.000000,0.000000,1.000000,8.340000,1.000000,0.000000,0.000000,-2.620280],"meshLocalCenter":[-1.100016,0.000000,-0.010407],"meshLocalExtents":[1.100722,0.125000,0.150407],"worldCenter":[1.520279,8.329594,-3.720295],"worldExtents":[0.125000,0.150407,1.100722],"vertexCount":160,"collider":"mesh"},
-    {"path":"Park/TowerA23/CollectorFunnel","fbx":"Assets/Models/TowerA_CollectorFunnel.fbx","mesh":"CollectorFunnel","pos":[0.000000,7.390000,0.000000],"rotEuler":[270.000000,0.000000,0.000000],"lossyScale":[1.000000,1.000000,1.000000],"m":[1.000000,0.000000,0.000000,0.000000,0.000000,0.000000,1.000000,7.390000,0.000000,-1.000000,0.000000,0.000000],"meshLocalCenter":[0.000000,0.000000,0.375881],"meshLocalExtents":[2.050000,2.050000,0.375881],"worldCenter":[0.000000,7.765881,0.000000],"worldExtents":[2.050000,0.375881,2.050000],"vertexCount":1290,"collider":"mesh"},
-    {"path":"Park/TowerA23/FunnelStirrer/StirrerMesh","fbx":"Assets/Models/DrainStirrer.fbx","mesh":"DrainStirrer","pos":[0.000000,7.480000,0.000000],"rotEuler":[90.000000,0.000000,0.000000],"lossyScale":[1.000000,1.000000,1.000000],"m":[1.000000,0.000000,0.000000,0.000000,0.000000,0.000000,-1.000000,7.480000,0.000000,1.000000,0.000000,0.000000],"meshLocalCenter":[0.000000,0.000000,-0.027000],"meshLocalExtents":[0.250000,0.250000,0.058000],"worldCenter":[0.000000,7.506999,0.000000],"worldExtents":[0.250000,0.058000,0.250000],"vertexCount":610,"collider":"mesh"},
-    {"path":"Park/TowerA23/GrandRouletteBowl","fbx":"Assets/Models/TowerA_RouletteBowl.fbx","mesh":"RouletteBowl","pos":[0.000000,6.240000,0.000000],"rotEuler":[270.000000,0.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[100.000000,0.000000,0.000000,0.000000,0.000000,-0.000012,100.000000,6.240000,0.000000,-100.000000,-0.000012,0.000000],"meshLocalCenter":[0.000000,0.000000,0.001889],"meshLocalExtents":[0.018432,0.018432,0.002339],"worldCenter":[0.000000,6.428922,0.000000],"worldExtents":[1.843219,0.233922,1.843219],"vertexCount":1411,"collider":"mesh"},
-    {"path":"Park/TowerA23/GrandRouletteWheel","fbx":"Assets/Models/TowerA_RouletteWheel.fbx","mesh":"RouletteWheel","pos":[0.000000,6.240000,0.000000],"rotEuler":[270.000000,0.000000,0.000000],"lossyScale":[1.000000,1.000000,1.000000],"m":[1.000000,0.000000,0.000000,0.000000,0.000000,0.000000,1.000000,6.240000,0.000000,-1.000000,0.000000,0.000000],"meshLocalCenter":[0.000000,0.000000,0.287000],"meshLocalExtents":[1.580000,1.580000,0.275000],"worldCenter":[0.000000,6.527000,0.000000],"worldExtents":[1.580000,0.275000,1.580000],"vertexCount":722,"collider":"mesh"},
-    {"path":"Park/TowerA23/ScoreGate_10","fbx":"Assets/Models/TowerA_ScoreGate.fbx","mesh":"ScoreGate","pos":[1.720000,6.140000,0.000000],"rotEuler":[270.000000,180.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[-100.000000,0.000009,0.000000,1.720000,0.000000,-0.000012,100.000000,6.140000,0.000009,100.000000,-0.000012,0.000000],"meshLocalCenter":[0.000000,0.000000,0.002050],"meshLocalExtents":[0.000250,0.001950,0.002850],"worldCenter":[1.720000,6.345000,0.000000],"worldExtents":[0.025000,0.285000,0.195000],"vertexCount":968,"collider":"mesh"},
-    {"path":"Park/TowerA23/ScoreGate_10","fbx":"Assets/Models/TowerA_ScoreGate.fbx","mesh":"ScoreGate","pos":[0.000000,6.140000,1.720000],"rotEuler":[270.000000,90.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[0.000000,-100.000000,0.000000,0.000000,0.000000,0.000000,100.000000,6.140000,-100.000000,0.000000,0.000000,1.720000],"meshLocalCenter":[0.000000,0.000000,0.002050],"meshLocalExtents":[0.000250,0.001950,0.002850],"worldCenter":[0.000000,6.345000,1.720000],"worldExtents":[0.195000,0.285000,0.025000],"vertexCount":968,"collider":"mesh"},
-    {"path":"Park/TowerA23/ScoreGate_20","fbx":"Assets/Models/TowerA_ScoreGate.fbx","mesh":"ScoreGate","pos":[-1.720000,6.140000,0.000000],"rotEuler":[270.000000,0.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[100.000000,0.000000,0.000000,-1.720000,0.000000,-0.000012,100.000000,6.140000,0.000000,-100.000000,-0.000012,0.000000],"meshLocalCenter":[0.000000,0.000000,0.002050],"meshLocalExtents":[0.000250,0.001950,0.002850],"worldCenter":[-1.720000,6.345000,0.000000],"worldExtents":[0.025000,0.285000,0.195000],"vertexCount":968,"collider":"mesh"},
-    {"path":"Park/TowerA23/ScoreGate_10","fbx":"Assets/Models/TowerA_ScoreGate.fbx","mesh":"ScoreGate","pos":[0.000000,6.140000,-1.720000],"rotEuler":[270.000000,270.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[0.000000,100.000000,0.000000,0.000000,0.000000,0.000000,100.000000,6.140000,100.000000,0.000000,0.000000,-1.720000],"meshLocalCenter":[0.000000,0.000000,0.002050],"meshLocalExtents":[0.000250,0.001950,0.002850],"worldCenter":[0.000000,6.345000,-1.720000],"worldExtents":[0.195000,0.285000,0.025000],"vertexCount":968,"collider":"mesh"},
-    {"path":"Park/TowerG_E/FeedGuide_S","fbx":"Assets/Models/TowerG_FeedCatch.fbx","mesh":"TowerG_FeedCatch","pos":[5.500000,7.260000,-0.600000],"rotEuler":[275.999900,0.000000,90.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[-0.000012,-100.000000,0.000001,5.500000,10.452850,0.000000,99.452190,7.260000,-99.452210,0.000012,10.452850,-0.600001],"meshLocalCenter":[0.005250,0.000000,0.001400],"meshLocalExtents":[0.005250,0.005200,0.001400],"worldCenter":[5.500000,7.454111,-1.107491],"worldExtents":[0.520000,0.194111,0.536758],"vertexCount":54,"collider":"mesh"},
-    {"path":"Park/TowerG_E/FeedGuide_N","fbx":"Assets/Models/TowerG_FeedCatch.fbx","mesh":"TowerG_FeedCatch","pos":[5.500001,7.260000,1.600000],"rotEuler":[275.999900,180.000000,270.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[-0.000012,-100.000000,-0.000001,5.500000,-10.452850,0.000000,99.452190,7.260000,-99.452210,0.000012,-10.452850,1.600000],"meshLocalCenter":[0.005250,0.000000,0.001400],"meshLocalExtents":[0.005250,0.005200,0.001400],"worldCenter":[5.500000,7.344356,1.063242],"worldExtents":[0.520000,0.194111,0.536758],"vertexCount":54,"collider":"mesh"},
-    {"path":"Park/TowerG_E/NumaKuruun_1","fbx":"Assets/Models/TowerG_NumaKuruun_L.fbx","mesh":"NumaKuruun_L","pos":[5.000000,6.640000,0.000000],"rotEuler":[270.000000,90.000000,0.000000],"lossyScale":[100.000000,100.000100,100.000000],"m":[-0.000012,-100.000000,-0.000012,5.000000,0.000000,-0.000012,100.000000,6.640000,-100.000000,0.000012,0.000000,-0.000001],"meshLocalCenter":[0.000000,0.000000,0.000892],"meshLocalExtents":[0.010720,0.012079,0.004107],"worldCenter":[5.000000,6.729169,-0.000001],"worldExtents":[1.207920,0.410748,1.072000],"vertexCount":2612,"collider":"mesh"},
-    {"path":"Park/TowerG_E/NumaKuruun_2","fbx":"Assets/Models/TowerG_NumaKuruun_M.fbx","mesh":"NumaKuruun_M","pos":[5.000000,5.840000,-0.250001],"rotEuler":[270.000000,90.000000,0.000000],"lossyScale":[100.000000,100.000100,100.000000],"m":[-0.000012,-100.000000,-0.000012,5.000000,0.000000,-0.000012,100.000000,5.840000,-100.000000,0.000012,0.000000,-0.250001],"meshLocalCenter":[0.000000,0.000000,0.000870],"meshLocalExtents":[0.008710,0.010433,0.003660],"worldCenter":[5.000000,5.927022,-0.250001],"worldExtents":[1.043334,0.366037,0.871000],"vertexCount":2718,"collider":"mesh"},
-    {"path":"Park/TowerG_E/NumaKuruun_3","fbx":"Assets/Models/TowerG_NumaKuruun_S.fbx","mesh":"NumaKuruun_S","pos":[5.000000,5.090000,0.199999],"rotEuler":[270.000000,90.000000,0.000000],"lossyScale":[100.000000,100.000100,100.000000],"m":[-0.000012,-100.000000,-0.000012,5.000000,0.000000,-0.000012,100.000000,5.090000,-100.000000,0.000012,0.000000,0.199999],"meshLocalCenter":[0.000000,0.000000,0.000893],"meshLocalExtents":[0.006968,0.008691,0.003232],"worldCenter":[5.000000,5.179250,0.199999],"worldExtents":[0.869068,0.323197,0.696800],"vertexCount":3350,"collider":"mesh"},
-    {"path":"Park/TowerG_E/MergeTray","fbx":"Assets/Models/TowerG_MergeTray.fbx","mesh":"TowerG_MergeTray","pos":[5.000000,4.450000,0.099999],"rotEuler":[270.000000,0.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[100.000000,-0.000012,0.000000,5.000000,0.000000,0.000000,100.000000,4.450000,-0.000012,-100.000000,0.000000,0.099999],"meshLocalCenter":[0.000000,0.000000,0.011200],"meshLocalExtents":[0.017600,0.009600,0.011800],"worldCenter":[5.000000,5.570000,0.099999],"worldExtents":[1.760000,1.180000,0.960000],"vertexCount":1732,"collider":"mesh"},
-    {"path":"Park/TowerG_E/JPRail_2.92","fbx":"Assets/Models/TowerF_JPTube.fbx","mesh":"TowerF_JPTube","pos":[5.000000,4.460000,0.199999],"rotEuler":[270.000000,90.000000,0.000000],"lossyScale":[100.000000,100.000100,100.000000],"m":[-0.000012,-100.000000,-0.000012,5.000000,0.000000,-0.000012,100.000000,4.460000,-100.000000,0.000012,0.000000,0.199999],"meshLocalCenter":[0.000000,0.000000,0.000000],"meshLocalExtents":[0.001850,0.001850,0.004000],"worldCenter":[5.000000,4.460000,0.199999],"worldExtents":[0.185000,0.400000,0.185000],"vertexCount":288,"collider":"mesh"},
-    {"path":"Park/TowerG_E/JPRail_2.52","fbx":"Assets/Models/TowerF_JPTube.fbx","mesh":"TowerF_JPTube","pos":[5.000000,4.060000,0.199999],"rotEuler":[270.000000,90.000000,0.000000],"lossyScale":[100.000000,100.000100,100.000000],"m":[-0.000012,-100.000000,-0.000012,5.000000,0.000000,-0.000012,100.000000,4.060000,-100.000000,0.000012,0.000000,0.199999],"meshLocalCenter":[0.000000,0.000000,0.000000],"meshLocalExtents":[0.001850,0.001850,0.004000],"worldCenter":[5.000000,4.060000,0.199999],"worldExtents":[0.185000,0.400000,0.185000],"vertexCount":288,"collider":"mesh"},
-    {"path":"Park/TowerG_W/FeedGuide_S","fbx":"Assets/Models/TowerG_FeedCatch.fbx","mesh":"TowerG_FeedCatch","pos":[-5.500000,7.260000,0.599999],"rotEuler":[275.999900,180.000000,90.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[-0.000012,100.000000,0.000001,-5.500000,10.452850,0.000000,99.452190,7.260000,99.452210,0.000012,-10.452850,0.599999],"meshLocalCenter":[0.005250,0.000000,0.001400],"meshLocalExtents":[0.005250,0.005200,0.001400],"worldCenter":[-5.500000,7.454111,1.107489],"worldExtents":[0.520000,0.194111,0.536758],"vertexCount":54,"collider":"mesh"},
-    {"path":"Park/TowerG_W/FeedGuide_N","fbx":"Assets/Models/TowerG_FeedCatch.fbx","mesh":"TowerG_FeedCatch","pos":[-5.500000,7.260000,-1.600001],"rotEuler":[275.999900,0.000000,270.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[-0.000012,100.000000,-0.000001,-5.500000,-10.452850,0.000000,99.452190,7.260000,99.452210,0.000012,10.452850,-1.600001],"meshLocalCenter":[0.005250,0.000000,0.001400],"meshLocalExtents":[0.005250,0.005200,0.001400],"worldCenter":[-5.500000,7.344356,-1.063243],"worldExtents":[0.520000,0.194111,0.536758],"vertexCount":54,"collider":"mesh"},
-    {"path":"Park/TowerG_W/NumaKuruun_1","fbx":"Assets/Models/TowerG_NumaKuruun_L.fbx","mesh":"NumaKuruun_L","pos":[-5.000000,6.640000,0.000000],"rotEuler":[270.000000,270.000000,0.000000],"lossyScale":[100.000000,100.000100,100.000000],"m":[-0.000012,100.000000,0.000012,-5.000000,0.000000,-0.000012,100.000000,6.640000,100.000000,0.000012,0.000000,-0.000001],"meshLocalCenter":[0.000000,0.000000,0.000892],"meshLocalExtents":[0.010720,0.012079,0.004107],"worldCenter":[-5.000000,6.729169,-0.000001],"worldExtents":[1.207920,0.410748,1.072000],"vertexCount":2612,"collider":"mesh"},
-    {"path":"Park/TowerG_W/NumaKuruun_2","fbx":"Assets/Models/TowerG_NumaKuruun_M.fbx","mesh":"NumaKuruun_M","pos":[-5.000000,5.840000,0.250000],"rotEuler":[270.000000,270.000000,0.000000],"lossyScale":[100.000000,100.000100,100.000000],"m":[-0.000012,100.000000,0.000012,-5.000000,0.000000,-0.000012,100.000000,5.840000,100.000000,0.000012,0.000000,0.249999],"meshLocalCenter":[0.000000,0.000000,0.000870],"meshLocalExtents":[0.008710,0.010433,0.003660],"worldCenter":[-5.000000,5.927022,0.249999],"worldExtents":[1.043334,0.366037,0.871000],"vertexCount":2718,"collider":"mesh"},
-    {"path":"Park/TowerG_W/NumaKuruun_3","fbx":"Assets/Models/TowerG_NumaKuruun_S.fbx","mesh":"NumaKuruun_S","pos":[-5.000000,5.090000,-0.200000],"rotEuler":[270.000000,270.000000,0.000000],"lossyScale":[100.000000,100.000100,100.000000],"m":[-0.000012,100.000000,0.000012,-5.000000,0.000000,-0.000012,100.000000,5.090000,100.000000,0.000012,0.000000,-0.200001],"meshLocalCenter":[0.000000,0.000000,0.000893],"meshLocalExtents":[0.006968,0.008691,0.003232],"worldCenter":[-5.000000,5.179250,-0.200001],"worldExtents":[0.869068,0.323197,0.696800],"vertexCount":3350,"collider":"mesh"},
-    {"path":"Park/TowerG_W/MergeTray","fbx":"Assets/Models/TowerG_MergeTray.fbx","mesh":"TowerG_MergeTray","pos":[-5.000000,4.450000,-0.100000],"rotEuler":[270.000000,180.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[-100.000000,-0.000012,0.000000,-5.000000,0.000000,0.000000,100.000000,4.450000,-0.000012,100.000000,0.000000,-0.100001],"meshLocalCenter":[0.000000,0.000000,0.011200],"meshLocalExtents":[0.017600,0.009600,0.011800],"worldCenter":[-5.000000,5.570000,-0.100001],"worldExtents":[1.760000,1.180000,0.960000],"vertexCount":1732,"collider":"mesh"},
-    {"path":"Park/TowerG_W/JPRail_2.92","fbx":"Assets/Models/TowerF_JPTube.fbx","mesh":"TowerF_JPTube","pos":[-5.000000,4.460000,-0.200000],"rotEuler":[270.000000,270.000000,0.000000],"lossyScale":[100.000000,100.000100,100.000000],"m":[-0.000012,100.000000,0.000012,-5.000000,0.000000,-0.000012,100.000000,4.460000,100.000000,0.000012,0.000000,-0.200001],"meshLocalCenter":[0.000000,0.000000,0.000000],"meshLocalExtents":[0.001850,0.001850,0.004000],"worldCenter":[-5.000000,4.460000,-0.200001],"worldExtents":[0.185000,0.400000,0.185000],"vertexCount":288,"collider":"mesh"},
-    {"path":"Park/TowerG_W/JPRail_2.52","fbx":"Assets/Models/TowerF_JPTube.fbx","mesh":"TowerF_JPTube","pos":[-5.000000,4.060000,-0.200000],"rotEuler":[270.000000,270.000000,0.000000],"lossyScale":[100.000000,100.000100,100.000000],"m":[-0.000012,100.000000,0.000012,-5.000000,0.000000,-0.000012,100.000000,4.060000,100.000000,0.000012,0.000000,-0.200001],"meshLocalCenter":[0.000000,0.000000,0.000000],"meshLocalExtents":[0.001850,0.001850,0.004000],"worldCenter":[-5.000000,4.060000,-0.200001],"worldExtents":[0.185000,0.400000,0.185000],"vertexCount":288,"collider":"mesh"},
-    {"path":"Park/TowerF_S/CatchTray","fbx":"Assets/Models/TowerF_CatchTray.fbx","mesh":"FCatchTray","pos":[0.000000,7.490000,-5.350000],"rotEuler":[270.000000,180.000000,0.000000],"lossyScale":[1.000000,1.000000,1.000000],"m":[-1.000000,0.000000,0.000000,0.000000,0.000000,0.000000,1.000000,7.490000,0.000000,1.000000,0.000000,-5.350000],"meshLocalCenter":[0.000000,0.057500,0.300000],"meshLocalExtents":[1.930000,0.512500,0.300000],"worldCenter":[0.000000,7.790000,-5.292500],"worldExtents":[1.930000,0.300000,0.512500],"vertexCount":192,"collider":"mesh"},
-    {"path":"Park/TowerF_S/SpinnerDish","fbx":"Assets/Models/TowerF_SpinnerDish.fbx","mesh":"JPSpinnerDish","pos":[0.000000,6.790000,-5.000000],"rotEuler":[270.000000,0.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[100.000000,0.000000,0.000000,0.000000,0.000000,-0.000012,100.000000,6.790000,0.000000,-100.000000,-0.000012,-5.000000],"meshLocalCenter":[0.000000,0.000000,0.001618],"meshLocalExtents":[0.009700,0.009700,0.001618],"worldCenter":[0.000000,6.951753,-5.000000],"worldExtents":[0.970000,0.161753,0.970000],"vertexCount":3632,"collider":"mesh"},
-    {"path":"Park/TowerF_S/MissTray","fbx":"Assets/Models/TowerF_MissTray.fbx","mesh":"TowerF_MissTray","pos":[0.000000,5.640000,-5.000000],"rotEuler":[273.999900,90.000000,90.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[-99.756420,0.000009,6.975649,0.000000,6.975649,-0.000012,99.756420,5.640000,0.000009,100.000000,-0.000012,-5.000000],"meshLocalCenter":[-0.002000,0.000000,0.000850],"meshLocalExtents":[0.010000,0.008139,0.001100],"worldCenter":[0.205442,5.710842,-5.000000],"worldExtents":[1.005237,0.179489,0.813923],"vertexCount":2825,"collider":"mesh"},
-    {"path":"Park/TowerF_S/JPTube_0","fbx":"Assets/Models/TowerF_JPTube.fbx","mesh":"TowerF_JPTube","pos":[0.000000,6.370000,-5.000000],"rotEuler":[270.000000,0.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[100.000000,0.000000,0.000000,0.000000,0.000000,-0.000012,100.000000,6.370000,0.000000,-100.000000,-0.000012,-5.000000],"meshLocalCenter":[0.000000,0.000000,0.000000],"meshLocalExtents":[0.001850,0.001850,0.004000],"worldCenter":[0.000000,6.370000,-5.000000],"worldExtents":[0.185000,0.400000,0.185000],"vertexCount":288,"collider":"mesh"},
-    {"path":"Park/TowerF_S/JPTube_1","fbx":"Assets/Models/TowerF_JPTube.fbx","mesh":"TowerF_JPTube","pos":[0.000000,5.570000,-5.000000],"rotEuler":[270.000000,0.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[100.000000,0.000000,0.000000,0.000000,0.000000,-0.000012,100.000000,5.570000,0.000000,-100.000000,-0.000012,-5.000000],"meshLocalCenter":[0.000000,0.000000,0.000000],"meshLocalExtents":[0.001850,0.001850,0.004000],"worldCenter":[0.000000,5.570000,-5.000000],"worldExtents":[0.185000,0.400000,0.185000],"vertexCount":288,"collider":"mesh"},
-    {"path":"Park/TowerF_S/JPTube_2","fbx":"Assets/Models/TowerF_JPTube.fbx","mesh":"TowerF_JPTube","pos":[0.000000,4.770000,-5.000000],"rotEuler":[270.000000,0.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[100.000000,0.000000,0.000000,0.000000,0.000000,-0.000012,100.000000,4.770000,0.000000,-100.000000,-0.000012,-5.000000],"meshLocalCenter":[0.000000,0.000000,0.000000],"meshLocalExtents":[0.001850,0.001850,0.004000],"worldCenter":[0.000000,4.770000,-5.000000],"worldExtents":[0.185000,0.400000,0.185000],"vertexCount":288,"collider":"mesh"},
-    {"path":"Park/TowerF_N/CatchTray","fbx":"Assets/Models/TowerF_CatchTray.fbx","mesh":"FCatchTray","pos":[0.000000,7.490000,5.350000],"rotEuler":[270.000000,0.000010,0.000000],"lossyScale":[1.000000,1.000000,1.000000],"m":[1.000000,0.000000,0.000000,0.000000,0.000000,0.000000,1.000000,7.490000,0.000000,-1.000000,0.000000,5.350000],"meshLocalCenter":[0.000000,0.057500,0.300000],"meshLocalExtents":[1.930000,0.512500,0.300000],"worldCenter":[0.000000,7.790000,5.292500],"worldExtents":[1.930001,0.300000,0.512501],"vertexCount":192,"collider":"mesh"},
-    {"path":"Park/TowerF_N/SpinnerDish","fbx":"Assets/Models/TowerF_SpinnerDish.fbx","mesh":"JPSpinnerDish","pos":[0.000000,6.790000,5.000000],"rotEuler":[270.000000,180.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[-100.000000,0.000009,0.000000,0.000000,0.000000,-0.000012,100.000000,6.790000,0.000009,100.000000,0.000012,5.000000],"meshLocalCenter":[0.000000,0.000000,0.001618],"meshLocalExtents":[0.009700,0.009700,0.001618],"worldCenter":[0.000000,6.951753,5.000000],"worldExtents":[0.970000,0.161753,0.970000],"vertexCount":3632,"collider":"mesh"},
-    {"path":"Park/TowerF_N/MissTray","fbx":"Assets/Models/TowerF_MissTray.fbx","mesh":"TowerF_MissTray","pos":[0.000000,5.640000,5.000000],"rotEuler":[273.999900,90.000000,90.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[-99.756410,0.000009,6.975648,0.000000,6.975648,-0.000012,99.756420,5.640000,0.000009,100.000000,0.000011,5.000000],"meshLocalCenter":[-0.002000,0.000000,0.000850],"meshLocalExtents":[0.010000,0.008139,0.001100],"worldCenter":[0.205443,5.710842,5.000000],"worldExtents":[1.005237,0.179489,0.813923],"vertexCount":2825,"collider":"mesh"},
-    {"path":"Park/TowerF_N/JPTube_0","fbx":"Assets/Models/TowerF_JPTube.fbx","mesh":"TowerF_JPTube","pos":[0.000000,6.370000,5.000000],"rotEuler":[270.000000,180.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[-100.000000,0.000009,0.000000,0.000000,0.000000,-0.000012,100.000000,6.370000,0.000009,100.000000,0.000012,5.000000],"meshLocalCenter":[0.000000,0.000000,0.000000],"meshLocalExtents":[0.001850,0.001850,0.004000],"worldCenter":[0.000000,6.370000,5.000000],"worldExtents":[0.185000,0.400000,0.185000],"vertexCount":288,"collider":"mesh"},
-    {"path":"Park/TowerF_N/JPTube_1","fbx":"Assets/Models/TowerF_JPTube.fbx","mesh":"TowerF_JPTube","pos":[0.000000,5.570000,5.000000],"rotEuler":[270.000000,180.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[-100.000000,0.000009,0.000000,0.000000,0.000000,-0.000012,100.000000,5.570000,0.000009,100.000000,0.000012,5.000000],"meshLocalCenter":[0.000000,0.000000,0.000000],"meshLocalExtents":[0.001850,0.001850,0.004000],"worldCenter":[0.000000,5.570000,5.000000],"worldExtents":[0.185000,0.400000,0.185000],"vertexCount":288,"collider":"mesh"},
-    {"path":"Park/TowerF_N/JPTube_2","fbx":"Assets/Models/TowerF_JPTube.fbx","mesh":"TowerF_JPTube","pos":[0.000000,4.770000,5.000000],"rotEuler":[270.000000,180.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[-100.000000,0.000009,0.000000,0.000000,0.000000,-0.000012,100.000000,4.770000,0.000009,100.000000,0.000012,5.000000],"meshLocalCenter":[0.000000,0.000000,0.000000],"meshLocalExtents":[0.001850,0.001850,0.004000],"worldCenter":[0.000000,4.770000,5.000000],"worldExtents":[0.185000,0.400000,0.185000],"vertexCount":288,"collider":"mesh"},
-    {"path":"Park/TowerC_S/Zigzag","fbx":"Assets/Models/TowerC_ZigzagShort.fbx","mesh":"CZigzagShort","pos":[2.200000,3.950000,-5.000000],"rotEuler":[270.000000,180.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[-100.000000,0.000009,0.000000,2.200000,0.000000,-0.000012,100.000000,3.950000,0.000009,100.000000,-0.000012,-5.000000],"meshLocalCenter":[-0.000432,0.000000,0.007684],"meshLocalExtents":[0.012767,0.002778,0.007683],"worldCenter":[2.243162,4.718447,-5.000000],"worldExtents":[1.276675,0.768324,0.277772],"vertexCount":499,"collider":"mesh"},
-    {"path":"Park/TowerC_S/Seesaw","fbx":"Assets/Models/TowerC_Seesaw.fbx","mesh":"CSeesaw","pos":[3.650000,4.330000,-5.000000],"rotEuler":[270.000000,180.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[-100.000000,0.000009,0.000000,3.650000,0.000000,-0.000012,100.000000,4.330000,0.000009,100.000000,-0.000012,-5.000000],"meshLocalCenter":[0.000000,0.000000,0.000200],"meshLocalExtents":[0.003200,0.001800,0.000500],"worldCenter":[3.650000,4.350000,-5.000000],"worldExtents":[0.320000,0.050000,0.180000],"vertexCount":208,"collider":"mesh"},
-    {"path":"Park/TowerC_S/ReturnTrough","fbx":"Assets/Models/TowerC_CatchTurn.fbx","mesh":"CCatchTurn","pos":[5.110000,3.090000,-5.000000],"rotEuler":[270.000000,0.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[100.000000,0.000000,0.000000,5.110000,0.000000,-0.000012,100.000000,3.090000,0.000000,-100.000000,-0.000012,-5.000000],"meshLocalCenter":[-0.020083,0.000000,0.003921],"meshLocalExtents":[0.023070,0.002400,0.004534],"worldCenter":[3.101681,3.482149,-5.000000],"worldExtents":[2.307040,0.453370,0.240000],"vertexCount":167,"collider":"mesh"},
-    {"path":"Park/TowerC_N/Zigzag","fbx":"Assets/Models/TowerC_ZigzagShort.fbx","mesh":"CZigzagShort","pos":[2.200000,3.950000,5.000000],"rotEuler":[270.000000,180.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[-100.000000,0.000009,0.000000,2.200000,0.000000,-0.000012,100.000000,3.950000,0.000009,100.000000,-0.000012,5.000000],"meshLocalCenter":[-0.000432,0.000000,0.007684],"meshLocalExtents":[0.012767,0.002778,0.007683],"worldCenter":[2.243162,4.718447,5.000000],"worldExtents":[1.276675,0.768324,0.277772],"vertexCount":499,"collider":"mesh"},
-    {"path":"Park/TowerC_N/Seesaw","fbx":"Assets/Models/TowerC_Seesaw.fbx","mesh":"CSeesaw","pos":[3.650000,4.330000,5.000000],"rotEuler":[270.000000,180.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[-100.000000,0.000009,0.000000,3.650000,0.000000,-0.000012,100.000000,4.330000,0.000009,100.000000,-0.000012,5.000000],"meshLocalCenter":[0.000000,0.000000,0.000200],"meshLocalExtents":[0.003200,0.001800,0.000500],"worldCenter":[3.650000,4.350000,5.000000],"worldExtents":[0.320000,0.050000,0.180000],"vertexCount":208,"collider":"mesh"},
-    {"path":"Park/TowerC_N/ReturnTrough","fbx":"Assets/Models/TowerC_CatchTurn.fbx","mesh":"CCatchTurn","pos":[5.110000,3.090000,5.000000],"rotEuler":[270.000000,0.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[100.000000,0.000000,0.000000,5.110000,0.000000,-0.000012,100.000000,3.090000,0.000000,-100.000000,-0.000012,5.000000],"meshLocalCenter":[-0.020083,0.000000,0.003921],"meshLocalExtents":[0.023070,0.002400,0.004534],"worldCenter":[3.101681,3.482149,5.000000],"worldExtents":[2.307040,0.453370,0.240000],"vertexCount":167,"collider":"mesh"},
-    {"path":"Park/TowerE_S/DiscPivot/PocketDisc","fbx":"Assets/Models/TowerE_PocketDisc.fbx","mesh":"TowerE_PocketDisc","pos":[1.450000,1.600000,-5.000000],"rotEuler":[315.000000,270.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[-0.000012,70.710690,-70.710690,1.450000,0.000000,70.710680,70.710690,1.600000,100.000000,0.000000,-0.000012,-5.000000],"meshLocalCenter":[0.000000,0.000000,0.002450],"meshLocalExtents":[0.010000,0.010000,0.003050],"worldCenter":[1.276759,1.773241,-5.000000],"worldExtents":[0.922775,0.922774,1.000000],"vertexCount":3138,"collider":"mesh"},
-    {"path":"Park/TowerE_S/DiscPivot/StarGear","fbx":"Assets/Models/TowerE_StarGear.fbx","mesh":"TowerE_StarGear","pos":[1.450000,1.600000,-5.000000],"rotEuler":[315.000000,270.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[-0.000012,70.710690,-70.710690,1.450000,0.000000,70.710680,70.710690,1.600000,100.000000,0.000000,-0.000012,-5.000000],"meshLocalCenter":[0.000000,0.000133,0.000700],"meshLocalExtents":[0.007133,0.007067,0.000500],"worldCenter":[1.409875,1.658870,-5.000000],"worldExtents":[0.535100,0.535100,0.713332],"vertexCount":1872,"collider":"mesh"},
-    {"path":"Park/TowerE_S/DiscPivotHi/PocketDisc","fbx":"Assets/Models/TowerE_PocketDisc.fbx","mesh":"TowerE_PocketDisc","pos":[0.100000,3.850000,-5.000000],"rotEuler":[315.000000,270.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[-0.000012,70.710690,-70.710690,0.100000,0.000000,70.710680,70.710690,3.850000,100.000000,0.000000,-0.000012,-5.000000],"meshLocalCenter":[0.000000,0.000000,0.002450],"meshLocalExtents":[0.010000,0.010000,0.003050],"worldCenter":[-0.073241,4.023241,-5.000000],"worldExtents":[0.922775,0.922774,1.000000],"vertexCount":3138,"collider":"mesh"},
-    {"path":"Park/TowerE_S/DiscPivotHi/StarGear","fbx":"Assets/Models/TowerE_StarGear.fbx","mesh":"TowerE_StarGear","pos":[0.100000,3.850000,-5.000000],"rotEuler":[315.000000,270.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[-0.000012,70.710690,-70.710690,0.100000,0.000000,70.710680,70.710690,3.850000,100.000000,0.000000,-0.000012,-5.000000],"meshLocalCenter":[0.000000,0.000133,0.000700],"meshLocalExtents":[0.007133,0.007067,0.000500],"worldCenter":[0.059875,3.908870,-5.000000],"worldExtents":[0.535100,0.535100,0.713332],"vertexCount":1872,"collider":"mesh"},
-    {"path":"Park/TowerE_S/FeedPan","fbx":"Assets/Models/TowerE_FeedPan.fbx","mesh":"TowerE_FeedPan","pos":[-1.052000,2.099000,-5.000000],"rotEuler":[282.400000,89.999980,90.000020],"lossyScale":[100.000000,100.000000,100.000000],"m":[-97.667230,-0.000001,21.473530,-1.052000,21.473530,-0.000012,97.667230,2.099000,0.000001,100.000000,0.000006,-5.000000],"meshLocalCenter":[-0.010050,0.000000,0.002250],"meshLocalExtents":[0.010450,0.008400,0.002750],"worldCenter":[-0.022129,2.102942,-5.000000],"worldExtents":[1.079675,0.492983,0.840000],"vertexCount":252,"collider":"mesh"},
-    {"path":"Park/TowerE_N/DiscPivot/PocketDisc","fbx":"Assets/Models/TowerE_PocketDisc.fbx","mesh":"TowerE_PocketDisc","pos":[1.450000,1.600000,5.000000],"rotEuler":[315.000000,270.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[-0.000012,70.710690,-70.710690,1.450000,0.000000,70.710680,70.710690,1.600000,100.000000,0.000000,-0.000012,5.000000],"meshLocalCenter":[0.000000,0.000000,0.002450],"meshLocalExtents":[0.010000,0.010000,0.003050],"worldCenter":[1.276759,1.773241,5.000000],"worldExtents":[0.922775,0.922774,1.000000],"vertexCount":3138,"collider":"mesh"},
-    {"path":"Park/TowerE_N/DiscPivot/StarGear","fbx":"Assets/Models/TowerE_StarGear.fbx","mesh":"TowerE_StarGear","pos":[1.450000,1.600000,5.000000],"rotEuler":[315.000000,270.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[-0.000012,70.710690,-70.710690,1.450000,0.000000,70.710680,70.710690,1.600000,100.000000,0.000000,-0.000012,5.000000],"meshLocalCenter":[0.000000,0.000133,0.000700],"meshLocalExtents":[0.007133,0.007067,0.000500],"worldCenter":[1.409875,1.658870,5.000000],"worldExtents":[0.535100,0.535100,0.713332],"vertexCount":1872,"collider":"mesh"},
-    {"path":"Park/TowerE_N/DiscPivotHi/PocketDisc","fbx":"Assets/Models/TowerE_PocketDisc.fbx","mesh":"TowerE_PocketDisc","pos":[0.100000,3.850000,5.000000],"rotEuler":[315.000000,270.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[-0.000012,70.710690,-70.710690,0.100000,0.000000,70.710680,70.710690,3.850000,100.000000,0.000000,-0.000012,5.000000],"meshLocalCenter":[0.000000,0.000000,0.002450],"meshLocalExtents":[0.010000,0.010000,0.003050],"worldCenter":[-0.073241,4.023241,5.000000],"worldExtents":[0.922775,0.922774,1.000000],"vertexCount":3138,"collider":"mesh"},
-    {"path":"Park/TowerE_N/DiscPivotHi/StarGear","fbx":"Assets/Models/TowerE_StarGear.fbx","mesh":"TowerE_StarGear","pos":[0.100000,3.850000,5.000000],"rotEuler":[315.000000,270.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[-0.000012,70.710690,-70.710690,0.100000,0.000000,70.710680,70.710690,3.850000,100.000000,0.000000,-0.000012,5.000000],"meshLocalCenter":[0.000000,0.000133,0.000700],"meshLocalExtents":[0.007133,0.007067,0.000500],"worldCenter":[0.059875,3.908870,5.000000],"worldExtents":[0.535100,0.535100,0.713332],"vertexCount":1872,"collider":"mesh"},
-    {"path":"Park/TowerE_N/FeedPan","fbx":"Assets/Models/TowerE_FeedPan.fbx","mesh":"TowerE_FeedPan","pos":[-1.052000,2.099000,5.000000],"rotEuler":[282.400000,89.999980,90.000020],"lossyScale":[100.000000,100.000000,100.000000],"m":[-97.667230,-0.000001,21.473530,-1.052000,21.473530,-0.000012,97.667230,2.099000,0.000001,100.000000,0.000006,5.000000],"meshLocalCenter":[-0.010050,0.000000,0.002250],"meshLocalExtents":[0.010450,0.008400,0.002750],"worldCenter":[-0.022129,2.102942,5.000000],"worldExtents":[1.079675,0.492983,0.840000],"vertexCount":252,"collider":"mesh"},
-    {"path":"Park/TowerB_E/PachiBoard","fbx":"Assets/Models/TowerB_PachiBoard.fbx","mesh":"BPachiBoard","pos":[7.150000,2.660000,0.200000],"rotEuler":[270.000000,180.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[-100.000000,0.000009,0.000000,7.150000,0.000000,-0.000012,100.000000,2.660000,0.000009,100.000000,-0.000012,0.200000],"meshLocalCenter":[-0.000001,0.000000,0.008685],"meshLocalExtents":[0.008799,0.002778,0.008684],"worldCenter":[7.150062,3.528460,0.200000],"worldExtents":[0.879939,0.868368,0.277828],"vertexCount":1995,"collider":"mesh"},
-    {"path":"Park/TowerB_E/StepChucker","fbx":"Assets/Models/TowerB_StepChucker.fbx","mesh":"BStepChucker","pos":[7.150000,2.110000,0.200000],"rotEuler":[270.000000,0.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[100.000000,0.000000,0.000000,7.150000,0.000000,-0.000012,100.000000,2.110000,0.000000,-100.000000,-0.000012,0.200000],"meshLocalCenter":[0.000195,0.000000,0.002750],"meshLocalExtents":[0.008905,0.002600,0.002750],"worldCenter":[7.169465,2.385000,0.200000],"worldExtents":[0.890535,0.275000,0.260000],"vertexCount":1514,"collider":"mesh"},
-    {"path":"Park/TowerB_E/CatchChute","fbx":"Assets/Models/TowerB_CatchChute.fbx","mesh":"TowerB_CatchChute","pos":[7.150000,1.890000,0.200000],"rotEuler":[270.000000,0.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[100.000000,0.000000,0.000000,7.150000,0.000000,-0.000012,100.000000,1.890000,0.000000,-100.000000,-0.000012,0.200000],"meshLocalCenter":[0.000300,0.000000,0.002000],"meshLocalExtents":[0.011800,0.003000,0.002600],"worldCenter":[7.180000,2.090000,0.200000],"worldExtents":[1.180000,0.260000,0.300000],"vertexCount":80,"collider":"mesh"},
-    {"path":"Park/TowerB_W/PachiBoard","fbx":"Assets/Models/TowerB_PachiBoard.fbx","mesh":"BPachiBoard","pos":[-7.150000,2.660000,-0.199999],"rotEuler":[270.000000,0.000010,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[100.000000,-0.000017,0.000000,-7.150000,0.000000,-0.000012,100.000000,2.660000,-0.000017,-100.000000,0.000012,-0.199999],"meshLocalCenter":[-0.000001,0.000000,0.008685],"meshLocalExtents":[0.008799,0.002778,0.008684],"worldCenter":[-7.150062,3.528460,-0.199999],"worldExtents":[0.879939,0.868368,0.277828],"vertexCount":1995,"collider":"mesh"},
-    {"path":"Park/TowerB_W/StepChucker","fbx":"Assets/Models/TowerB_StepChucker.fbx","mesh":"BStepChucker","pos":[-7.150000,2.110000,-0.199999],"rotEuler":[270.000000,180.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[-100.000000,0.000009,0.000000,-7.150000,0.000000,-0.000012,100.000000,2.110000,0.000009,100.000000,0.000012,-0.199999],"meshLocalCenter":[0.000195,0.000000,0.002750],"meshLocalExtents":[0.008905,0.002600,0.002750],"worldCenter":[-7.169465,2.385000,-0.199999],"worldExtents":[0.890535,0.275000,0.260000],"vertexCount":1514,"collider":"mesh"},
-    {"path":"Park/TowerB_W/CatchChute","fbx":"Assets/Models/TowerB_CatchChute.fbx","mesh":"TowerB_CatchChute","pos":[-7.150000,1.890000,-0.199999],"rotEuler":[270.000000,180.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[-100.000000,0.000009,0.000000,-7.150000,0.000000,-0.000012,100.000000,1.890000,0.000009,100.000000,0.000012,-0.199999],"meshLocalCenter":[0.000300,0.000000,0.002000],"meshLocalExtents":[0.011800,0.003000,0.002600],"worldCenter":[-7.180000,2.090000,-0.199999],"worldExtents":[1.180000,0.260000,0.300000],"vertexCount":80,"collider":"mesh"},
-    {"path":"Park/TowerD_E/BowlUpper","fbx":"Assets/Models/TowerD_Kuruun.fbx","mesh":"TowerD_Kuruun","pos":[5.000000,3.100000,0.700000],"rotEuler":[270.000000,0.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[100.000000,0.000000,0.000000,5.000000,0.000000,-0.000012,100.000000,3.100000,0.000000,-100.000000,-0.000012,0.700000],"meshLocalCenter":[0.000000,0.000000,0.001600],"meshLocalExtents":[0.008600,0.008600,0.002800],"worldCenter":[5.000000,3.260000,0.700000],"worldExtents":[0.860000,0.280000,0.860000],"vertexCount":1944,"collider":"mesh"},
-    {"path":"Park/TowerD_E/BowlLower","fbx":"Assets/Models/TowerD_Kuruun.fbx","mesh":"TowerD_Kuruun","pos":[5.300000,1.380000,0.250000],"rotEuler":[270.000000,36.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[80.901700,-58.778530,0.000000,5.300000,0.000000,0.000000,100.000000,1.380000,-58.778530,-80.901700,0.000000,0.250000],"meshLocalCenter":[0.000000,0.000000,0.001600],"meshLocalExtents":[0.008600,0.008600,0.002800],"worldCenter":[5.300000,1.540000,0.250000],"worldExtents":[1.201250,0.280000,1.201250],"vertexCount":1944,"collider":"mesh"},
-    {"path":"Park/TowerD_E/StirrerUpper/StirrerMesh","fbx":"Assets/Models/DrainStirrer.fbx","mesh":"DrainStirrer","pos":[5.000000,3.160000,0.700000],"rotEuler":[90.000000,0.000000,0.000000],"lossyScale":[1.250000,1.250000,1.000000],"m":[1.250000,0.000000,0.000000,5.000000,0.000000,0.000000,-1.000000,3.160000,0.000000,1.250000,0.000000,0.700000],"meshLocalCenter":[0.000000,0.000000,-0.027000],"meshLocalExtents":[0.250000,0.250000,0.058000],"worldCenter":[5.000000,3.187000,0.700000],"worldExtents":[0.312500,0.058000,0.312500],"vertexCount":610,"collider":"mesh"},
-    {"path":"Park/TowerD_E/StirrerLower/StirrerMesh","fbx":"Assets/Models/DrainStirrer.fbx","mesh":"DrainStirrer","pos":[5.300000,1.440000,0.250000],"rotEuler":[90.000000,0.000000,0.000000],"lossyScale":[1.250000,1.250000,1.000000],"m":[1.250000,0.000000,0.000000,5.300000,0.000000,0.000000,-1.000000,1.440000,0.000000,1.250000,0.000000,0.250000],"meshLocalCenter":[0.000000,0.000000,-0.027000],"meshLocalExtents":[0.250000,0.250000,0.058000],"worldCenter":[5.300000,1.467000,0.250000],"worldExtents":[0.312500,0.058000,0.312500],"vertexCount":610,"collider":"mesh"},
-    {"path":"Park/TowerD_W/BowlUpper","fbx":"Assets/Models/TowerD_Kuruun.fbx","mesh":"TowerD_Kuruun","pos":[-5.000000,3.100000,-0.700000],"rotEuler":[270.000000,180.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[-100.000000,0.000009,0.000000,-5.000000,0.000000,-0.000012,100.000000,3.100000,0.000009,100.000000,0.000012,-0.700000],"meshLocalCenter":[0.000000,0.000000,0.001600],"meshLocalExtents":[0.008600,0.008600,0.002800],"worldCenter":[-5.000000,3.260000,-0.700000],"worldExtents":[0.860000,0.280000,0.860000],"vertexCount":1944,"collider":"mesh"},
-    {"path":"Park/TowerD_W/BowlLower","fbx":"Assets/Models/TowerD_Kuruun.fbx","mesh":"TowerD_Kuruun","pos":[-5.300000,1.380000,-0.250000],"rotEuler":[270.000000,216.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[-80.901700,58.778540,0.000000,-5.300000,0.000000,0.000000,100.000000,1.380000,58.778540,80.901700,0.000000,-0.250000],"meshLocalCenter":[0.000000,0.000000,0.001600],"meshLocalExtents":[0.008600,0.008600,0.002800],"worldCenter":[-5.300000,1.540000,-0.250000],"worldExtents":[1.201250,0.280000,1.201250],"vertexCount":1944,"collider":"mesh"},
-    {"path":"Park/TowerD_W/StirrerUpper/StirrerMesh","fbx":"Assets/Models/DrainStirrer.fbx","mesh":"DrainStirrer","pos":[-5.000000,3.160000,-0.700000],"rotEuler":[90.000000,180.000000,0.000000],"lossyScale":[1.250000,1.250000,1.000000],"m":[-1.250000,0.000000,0.000000,-5.000000,0.000000,0.000000,-1.000000,3.160000,0.000000,-1.250000,0.000000,-0.700000],"meshLocalCenter":[0.000000,0.000000,-0.027000],"meshLocalExtents":[0.250000,0.250000,0.058000],"worldCenter":[-5.000000,3.187000,-0.700000],"worldExtents":[0.312500,0.058000,0.312500],"vertexCount":610,"collider":"mesh"},
-    {"path":"Park/TowerD_W/StirrerLower/StirrerMesh","fbx":"Assets/Models/DrainStirrer.fbx","mesh":"DrainStirrer","pos":[-5.300000,1.440000,-0.250000],"rotEuler":[90.000000,180.000000,0.000000],"lossyScale":[1.250000,1.250000,1.000000],"m":[-1.250000,0.000000,0.000000,-5.300000,0.000000,0.000000,-1.000000,1.440000,0.000000,-1.250000,0.000000,-0.250000],"meshLocalCenter":[0.000000,0.000000,-0.027000],"meshLocalExtents":[0.250000,0.250000,0.058000],"worldCenter":[-5.300000,1.467000,-0.250000],"worldExtents":[0.312500,0.058000,0.312500],"vertexCount":610,"collider":"mesh"},
-    {"path":"Park/TowerH/KarakoDish","fbx":"Assets/Models/TowerH_KarakoDish.fbx","mesh":"HKarakoDish","pos":[0.000000,4.700000,0.000000],"rotEuler":[270.000000,180.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[-100.000000,0.000009,0.000000,0.000000,0.000000,-0.000012,100.000000,4.700000,0.000009,100.000000,-0.000012,0.000000],"meshLocalCenter":[0.000000,0.000000,0.004450],"meshLocalExtents":[0.026299,0.026299,0.005549],"worldCenter":[0.000000,5.145000,0.000000],"worldExtents":[2.629873,0.554873,2.629873],"vertexCount":2649,"collider":"mesh"},
-    {"path":"Park/TowerH/Drum","fbx":"Assets/Models/TowerH_Drum.fbx","mesh":"HDrum","pos":[0.575000,4.130000,0.000000],"rotEuler":[270.000000,180.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[-100.000000,0.000009,0.000000,0.575000,0.000000,-0.000012,100.000000,4.130000,0.000009,100.000000,-0.000012,0.000000],"meshLocalCenter":[0.000000,0.000000,0.000000],"meshLocalExtents":[0.004500,0.002200,0.004500],"worldCenter":[0.575000,4.130000,0.000000],"worldExtents":[0.450000,0.450000,0.220000],"vertexCount":3100,"collider":"mesh"},
-    {"path":"Park/TowerH/Swing","fbx":"Assets/Models/TowerC_Seesaw.fbx","mesh":"CSeesaw","pos":[0.575000,3.300000,0.000000],"rotEuler":[270.000000,180.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[-100.000000,0.000009,0.000000,0.575000,0.000000,-0.000012,100.000000,3.300000,0.000009,100.000000,-0.000012,0.000000],"meshLocalCenter":[0.000000,0.000000,0.000200],"meshLocalExtents":[0.003200,0.001800,0.000500],"worldCenter":[0.575000,3.320000,0.000000],"worldExtents":[0.320000,0.050000,0.180000],"vertexCount":208,"collider":"mesh"},
-    {"path":"Park/TowerH/MissPan","fbx":"Assets/Models/TowerH_MissPan.fbx","mesh":"TowerH_MissPan","pos":[0.000000,4.100000,0.000000],"rotEuler":[275.999100,225.000000,315.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[-99.726170,-0.273814,-7.390175,0.000000,-7.390174,7.390171,99.452360,4.100000,0.273832,99.726180,-7.390177,0.000000],"meshLocalCenter":[0.000205,0.000000,0.000900],"meshLocalExtents":[0.012795,0.013000,0.000900],"worldCenter":[-0.027106,4.187991,-0.006595],"worldExtents":[1.286196,0.280136,1.306595],"vertexCount":526,"collider":"mesh"},
-    {"path":"Park/TowerH/SwingCatch","fbx":"Assets/Models/TowerB_CatchChute.fbx","mesh":"TowerB_CatchChute","pos":[0.575000,2.650000,0.000000],"rotEuler":[270.000000,180.000000,0.000000],"lossyScale":[100.000000,100.000000,100.000000],"m":[-100.000000,0.000009,0.000000,0.575000,0.000000,-0.000012,100.000000,2.650000,0.000009,100.000000,-0.000012,0.000000],"meshLocalCenter":[0.000300,0.000000,0.002000],"meshLocalExtents":[0.011800,0.003000,0.002600],"worldCenter":[0.545000,2.850000,0.000000],"worldExtents":[1.180000,0.260000,0.300000],"vertexCount":80,"collider":"mesh"}
-  ],
-  "fbxUsed": [
-    "Assets/Models/DrainStation.fbx",
-    "Assets/Models/DrainStirrer.fbx",
-    "Assets/Models/LiftGuide.fbx",
-    "Assets/Models/LiftTopRail.fbx",
-    "Assets/Models/ParkBase.fbx",
-    "Assets/Models/TowerA_Agitator.fbx",
-    "Assets/Models/TowerA_CollectorFunnel.fbx",
-    "Assets/Models/TowerA_Distributor.fbx",
-    "Assets/Models/TowerA_HighLane.fbx",
-    "Assets/Models/TowerA_MiniKuruun.fbx",
-    "Assets/Models/TowerA_MiniRouletteBowl.fbx",
-    "Assets/Models/TowerA_MiniRouletteWheel.fbx",
-    "Assets/Models/TowerA_RouletteBowl.fbx",
-    "Assets/Models/TowerA_RouletteWheel.fbx",
-    "Assets/Models/TowerA_ScoreGate.fbx",
-    "Assets/Models/TowerA_Spiral3.fbx",
-    "Assets/Models/TowerB_CatchChute.fbx",
-    "Assets/Models/TowerB_PachiBoard.fbx",
-    "Assets/Models/TowerB_StepChucker.fbx",
-    "Assets/Models/TowerC_CatchTurn.fbx",
-    "Assets/Models/TowerC_Seesaw.fbx",
-    "Assets/Models/TowerC_ZigzagShort.fbx",
-    "Assets/Models/TowerD_Kuruun.fbx",
-    "Assets/Models/TowerE_FeedPan.fbx",
-    "Assets/Models/TowerE_PocketDisc.fbx",
-    "Assets/Models/TowerE_StarGear.fbx",
-    "Assets/Models/TowerF_CatchTray.fbx",
-    "Assets/Models/TowerF_JPTube.fbx",
-    "Assets/Models/TowerF_MissTray.fbx",
-    "Assets/Models/TowerF_SpinnerDish.fbx",
-    "Assets/Models/TowerG_FeedCatch.fbx",
-    "Assets/Models/TowerG_MergeTray.fbx",
-    "Assets/Models/TowerG_NumaKuruun_L.fbx",
-    "Assets/Models/TowerG_NumaKuruun_M.fbx",
-    "Assets/Models/TowerG_NumaKuruun_S.fbx",
-    "Assets/Models/TowerH_Drum.fbx",
-    "Assets/Models/TowerH_KarakoDish.fbx",
-    "Assets/Models/TowerH_MissPan.fbx"
-  ],
-  "componentCensus": {"ScoreZone":92,"Rotator":23,"Oscillator":5,"BallLift":2,"LapGate":1,"TextMeshPro":92,"Billboard":26,"Camera":16,"AllTransforms":371}
+ "scene": "Assets/Scenes/ParkScene_v2.unity",
+ "instances": [
+  {
+   "path": "Park/Basin/ParkBase",
+   "fbx": "Assets/Models/ParkBase.fbx",
+   "mesh": "ParkBase",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotEuler": [
+    90.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    100.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    -1.2e-05,
+    -100.0,
+    0.0,
+    0.0,
+    100.0,
+    -1.2e-05,
+    0.0
+   ],
+   "meshLocalCenter": [
+    0.008,
+    0.0,
+    -0.0131
+   ],
+   "meshLocalExtents": [
+    0.13,
+    0.08,
+    0.0139
+   ],
+   "worldCenter": [
+    0.8,
+    1.31,
+    0.0
+   ],
+   "worldExtents": [
+    13.0,
+    1.390001,
+    8.000001
+   ],
+   "vertexCount": 1970,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/DrainStation/DrainStation",
+   "fbx": "Assets/Models/DrainStation.fbx",
+   "mesh": "DrainStation",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotEuler": [
+    90.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    100.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    -1.2e-05,
+    -100.0,
+    0.0,
+    0.0,
+    100.0,
+    -1.2e-05,
+    0.0
+   ],
+   "meshLocalCenter": [
+    0.1125,
+    0.0,
+    -0.00145
+   ],
+   "meshLocalExtents": [
+    0.013001,
+    0.0065,
+    0.002053
+   ],
+   "worldCenter": [
+    11.25003,
+    0.145003,
+    -3.4e-05
+   ],
+   "worldExtents": [
+    1.300107,
+    0.205349,
+    0.650034
+   ],
+   "vertexCount": 1553,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/DrainStation/DrainStirrer/StirrerMesh",
+   "fbx": "Assets/Models/DrainStirrer.fbx",
+   "mesh": "DrainStirrer",
+   "pos": [
+    11.6,
+    0.09,
+    0.0
+   ],
+   "rotEuler": [
+    88.60003,
+    270.0,
+    270.0
+   ],
+   "lossyScale": [
+    1.7,
+    1.700001,
+    1.0
+   ],
+   "m": [
+    1.699493,
+    0.0,
+    -0.024432,
+    11.6,
+    -0.041535,
+    0.0,
+    -0.999702,
+    0.09,
+    0.0,
+    1.7,
+    0.0,
+    0.0
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    -0.027
+   ],
+   "meshLocalExtents": [
+    0.25,
+    0.25,
+    0.058
+   ],
+   "worldCenter": [
+    11.60066,
+    0.116992,
+    0.0
+   ],
+   "worldExtents": [
+    0.42629,
+    0.068366,
+    0.425
+   ],
+   "vertexCount": 610,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/Lifts/LiftN_Guide",
+   "fbx": "Assets/Models/LiftGuide.fbx",
+   "mesh": "LiftGuide",
+   "pos": [
+    12.33,
+    0.0,
+    0.09
+   ],
+   "rotEuler": [
+    90.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    100.0,
+    0.0,
+    0.0,
+    12.33,
+    0.0,
+    -1.2e-05,
+    -100.0,
+    0.0,
+    0.0,
+    100.0,
+    -1.2e-05,
+    0.09
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    -0.07
+   ],
+   "meshLocalExtents": [
+    0.0011,
+    0.00015,
+    0.07
+   ],
+   "worldCenter": [
+    12.33,
+    7.000001,
+    0.090001
+   ],
+   "worldExtents": [
+    0.11,
+    7.000001,
+    0.015001
+   ],
+   "vertexCount": 2659,
+   "collider": "none"
+  },
+  {
+   "path": "Park/Lifts/LiftS_Guide",
+   "fbx": "Assets/Models/LiftGuide.fbx",
+   "mesh": "LiftGuide",
+   "pos": [
+    12.33,
+    0.0,
+    -0.09
+   ],
+   "rotEuler": [
+    90.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    100.0,
+    0.0,
+    0.0,
+    12.33,
+    0.0,
+    -1.2e-05,
+    -100.0,
+    0.0,
+    0.0,
+    100.0,
+    -1.2e-05,
+    -0.09
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    -0.07
+   ],
+   "meshLocalExtents": [
+    0.0011,
+    0.00015,
+    0.07
+   ],
+   "worldCenter": [
+    12.33,
+    7.000001,
+    -0.089999
+   ],
+   "worldExtents": [
+    0.11,
+    7.000001,
+    0.015001
+   ],
+   "vertexCount": 2659,
+   "collider": "none"
+  },
+  {
+   "path": "Park/Lifts/LiftTopRail",
+   "fbx": "Assets/Models/LiftTopRail.fbx",
+   "mesh": "LiftTopRail",
+   "pos": [
+    0.0,
+    13.9,
+    0.0
+   ],
+   "rotEuler": [
+    270.0,
+    180.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -100.0,
+    9e-06,
+    0.0,
+    0.0,
+    0.0,
+    -1.2e-05,
+    100.0,
+    13.9,
+    9e-06,
+    100.0,
+    -1.2e-05,
+    0.0
+   ],
+   "meshLocalCenter": [
+    -0.0625,
+    0.0,
+    -0.00015
+   ],
+   "meshLocalExtents": [
+    0.0625,
+    0.00175,
+    0.0004
+   ],
+   "worldCenter": [
+    6.250001,
+    13.885,
+    -1e-06
+   ],
+   "worldExtents": [
+    6.250001,
+    0.04,
+    0.175001
+   ],
+   "vertexCount": 3352,
+   "collider": "none"
+  },
+  {
+   "path": "Park/TowerA/SpiralA_45",
+   "fbx": "Assets/Models/TowerA_Spiral3.fbx",
+   "mesh": "Spiral3",
+   "pos": [
+    1.52028,
+    12.45,
+    1.52028
+   ],
+   "rotEuler": [
+    270.0,
+    345.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    96.59258,
+    25.8819,
+    0.0,
+    1.52028,
+    0.0,
+    0.0,
+    100.0,
+    12.45,
+    25.8819,
+    -96.59258,
+    0.0,
+    1.52028
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    -0.009343
+   ],
+   "meshLocalExtents": [
+    0.010994,
+    0.010994,
+    0.012343
+   ],
+   "worldCenter": [
+    1.52028,
+    11.51568,
+    1.52028
+   ],
+   "worldExtents": [
+    1.346493,
+    1.234316,
+    1.346493
+   ],
+   "vertexCount": 1464,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA/SpiralA_135",
+   "fbx": "Assets/Models/TowerA_Spiral3.fbx",
+   "mesh": "Spiral3",
+   "pos": [
+    -1.52028,
+    12.45,
+    1.52028
+   ],
+   "rotEuler": [
+    270.0,
+    255.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -25.88192,
+    96.59259,
+    0.0,
+    -1.52028,
+    0.0,
+    -1.2e-05,
+    100.0,
+    12.45,
+    96.59259,
+    25.88191,
+    -1.2e-05,
+    1.52028
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    -0.009343
+   ],
+   "meshLocalExtents": [
+    0.010994,
+    0.010994,
+    0.012343
+   ],
+   "worldCenter": [
+    -1.52028,
+    11.51568,
+    1.52028
+   ],
+   "worldExtents": [
+    1.346493,
+    1.234317,
+    1.346493
+   ],
+   "vertexCount": 1464,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA/SpiralA_225",
+   "fbx": "Assets/Models/TowerA_Spiral3.fbx",
+   "mesh": "Spiral3",
+   "pos": [
+    -1.52028,
+    12.45,
+    -1.52028
+   ],
+   "rotEuler": [
+    270.0,
+    165.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -96.59258,
+    -25.88191,
+    0.0,
+    -1.52028,
+    0.0,
+    0.0,
+    100.0,
+    12.45,
+    -25.88191,
+    96.59258,
+    0.0,
+    -1.52028
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    -0.009343
+   ],
+   "meshLocalExtents": [
+    0.010994,
+    0.010994,
+    0.012343
+   ],
+   "worldCenter": [
+    -1.52028,
+    11.51568,
+    -1.52028
+   ],
+   "worldExtents": [
+    1.346493,
+    1.234316,
+    1.346493
+   ],
+   "vertexCount": 1464,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA/SpiralA_315",
+   "fbx": "Assets/Models/TowerA_Spiral3.fbx",
+   "mesh": "Spiral3",
+   "pos": [
+    1.520279,
+    12.45,
+    -1.52028
+   ],
+   "rotEuler": [
+    270.0,
+    75.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    25.8819,
+    -96.59259,
+    0.0,
+    1.520279,
+    0.0,
+    -1.2e-05,
+    100.0,
+    12.45,
+    -96.59259,
+    -25.88191,
+    -1.2e-05,
+    -1.52028
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    -0.009343
+   ],
+   "meshLocalExtents": [
+    0.010994,
+    0.010994,
+    0.012343
+   ],
+   "worldCenter": [
+    1.520279,
+    11.51568,
+    -1.52028
+   ],
+   "worldExtents": [
+    1.346493,
+    1.234317,
+    1.346493
+   ],
+   "vertexCount": 1464,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA/DistributorA",
+   "fbx": "Assets/Models/TowerA_Distributor.fbx",
+   "mesh": "DistributorA",
+   "pos": [
+    0.0,
+    12.85,
+    0.0
+   ],
+   "rotEuler": [
+    270.0,
+    315.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    70.71067,
+    70.71069,
+    0.0,
+    0.0,
+    0.0,
+    -1.2e-05,
+    100.0,
+    12.85,
+    70.71069,
+    -70.71069,
+    -1.2e-05,
+    0.0
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.00115
+   ],
+   "meshLocalExtents": [
+    0.01072,
+    0.01072,
+    0.00175
+   ],
+   "worldCenter": [
+    0.0,
+    12.96498,
+    0.0
+   ],
+   "worldExtents": [
+    1.51602,
+    0.175023,
+    1.516021
+   ],
+   "vertexCount": 2768,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA/AgitatorA",
+   "fbx": "Assets/Models/TowerA_Agitator.fbx",
+   "mesh": "AgitatorA",
+   "pos": [
+    0.0,
+    12.85,
+    0.0
+   ],
+   "rotEuler": [
+    270.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "m": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    12.85,
+    0.0,
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.168818
+   ],
+   "meshLocalExtents": [
+    0.83,
+    0.83,
+    0.153182
+   ],
+   "worldCenter": [
+    0.0,
+    13.01882,
+    0.0
+   ],
+   "worldExtents": [
+    0.83,
+    0.153182,
+    0.83
+   ],
+   "vertexCount": 540,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/Chain_45/MiniKuruun",
+   "fbx": "Assets/Models/TowerA_MiniKuruun.fbx",
+   "mesh": "MiniKuruun",
+   "pos": [
+    1.52028,
+    9.69,
+    1.52028
+   ],
+   "rotEuler": [
+    270.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "m": [
+    1.0,
+    0.0,
+    0.0,
+    1.52028,
+    0.0,
+    0.0,
+    1.0,
+    9.69,
+    0.0,
+    -1.0,
+    0.0,
+    1.52028
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.450508
+   ],
+   "meshLocalExtents": [
+    1.34,
+    1.34,
+    0.450508
+   ],
+   "worldCenter": [
+    1.52028,
+    10.14051,
+    1.52028
+   ],
+   "worldExtents": [
+    1.34,
+    0.450508,
+    1.34
+   ],
+   "vertexCount": 970,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/Chain_45/KuruunStirrer/StirrerMesh",
+   "fbx": "Assets/Models/DrainStirrer.fbx",
+   "mesh": "DrainStirrer",
+   "pos": [
+    1.52028,
+    9.78,
+    1.52028
+   ],
+   "rotEuler": [
+    90.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "m": [
+    1.0,
+    0.0,
+    0.0,
+    1.52028,
+    0.0,
+    0.0,
+    -1.0,
+    9.78,
+    0.0,
+    1.0,
+    0.0,
+    1.52028
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    -0.027
+   ],
+   "meshLocalExtents": [
+    0.25,
+    0.25,
+    0.058
+   ],
+   "worldCenter": [
+    1.52028,
+    9.807,
+    1.52028
+   ],
+   "worldExtents": [
+    0.25,
+    0.058,
+    0.25
+   ],
+   "vertexCount": 610,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/Chain_45/MiniRouletteBowl",
+   "fbx": "Assets/Models/TowerA_MiniRouletteBowl.fbx",
+   "mesh": "MiniRouletteBowl",
+   "pos": [
+    1.52028,
+    8.49,
+    1.52028
+   ],
+   "rotEuler": [
+    270.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "m": [
+    1.0,
+    0.0,
+    0.0,
+    1.52028,
+    0.0,
+    0.0,
+    1.0,
+    8.49,
+    0.0,
+    -1.0,
+    0.0,
+    1.52028
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.150318
+   ],
+   "meshLocalExtents": [
+    1.013812,
+    1.013812,
+    0.192318
+   ],
+   "worldCenter": [
+    1.52028,
+    8.640318,
+    1.52028
+   ],
+   "worldExtents": [
+    1.013812,
+    0.192319,
+    1.013812
+   ],
+   "vertexCount": 1093,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/Chain_45/MiniRouletteWheel",
+   "fbx": "Assets/Models/TowerA_MiniRouletteWheel.fbx",
+   "mesh": "MiniRouletteWheel",
+   "pos": [
+    1.52028,
+    8.49,
+    1.52028
+   ],
+   "rotEuler": [
+    270.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "m": [
+    1.0,
+    0.0,
+    0.0,
+    1.52028,
+    0.0,
+    0.0,
+    1.0,
+    8.49,
+    0.0,
+    -1.0,
+    0.0,
+    1.52028
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.222
+   ],
+   "meshLocalExtents": [
+    0.8,
+    0.69882,
+    0.21
+   ],
+   "worldCenter": [
+    1.52028,
+    8.712,
+    1.52028
+   ],
+   "worldExtents": [
+    0.8,
+    0.21,
+    0.69882
+   ],
+   "vertexCount": 470,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/Chain_45/ScoreGate_10",
+   "fbx": "Assets/Models/TowerA_ScoreGate.fbx",
+   "mesh": "ScoreGate",
+   "pos": [
+    2.87028,
+    8.32,
+    1.52028
+   ],
+   "rotEuler": [
+    270.0,
+    180.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -100.0,
+    9e-06,
+    0.0,
+    2.87028,
+    0.0,
+    -1.2e-05,
+    100.0,
+    8.32,
+    9e-06,
+    100.0,
+    -1.2e-05,
+    1.52028
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.00205
+   ],
+   "meshLocalExtents": [
+    0.00025,
+    0.00195,
+    0.00285
+   ],
+   "worldCenter": [
+    2.87028,
+    8.525,
+    1.52028
+   ],
+   "worldExtents": [
+    0.025,
+    0.285,
+    0.195
+   ],
+   "vertexCount": 968,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/Chain_45/HighLane_0",
+   "fbx": "Assets/Models/TowerA_HighLane.fbx",
+   "mesh": "HighLane",
+   "pos": [
+    2.62028,
+    8.34,
+    1.52028
+   ],
+   "rotEuler": [
+    270.0,
+    180.0,
+    0.0
+   ],
+   "lossyScale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "m": [
+    -1.0,
+    0.0,
+    0.0,
+    2.62028,
+    0.0,
+    0.0,
+    1.0,
+    8.34,
+    0.0,
+    1.0,
+    0.0,
+    1.52028
+   ],
+   "meshLocalCenter": [
+    -1.100016,
+    0.0,
+    -0.010407
+   ],
+   "meshLocalExtents": [
+    1.100722,
+    0.125,
+    0.150407
+   ],
+   "worldCenter": [
+    3.720296,
+    8.329594,
+    1.52028
+   ],
+   "worldExtents": [
+    1.100722,
+    0.150407,
+    0.125
+   ],
+   "vertexCount": 160,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/Chain_45/ScoreGate_10",
+   "fbx": "Assets/Models/TowerA_ScoreGate.fbx",
+   "mesh": "ScoreGate",
+   "pos": [
+    1.52028,
+    8.32,
+    2.87028
+   ],
+   "rotEuler": [
+    270.0,
+    90.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    0.0,
+    -100.0,
+    0.0,
+    1.52028,
+    0.0,
+    0.0,
+    100.0,
+    8.32,
+    -100.0,
+    0.0,
+    0.0,
+    2.87028
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.00205
+   ],
+   "meshLocalExtents": [
+    0.00025,
+    0.00195,
+    0.00285
+   ],
+   "worldCenter": [
+    1.52028,
+    8.525,
+    2.87028
+   ],
+   "worldExtents": [
+    0.195,
+    0.285,
+    0.025
+   ],
+   "vertexCount": 968,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/Chain_45/HighLane_90",
+   "fbx": "Assets/Models/TowerA_HighLane.fbx",
+   "mesh": "HighLane",
+   "pos": [
+    1.52028,
+    8.34,
+    2.62028
+   ],
+   "rotEuler": [
+    270.0,
+    90.0,
+    0.0
+   ],
+   "lossyScale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "m": [
+    0.0,
+    -1.0,
+    0.0,
+    1.52028,
+    0.0,
+    0.0,
+    1.0,
+    8.34,
+    -1.0,
+    0.0,
+    0.0,
+    2.62028
+   ],
+   "meshLocalCenter": [
+    -1.100016,
+    0.0,
+    -0.010407
+   ],
+   "meshLocalExtents": [
+    1.100722,
+    0.125,
+    0.150407
+   ],
+   "worldCenter": [
+    1.52028,
+    8.329594,
+    3.720295
+   ],
+   "worldExtents": [
+    0.125,
+    0.150407,
+    1.100722
+   ],
+   "vertexCount": 160,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/Chain_45/ScoreGate_10",
+   "fbx": "Assets/Models/TowerA_ScoreGate.fbx",
+   "mesh": "ScoreGate",
+   "pos": [
+    0.49028,
+    8.36,
+    1.52028
+   ],
+   "rotEuler": [
+    270.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    100.0,
+    0.0,
+    0.0,
+    0.49028,
+    0.0,
+    -1.2e-05,
+    100.0,
+    8.36,
+    0.0,
+    -100.0,
+    -1.2e-05,
+    1.52028
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.00205
+   ],
+   "meshLocalExtents": [
+    0.00025,
+    0.00195,
+    0.00285
+   ],
+   "worldCenter": [
+    0.49028,
+    8.565,
+    1.52028
+   ],
+   "worldExtents": [
+    0.025,
+    0.285,
+    0.195
+   ],
+   "vertexCount": 968,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/Chain_45/ScoreGate_10",
+   "fbx": "Assets/Models/TowerA_ScoreGate.fbx",
+   "mesh": "ScoreGate",
+   "pos": [
+    1.52028,
+    8.36,
+    0.49028
+   ],
+   "rotEuler": [
+    270.0,
+    270.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    0.0,
+    100.0,
+    0.0,
+    1.52028,
+    0.0,
+    0.0,
+    100.0,
+    8.36,
+    100.0,
+    0.0,
+    0.0,
+    0.49028
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.00205
+   ],
+   "meshLocalExtents": [
+    0.00025,
+    0.00195,
+    0.00285
+   ],
+   "worldCenter": [
+    1.52028,
+    8.565,
+    0.49028
+   ],
+   "worldExtents": [
+    0.195,
+    0.285,
+    0.025
+   ],
+   "vertexCount": 968,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/Chain_135/MiniKuruun",
+   "fbx": "Assets/Models/TowerA_MiniKuruun.fbx",
+   "mesh": "MiniKuruun",
+   "pos": [
+    -1.52028,
+    9.69,
+    1.52028
+   ],
+   "rotEuler": [
+    270.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "m": [
+    1.0,
+    0.0,
+    0.0,
+    -1.52028,
+    0.0,
+    0.0,
+    1.0,
+    9.69,
+    0.0,
+    -1.0,
+    0.0,
+    1.52028
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.450508
+   ],
+   "meshLocalExtents": [
+    1.34,
+    1.34,
+    0.450508
+   ],
+   "worldCenter": [
+    -1.52028,
+    10.14051,
+    1.52028
+   ],
+   "worldExtents": [
+    1.34,
+    0.450508,
+    1.34
+   ],
+   "vertexCount": 970,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/Chain_135/KuruunStirrer/StirrerMesh",
+   "fbx": "Assets/Models/DrainStirrer.fbx",
+   "mesh": "DrainStirrer",
+   "pos": [
+    -1.52028,
+    9.78,
+    1.52028
+   ],
+   "rotEuler": [
+    90.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "m": [
+    1.0,
+    0.0,
+    0.0,
+    -1.52028,
+    0.0,
+    0.0,
+    -1.0,
+    9.78,
+    0.0,
+    1.0,
+    0.0,
+    1.52028
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    -0.027
+   ],
+   "meshLocalExtents": [
+    0.25,
+    0.25,
+    0.058
+   ],
+   "worldCenter": [
+    -1.52028,
+    9.807,
+    1.52028
+   ],
+   "worldExtents": [
+    0.25,
+    0.058,
+    0.25
+   ],
+   "vertexCount": 610,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/Chain_135/MiniRouletteBowl",
+   "fbx": "Assets/Models/TowerA_MiniRouletteBowl.fbx",
+   "mesh": "MiniRouletteBowl",
+   "pos": [
+    -1.52028,
+    8.49,
+    1.52028
+   ],
+   "rotEuler": [
+    270.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "m": [
+    1.0,
+    0.0,
+    0.0,
+    -1.52028,
+    0.0,
+    0.0,
+    1.0,
+    8.49,
+    0.0,
+    -1.0,
+    0.0,
+    1.52028
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.150318
+   ],
+   "meshLocalExtents": [
+    1.013812,
+    1.013812,
+    0.192318
+   ],
+   "worldCenter": [
+    -1.52028,
+    8.640318,
+    1.52028
+   ],
+   "worldExtents": [
+    1.013812,
+    0.192319,
+    1.013812
+   ],
+   "vertexCount": 1093,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/Chain_135/MiniRouletteWheel",
+   "fbx": "Assets/Models/TowerA_MiniRouletteWheel.fbx",
+   "mesh": "MiniRouletteWheel",
+   "pos": [
+    -1.52028,
+    8.49,
+    1.52028
+   ],
+   "rotEuler": [
+    270.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "m": [
+    1.0,
+    0.0,
+    0.0,
+    -1.52028,
+    0.0,
+    0.0,
+    1.0,
+    8.49,
+    0.0,
+    -1.0,
+    0.0,
+    1.52028
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.222
+   ],
+   "meshLocalExtents": [
+    0.8,
+    0.69882,
+    0.21
+   ],
+   "worldCenter": [
+    -1.52028,
+    8.712,
+    1.52028
+   ],
+   "worldExtents": [
+    0.8,
+    0.21,
+    0.69882
+   ],
+   "vertexCount": 470,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/Chain_135/ScoreGate_10",
+   "fbx": "Assets/Models/TowerA_ScoreGate.fbx",
+   "mesh": "ScoreGate",
+   "pos": [
+    -0.49028,
+    8.36,
+    1.52028
+   ],
+   "rotEuler": [
+    270.0,
+    180.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -100.0,
+    9e-06,
+    0.0,
+    -0.49028,
+    0.0,
+    -1.2e-05,
+    100.0,
+    8.36,
+    9e-06,
+    100.0,
+    -1.2e-05,
+    1.52028
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.00205
+   ],
+   "meshLocalExtents": [
+    0.00025,
+    0.00195,
+    0.00285
+   ],
+   "worldCenter": [
+    -0.49028,
+    8.565,
+    1.52028
+   ],
+   "worldExtents": [
+    0.025,
+    0.285,
+    0.195
+   ],
+   "vertexCount": 968,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/Chain_135/ScoreGate_10",
+   "fbx": "Assets/Models/TowerA_ScoreGate.fbx",
+   "mesh": "ScoreGate",
+   "pos": [
+    -1.52028,
+    8.32,
+    2.87028
+   ],
+   "rotEuler": [
+    270.0,
+    90.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    0.0,
+    -100.0,
+    0.0,
+    -1.52028,
+    0.0,
+    0.0,
+    100.0,
+    8.32,
+    -100.0,
+    0.0,
+    0.0,
+    2.87028
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.00205
+   ],
+   "meshLocalExtents": [
+    0.00025,
+    0.00195,
+    0.00285
+   ],
+   "worldCenter": [
+    -1.52028,
+    8.525,
+    2.87028
+   ],
+   "worldExtents": [
+    0.195,
+    0.285,
+    0.025
+   ],
+   "vertexCount": 968,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/Chain_135/HighLane_90",
+   "fbx": "Assets/Models/TowerA_HighLane.fbx",
+   "mesh": "HighLane",
+   "pos": [
+    -1.52028,
+    8.34,
+    2.62028
+   ],
+   "rotEuler": [
+    270.0,
+    90.0,
+    0.0
+   ],
+   "lossyScale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "m": [
+    0.0,
+    -1.0,
+    0.0,
+    -1.52028,
+    0.0,
+    0.0,
+    1.0,
+    8.34,
+    -1.0,
+    0.0,
+    0.0,
+    2.62028
+   ],
+   "meshLocalCenter": [
+    -1.100016,
+    0.0,
+    -0.010407
+   ],
+   "meshLocalExtents": [
+    1.100722,
+    0.125,
+    0.150407
+   ],
+   "worldCenter": [
+    -1.52028,
+    8.329594,
+    3.720295
+   ],
+   "worldExtents": [
+    0.125,
+    0.150407,
+    1.100722
+   ],
+   "vertexCount": 160,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/Chain_135/ScoreGate_10",
+   "fbx": "Assets/Models/TowerA_ScoreGate.fbx",
+   "mesh": "ScoreGate",
+   "pos": [
+    -2.87028,
+    8.32,
+    1.52028
+   ],
+   "rotEuler": [
+    270.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    100.0,
+    0.0,
+    0.0,
+    -2.87028,
+    0.0,
+    -1.2e-05,
+    100.0,
+    8.32,
+    0.0,
+    -100.0,
+    -1.2e-05,
+    1.52028
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.00205
+   ],
+   "meshLocalExtents": [
+    0.00025,
+    0.00195,
+    0.00285
+   ],
+   "worldCenter": [
+    -2.87028,
+    8.525,
+    1.52028
+   ],
+   "worldExtents": [
+    0.025,
+    0.285,
+    0.195
+   ],
+   "vertexCount": 968,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/Chain_135/HighLane_180",
+   "fbx": "Assets/Models/TowerA_HighLane.fbx",
+   "mesh": "HighLane",
+   "pos": [
+    -2.62028,
+    8.34,
+    1.52028
+   ],
+   "rotEuler": [
+    270.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "m": [
+    1.0,
+    0.0,
+    0.0,
+    -2.62028,
+    0.0,
+    0.0,
+    1.0,
+    8.34,
+    0.0,
+    -1.0,
+    0.0,
+    1.52028
+   ],
+   "meshLocalCenter": [
+    -1.100016,
+    0.0,
+    -0.010407
+   ],
+   "meshLocalExtents": [
+    1.100722,
+    0.125,
+    0.150407
+   ],
+   "worldCenter": [
+    -3.720295,
+    8.329594,
+    1.52028
+   ],
+   "worldExtents": [
+    1.100722,
+    0.150407,
+    0.125
+   ],
+   "vertexCount": 160,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/Chain_135/ScoreGate_10",
+   "fbx": "Assets/Models/TowerA_ScoreGate.fbx",
+   "mesh": "ScoreGate",
+   "pos": [
+    -1.52028,
+    8.36,
+    0.49028
+   ],
+   "rotEuler": [
+    270.0,
+    270.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    0.0,
+    100.0,
+    0.0,
+    -1.52028,
+    0.0,
+    0.0,
+    100.0,
+    8.36,
+    100.0,
+    0.0,
+    0.0,
+    0.49028
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.00205
+   ],
+   "meshLocalExtents": [
+    0.00025,
+    0.00195,
+    0.00285
+   ],
+   "worldCenter": [
+    -1.52028,
+    8.565,
+    0.49028
+   ],
+   "worldExtents": [
+    0.195,
+    0.285,
+    0.025
+   ],
+   "vertexCount": 968,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/Chain_225/MiniKuruun",
+   "fbx": "Assets/Models/TowerA_MiniKuruun.fbx",
+   "mesh": "MiniKuruun",
+   "pos": [
+    -1.52028,
+    9.69,
+    -1.52028
+   ],
+   "rotEuler": [
+    270.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "m": [
+    1.0,
+    0.0,
+    0.0,
+    -1.52028,
+    0.0,
+    0.0,
+    1.0,
+    9.69,
+    0.0,
+    -1.0,
+    0.0,
+    -1.52028
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.450508
+   ],
+   "meshLocalExtents": [
+    1.34,
+    1.34,
+    0.450508
+   ],
+   "worldCenter": [
+    -1.52028,
+    10.14051,
+    -1.52028
+   ],
+   "worldExtents": [
+    1.34,
+    0.450508,
+    1.34
+   ],
+   "vertexCount": 970,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/Chain_225/KuruunStirrer/StirrerMesh",
+   "fbx": "Assets/Models/DrainStirrer.fbx",
+   "mesh": "DrainStirrer",
+   "pos": [
+    -1.52028,
+    9.78,
+    -1.52028
+   ],
+   "rotEuler": [
+    90.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "m": [
+    1.0,
+    0.0,
+    0.0,
+    -1.52028,
+    0.0,
+    0.0,
+    -1.0,
+    9.78,
+    0.0,
+    1.0,
+    0.0,
+    -1.52028
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    -0.027
+   ],
+   "meshLocalExtents": [
+    0.25,
+    0.25,
+    0.058
+   ],
+   "worldCenter": [
+    -1.52028,
+    9.807,
+    -1.52028
+   ],
+   "worldExtents": [
+    0.25,
+    0.058,
+    0.25
+   ],
+   "vertexCount": 610,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/Chain_225/MiniRouletteBowl",
+   "fbx": "Assets/Models/TowerA_MiniRouletteBowl.fbx",
+   "mesh": "MiniRouletteBowl",
+   "pos": [
+    -1.52028,
+    8.49,
+    -1.52028
+   ],
+   "rotEuler": [
+    270.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "m": [
+    1.0,
+    0.0,
+    0.0,
+    -1.52028,
+    0.0,
+    0.0,
+    1.0,
+    8.49,
+    0.0,
+    -1.0,
+    0.0,
+    -1.52028
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.150318
+   ],
+   "meshLocalExtents": [
+    1.013812,
+    1.013812,
+    0.192318
+   ],
+   "worldCenter": [
+    -1.52028,
+    8.640318,
+    -1.52028
+   ],
+   "worldExtents": [
+    1.013812,
+    0.192319,
+    1.013812
+   ],
+   "vertexCount": 1093,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/Chain_225/MiniRouletteWheel",
+   "fbx": "Assets/Models/TowerA_MiniRouletteWheel.fbx",
+   "mesh": "MiniRouletteWheel",
+   "pos": [
+    -1.52028,
+    8.49,
+    -1.52028
+   ],
+   "rotEuler": [
+    270.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "m": [
+    1.0,
+    0.0,
+    0.0,
+    -1.52028,
+    0.0,
+    0.0,
+    1.0,
+    8.49,
+    0.0,
+    -1.0,
+    0.0,
+    -1.52028
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.222
+   ],
+   "meshLocalExtents": [
+    0.8,
+    0.69882,
+    0.21
+   ],
+   "worldCenter": [
+    -1.52028,
+    8.712,
+    -1.52028
+   ],
+   "worldExtents": [
+    0.8,
+    0.21,
+    0.69882
+   ],
+   "vertexCount": 470,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/Chain_225/ScoreGate_10",
+   "fbx": "Assets/Models/TowerA_ScoreGate.fbx",
+   "mesh": "ScoreGate",
+   "pos": [
+    -0.49028,
+    8.36,
+    -1.52028
+   ],
+   "rotEuler": [
+    270.0,
+    180.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -100.0,
+    9e-06,
+    0.0,
+    -0.49028,
+    0.0,
+    -1.2e-05,
+    100.0,
+    8.36,
+    9e-06,
+    100.0,
+    -1.2e-05,
+    -1.52028
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.00205
+   ],
+   "meshLocalExtents": [
+    0.00025,
+    0.00195,
+    0.00285
+   ],
+   "worldCenter": [
+    -0.49028,
+    8.565,
+    -1.52028
+   ],
+   "worldExtents": [
+    0.025,
+    0.285,
+    0.195
+   ],
+   "vertexCount": 968,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/Chain_225/ScoreGate_10",
+   "fbx": "Assets/Models/TowerA_ScoreGate.fbx",
+   "mesh": "ScoreGate",
+   "pos": [
+    -1.52028,
+    8.36,
+    -0.49028
+   ],
+   "rotEuler": [
+    270.0,
+    90.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    0.0,
+    -100.0,
+    0.0,
+    -1.52028,
+    0.0,
+    0.0,
+    100.0,
+    8.36,
+    -100.0,
+    0.0,
+    0.0,
+    -0.49028
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.00205
+   ],
+   "meshLocalExtents": [
+    0.00025,
+    0.00195,
+    0.00285
+   ],
+   "worldCenter": [
+    -1.52028,
+    8.565,
+    -0.49028
+   ],
+   "worldExtents": [
+    0.195,
+    0.285,
+    0.025
+   ],
+   "vertexCount": 968,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/Chain_225/ScoreGate_10",
+   "fbx": "Assets/Models/TowerA_ScoreGate.fbx",
+   "mesh": "ScoreGate",
+   "pos": [
+    -2.87028,
+    8.32,
+    -1.52028
+   ],
+   "rotEuler": [
+    270.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    100.0,
+    0.0,
+    0.0,
+    -2.87028,
+    0.0,
+    -1.2e-05,
+    100.0,
+    8.32,
+    0.0,
+    -100.0,
+    -1.2e-05,
+    -1.52028
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.00205
+   ],
+   "meshLocalExtents": [
+    0.00025,
+    0.00195,
+    0.00285
+   ],
+   "worldCenter": [
+    -2.87028,
+    8.525,
+    -1.52028
+   ],
+   "worldExtents": [
+    0.025,
+    0.285,
+    0.195
+   ],
+   "vertexCount": 968,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/Chain_225/HighLane_180",
+   "fbx": "Assets/Models/TowerA_HighLane.fbx",
+   "mesh": "HighLane",
+   "pos": [
+    -2.62028,
+    8.34,
+    -1.52028
+   ],
+   "rotEuler": [
+    270.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "m": [
+    1.0,
+    0.0,
+    0.0,
+    -2.62028,
+    0.0,
+    0.0,
+    1.0,
+    8.34,
+    0.0,
+    -1.0,
+    0.0,
+    -1.52028
+   ],
+   "meshLocalCenter": [
+    -1.100016,
+    0.0,
+    -0.010407
+   ],
+   "meshLocalExtents": [
+    1.100722,
+    0.125,
+    0.150407
+   ],
+   "worldCenter": [
+    -3.720295,
+    8.329594,
+    -1.52028
+   ],
+   "worldExtents": [
+    1.100722,
+    0.150407,
+    0.125
+   ],
+   "vertexCount": 160,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/Chain_225/ScoreGate_10",
+   "fbx": "Assets/Models/TowerA_ScoreGate.fbx",
+   "mesh": "ScoreGate",
+   "pos": [
+    -1.52028,
+    8.32,
+    -2.87028
+   ],
+   "rotEuler": [
+    270.0,
+    270.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    0.0,
+    100.0,
+    0.0,
+    -1.52028,
+    0.0,
+    0.0,
+    100.0,
+    8.32,
+    100.0,
+    0.0,
+    0.0,
+    -2.87028
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.00205
+   ],
+   "meshLocalExtents": [
+    0.00025,
+    0.00195,
+    0.00285
+   ],
+   "worldCenter": [
+    -1.52028,
+    8.525,
+    -2.87028
+   ],
+   "worldExtents": [
+    0.195,
+    0.285,
+    0.025
+   ],
+   "vertexCount": 968,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/Chain_225/HighLane_270",
+   "fbx": "Assets/Models/TowerA_HighLane.fbx",
+   "mesh": "HighLane",
+   "pos": [
+    -1.52028,
+    8.34,
+    -2.62028
+   ],
+   "rotEuler": [
+    270.0,
+    270.0,
+    0.0
+   ],
+   "lossyScale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "m": [
+    0.0,
+    1.0,
+    0.0,
+    -1.52028,
+    0.0,
+    0.0,
+    1.0,
+    8.34,
+    1.0,
+    0.0,
+    0.0,
+    -2.62028
+   ],
+   "meshLocalCenter": [
+    -1.100016,
+    0.0,
+    -0.010407
+   ],
+   "meshLocalExtents": [
+    1.100722,
+    0.125,
+    0.150407
+   ],
+   "worldCenter": [
+    -1.52028,
+    8.329594,
+    -3.720295
+   ],
+   "worldExtents": [
+    0.125,
+    0.150407,
+    1.100722
+   ],
+   "vertexCount": 160,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/Chain_315/MiniKuruun",
+   "fbx": "Assets/Models/TowerA_MiniKuruun.fbx",
+   "mesh": "MiniKuruun",
+   "pos": [
+    1.520279,
+    9.69,
+    -1.52028
+   ],
+   "rotEuler": [
+    270.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "m": [
+    1.0,
+    0.0,
+    0.0,
+    1.520279,
+    0.0,
+    0.0,
+    1.0,
+    9.69,
+    0.0,
+    -1.0,
+    0.0,
+    -1.52028
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.450508
+   ],
+   "meshLocalExtents": [
+    1.34,
+    1.34,
+    0.450508
+   ],
+   "worldCenter": [
+    1.520279,
+    10.14051,
+    -1.52028
+   ],
+   "worldExtents": [
+    1.34,
+    0.450508,
+    1.34
+   ],
+   "vertexCount": 970,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/Chain_315/KuruunStirrer/StirrerMesh",
+   "fbx": "Assets/Models/DrainStirrer.fbx",
+   "mesh": "DrainStirrer",
+   "pos": [
+    1.520279,
+    9.78,
+    -1.52028
+   ],
+   "rotEuler": [
+    90.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "m": [
+    1.0,
+    0.0,
+    0.0,
+    1.520279,
+    0.0,
+    0.0,
+    -1.0,
+    9.78,
+    0.0,
+    1.0,
+    0.0,
+    -1.52028
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    -0.027
+   ],
+   "meshLocalExtents": [
+    0.25,
+    0.25,
+    0.058
+   ],
+   "worldCenter": [
+    1.520279,
+    9.807,
+    -1.52028
+   ],
+   "worldExtents": [
+    0.25,
+    0.058,
+    0.25
+   ],
+   "vertexCount": 610,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/Chain_315/MiniRouletteBowl",
+   "fbx": "Assets/Models/TowerA_MiniRouletteBowl.fbx",
+   "mesh": "MiniRouletteBowl",
+   "pos": [
+    1.520279,
+    8.49,
+    -1.52028
+   ],
+   "rotEuler": [
+    270.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "m": [
+    1.0,
+    0.0,
+    0.0,
+    1.520279,
+    0.0,
+    0.0,
+    1.0,
+    8.49,
+    0.0,
+    -1.0,
+    0.0,
+    -1.52028
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.150318
+   ],
+   "meshLocalExtents": [
+    1.013812,
+    1.013812,
+    0.192318
+   ],
+   "worldCenter": [
+    1.520279,
+    8.640318,
+    -1.52028
+   ],
+   "worldExtents": [
+    1.013812,
+    0.192319,
+    1.013812
+   ],
+   "vertexCount": 1093,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/Chain_315/MiniRouletteWheel",
+   "fbx": "Assets/Models/TowerA_MiniRouletteWheel.fbx",
+   "mesh": "MiniRouletteWheel",
+   "pos": [
+    1.520279,
+    8.49,
+    -1.52028
+   ],
+   "rotEuler": [
+    270.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "m": [
+    1.0,
+    0.0,
+    0.0,
+    1.520279,
+    0.0,
+    0.0,
+    1.0,
+    8.49,
+    0.0,
+    -1.0,
+    0.0,
+    -1.52028
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.222
+   ],
+   "meshLocalExtents": [
+    0.8,
+    0.69882,
+    0.21
+   ],
+   "worldCenter": [
+    1.520279,
+    8.712,
+    -1.52028
+   ],
+   "worldExtents": [
+    0.8,
+    0.21,
+    0.69882
+   ],
+   "vertexCount": 470,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/Chain_315/ScoreGate_10",
+   "fbx": "Assets/Models/TowerA_ScoreGate.fbx",
+   "mesh": "ScoreGate",
+   "pos": [
+    2.870279,
+    8.32,
+    -1.52028
+   ],
+   "rotEuler": [
+    270.0,
+    180.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -100.0,
+    9e-06,
+    0.0,
+    2.870279,
+    0.0,
+    -1.2e-05,
+    100.0,
+    8.32,
+    9e-06,
+    100.0,
+    -1.2e-05,
+    -1.52028
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.00205
+   ],
+   "meshLocalExtents": [
+    0.00025,
+    0.00195,
+    0.00285
+   ],
+   "worldCenter": [
+    2.870279,
+    8.525,
+    -1.52028
+   ],
+   "worldExtents": [
+    0.025,
+    0.285,
+    0.195
+   ],
+   "vertexCount": 968,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/Chain_315/HighLane_0",
+   "fbx": "Assets/Models/TowerA_HighLane.fbx",
+   "mesh": "HighLane",
+   "pos": [
+    2.620279,
+    8.34,
+    -1.52028
+   ],
+   "rotEuler": [
+    270.0,
+    180.0,
+    0.0
+   ],
+   "lossyScale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "m": [
+    -1.0,
+    0.0,
+    0.0,
+    2.620279,
+    0.0,
+    0.0,
+    1.0,
+    8.34,
+    0.0,
+    1.0,
+    0.0,
+    -1.52028
+   ],
+   "meshLocalCenter": [
+    -1.100016,
+    0.0,
+    -0.010407
+   ],
+   "meshLocalExtents": [
+    1.100722,
+    0.125,
+    0.150407
+   ],
+   "worldCenter": [
+    3.720295,
+    8.329594,
+    -1.52028
+   ],
+   "worldExtents": [
+    1.100722,
+    0.150407,
+    0.125
+   ],
+   "vertexCount": 160,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/Chain_315/ScoreGate_10",
+   "fbx": "Assets/Models/TowerA_ScoreGate.fbx",
+   "mesh": "ScoreGate",
+   "pos": [
+    1.520279,
+    8.36,
+    -0.49028
+   ],
+   "rotEuler": [
+    270.0,
+    90.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    0.0,
+    -100.0,
+    0.0,
+    1.520279,
+    0.0,
+    0.0,
+    100.0,
+    8.36,
+    -100.0,
+    0.0,
+    0.0,
+    -0.49028
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.00205
+   ],
+   "meshLocalExtents": [
+    0.00025,
+    0.00195,
+    0.00285
+   ],
+   "worldCenter": [
+    1.520279,
+    8.565,
+    -0.49028
+   ],
+   "worldExtents": [
+    0.195,
+    0.285,
+    0.025
+   ],
+   "vertexCount": 968,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/Chain_315/ScoreGate_10",
+   "fbx": "Assets/Models/TowerA_ScoreGate.fbx",
+   "mesh": "ScoreGate",
+   "pos": [
+    0.490279,
+    8.36,
+    -1.52028
+   ],
+   "rotEuler": [
+    270.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    100.0,
+    0.0,
+    0.0,
+    0.490279,
+    0.0,
+    -1.2e-05,
+    100.0,
+    8.36,
+    0.0,
+    -100.0,
+    -1.2e-05,
+    -1.52028
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.00205
+   ],
+   "meshLocalExtents": [
+    0.00025,
+    0.00195,
+    0.00285
+   ],
+   "worldCenter": [
+    0.490279,
+    8.565,
+    -1.52028
+   ],
+   "worldExtents": [
+    0.025,
+    0.285,
+    0.195
+   ],
+   "vertexCount": 968,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/Chain_315/ScoreGate_10",
+   "fbx": "Assets/Models/TowerA_ScoreGate.fbx",
+   "mesh": "ScoreGate",
+   "pos": [
+    1.520279,
+    8.32,
+    -2.87028
+   ],
+   "rotEuler": [
+    270.0,
+    270.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    0.0,
+    100.0,
+    0.0,
+    1.520279,
+    0.0,
+    0.0,
+    100.0,
+    8.32,
+    100.0,
+    0.0,
+    0.0,
+    -2.87028
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.00205
+   ],
+   "meshLocalExtents": [
+    0.00025,
+    0.00195,
+    0.00285
+   ],
+   "worldCenter": [
+    1.520279,
+    8.525,
+    -2.87028
+   ],
+   "worldExtents": [
+    0.195,
+    0.285,
+    0.025
+   ],
+   "vertexCount": 968,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/Chain_315/HighLane_270",
+   "fbx": "Assets/Models/TowerA_HighLane.fbx",
+   "mesh": "HighLane",
+   "pos": [
+    1.520279,
+    8.34,
+    -2.62028
+   ],
+   "rotEuler": [
+    270.0,
+    270.0,
+    0.0
+   ],
+   "lossyScale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "m": [
+    0.0,
+    1.0,
+    0.0,
+    1.520279,
+    0.0,
+    0.0,
+    1.0,
+    8.34,
+    1.0,
+    0.0,
+    0.0,
+    -2.62028
+   ],
+   "meshLocalCenter": [
+    -1.100016,
+    0.0,
+    -0.010407
+   ],
+   "meshLocalExtents": [
+    1.100722,
+    0.125,
+    0.150407
+   ],
+   "worldCenter": [
+    1.520279,
+    8.329594,
+    -3.720295
+   ],
+   "worldExtents": [
+    0.125,
+    0.150407,
+    1.100722
+   ],
+   "vertexCount": 160,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/CollectorFunnel",
+   "fbx": "Assets/Models/TowerA_CollectorFunnel.fbx",
+   "mesh": "CollectorFunnel",
+   "pos": [
+    0.0,
+    7.39,
+    0.0
+   ],
+   "rotEuler": [
+    270.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "m": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    7.39,
+    0.0,
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.375881
+   ],
+   "meshLocalExtents": [
+    2.05,
+    2.05,
+    0.375881
+   ],
+   "worldCenter": [
+    0.0,
+    7.765881,
+    0.0
+   ],
+   "worldExtents": [
+    2.05,
+    0.375881,
+    2.05
+   ],
+   "vertexCount": 1290,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/FunnelStirrer/StirrerMesh",
+   "fbx": "Assets/Models/DrainStirrer.fbx",
+   "mesh": "DrainStirrer",
+   "pos": [
+    0.0,
+    7.48,
+    0.0
+   ],
+   "rotEuler": [
+    90.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "m": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    -1.0,
+    7.48,
+    0.0,
+    1.0,
+    0.0,
+    0.0
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    -0.027
+   ],
+   "meshLocalExtents": [
+    0.25,
+    0.25,
+    0.058
+   ],
+   "worldCenter": [
+    0.0,
+    7.506999,
+    0.0
+   ],
+   "worldExtents": [
+    0.25,
+    0.058,
+    0.25
+   ],
+   "vertexCount": 610,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/GrandRouletteBowl",
+   "fbx": "Assets/Models/TowerA_RouletteBowl.fbx",
+   "mesh": "RouletteBowl",
+   "pos": [
+    0.0,
+    6.24,
+    0.0
+   ],
+   "rotEuler": [
+    270.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    100.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    -1.2e-05,
+    100.0,
+    6.24,
+    0.0,
+    -100.0,
+    -1.2e-05,
+    0.0
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.001889
+   ],
+   "meshLocalExtents": [
+    0.018432,
+    0.018432,
+    0.002339
+   ],
+   "worldCenter": [
+    0.0,
+    6.428922,
+    0.0
+   ],
+   "worldExtents": [
+    1.843219,
+    0.233922,
+    1.843219
+   ],
+   "vertexCount": 1411,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/GrandRouletteWheel",
+   "fbx": "Assets/Models/TowerA_RouletteWheel.fbx",
+   "mesh": "RouletteWheel",
+   "pos": [
+    0.0,
+    6.24,
+    0.0
+   ],
+   "rotEuler": [
+    270.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "m": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    6.24,
+    0.0,
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.287
+   ],
+   "meshLocalExtents": [
+    1.58,
+    1.58,
+    0.275
+   ],
+   "worldCenter": [
+    0.0,
+    6.527,
+    0.0
+   ],
+   "worldExtents": [
+    1.58,
+    0.275,
+    1.58
+   ],
+   "vertexCount": 722,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/ScoreGate_10",
+   "fbx": "Assets/Models/TowerA_ScoreGate.fbx",
+   "mesh": "ScoreGate",
+   "pos": [
+    1.72,
+    6.14,
+    0.0
+   ],
+   "rotEuler": [
+    270.0,
+    180.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -100.0,
+    9e-06,
+    0.0,
+    1.72,
+    0.0,
+    -1.2e-05,
+    100.0,
+    6.14,
+    9e-06,
+    100.0,
+    -1.2e-05,
+    0.0
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.00205
+   ],
+   "meshLocalExtents": [
+    0.00025,
+    0.00195,
+    0.00285
+   ],
+   "worldCenter": [
+    1.72,
+    6.345,
+    0.0
+   ],
+   "worldExtents": [
+    0.025,
+    0.285,
+    0.195
+   ],
+   "vertexCount": 968,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/ScoreGate_10",
+   "fbx": "Assets/Models/TowerA_ScoreGate.fbx",
+   "mesh": "ScoreGate",
+   "pos": [
+    0.0,
+    6.14,
+    1.72
+   ],
+   "rotEuler": [
+    270.0,
+    90.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    0.0,
+    -100.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    100.0,
+    6.14,
+    -100.0,
+    0.0,
+    0.0,
+    1.72
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.00205
+   ],
+   "meshLocalExtents": [
+    0.00025,
+    0.00195,
+    0.00285
+   ],
+   "worldCenter": [
+    0.0,
+    6.345,
+    1.72
+   ],
+   "worldExtents": [
+    0.195,
+    0.285,
+    0.025
+   ],
+   "vertexCount": 968,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/ScoreGate_20",
+   "fbx": "Assets/Models/TowerA_ScoreGate.fbx",
+   "mesh": "ScoreGate",
+   "pos": [
+    -1.72,
+    6.14,
+    0.0
+   ],
+   "rotEuler": [
+    270.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    100.0,
+    0.0,
+    0.0,
+    -1.72,
+    0.0,
+    -1.2e-05,
+    100.0,
+    6.14,
+    0.0,
+    -100.0,
+    -1.2e-05,
+    0.0
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.00205
+   ],
+   "meshLocalExtents": [
+    0.00025,
+    0.00195,
+    0.00285
+   ],
+   "worldCenter": [
+    -1.72,
+    6.345,
+    0.0
+   ],
+   "worldExtents": [
+    0.025,
+    0.285,
+    0.195
+   ],
+   "vertexCount": 968,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerA23/ScoreGate_10",
+   "fbx": "Assets/Models/TowerA_ScoreGate.fbx",
+   "mesh": "ScoreGate",
+   "pos": [
+    0.0,
+    6.14,
+    -1.72
+   ],
+   "rotEuler": [
+    270.0,
+    270.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    0.0,
+    100.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    100.0,
+    6.14,
+    100.0,
+    0.0,
+    0.0,
+    -1.72
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.00205
+   ],
+   "meshLocalExtents": [
+    0.00025,
+    0.00195,
+    0.00285
+   ],
+   "worldCenter": [
+    0.0,
+    6.345,
+    -1.72
+   ],
+   "worldExtents": [
+    0.195,
+    0.285,
+    0.025
+   ],
+   "vertexCount": 968,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerG_E/FeedGuide_S",
+   "fbx": "Assets/Models/TowerG_FeedCatch.fbx",
+   "mesh": "TowerG_FeedCatch",
+   "pos": [
+    5.5,
+    7.26,
+    -0.6
+   ],
+   "rotEuler": [
+    275.9999,
+    0.0,
+    90.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -1.2e-05,
+    -100.0,
+    1e-06,
+    5.5,
+    10.45285,
+    0.0,
+    99.45219,
+    7.26,
+    -99.45221,
+    1.2e-05,
+    10.45285,
+    -0.600001
+   ],
+   "meshLocalCenter": [
+    0.00525,
+    0.0,
+    0.0014
+   ],
+   "meshLocalExtents": [
+    0.00525,
+    0.0052,
+    0.0014
+   ],
+   "worldCenter": [
+    5.5,
+    7.454111,
+    -1.107491
+   ],
+   "worldExtents": [
+    0.52,
+    0.194111,
+    0.536758
+   ],
+   "vertexCount": 54,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerG_E/FeedGuide_N",
+   "fbx": "Assets/Models/TowerG_FeedCatch.fbx",
+   "mesh": "TowerG_FeedCatch",
+   "pos": [
+    5.500001,
+    7.26,
+    1.6
+   ],
+   "rotEuler": [
+    275.9999,
+    180.0,
+    270.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -1.2e-05,
+    -100.0,
+    -1e-06,
+    5.5,
+    -10.45285,
+    0.0,
+    99.45219,
+    7.26,
+    -99.45221,
+    1.2e-05,
+    -10.45285,
+    1.6
+   ],
+   "meshLocalCenter": [
+    0.00525,
+    0.0,
+    0.0014
+   ],
+   "meshLocalExtents": [
+    0.00525,
+    0.0052,
+    0.0014
+   ],
+   "worldCenter": [
+    5.5,
+    7.344356,
+    1.063242
+   ],
+   "worldExtents": [
+    0.52,
+    0.194111,
+    0.536758
+   ],
+   "vertexCount": 54,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerG_E/NumaKuruun_1",
+   "fbx": "Assets/Models/TowerG_NumaKuruun_L.fbx",
+   "mesh": "NumaKuruun_L",
+   "pos": [
+    5.0,
+    6.64,
+    0.0
+   ],
+   "rotEuler": [
+    270.0,
+    90.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0001,
+    100.0
+   ],
+   "m": [
+    -1.2e-05,
+    -100.0,
+    -1.2e-05,
+    5.0,
+    0.0,
+    -1.2e-05,
+    100.0,
+    6.64,
+    -100.0,
+    1.2e-05,
+    0.0,
+    -1e-06
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.000892
+   ],
+   "meshLocalExtents": [
+    0.01072,
+    0.012079,
+    0.004107
+   ],
+   "worldCenter": [
+    5.0,
+    6.729169,
+    -1e-06
+   ],
+   "worldExtents": [
+    1.20792,
+    0.410748,
+    1.072
+   ],
+   "vertexCount": 2612,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerG_E/NumaKuruun_2",
+   "fbx": "Assets/Models/TowerG_NumaKuruun_M.fbx",
+   "mesh": "NumaKuruun_M",
+   "pos": [
+    5.0,
+    5.84,
+    -0.250001
+   ],
+   "rotEuler": [
+    270.0,
+    90.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0001,
+    100.0
+   ],
+   "m": [
+    -1.2e-05,
+    -100.0,
+    -1.2e-05,
+    5.0,
+    0.0,
+    -1.2e-05,
+    100.0,
+    5.84,
+    -100.0,
+    1.2e-05,
+    0.0,
+    -0.250001
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.00087
+   ],
+   "meshLocalExtents": [
+    0.00871,
+    0.010433,
+    0.00366
+   ],
+   "worldCenter": [
+    5.0,
+    5.927022,
+    -0.250001
+   ],
+   "worldExtents": [
+    1.043334,
+    0.366037,
+    0.871
+   ],
+   "vertexCount": 2718,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerG_E/NumaKuruun_3",
+   "fbx": "Assets/Models/TowerG_NumaKuruun_S.fbx",
+   "mesh": "NumaKuruun_S",
+   "pos": [
+    5.0,
+    5.09,
+    0.199999
+   ],
+   "rotEuler": [
+    270.0,
+    90.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0001,
+    100.0
+   ],
+   "m": [
+    -1.2e-05,
+    -100.0,
+    -1.2e-05,
+    5.0,
+    0.0,
+    -1.2e-05,
+    100.0,
+    5.09,
+    -100.0,
+    1.2e-05,
+    0.0,
+    0.199999
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.000893
+   ],
+   "meshLocalExtents": [
+    0.006968,
+    0.008691,
+    0.003232
+   ],
+   "worldCenter": [
+    5.0,
+    5.17925,
+    0.199999
+   ],
+   "worldExtents": [
+    0.869068,
+    0.323197,
+    0.6968
+   ],
+   "vertexCount": 3350,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerG_E/MergeTray",
+   "fbx": "Assets/Models/TowerG_MergeTray.fbx",
+   "mesh": "TowerG_MergeTray",
+   "pos": [
+    5.0,
+    4.45,
+    0.099999
+   ],
+   "rotEuler": [
+    270.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    100.0,
+    -1.2e-05,
+    0.0,
+    5.0,
+    0.0,
+    0.0,
+    100.0,
+    4.45,
+    -1.2e-05,
+    -100.0,
+    0.0,
+    0.099999
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.0112
+   ],
+   "meshLocalExtents": [
+    0.0176,
+    0.0096,
+    0.0118
+   ],
+   "worldCenter": [
+    5.0,
+    5.57,
+    0.099999
+   ],
+   "worldExtents": [
+    1.76,
+    1.18,
+    0.96
+   ],
+   "vertexCount": 1732,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerG_E/JPRail_2.92",
+   "fbx": "Assets/Models/TowerF_JPTube.fbx",
+   "mesh": "TowerF_JPTube",
+   "pos": [
+    5.0,
+    4.46,
+    0.199999
+   ],
+   "rotEuler": [
+    270.0,
+    90.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0001,
+    100.0
+   ],
+   "m": [
+    -1.2e-05,
+    -100.0,
+    -1.2e-05,
+    5.0,
+    0.0,
+    -1.2e-05,
+    100.0,
+    4.46,
+    -100.0,
+    1.2e-05,
+    0.0,
+    0.199999
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "meshLocalExtents": [
+    0.00185,
+    0.00185,
+    0.004
+   ],
+   "worldCenter": [
+    5.0,
+    4.46,
+    0.199999
+   ],
+   "worldExtents": [
+    0.185,
+    0.4,
+    0.185
+   ],
+   "vertexCount": 288,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerG_E/JPRail_2.52",
+   "fbx": "Assets/Models/TowerF_JPTube.fbx",
+   "mesh": "TowerF_JPTube",
+   "pos": [
+    5.0,
+    4.06,
+    0.199999
+   ],
+   "rotEuler": [
+    270.0,
+    90.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0001,
+    100.0
+   ],
+   "m": [
+    -1.2e-05,
+    -100.0,
+    -1.2e-05,
+    5.0,
+    0.0,
+    -1.2e-05,
+    100.0,
+    4.06,
+    -100.0,
+    1.2e-05,
+    0.0,
+    0.199999
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "meshLocalExtents": [
+    0.00185,
+    0.00185,
+    0.004
+   ],
+   "worldCenter": [
+    5.0,
+    4.06,
+    0.199999
+   ],
+   "worldExtents": [
+    0.185,
+    0.4,
+    0.185
+   ],
+   "vertexCount": 288,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerG_W/FeedGuide_S",
+   "fbx": "Assets/Models/TowerG_FeedCatch.fbx",
+   "mesh": "TowerG_FeedCatch",
+   "pos": [
+    -5.5,
+    7.26,
+    0.599999
+   ],
+   "rotEuler": [
+    275.9999,
+    180.0,
+    90.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -1.2e-05,
+    100.0,
+    1e-06,
+    -5.5,
+    10.45285,
+    0.0,
+    99.45219,
+    7.26,
+    99.45221,
+    1.2e-05,
+    -10.45285,
+    0.599999
+   ],
+   "meshLocalCenter": [
+    0.00525,
+    0.0,
+    0.0014
+   ],
+   "meshLocalExtents": [
+    0.00525,
+    0.0052,
+    0.0014
+   ],
+   "worldCenter": [
+    -5.5,
+    7.454111,
+    1.107489
+   ],
+   "worldExtents": [
+    0.52,
+    0.194111,
+    0.536758
+   ],
+   "vertexCount": 54,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerG_W/FeedGuide_N",
+   "fbx": "Assets/Models/TowerG_FeedCatch.fbx",
+   "mesh": "TowerG_FeedCatch",
+   "pos": [
+    -5.5,
+    7.26,
+    -1.600001
+   ],
+   "rotEuler": [
+    275.9999,
+    0.0,
+    270.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -1.2e-05,
+    100.0,
+    -1e-06,
+    -5.5,
+    -10.45285,
+    0.0,
+    99.45219,
+    7.26,
+    99.45221,
+    1.2e-05,
+    10.45285,
+    -1.600001
+   ],
+   "meshLocalCenter": [
+    0.00525,
+    0.0,
+    0.0014
+   ],
+   "meshLocalExtents": [
+    0.00525,
+    0.0052,
+    0.0014
+   ],
+   "worldCenter": [
+    -5.5,
+    7.344356,
+    -1.063243
+   ],
+   "worldExtents": [
+    0.52,
+    0.194111,
+    0.536758
+   ],
+   "vertexCount": 54,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerG_W/NumaKuruun_1",
+   "fbx": "Assets/Models/TowerG_NumaKuruun_L.fbx",
+   "mesh": "NumaKuruun_L",
+   "pos": [
+    -5.0,
+    6.64,
+    0.0
+   ],
+   "rotEuler": [
+    270.0,
+    270.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0001,
+    100.0
+   ],
+   "m": [
+    -1.2e-05,
+    100.0,
+    1.2e-05,
+    -5.0,
+    0.0,
+    -1.2e-05,
+    100.0,
+    6.64,
+    100.0,
+    1.2e-05,
+    0.0,
+    -1e-06
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.000892
+   ],
+   "meshLocalExtents": [
+    0.01072,
+    0.012079,
+    0.004107
+   ],
+   "worldCenter": [
+    -5.0,
+    6.729169,
+    -1e-06
+   ],
+   "worldExtents": [
+    1.20792,
+    0.410748,
+    1.072
+   ],
+   "vertexCount": 2612,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerG_W/NumaKuruun_2",
+   "fbx": "Assets/Models/TowerG_NumaKuruun_M.fbx",
+   "mesh": "NumaKuruun_M",
+   "pos": [
+    -5.0,
+    5.84,
+    0.25
+   ],
+   "rotEuler": [
+    270.0,
+    270.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0001,
+    100.0
+   ],
+   "m": [
+    -1.2e-05,
+    100.0,
+    1.2e-05,
+    -5.0,
+    0.0,
+    -1.2e-05,
+    100.0,
+    5.84,
+    100.0,
+    1.2e-05,
+    0.0,
+    0.249999
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.00087
+   ],
+   "meshLocalExtents": [
+    0.00871,
+    0.010433,
+    0.00366
+   ],
+   "worldCenter": [
+    -5.0,
+    5.927022,
+    0.249999
+   ],
+   "worldExtents": [
+    1.043334,
+    0.366037,
+    0.871
+   ],
+   "vertexCount": 2718,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerG_W/NumaKuruun_3",
+   "fbx": "Assets/Models/TowerG_NumaKuruun_S.fbx",
+   "mesh": "NumaKuruun_S",
+   "pos": [
+    -5.0,
+    5.09,
+    -0.2
+   ],
+   "rotEuler": [
+    270.0,
+    270.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0001,
+    100.0
+   ],
+   "m": [
+    -1.2e-05,
+    100.0,
+    1.2e-05,
+    -5.0,
+    0.0,
+    -1.2e-05,
+    100.0,
+    5.09,
+    100.0,
+    1.2e-05,
+    0.0,
+    -0.200001
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.000893
+   ],
+   "meshLocalExtents": [
+    0.006968,
+    0.008691,
+    0.003232
+   ],
+   "worldCenter": [
+    -5.0,
+    5.17925,
+    -0.200001
+   ],
+   "worldExtents": [
+    0.869068,
+    0.323197,
+    0.6968
+   ],
+   "vertexCount": 3350,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerG_W/MergeTray",
+   "fbx": "Assets/Models/TowerG_MergeTray.fbx",
+   "mesh": "TowerG_MergeTray",
+   "pos": [
+    -5.0,
+    4.45,
+    -0.1
+   ],
+   "rotEuler": [
+    270.0,
+    180.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -100.0,
+    -1.2e-05,
+    0.0,
+    -5.0,
+    0.0,
+    0.0,
+    100.0,
+    4.45,
+    -1.2e-05,
+    100.0,
+    0.0,
+    -0.100001
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.0112
+   ],
+   "meshLocalExtents": [
+    0.0176,
+    0.0096,
+    0.0118
+   ],
+   "worldCenter": [
+    -5.0,
+    5.57,
+    -0.100001
+   ],
+   "worldExtents": [
+    1.76,
+    1.18,
+    0.96
+   ],
+   "vertexCount": 1732,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerG_W/JPRail_2.92",
+   "fbx": "Assets/Models/TowerF_JPTube.fbx",
+   "mesh": "TowerF_JPTube",
+   "pos": [
+    -5.0,
+    4.46,
+    -0.2
+   ],
+   "rotEuler": [
+    270.0,
+    270.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0001,
+    100.0
+   ],
+   "m": [
+    -1.2e-05,
+    100.0,
+    1.2e-05,
+    -5.0,
+    0.0,
+    -1.2e-05,
+    100.0,
+    4.46,
+    100.0,
+    1.2e-05,
+    0.0,
+    -0.200001
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "meshLocalExtents": [
+    0.00185,
+    0.00185,
+    0.004
+   ],
+   "worldCenter": [
+    -5.0,
+    4.46,
+    -0.200001
+   ],
+   "worldExtents": [
+    0.185,
+    0.4,
+    0.185
+   ],
+   "vertexCount": 288,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerG_W/JPRail_2.52",
+   "fbx": "Assets/Models/TowerF_JPTube.fbx",
+   "mesh": "TowerF_JPTube",
+   "pos": [
+    -5.0,
+    4.06,
+    -0.2
+   ],
+   "rotEuler": [
+    270.0,
+    270.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0001,
+    100.0
+   ],
+   "m": [
+    -1.2e-05,
+    100.0,
+    1.2e-05,
+    -5.0,
+    0.0,
+    -1.2e-05,
+    100.0,
+    4.06,
+    100.0,
+    1.2e-05,
+    0.0,
+    -0.200001
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "meshLocalExtents": [
+    0.00185,
+    0.00185,
+    0.004
+   ],
+   "worldCenter": [
+    -5.0,
+    4.06,
+    -0.200001
+   ],
+   "worldExtents": [
+    0.185,
+    0.4,
+    0.185
+   ],
+   "vertexCount": 288,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerF_S/CatchTray",
+   "fbx": "Assets/Models/TowerF_CatchTray.fbx",
+   "mesh": "FCatchTray",
+   "pos": [
+    0.0,
+    7.49,
+    -5.35
+   ],
+   "rotEuler": [
+    270.0,
+    180.0,
+    0.0
+   ],
+   "lossyScale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "m": [
+    -1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    7.49,
+    0.0,
+    1.0,
+    0.0,
+    -5.35
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0575,
+    0.3
+   ],
+   "meshLocalExtents": [
+    1.93,
+    0.5125,
+    0.3
+   ],
+   "worldCenter": [
+    0.0,
+    7.79,
+    -5.2925
+   ],
+   "worldExtents": [
+    1.93,
+    0.3,
+    0.5125
+   ],
+   "vertexCount": 192,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerF_S/SpinnerDish",
+   "fbx": "Assets/Models/TowerF_SpinnerDish.fbx",
+   "mesh": "JPSpinnerDish",
+   "pos": [
+    0.0,
+    6.79,
+    -5.0
+   ],
+   "rotEuler": [
+    270.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    100.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    -1.2e-05,
+    100.0,
+    6.79,
+    0.0,
+    -100.0,
+    -1.2e-05,
+    -5.0
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.001618
+   ],
+   "meshLocalExtents": [
+    0.0097,
+    0.0097,
+    0.001618
+   ],
+   "worldCenter": [
+    0.0,
+    6.951753,
+    -5.0
+   ],
+   "worldExtents": [
+    0.97,
+    0.161753,
+    0.97
+   ],
+   "vertexCount": 3632,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerF_S/MissTray",
+   "fbx": "Assets/Models/TowerF_MissTray.fbx",
+   "mesh": "TowerF_MissTray",
+   "pos": [
+    0.0,
+    5.64,
+    -5.0
+   ],
+   "rotEuler": [
+    273.9999,
+    90.0,
+    90.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -99.75642,
+    9e-06,
+    6.975649,
+    0.0,
+    6.975649,
+    -1.2e-05,
+    99.75642,
+    5.64,
+    9e-06,
+    100.0,
+    -1.2e-05,
+    -5.0
+   ],
+   "meshLocalCenter": [
+    -0.002,
+    0.0,
+    0.00085
+   ],
+   "meshLocalExtents": [
+    0.01,
+    0.008139,
+    0.0011
+   ],
+   "worldCenter": [
+    0.205442,
+    5.710842,
+    -5.0
+   ],
+   "worldExtents": [
+    1.005237,
+    0.179489,
+    0.813923
+   ],
+   "vertexCount": 2825,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerF_S/JPTube_0",
+   "fbx": "Assets/Models/TowerF_JPTube.fbx",
+   "mesh": "TowerF_JPTube",
+   "pos": [
+    0.0,
+    6.37,
+    -5.0
+   ],
+   "rotEuler": [
+    270.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    100.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    -1.2e-05,
+    100.0,
+    6.37,
+    0.0,
+    -100.0,
+    -1.2e-05,
+    -5.0
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "meshLocalExtents": [
+    0.00185,
+    0.00185,
+    0.004
+   ],
+   "worldCenter": [
+    0.0,
+    6.37,
+    -5.0
+   ],
+   "worldExtents": [
+    0.185,
+    0.4,
+    0.185
+   ],
+   "vertexCount": 288,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerF_S/JPTube_1",
+   "fbx": "Assets/Models/TowerF_JPTube.fbx",
+   "mesh": "TowerF_JPTube",
+   "pos": [
+    0.0,
+    5.57,
+    -5.0
+   ],
+   "rotEuler": [
+    270.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    100.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    -1.2e-05,
+    100.0,
+    5.57,
+    0.0,
+    -100.0,
+    -1.2e-05,
+    -5.0
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "meshLocalExtents": [
+    0.00185,
+    0.00185,
+    0.004
+   ],
+   "worldCenter": [
+    0.0,
+    5.57,
+    -5.0
+   ],
+   "worldExtents": [
+    0.185,
+    0.4,
+    0.185
+   ],
+   "vertexCount": 288,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerF_S/JPTube_2",
+   "fbx": "Assets/Models/TowerF_JPTube.fbx",
+   "mesh": "TowerF_JPTube",
+   "pos": [
+    0.0,
+    4.77,
+    -5.0
+   ],
+   "rotEuler": [
+    270.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    100.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    -1.2e-05,
+    100.0,
+    4.77,
+    0.0,
+    -100.0,
+    -1.2e-05,
+    -5.0
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "meshLocalExtents": [
+    0.00185,
+    0.00185,
+    0.004
+   ],
+   "worldCenter": [
+    0.0,
+    4.77,
+    -5.0
+   ],
+   "worldExtents": [
+    0.185,
+    0.4,
+    0.185
+   ],
+   "vertexCount": 288,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerF_N/CatchTray",
+   "fbx": "Assets/Models/TowerF_CatchTray.fbx",
+   "mesh": "FCatchTray",
+   "pos": [
+    0.0,
+    7.49,
+    5.35
+   ],
+   "rotEuler": [
+    270.0,
+    1e-05,
+    0.0
+   ],
+   "lossyScale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "m": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    7.49,
+    0.0,
+    -1.0,
+    0.0,
+    5.35
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0575,
+    0.3
+   ],
+   "meshLocalExtents": [
+    1.93,
+    0.5125,
+    0.3
+   ],
+   "worldCenter": [
+    0.0,
+    7.79,
+    5.2925
+   ],
+   "worldExtents": [
+    1.930001,
+    0.3,
+    0.512501
+   ],
+   "vertexCount": 192,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerF_N/SpinnerDish",
+   "fbx": "Assets/Models/TowerF_SpinnerDish.fbx",
+   "mesh": "JPSpinnerDish",
+   "pos": [
+    0.0,
+    6.79,
+    5.0
+   ],
+   "rotEuler": [
+    270.0,
+    180.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -100.0,
+    9e-06,
+    0.0,
+    0.0,
+    0.0,
+    -1.2e-05,
+    100.0,
+    6.79,
+    9e-06,
+    100.0,
+    1.2e-05,
+    5.0
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.001618
+   ],
+   "meshLocalExtents": [
+    0.0097,
+    0.0097,
+    0.001618
+   ],
+   "worldCenter": [
+    0.0,
+    6.951753,
+    5.0
+   ],
+   "worldExtents": [
+    0.97,
+    0.161753,
+    0.97
+   ],
+   "vertexCount": 3632,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerF_N/MissTray",
+   "fbx": "Assets/Models/TowerF_MissTray.fbx",
+   "mesh": "TowerF_MissTray",
+   "pos": [
+    0.0,
+    5.64,
+    5.0
+   ],
+   "rotEuler": [
+    273.9999,
+    90.0,
+    90.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -99.75641,
+    9e-06,
+    6.975648,
+    0.0,
+    6.975648,
+    -1.2e-05,
+    99.75642,
+    5.64,
+    9e-06,
+    100.0,
+    1.1e-05,
+    5.0
+   ],
+   "meshLocalCenter": [
+    -0.002,
+    0.0,
+    0.00085
+   ],
+   "meshLocalExtents": [
+    0.01,
+    0.008139,
+    0.0011
+   ],
+   "worldCenter": [
+    0.205443,
+    5.710842,
+    5.0
+   ],
+   "worldExtents": [
+    1.005237,
+    0.179489,
+    0.813923
+   ],
+   "vertexCount": 2825,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerF_N/JPTube_0",
+   "fbx": "Assets/Models/TowerF_JPTube.fbx",
+   "mesh": "TowerF_JPTube",
+   "pos": [
+    0.0,
+    6.37,
+    5.0
+   ],
+   "rotEuler": [
+    270.0,
+    180.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -100.0,
+    9e-06,
+    0.0,
+    0.0,
+    0.0,
+    -1.2e-05,
+    100.0,
+    6.37,
+    9e-06,
+    100.0,
+    1.2e-05,
+    5.0
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "meshLocalExtents": [
+    0.00185,
+    0.00185,
+    0.004
+   ],
+   "worldCenter": [
+    0.0,
+    6.37,
+    5.0
+   ],
+   "worldExtents": [
+    0.185,
+    0.4,
+    0.185
+   ],
+   "vertexCount": 288,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerF_N/JPTube_1",
+   "fbx": "Assets/Models/TowerF_JPTube.fbx",
+   "mesh": "TowerF_JPTube",
+   "pos": [
+    0.0,
+    5.57,
+    5.0
+   ],
+   "rotEuler": [
+    270.0,
+    180.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -100.0,
+    9e-06,
+    0.0,
+    0.0,
+    0.0,
+    -1.2e-05,
+    100.0,
+    5.57,
+    9e-06,
+    100.0,
+    1.2e-05,
+    5.0
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "meshLocalExtents": [
+    0.00185,
+    0.00185,
+    0.004
+   ],
+   "worldCenter": [
+    0.0,
+    5.57,
+    5.0
+   ],
+   "worldExtents": [
+    0.185,
+    0.4,
+    0.185
+   ],
+   "vertexCount": 288,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerF_N/JPTube_2",
+   "fbx": "Assets/Models/TowerF_JPTube.fbx",
+   "mesh": "TowerF_JPTube",
+   "pos": [
+    0.0,
+    4.77,
+    5.0
+   ],
+   "rotEuler": [
+    270.0,
+    180.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -100.0,
+    9e-06,
+    0.0,
+    0.0,
+    0.0,
+    -1.2e-05,
+    100.0,
+    4.77,
+    9e-06,
+    100.0,
+    1.2e-05,
+    5.0
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "meshLocalExtents": [
+    0.00185,
+    0.00185,
+    0.004
+   ],
+   "worldCenter": [
+    0.0,
+    4.77,
+    5.0
+   ],
+   "worldExtents": [
+    0.185,
+    0.4,
+    0.185
+   ],
+   "vertexCount": 288,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerC_S/Zigzag",
+   "fbx": "Assets/Models/TowerC_ZigzagShort.fbx",
+   "mesh": "CZigzagShort",
+   "pos": [
+    2.2,
+    3.95,
+    -5.0
+   ],
+   "rotEuler": [
+    270.0,
+    180.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -100.0,
+    9e-06,
+    0.0,
+    2.2,
+    0.0,
+    -1.2e-05,
+    100.0,
+    3.95,
+    9e-06,
+    100.0,
+    -1.2e-05,
+    -5.0
+   ],
+   "meshLocalCenter": [
+    -0.000432,
+    0.0,
+    0.007684
+   ],
+   "meshLocalExtents": [
+    0.012767,
+    0.002778,
+    0.007683
+   ],
+   "worldCenter": [
+    2.243162,
+    4.718447,
+    -5.0
+   ],
+   "worldExtents": [
+    1.276675,
+    0.768324,
+    0.277772
+   ],
+   "vertexCount": 499,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerC_S/Seesaw",
+   "fbx": "Assets/Models/TowerC_Seesaw.fbx",
+   "mesh": "CSeesaw",
+   "pos": [
+    3.65,
+    4.33,
+    -5.0
+   ],
+   "rotEuler": [
+    270.0,
+    180.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -100.0,
+    9e-06,
+    0.0,
+    3.65,
+    0.0,
+    -1.2e-05,
+    100.0,
+    4.33,
+    9e-06,
+    100.0,
+    -1.2e-05,
+    -5.0
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.0002
+   ],
+   "meshLocalExtents": [
+    0.0032,
+    0.0018,
+    0.0005
+   ],
+   "worldCenter": [
+    3.65,
+    4.35,
+    -5.0
+   ],
+   "worldExtents": [
+    0.32,
+    0.05,
+    0.18
+   ],
+   "vertexCount": 208,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerC_S/ReturnTrough",
+   "fbx": "Assets/Models/TowerC_CatchTurn.fbx",
+   "mesh": "CCatchTurn",
+   "pos": [
+    5.11,
+    3.09,
+    -5.0
+   ],
+   "rotEuler": [
+    270.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    100.0,
+    0.0,
+    0.0,
+    5.11,
+    0.0,
+    -1.2e-05,
+    100.0,
+    3.09,
+    0.0,
+    -100.0,
+    -1.2e-05,
+    -5.0
+   ],
+   "meshLocalCenter": [
+    -0.020083,
+    0.0,
+    0.003921
+   ],
+   "meshLocalExtents": [
+    0.02307,
+    0.0024,
+    0.004534
+   ],
+   "worldCenter": [
+    3.101681,
+    3.482149,
+    -5.0
+   ],
+   "worldExtents": [
+    2.30704,
+    0.45337,
+    0.24
+   ],
+   "vertexCount": 167,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerC_N/Zigzag",
+   "fbx": "Assets/Models/TowerC_ZigzagShort.fbx",
+   "mesh": "CZigzagShort",
+   "pos": [
+    2.2,
+    3.95,
+    5.0
+   ],
+   "rotEuler": [
+    270.0,
+    180.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -100.0,
+    9e-06,
+    0.0,
+    2.2,
+    0.0,
+    -1.2e-05,
+    100.0,
+    3.95,
+    9e-06,
+    100.0,
+    -1.2e-05,
+    5.0
+   ],
+   "meshLocalCenter": [
+    -0.000432,
+    0.0,
+    0.007684
+   ],
+   "meshLocalExtents": [
+    0.012767,
+    0.002778,
+    0.007683
+   ],
+   "worldCenter": [
+    2.243162,
+    4.718447,
+    5.0
+   ],
+   "worldExtents": [
+    1.276675,
+    0.768324,
+    0.277772
+   ],
+   "vertexCount": 499,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerC_N/Seesaw",
+   "fbx": "Assets/Models/TowerC_Seesaw.fbx",
+   "mesh": "CSeesaw",
+   "pos": [
+    3.65,
+    4.33,
+    5.0
+   ],
+   "rotEuler": [
+    270.0,
+    180.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -100.0,
+    9e-06,
+    0.0,
+    3.65,
+    0.0,
+    -1.2e-05,
+    100.0,
+    4.33,
+    9e-06,
+    100.0,
+    -1.2e-05,
+    5.0
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.0002
+   ],
+   "meshLocalExtents": [
+    0.0032,
+    0.0018,
+    0.0005
+   ],
+   "worldCenter": [
+    3.65,
+    4.35,
+    5.0
+   ],
+   "worldExtents": [
+    0.32,
+    0.05,
+    0.18
+   ],
+   "vertexCount": 208,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerC_N/ReturnTrough",
+   "fbx": "Assets/Models/TowerC_CatchTurn.fbx",
+   "mesh": "CCatchTurn",
+   "pos": [
+    5.11,
+    3.09,
+    5.0
+   ],
+   "rotEuler": [
+    270.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    100.0,
+    0.0,
+    0.0,
+    5.11,
+    0.0,
+    -1.2e-05,
+    100.0,
+    3.09,
+    0.0,
+    -100.0,
+    -1.2e-05,
+    5.0
+   ],
+   "meshLocalCenter": [
+    -0.020083,
+    0.0,
+    0.003921
+   ],
+   "meshLocalExtents": [
+    0.02307,
+    0.0024,
+    0.004534
+   ],
+   "worldCenter": [
+    3.101681,
+    3.482149,
+    5.0
+   ],
+   "worldExtents": [
+    2.30704,
+    0.45337,
+    0.24
+   ],
+   "vertexCount": 167,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerE_S/DiscPivot/PocketDisc",
+   "fbx": "Assets/Models/TowerE_PocketDisc.fbx",
+   "mesh": "TowerE_PocketDisc",
+   "pos": [
+    1.45,
+    1.6,
+    -5.0
+   ],
+   "rotEuler": [
+    315.0,
+    270.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -1.2e-05,
+    70.71069,
+    -70.71069,
+    1.45,
+    0.0,
+    70.71068,
+    70.71069,
+    1.6,
+    100.0,
+    0.0,
+    -1.2e-05,
+    -5.0
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.00245
+   ],
+   "meshLocalExtents": [
+    0.01,
+    0.01,
+    0.00305
+   ],
+   "worldCenter": [
+    1.276759,
+    1.773241,
+    -5.0
+   ],
+   "worldExtents": [
+    0.922775,
+    0.922774,
+    1.0
+   ],
+   "vertexCount": 3138,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerE_S/DiscPivot/StarGear",
+   "fbx": "Assets/Models/TowerE_StarGear.fbx",
+   "mesh": "TowerE_StarGear",
+   "pos": [
+    1.45,
+    1.6,
+    -5.0
+   ],
+   "rotEuler": [
+    315.0,
+    270.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -1.2e-05,
+    70.71069,
+    -70.71069,
+    1.45,
+    0.0,
+    70.71068,
+    70.71069,
+    1.6,
+    100.0,
+    0.0,
+    -1.2e-05,
+    -5.0
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.000133,
+    0.0007
+   ],
+   "meshLocalExtents": [
+    0.007133,
+    0.007067,
+    0.0005
+   ],
+   "worldCenter": [
+    1.4005047678947449,
+    1.6494953036308289,
+    -5.0
+   ],
+   "worldExtents": [
+    0.5120486617088318,
+    0.5120485424995422,
+    0.6741480827331543
+   ],
+   "vertexCount": 1872,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerE_S/DiscPivotHi/PocketDisc",
+   "fbx": "Assets/Models/TowerE_PocketDisc.fbx",
+   "mesh": "TowerE_PocketDisc",
+   "pos": [
+    0.1,
+    3.85,
+    -5.0
+   ],
+   "rotEuler": [
+    315.0,
+    270.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -1.2e-05,
+    70.71069,
+    -70.71069,
+    0.1,
+    0.0,
+    70.71068,
+    70.71069,
+    3.85,
+    100.0,
+    0.0,
+    -1.2e-05,
+    -5.0
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.00245
+   ],
+   "meshLocalExtents": [
+    0.01,
+    0.01,
+    0.00305
+   ],
+   "worldCenter": [
+    -0.073241,
+    4.023241,
+    -5.0
+   ],
+   "worldExtents": [
+    0.922775,
+    0.922774,
+    1.0
+   ],
+   "vertexCount": 3138,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerE_S/DiscPivotHi/StarGear",
+   "fbx": "Assets/Models/TowerE_StarGear.fbx",
+   "mesh": "TowerE_StarGear",
+   "pos": [
+    0.1,
+    3.85,
+    -5.0
+   ],
+   "rotEuler": [
+    315.0,
+    270.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -1.2e-05,
+    70.71069,
+    -70.71069,
+    0.1,
+    0.0,
+    70.71068,
+    70.71069,
+    3.85,
+    100.0,
+    0.0,
+    -1.2e-05,
+    -5.0
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.000133,
+    0.0007
+   ],
+   "meshLocalExtents": [
+    0.007133,
+    0.007067,
+    0.0005
+   ],
+   "worldCenter": [
+    0.05050469934940338,
+    3.899495244026184,
+    -5.0
+   ],
+   "worldExtents": [
+    0.5120486468076706,
+    0.512048602104187,
+    0.6741480827331543
+   ],
+   "vertexCount": 1872,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerE_S/FeedPan",
+   "fbx": "Assets/Models/TowerE_FeedPan.fbx",
+   "mesh": "TowerE_FeedPan",
+   "pos": [
+    -1.052,
+    2.099,
+    -5.0
+   ],
+   "rotEuler": [
+    282.4,
+    89.99998,
+    90.00002
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -97.66723,
+    -1e-06,
+    21.47353,
+    -1.052,
+    21.47353,
+    -1.2e-05,
+    97.66723,
+    2.099,
+    1e-06,
+    100.0,
+    6e-06,
+    -5.0
+   ],
+   "meshLocalCenter": [
+    -0.01005,
+    0.0,
+    0.00225
+   ],
+   "meshLocalExtents": [
+    0.01045,
+    0.0084,
+    0.00275
+   ],
+   "worldCenter": [
+    -0.022129,
+    2.102942,
+    -5.0
+   ],
+   "worldExtents": [
+    1.079675,
+    0.492983,
+    0.84
+   ],
+   "vertexCount": 252,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerE_N/DiscPivot/PocketDisc",
+   "fbx": "Assets/Models/TowerE_PocketDisc.fbx",
+   "mesh": "TowerE_PocketDisc",
+   "pos": [
+    1.45,
+    1.6,
+    5.0
+   ],
+   "rotEuler": [
+    315.0,
+    270.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -1.2e-05,
+    70.71069,
+    -70.71069,
+    1.45,
+    0.0,
+    70.71068,
+    70.71069,
+    1.6,
+    100.0,
+    0.0,
+    -1.2e-05,
+    5.0
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.00245
+   ],
+   "meshLocalExtents": [
+    0.01,
+    0.01,
+    0.00305
+   ],
+   "worldCenter": [
+    1.276759,
+    1.773241,
+    5.0
+   ],
+   "worldExtents": [
+    0.922775,
+    0.922774,
+    1.0
+   ],
+   "vertexCount": 3138,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerE_N/DiscPivot/StarGear",
+   "fbx": "Assets/Models/TowerE_StarGear.fbx",
+   "mesh": "TowerE_StarGear",
+   "pos": [
+    1.45,
+    1.6,
+    5.0
+   ],
+   "rotEuler": [
+    315.0,
+    270.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -1.2e-05,
+    70.71069,
+    -70.71069,
+    1.45,
+    0.0,
+    70.71068,
+    70.71069,
+    1.6,
+    100.0,
+    0.0,
+    -1.2e-05,
+    5.0
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.000133,
+    0.0007
+   ],
+   "meshLocalExtents": [
+    0.007133,
+    0.007067,
+    0.0005
+   ],
+   "worldCenter": [
+    1.4005047678947449,
+    1.6494953036308289,
+    5.0
+   ],
+   "worldExtents": [
+    0.5120486617088318,
+    0.5120485424995422,
+    0.6741480827331543
+   ],
+   "vertexCount": 1872,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerE_N/DiscPivotHi/PocketDisc",
+   "fbx": "Assets/Models/TowerE_PocketDisc.fbx",
+   "mesh": "TowerE_PocketDisc",
+   "pos": [
+    0.1,
+    3.85,
+    5.0
+   ],
+   "rotEuler": [
+    315.0,
+    270.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -1.2e-05,
+    70.71069,
+    -70.71069,
+    0.1,
+    0.0,
+    70.71068,
+    70.71069,
+    3.85,
+    100.0,
+    0.0,
+    -1.2e-05,
+    5.0
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.00245
+   ],
+   "meshLocalExtents": [
+    0.01,
+    0.01,
+    0.00305
+   ],
+   "worldCenter": [
+    -0.073241,
+    4.023241,
+    5.0
+   ],
+   "worldExtents": [
+    0.922775,
+    0.922774,
+    1.0
+   ],
+   "vertexCount": 3138,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerE_N/DiscPivotHi/StarGear",
+   "fbx": "Assets/Models/TowerE_StarGear.fbx",
+   "mesh": "TowerE_StarGear",
+   "pos": [
+    0.1,
+    3.85,
+    5.0
+   ],
+   "rotEuler": [
+    315.0,
+    270.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -1.2e-05,
+    70.71069,
+    -70.71069,
+    0.1,
+    0.0,
+    70.71068,
+    70.71069,
+    3.85,
+    100.0,
+    0.0,
+    -1.2e-05,
+    5.0
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.000133,
+    0.0007
+   ],
+   "meshLocalExtents": [
+    0.007133,
+    0.007067,
+    0.0005
+   ],
+   "worldCenter": [
+    0.05050469934940338,
+    3.899495244026184,
+    5.0
+   ],
+   "worldExtents": [
+    0.5120486468076706,
+    0.512048602104187,
+    0.6741480827331543
+   ],
+   "vertexCount": 1872,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerE_N/FeedPan",
+   "fbx": "Assets/Models/TowerE_FeedPan.fbx",
+   "mesh": "TowerE_FeedPan",
+   "pos": [
+    -1.052,
+    2.099,
+    5.0
+   ],
+   "rotEuler": [
+    282.4,
+    89.99998,
+    90.00002
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -97.66723,
+    -1e-06,
+    21.47353,
+    -1.052,
+    21.47353,
+    -1.2e-05,
+    97.66723,
+    2.099,
+    1e-06,
+    100.0,
+    6e-06,
+    5.0
+   ],
+   "meshLocalCenter": [
+    -0.01005,
+    0.0,
+    0.00225
+   ],
+   "meshLocalExtents": [
+    0.01045,
+    0.0084,
+    0.00275
+   ],
+   "worldCenter": [
+    -0.022129,
+    2.102942,
+    5.0
+   ],
+   "worldExtents": [
+    1.079675,
+    0.492983,
+    0.84
+   ],
+   "vertexCount": 252,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerB_E/PachiBoard",
+   "fbx": "Assets/Models/TowerB_PachiBoard.fbx",
+   "mesh": "BPachiBoard",
+   "pos": [
+    7.15,
+    2.66,
+    0.2
+   ],
+   "rotEuler": [
+    270.0,
+    180.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -100.0,
+    9e-06,
+    0.0,
+    7.15,
+    0.0,
+    -1.2e-05,
+    100.0,
+    2.66,
+    9e-06,
+    100.0,
+    -1.2e-05,
+    0.2
+   ],
+   "meshLocalCenter": [
+    -1e-06,
+    0.0,
+    0.008685
+   ],
+   "meshLocalExtents": [
+    0.008799,
+    0.002778,
+    0.008684
+   ],
+   "worldCenter": [
+    7.150062,
+    3.52846,
+    0.2
+   ],
+   "worldExtents": [
+    0.879939,
+    0.868368,
+    0.277828
+   ],
+   "vertexCount": 1995,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerB_E/StepChucker",
+   "fbx": "Assets/Models/TowerB_StepChucker.fbx",
+   "mesh": "BStepChucker",
+   "pos": [
+    7.15,
+    2.11,
+    0.2
+   ],
+   "rotEuler": [
+    270.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    100.0,
+    0.0,
+    0.0,
+    7.15,
+    0.0,
+    -1.2e-05,
+    100.0,
+    2.11,
+    0.0,
+    -100.0,
+    -1.2e-05,
+    0.2
+   ],
+   "meshLocalCenter": [
+    0.000195,
+    0.0,
+    0.00275
+   ],
+   "meshLocalExtents": [
+    0.008905,
+    0.0026,
+    0.00275
+   ],
+   "worldCenter": [
+    7.169465,
+    2.385,
+    0.2
+   ],
+   "worldExtents": [
+    0.890535,
+    0.275,
+    0.26
+   ],
+   "vertexCount": 1514,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerB_E/CatchChute",
+   "fbx": "Assets/Models/TowerB_CatchChute.fbx",
+   "mesh": "TowerB_CatchChute",
+   "pos": [
+    7.15,
+    1.89,
+    0.2
+   ],
+   "rotEuler": [
+    270.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    100.0,
+    0.0,
+    0.0,
+    7.15,
+    0.0,
+    -1.2e-05,
+    100.0,
+    1.89,
+    0.0,
+    -100.0,
+    -1.2e-05,
+    0.2
+   ],
+   "meshLocalCenter": [
+    0.0003,
+    0.0,
+    0.002
+   ],
+   "meshLocalExtents": [
+    0.0118,
+    0.003,
+    0.0026
+   ],
+   "worldCenter": [
+    7.18,
+    2.09,
+    0.2
+   ],
+   "worldExtents": [
+    1.18,
+    0.26,
+    0.3
+   ],
+   "vertexCount": 80,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerB_W/PachiBoard",
+   "fbx": "Assets/Models/TowerB_PachiBoard.fbx",
+   "mesh": "BPachiBoard",
+   "pos": [
+    -7.15,
+    2.66,
+    -0.199999
+   ],
+   "rotEuler": [
+    270.0,
+    1e-05,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    100.0,
+    -1.7e-05,
+    0.0,
+    -7.15,
+    0.0,
+    -1.2e-05,
+    100.0,
+    2.66,
+    -1.7e-05,
+    -100.0,
+    1.2e-05,
+    -0.199999
+   ],
+   "meshLocalCenter": [
+    -1e-06,
+    0.0,
+    0.008685
+   ],
+   "meshLocalExtents": [
+    0.008799,
+    0.002778,
+    0.008684
+   ],
+   "worldCenter": [
+    -7.150062,
+    3.52846,
+    -0.199999
+   ],
+   "worldExtents": [
+    0.879939,
+    0.868368,
+    0.277828
+   ],
+   "vertexCount": 1995,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerB_W/StepChucker",
+   "fbx": "Assets/Models/TowerB_StepChucker.fbx",
+   "mesh": "BStepChucker",
+   "pos": [
+    -7.15,
+    2.11,
+    -0.199999
+   ],
+   "rotEuler": [
+    270.0,
+    180.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -100.0,
+    9e-06,
+    0.0,
+    -7.15,
+    0.0,
+    -1.2e-05,
+    100.0,
+    2.11,
+    9e-06,
+    100.0,
+    1.2e-05,
+    -0.199999
+   ],
+   "meshLocalCenter": [
+    0.000195,
+    0.0,
+    0.00275
+   ],
+   "meshLocalExtents": [
+    0.008905,
+    0.0026,
+    0.00275
+   ],
+   "worldCenter": [
+    -7.169465,
+    2.385,
+    -0.199999
+   ],
+   "worldExtents": [
+    0.890535,
+    0.275,
+    0.26
+   ],
+   "vertexCount": 1514,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerB_W/CatchChute",
+   "fbx": "Assets/Models/TowerB_CatchChute.fbx",
+   "mesh": "TowerB_CatchChute",
+   "pos": [
+    -7.15,
+    1.89,
+    -0.199999
+   ],
+   "rotEuler": [
+    270.0,
+    180.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -100.0,
+    9e-06,
+    0.0,
+    -7.15,
+    0.0,
+    -1.2e-05,
+    100.0,
+    1.89,
+    9e-06,
+    100.0,
+    1.2e-05,
+    -0.199999
+   ],
+   "meshLocalCenter": [
+    0.0003,
+    0.0,
+    0.002
+   ],
+   "meshLocalExtents": [
+    0.0118,
+    0.003,
+    0.0026
+   ],
+   "worldCenter": [
+    -7.18,
+    2.09,
+    -0.199999
+   ],
+   "worldExtents": [
+    1.18,
+    0.26,
+    0.3
+   ],
+   "vertexCount": 80,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerD_E/BowlUpper",
+   "fbx": "Assets/Models/TowerD_Kuruun.fbx",
+   "mesh": "TowerD_Kuruun",
+   "pos": [
+    5.0,
+    3.1,
+    0.7
+   ],
+   "rotEuler": [
+    270.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    100.0,
+    0.0,
+    0.0,
+    5.0,
+    0.0,
+    -1.2e-05,
+    100.0,
+    3.1,
+    0.0,
+    -100.0,
+    -1.2e-05,
+    0.7
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.0016
+   ],
+   "meshLocalExtents": [
+    0.0086,
+    0.0086,
+    0.0028
+   ],
+   "worldCenter": [
+    5.0,
+    3.26,
+    0.7
+   ],
+   "worldExtents": [
+    0.86,
+    0.28,
+    0.86
+   ],
+   "vertexCount": 1944,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerD_E/BowlLower",
+   "fbx": "Assets/Models/TowerD_Kuruun.fbx",
+   "mesh": "TowerD_Kuruun",
+   "pos": [
+    5.3,
+    1.38,
+    0.25
+   ],
+   "rotEuler": [
+    270.0,
+    36.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    80.9017,
+    -58.77853,
+    0.0,
+    5.3,
+    0.0,
+    0.0,
+    100.0,
+    1.38,
+    -58.77853,
+    -80.9017,
+    0.0,
+    0.25
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.0016
+   ],
+   "meshLocalExtents": [
+    0.0086,
+    0.0086,
+    0.0028
+   ],
+   "worldCenter": [
+    5.3,
+    1.54,
+    0.25
+   ],
+   "worldExtents": [
+    1.20125,
+    0.28,
+    1.20125
+   ],
+   "vertexCount": 1944,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerD_E/StirrerUpper/StirrerMesh",
+   "fbx": "Assets/Models/DrainStirrer.fbx",
+   "mesh": "DrainStirrer",
+   "pos": [
+    5.0,
+    3.16,
+    0.7
+   ],
+   "rotEuler": [
+    90.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    1.25,
+    1.25,
+    1.0
+   ],
+   "m": [
+    1.25,
+    0.0,
+    0.0,
+    5.0,
+    0.0,
+    0.0,
+    -1.0,
+    3.16,
+    0.0,
+    1.25,
+    0.0,
+    0.7
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    -0.027
+   ],
+   "meshLocalExtents": [
+    0.25,
+    0.25,
+    0.058
+   ],
+   "worldCenter": [
+    5.0,
+    3.187,
+    0.7
+   ],
+   "worldExtents": [
+    0.3125,
+    0.058,
+    0.3125
+   ],
+   "vertexCount": 610,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerD_E/StirrerLower/StirrerMesh",
+   "fbx": "Assets/Models/DrainStirrer.fbx",
+   "mesh": "DrainStirrer",
+   "pos": [
+    5.3,
+    1.44,
+    0.25
+   ],
+   "rotEuler": [
+    90.0,
+    0.0,
+    0.0
+   ],
+   "lossyScale": [
+    1.25,
+    1.25,
+    1.0
+   ],
+   "m": [
+    1.25,
+    0.0,
+    0.0,
+    5.3,
+    0.0,
+    0.0,
+    -1.0,
+    1.44,
+    0.0,
+    1.25,
+    0.0,
+    0.25
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    -0.027
+   ],
+   "meshLocalExtents": [
+    0.25,
+    0.25,
+    0.058
+   ],
+   "worldCenter": [
+    5.3,
+    1.467,
+    0.25
+   ],
+   "worldExtents": [
+    0.3125,
+    0.058,
+    0.3125
+   ],
+   "vertexCount": 610,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerD_W/BowlUpper",
+   "fbx": "Assets/Models/TowerD_Kuruun.fbx",
+   "mesh": "TowerD_Kuruun",
+   "pos": [
+    -5.0,
+    3.1,
+    -0.7
+   ],
+   "rotEuler": [
+    270.0,
+    180.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -100.0,
+    9e-06,
+    0.0,
+    -5.0,
+    0.0,
+    -1.2e-05,
+    100.0,
+    3.1,
+    9e-06,
+    100.0,
+    1.2e-05,
+    -0.7
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.0016
+   ],
+   "meshLocalExtents": [
+    0.0086,
+    0.0086,
+    0.0028
+   ],
+   "worldCenter": [
+    -5.0,
+    3.26,
+    -0.7
+   ],
+   "worldExtents": [
+    0.86,
+    0.28,
+    0.86
+   ],
+   "vertexCount": 1944,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerD_W/BowlLower",
+   "fbx": "Assets/Models/TowerD_Kuruun.fbx",
+   "mesh": "TowerD_Kuruun",
+   "pos": [
+    -5.3,
+    1.38,
+    -0.25
+   ],
+   "rotEuler": [
+    270.0,
+    216.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -80.9017,
+    58.77854,
+    0.0,
+    -5.3,
+    0.0,
+    0.0,
+    100.0,
+    1.38,
+    58.77854,
+    80.9017,
+    0.0,
+    -0.25
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.0016
+   ],
+   "meshLocalExtents": [
+    0.0086,
+    0.0086,
+    0.0028
+   ],
+   "worldCenter": [
+    -5.3,
+    1.54,
+    -0.25
+   ],
+   "worldExtents": [
+    1.20125,
+    0.28,
+    1.20125
+   ],
+   "vertexCount": 1944,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerD_W/StirrerUpper/StirrerMesh",
+   "fbx": "Assets/Models/DrainStirrer.fbx",
+   "mesh": "DrainStirrer",
+   "pos": [
+    -5.0,
+    3.16,
+    -0.7
+   ],
+   "rotEuler": [
+    90.0,
+    180.0,
+    0.0
+   ],
+   "lossyScale": [
+    1.25,
+    1.25,
+    1.0
+   ],
+   "m": [
+    -1.25,
+    0.0,
+    0.0,
+    -5.0,
+    0.0,
+    0.0,
+    -1.0,
+    3.16,
+    0.0,
+    -1.25,
+    0.0,
+    -0.7
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    -0.027
+   ],
+   "meshLocalExtents": [
+    0.25,
+    0.25,
+    0.058
+   ],
+   "worldCenter": [
+    -5.0,
+    3.187,
+    -0.7
+   ],
+   "worldExtents": [
+    0.3125,
+    0.058,
+    0.3125
+   ],
+   "vertexCount": 610,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerD_W/StirrerLower/StirrerMesh",
+   "fbx": "Assets/Models/DrainStirrer.fbx",
+   "mesh": "DrainStirrer",
+   "pos": [
+    -5.3,
+    1.44,
+    -0.25
+   ],
+   "rotEuler": [
+    90.0,
+    180.0,
+    0.0
+   ],
+   "lossyScale": [
+    1.25,
+    1.25,
+    1.0
+   ],
+   "m": [
+    -1.25,
+    0.0,
+    0.0,
+    -5.3,
+    0.0,
+    0.0,
+    -1.0,
+    1.44,
+    0.0,
+    -1.25,
+    0.0,
+    -0.25
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    -0.027
+   ],
+   "meshLocalExtents": [
+    0.25,
+    0.25,
+    0.058
+   ],
+   "worldCenter": [
+    -5.3,
+    1.467,
+    -0.25
+   ],
+   "worldExtents": [
+    0.3125,
+    0.058,
+    0.3125
+   ],
+   "vertexCount": 610,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerH/KarakoDish",
+   "fbx": "Assets/Models/TowerH_KarakoDish.fbx",
+   "mesh": "HKarakoDish",
+   "pos": [
+    0.0,
+    4.7,
+    0.0
+   ],
+   "rotEuler": [
+    270.0,
+    180.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -100.0,
+    9e-06,
+    0.0,
+    0.0,
+    0.0,
+    -1.2e-05,
+    100.0,
+    4.7,
+    9e-06,
+    100.0,
+    -1.2e-05,
+    0.0
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.00445
+   ],
+   "meshLocalExtents": [
+    0.026299,
+    0.026299,
+    0.005549
+   ],
+   "worldCenter": [
+    0.0,
+    5.145,
+    0.0
+   ],
+   "worldExtents": [
+    2.629873,
+    0.554873,
+    2.629873
+   ],
+   "vertexCount": 2649,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerH/Drum",
+   "fbx": "Assets/Models/TowerH_Drum.fbx",
+   "mesh": "HDrum",
+   "pos": [
+    0.575,
+    4.13,
+    0.0
+   ],
+   "rotEuler": [
+    270.0,
+    180.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -100.0,
+    9e-06,
+    0.0,
+    0.575,
+    0.0,
+    -1.2e-05,
+    100.0,
+    4.13,
+    9e-06,
+    100.0,
+    -1.2e-05,
+    0.0
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "meshLocalExtents": [
+    0.0045,
+    0.0022,
+    0.0045
+   ],
+   "worldCenter": [
+    0.575,
+    4.13,
+    0.0
+   ],
+   "worldExtents": [
+    0.45,
+    0.45,
+    0.22
+   ],
+   "vertexCount": 3100,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerH/Swing",
+   "fbx": "Assets/Models/TowerC_Seesaw.fbx",
+   "mesh": "CSeesaw",
+   "pos": [
+    0.575,
+    3.3,
+    0.0
+   ],
+   "rotEuler": [
+    270.0,
+    180.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -100.0,
+    9e-06,
+    0.0,
+    0.575,
+    0.0,
+    -1.2e-05,
+    100.0,
+    3.3,
+    9e-06,
+    100.0,
+    -1.2e-05,
+    0.0
+   ],
+   "meshLocalCenter": [
+    0.0,
+    0.0,
+    0.0002
+   ],
+   "meshLocalExtents": [
+    0.0032,
+    0.0018,
+    0.0005
+   ],
+   "worldCenter": [
+    0.575,
+    3.32,
+    0.0
+   ],
+   "worldExtents": [
+    0.32,
+    0.05,
+    0.18
+   ],
+   "vertexCount": 208,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerH/MissPan",
+   "fbx": "Assets/Models/TowerH_MissPan.fbx",
+   "mesh": "TowerH_MissPan",
+   "pos": [
+    0.0,
+    4.1,
+    0.0
+   ],
+   "rotEuler": [
+    275.9991,
+    225.0,
+    315.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -99.72617,
+    -0.273814,
+    -7.390175,
+    0.0,
+    -7.390174,
+    7.390171,
+    99.45236,
+    4.1,
+    0.273832,
+    99.72618,
+    -7.390177,
+    0.0
+   ],
+   "meshLocalCenter": [
+    0.000205,
+    0.0,
+    0.0009
+   ],
+   "meshLocalExtents": [
+    0.012795,
+    0.013,
+    0.0009
+   ],
+   "worldCenter": [
+    -0.027106,
+    4.187991,
+    -0.006595
+   ],
+   "worldExtents": [
+    1.286196,
+    0.280136,
+    1.306595
+   ],
+   "vertexCount": 526,
+   "collider": "mesh"
+  },
+  {
+   "path": "Park/TowerH/SwingCatch",
+   "fbx": "Assets/Models/TowerB_CatchChute.fbx",
+   "mesh": "TowerB_CatchChute",
+   "pos": [
+    0.575,
+    2.65,
+    0.0
+   ],
+   "rotEuler": [
+    270.0,
+    180.0,
+    0.0
+   ],
+   "lossyScale": [
+    100.0,
+    100.0,
+    100.0
+   ],
+   "m": [
+    -100.0,
+    9e-06,
+    0.0,
+    0.575,
+    0.0,
+    -1.2e-05,
+    100.0,
+    2.65,
+    9e-06,
+    100.0,
+    -1.2e-05,
+    0.0
+   ],
+   "meshLocalCenter": [
+    0.0003,
+    0.0,
+    0.002
+   ],
+   "meshLocalExtents": [
+    0.0118,
+    0.003,
+    0.0026
+   ],
+   "worldCenter": [
+    0.545,
+    2.85,
+    0.0
+   ],
+   "worldExtents": [
+    1.18,
+    0.26,
+    0.3
+   ],
+   "vertexCount": 80,
+   "collider": "mesh"
+  }
+ ],
+ "fbxUsed": [
+  "Assets/Models/DrainStation.fbx",
+  "Assets/Models/DrainStirrer.fbx",
+  "Assets/Models/LiftGuide.fbx",
+  "Assets/Models/LiftTopRail.fbx",
+  "Assets/Models/ParkBase.fbx",
+  "Assets/Models/TowerA_Agitator.fbx",
+  "Assets/Models/TowerA_CollectorFunnel.fbx",
+  "Assets/Models/TowerA_Distributor.fbx",
+  "Assets/Models/TowerA_HighLane.fbx",
+  "Assets/Models/TowerA_MiniKuruun.fbx",
+  "Assets/Models/TowerA_MiniRouletteBowl.fbx",
+  "Assets/Models/TowerA_MiniRouletteWheel.fbx",
+  "Assets/Models/TowerA_RouletteBowl.fbx",
+  "Assets/Models/TowerA_RouletteWheel.fbx",
+  "Assets/Models/TowerA_ScoreGate.fbx",
+  "Assets/Models/TowerA_Spiral3.fbx",
+  "Assets/Models/TowerB_CatchChute.fbx",
+  "Assets/Models/TowerB_PachiBoard.fbx",
+  "Assets/Models/TowerB_StepChucker.fbx",
+  "Assets/Models/TowerC_CatchTurn.fbx",
+  "Assets/Models/TowerC_Seesaw.fbx",
+  "Assets/Models/TowerC_ZigzagShort.fbx",
+  "Assets/Models/TowerD_Kuruun.fbx",
+  "Assets/Models/TowerE_FeedPan.fbx",
+  "Assets/Models/TowerE_PocketDisc.fbx",
+  "Assets/Models/TowerE_StarGear.fbx",
+  "Assets/Models/TowerF_CatchTray.fbx",
+  "Assets/Models/TowerF_JPTube.fbx",
+  "Assets/Models/TowerF_MissTray.fbx",
+  "Assets/Models/TowerF_SpinnerDish.fbx",
+  "Assets/Models/TowerG_FeedCatch.fbx",
+  "Assets/Models/TowerG_MergeTray.fbx",
+  "Assets/Models/TowerG_NumaKuruun_L.fbx",
+  "Assets/Models/TowerG_NumaKuruun_M.fbx",
+  "Assets/Models/TowerG_NumaKuruun_S.fbx",
+  "Assets/Models/TowerH_Drum.fbx",
+  "Assets/Models/TowerH_KarakoDish.fbx",
+  "Assets/Models/TowerH_MissPan.fbx"
+ ],
+ "componentCensus": {
+  "ScoreZone": 92,
+  "Rotator": 23,
+  "Oscillator": 5,
+  "BallLift": 2,
+  "LapGate": 1,
+  "TextMeshPro": 92,
+  "Billboard": 26,
+  "Camera": 16,
+  "AllTransforms": 371
+ }
 }
