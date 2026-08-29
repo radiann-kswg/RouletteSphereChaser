@@ -121,6 +121,30 @@
    }
   },
   {
+   "name": "DLegs_E",
+   "path": "Park/TowerD_E/BowlLegs",
+   "collider": "mesh",
+   "material": "TowerD_Kuruun",
+   "rgb": {
+    "r": 0.5,
+    "g": 0.5,
+    "b": 0.5,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "DLegs_W",
+   "path": "Park/TowerD_W/BowlLegs",
+   "collider": "mesh",
+   "material": "TowerD_Kuruun",
+   "rgb": {
+    "r": 0.5,
+    "g": 0.5,
+    "b": 0.5,
+    "a": 1.0
+   }
+  },
+  {
    "name": "DistributorA.010",
    "path": "Park/TowerA/DistributorA",
    "collider": "mesh",
