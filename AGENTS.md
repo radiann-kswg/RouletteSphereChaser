@@ -64,7 +64,8 @@ v1で一度学んだはずの失敗を、v2のフェーズ6でそっくり再演
 - `LotteryBallKit/` … **gitサブモジュール**（`https://github.com/radiann-kswg/LotteryBallKit`・ボール移植キット・CC BY 4.0）。本体側の複製は廃止済み
 - `Assets/Models/ParkBase.fbx` / `DrainStation.fbx` / `LiftGuide.fbx` / `DrainStirrer.fbx` … 土台・回収系（原本 `BlenderSources/ParkBase.blend`。Basin=ParkBase.fbx）
 - `BlenderSources/LotteryBall.blend` … Blender原本（ボール＋すり鉢）
-- **`BlenderSources/ParkAssembly.blend` … 配置のSSOT（2026-08-24〜）**。メッシュは5つの原本.blendから**ライブラリリンク**（相対パス）。Unityの階層＝コレクション階層。機能マーカー（スコアトリガー・回転体・リフト・得点表示）はEmpty＋カスタムプロパティ。検証は `Docs/verify_park_assembly.py`
+- **`BlenderSources/ParkAssembly.blend` … 配置のSSOT（2026-08-24〜）**。メッシュは5つの原本.blendから**ライブラリリンク**（相対パス）。Unityの階層＝各オブジェクトの `unity_path` カスタムプロパティ（コレクション階層はこれと揃えて整理）。機能マーカー（スコアトリガー・回転体・リフト・得点表示）はEmpty＋カスタムプロパティ。検証は `Docs/verify_park_assembly.py`
+  ─ **タワー間中継レーンは `Relays` コレクション（`Park/Relays/…`）に分離**（2026-08-29 ディテールアップ手順1）: HighLane×8（A→四方）／JPRail×4（G→D）／JPTube×6（F→E）。受け口（FeedGuide）・直下樋（CatchChute・ReturnTrough）は機構の一部としてタワー側に残す。タワー単位のユニット＝トップレベルコレクション（Basin / DrainStation / Lifts / Tower* / Relays）
   ─ `Docs/build_park_assembly.py` は**ブートストラップ専用**で、.blend がすでにある間は実行を拒否する（手で足したパーツが消えるため）。入力の `Docs/park_layout.json` / `park_markers.json` / `park_materials.json` / `park_labels.json` / `mesh_calib.json` も同じブートストラップの資料
 - `Assets/Models/ParkAssembly.fbx` ＋ `ParkAssembly.params.json` … 上記から `Docs/export_park_assembly.py` が出す**唯一の配置成果物**。`ParkBuilder` はこれを読むだけ
 - `Assets/Scripts/SoakRecorder.cs` ＋ `Assets/Editor/SoakRunner.cs` … `Tools > Run Soak (36 balls)`。トリガー到達数に加えて**コースアウト・停止・迷子の球**を記録する。**出力先の `Docs/soak_result.json` と `Docs/soak_shots/` はgit管轄外**（ローカル調査用。残す価値がある実測はファイル名を変えてコミットする）

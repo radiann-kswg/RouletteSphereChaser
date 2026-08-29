@@ -278,7 +278,7 @@
   },
   {
    "name": "HighLane_0.017",
-   "path": "Park/TowerA23/Chain_45/HighLane_0",
+   "path": "Park/Relays/HighLane_45_0",
    "collider": "mesh",
    "material": "TowerA_HighLane",
    "rgb": {
@@ -290,7 +290,7 @@
   },
   {
    "name": "HighLane_0.047",
-   "path": "Park/TowerA23/Chain_315/HighLane_0",
+   "path": "Park/Relays/HighLane_315_0",
    "collider": "mesh",
    "material": "TowerA_HighLane",
    "rgb": {
@@ -302,7 +302,7 @@
   },
   {
    "name": "HighLane_180.030",
-   "path": "Park/TowerA23/Chain_135/HighLane_180",
+   "path": "Park/Relays/HighLane_135_180",
    "collider": "mesh",
    "material": "TowerA_HighLane",
    "rgb": {
@@ -314,7 +314,7 @@
   },
   {
    "name": "HighLane_180.039",
-   "path": "Park/TowerA23/Chain_225/HighLane_180",
+   "path": "Park/Relays/HighLane_225_180",
    "collider": "mesh",
    "material": "TowerA_HighLane",
    "rgb": {
@@ -326,7 +326,7 @@
   },
   {
    "name": "HighLane_270.041",
-   "path": "Park/TowerA23/Chain_225/HighLane_270",
+   "path": "Park/Relays/HighLane_225_270",
    "collider": "mesh",
    "material": "TowerA_HighLane",
    "rgb": {
@@ -338,7 +338,7 @@
   },
   {
    "name": "HighLane_270.051",
-   "path": "Park/TowerA23/Chain_315/HighLane_270",
+   "path": "Park/Relays/HighLane_315_270",
    "collider": "mesh",
    "material": "TowerA_HighLane",
    "rgb": {
@@ -350,7 +350,7 @@
   },
   {
    "name": "HighLane_90.019",
-   "path": "Park/TowerA23/Chain_45/HighLane_90",
+   "path": "Park/Relays/HighLane_45_90",
    "collider": "mesh",
    "material": "TowerA_HighLane",
    "rgb": {
@@ -362,7 +362,7 @@
   },
   {
    "name": "HighLane_90.028",
-   "path": "Park/TowerA23/Chain_135/HighLane_90",
+   "path": "Park/Relays/HighLane_135_90",
    "collider": "mesh",
    "material": "TowerA_HighLane",
    "rgb": {
@@ -374,7 +374,7 @@
   },
   {
    "name": "JPRail_2.52.067",
-   "path": "Park/TowerG_E/JPRail_2.52",
+   "path": "Park/Relays/JPRail_E_2.52",
    "collider": "mesh",
    "material": "TowerG_JPRail",
    "rgb": {
@@ -386,7 +386,7 @@
   },
   {
    "name": "JPRail_2.52.075",
-   "path": "Park/TowerG_W/JPRail_2.52",
+   "path": "Park/Relays/JPRail_W_2.52",
    "collider": "mesh",
    "material": "TowerG_JPRail",
    "rgb": {
@@ -398,7 +398,7 @@
   },
   {
    "name": "JPRail_2.92.066",
-   "path": "Park/TowerG_E/JPRail_2.92",
+   "path": "Park/Relays/JPRail_E_2.92",
    "collider": "mesh",
    "material": "TowerG_JPRail",
    "rgb": {
@@ -410,7 +410,7 @@
   },
   {
    "name": "JPRail_2.92.074",
-   "path": "Park/TowerG_W/JPRail_2.92",
+   "path": "Park/Relays/JPRail_W_2.92",
    "collider": "mesh",
    "material": "TowerG_JPRail",
    "rgb": {
@@ -422,7 +422,7 @@
   },
   {
    "name": "JPTube_0.079",
-   "path": "Park/TowerF_S/JPTube_0",
+   "path": "Park/Relays/JPTube_S_0",
    "collider": "mesh",
    "material": "TowerF_JPTube",
    "rgb": {
@@ -434,7 +434,7 @@
   },
   {
    "name": "JPTube_0.085",
-   "path": "Park/TowerF_N/JPTube_0",
+   "path": "Park/Relays/JPTube_N_0",
    "collider": "mesh",
    "material": "TowerF_JPTube",
    "rgb": {
@@ -446,7 +446,7 @@
   },
   {
    "name": "JPTube_1.080",
-   "path": "Park/TowerF_S/JPTube_1",
+   "path": "Park/Relays/JPTube_S_1",
    "collider": "mesh",
    "material": "TowerF_JPTube",
    "rgb": {
@@ -458,7 +458,7 @@
   },
   {
    "name": "JPTube_1.086",
-   "path": "Park/TowerF_N/JPTube_1",
+   "path": "Park/Relays/JPTube_N_1",
    "collider": "mesh",
    "material": "TowerF_JPTube",
    "rgb": {
@@ -470,7 +470,7 @@
   },
   {
    "name": "JPTube_2.081",
-   "path": "Park/TowerF_S/JPTube_2",
+   "path": "Park/Relays/JPTube_S_2",
    "collider": "mesh",
    "material": "TowerF_JPTube",
    "rgb": {
@@ -482,7 +482,7 @@
   },
   {
    "name": "JPTube_2.087",
-   "path": "Park/TowerF_N/JPTube_2",
+   "path": "Park/Relays/JPTube_N_2",
    "collider": "mesh",
    "material": "TowerF_JPTube",
    "rgb": {
