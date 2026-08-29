@@ -194,7 +194,7 @@ URP/Lit の `_BaseColor` / `_Metallic` / `_Smoothness` / `_EmissionColor` のみ
 
 ## 5. 実装メモ
 
-- マテリアルは `Assets/Materials/*.mat` の実体を書き換える。`GreyboxKit.Mat()` は
+- マテリアルは `Assets/Materials/*.mat` の実体を書き換える。`ParkBuilder.Mat()` は
   **既存の .mat があればそれを返す**（無いときだけ生成する）ので、ビルダー再実行で色が戻ることはない。
 - `Docs/park_materials.json` の `rgb` は **Blender側のビューポート色**であって、Unityの見た目には使われない
   （`ParkBuilder` は `.mat` を優先する）。Blenderでの作業性のために後追いで揃えてよいが、正本は本書。

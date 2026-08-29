@@ -85,7 +85,7 @@ B/C/Eは演出の見栄え安定のため搭載を軽量化（E の回転ドラ�
 | 頭上クリアランス       | 1.2d                                                |
 | 高所からの自由落下受け | 受け皿＋高壁（バウンド höhe = 落差×4%を封じ込める） |
 
-AGENTS.md 3章の罠リスト全項目を `GreyboxKit` が強制（Cylinder凸メッシュ・トリガー・点数マーカー・撹拌ローター等）。
+AGENTS.md 3章の罠リストは、形は `BlenderSources/*.blend`、配置・トリガー・回転体は `ParkAssembly.blend` 側で担保する。
 
 ## 5. スコア設計（2026-08-22改定・確率反比例則）
 
@@ -255,8 +255,7 @@ E のポケット入賞は6分で 45×5／55×2／180×3。給球パンの落と
 | `Docs/park_layout.json` | Unity `ParkScene_v2` の全FBXインスタンス（パス／FBX／メッシュ名／localToWorldMatrix／ローカル・ワールドAABB／コライダ種別） |
 | `Docs/park_markers.json` | ScoreZone(92)・Rotator(23)・Oscillator(5)・BallLift(2)・LapGate(1) の変換とパラメータ |
 | `Docs/mesh_calib.json` | FBXごとの実測変換C（規約名・符号・スケール・両案の残差） |
-| `Docs/mesh_stats_unity.json` / `mesh_stats_blender.json` | 校正の生データ |
-| `Docs/build_park_assembly.py` | 上記から ParkAssembly.blend を組み立て直すスクリプト（冪等） |
+| `Docs/build_park_assembly.py` | 上記から ParkAssembly.blend を組み立て直すスクリプト（ブートストラップ専用。SSOTはすでに .blend 側） |
 | `Docs/verify_park_assembly.py` | 等価性＋AABB重なりの検証スクリプト |
 
 **確定した座標規約（実測・38メッシュ全件で残差 ≤ 1e-6 m）**
@@ -642,8 +641,7 @@ F/Gハズレ → C/B → **通常抽選段**（従来どおり）。チャレン
 ## 7. ファイル構成
 
 - `Assets/Editor/ParkBuilder.cs` … v2ビルダー（`Tools > Build RouletteSphere Park (v2)`、冪等）
-- `Assets/Editor/GreyboxKit.cs` … 共通ヘルパ（罠対策標準装備）
-- `Assets/Scenes/ParkScene_v2.unity` … v2シーン（v1は`ParkScene_v1.unity`として凍結保存。2026-08-22 User改名: SampleScene→ParkScene_v1, ParkScene→ParkScene_v2）
+- `Assets/Scenes/ParkScene_v2.unity` … v2シーン（`ParkBuilder` が毎回作り直す）
 - `Assets/Editor/GitTools.cs` … `Tools > Git Commit All`（定期コミット用）
 - `BlenderSources/TowerA.blend` … タワーA機構（SpiralA/DistributorA/AgitatorA）✅
 - `BlenderSources/ParkBase.blend` … 土台一式（ParkBase/DrainStation/LiftGuide）✅

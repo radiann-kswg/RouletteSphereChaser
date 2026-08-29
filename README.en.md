@@ -68,8 +68,6 @@ git clone https://github.com/radiann-kswg/RouletteSphereChaser.git
 | `Tools > Run Soak (36 balls)` | Long-run test. Records laps, score, **off-course / stalled / lost balls** and fixed-camera blind spots to `Docs/soak_*.json` and `Docs/camera_coverage.json` |
 | `Tools > Capture Showcase Shots` | Re-take the screenshots used in this README into `Docs/screenshots/` |
 
-> `Assets/Scenes/ParkScene_v1.unity` plus `Tools > Build RouletteSphere Greybox` is the finished v1 machine. It is frozen and kept for reference.
-
 ## Putting a character on a ball
 
 Balls can wear a "spherized character" texture instead of the plain numbered look.
@@ -79,7 +77,7 @@ Balls can wear a "spherized character" texture instead of the plain numbered loo
 
 The UV is a **two-disc front/back layout** (2:1 canvas; left disc = front hemisphere, right disc = mirrored back hemisphere). A drawing template lives at [`Docs/BallUV_Template.png`](Docs/BallUV_Template.png). The number patch sits on the top and bottom poles (10×10 atlas in `NumberAtlas.png`).
 
-To lift the ball into your own project, use the porting kit `LotteryBallKit.unitypackage` (built from `Assets/LotteryBallKit/`).
+To lift the ball into your own project, use the [`LotteryBallKit/`](https://github.com/radiann-kswg/LotteryBallKit) submodule.
 
 > [!IMPORTANT]
 > Images placed in `BallSkins/` are **not** covered by this repository's licence (CC BY 4.0); they follow the licence of the source image. See [`LICENSE-ASSETS.md`](LICENSE-ASSETS.md) §2.
@@ -89,9 +87,7 @@ To lift the ball into your own project, use the porting kit `LotteryBallKit.unit
 | Path | Contents |
 | --- | --- |
 | `Assets/Scenes/ParkScene_v2.unity` | v2 main scene (multi-tower park) |
-| `Assets/Scenes/ParkScene_v1.unity` | v1 finished machine (frozen, for reference) |
 | `Assets/Editor/ParkBuilder.cs` | v2 park builder. **Computes no coordinates** — it only interprets `ParkAssembly.fbx` + `ParkAssembly.params.json` |
-| `Assets/Editor/GreyboxKit.cs` | Shared builder helpers (clearance rules and pitfall workarounds baked in) |
 | `Assets/Editor/SoakRunner.cs` / `ShowcaseCapture.cs` | Soak-test launcher / README screenshot capture |
 | `Assets/Scripts/` | `LotteryBall`, `ScoreZone`, `LapGate`, `Rotator`, `Oscillator`, `BallLift`, `BallSpawner`, the camera-direction set, `SoakRecorder`, `CameraCoverage` |
 | `Assets/Models/ParkAssembly.fbx` | **The single placement artefact** (123 meshes + function markers) |

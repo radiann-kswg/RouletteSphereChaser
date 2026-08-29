@@ -3,7 +3,6 @@ using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
-using static GreyboxKit;
 
 /// Tools > Build RouletteSphere Park (v2)
 /// 多塔パーク型ボールコースター（Docs/DESIGN-v2.md）のビルダー。冪等。
@@ -85,7 +84,6 @@ public static class ParkBuilder
                 EditorSceneManager.NewScene(NewSceneSetup.DefaultGameObjects, NewSceneMode.Single), ScenePath);
         }
 
-        Init();
         var old = GameObject.Find("Park");
         if (old != null) Object.DestroyImmediate(old);
         var root = new GameObject("Park").transform;
@@ -168,7 +166,12 @@ public static class ParkBuilder
                     lift.releaseJitter = m.releaseJitter;
                     var wps = new List<Transform>();
                     for (int wi = 0; wi < m.waypoints.Length; wi++)
-                        wps.Add(Waypoint(go.transform, "W" + wi, m.waypoints[wi]));
+                    {
+                        var w = new GameObject("W" + wi).transform;
+                        w.SetParent(go.transform);
+                        w.position = m.waypoints[wi];
+                        wps.Add(w);
+                    }
                     lift.waypoints = wps.ToArray();
                     break;
 
@@ -247,6 +250,37 @@ public static class ParkBuilder
 
     static string Dir(string path) { int i = path.LastIndexOf('/'); return i < 0 ? "Park" : path.Substring(0, i); }
     static string Leaf(string path) { int i = path.LastIndexOf('/'); return i < 0 ? path : path.Substring(i + 1); }
+
+    /// コース側コライダは低摩擦（AGENTS 3章-9）
+    static PhysicsMaterial _railPM;
+    static PhysicsMaterial RailPM
+    {
+        get
+        {
+            if (_railPM != null) return _railPM;
+            _railPM = AssetDatabase.LoadAssetAtPath<PhysicsMaterial>("Assets/Materials/RailPM.asset");
+            if (_railPM == null)
+            {
+                _railPM = new PhysicsMaterial("Rail") { dynamicFriction = 0.05f, staticFriction = 0.05f, bounciness = 0.1f };
+                AssetDatabase.CreateAsset(_railPM, "Assets/Materials/RailPM.asset");
+            }
+            return _railPM;
+        }
+    }
+
+    /// 役割ごとのマテリアル（`Docs/DESIGN-materials.md` 2章）。無ければURP/Litで新規作成する
+    static Material Mat(string name, Color c)
+    {
+        string path = $"Assets/Materials/{name}.mat";
+        var m = AssetDatabase.LoadAssetAtPath<Material>(path);
+        if (m == null)
+        {
+            m = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            m.SetColor("_BaseColor", c);
+            AssetDatabase.CreateAsset(m, path);
+        }
+        return m;
+    }
 
     /// unity_path の中間ノードを必要に応じて作る
     static Transform Node(Dictionary<string, Transform> nodes, Transform root, string path)
@@ -341,65 +375,21 @@ public static class ParkBuilder
         return m;
     }
 
-    /// 定点カメラの周回速度[deg/s]。名前は `Cam_` を除いた部分。**0 なら回さない**。
-    /// 死角の有無は `Docs/camera_coverage.json`（`Tools > Run Soak` が実測）を見て決める。
-    /// 一周25〜45秒＝観賞に耐える速さ。全景系はゆっくり回す。
-    static readonly Dictionary<string, float> OrbitDps = new()
-    {
-        { "A_Overview", 5f },
-        { "A_GrandRoulette", 9f },
-        { "H_Garapon", 12f },
-        { "F_JPSpinner_S", 12f }, { "F_JPSpinner_N", 12f },
-        { "E_PocketDisc_S", 12f }, { "E_PocketDisc_N", 12f },
-        { "C_Zigzag_S", 10f }, { "C_Zigzag_N", 10f },
-        { "G_Numa_E", 12f }, { "G_Numa_W", 12f },
-        { "B_Pachinko_E", 14f }, { "B_Pachinko_W", 14f },
-        { "D_Kuruun_E", 14f }, { "D_Kuruun_W", 14f },
-        { "DrainStation", 10f },
-    };
-
     /// 盤面印字ラベルの色。得点ゲートが白（DESIGN-materials 2章 SCORE）なので、
     /// 抽選盤と同じ藍（DECK `#33407F`）で刷る。**盤の色を変えたらここも見直すこと。**
     static readonly Color GateLabelColor = new Color(0.200f, 0.251f, 0.498f, 1f);
 
-    /// 方位の振り幅[deg]。**0（既定）＝360°周回**。値を入れると配置時の方位を中心に往復する。
-    /// **平らな盤面の機構は正面からしか中が見えない**ので、周回させると一周のほとんどが裏側＝死角になる。
-    /// パチンコ盤は周回のままだと死角0.88だった（2026-08-24実測）。
-    static readonly Dictionary<string, float> AzimuthAmp = new()
-    {
-        { "B_Pachinko_E", 38f }, { "B_Pachinko_W", 38f },
-    };
-
-    /// 上下振り[m]。すり鉢・トラフ・盤面の内側を舐めるために見下ろし角も振る台だけ入れる
-    static readonly Dictionary<string, float> ElevationAmp = new()
-    {
-        { "H_Garapon", 0.7f },
-        { "G_Numa_E", 0.6f }, { "G_Numa_W", 0.6f },
-        { "C_Zigzag_S", 0.6f }, { "C_Zigzag_N", 0.6f },
-        { "B_Pachinko_E", 0.5f }, { "B_Pachinko_W", 0.5f },
-        { "D_Kuruun_E", 0.5f }, { "D_Kuruun_W", 0.5f },
-        { "E_PocketDisc_S", 0.6f }, { "E_PocketDisc_N", 0.6f },
-        { "F_JPSpinner_S", 0.6f }, { "F_JPSpinner_N", 0.6f },
-        { "DrainStation", 0.5f },
-        { "A_GrandRoulette", 0.8f },
-    };
-
-    /// 担当範囲の半径の上限[m]。既定は機構スケール、全景系だけ広く取る
-    static readonly Dictionary<string, float> FocusCap = new()
-    {
-        { "A_Overview", 6f },
-        // 排水は Lifts(高さ14m) も担当グループに入るが、カメラは喉元の寄りショット。
-        // 4mにするとFOVが88°の魚眼になったので機構スケールに戻す
-        { "DrainStation", 2.5f },
-    };
-
     /// 抽選機ごとの定点カメラ（既定オフ）。見る/魅せるための道具なので配置SSOTの対象外＝ここに残す。
-    /// 死角のある台には `OrbitCamera` を付けて、担当機構のバウンズ中心を軸に等速で周回させる。
+    /// **周回速度・振り幅・担当範囲・表示名は `CameraCoverage.Rigs` の1行**にまとめてある。
+    /// ここに置くのは位置・注視点・FOVだけ——南北/東西のミラーをループで表していて、
+    /// 表に展開すると対になる2台が別々に動かせてしまうため。
     static Transform BuildFixedCameras(Transform root)
     {
-        var g = Group(root, "Cameras");
+        var g = new GameObject("Cameras").transform;
+        g.SetParent(root);
         void Cam(string n, Vector3 pos, Vector3 look, float fov)
         {
+            var rig = CameraCoverage.Rigs[n];
             var go = new GameObject("Cam_" + n);
             go.transform.SetParent(g);
             go.transform.position = pos;
@@ -413,12 +403,11 @@ public static class ParkBuilder
             // focusRadius は担当グループの実バウンズから決め、死角の実測（CameraCoverage）の母数になる
             var orb = go.AddComponent<OrbitCamera>();
             orb.pivot = look;
-            orb.degreesPerSecond = OrbitDps.TryGetValue(n, out float dps) ? dps : 0f;
-            orb.focusRadius = FocusRadius(root, n, look);
-            // すり鉢・トラフの内側は方位を回すだけでは見えない。見下ろし角も振る（実測で決めた値）
-            orb.elevationAmplitude = ElevationAmp.TryGetValue(n, out float amp) ? amp : 0f;
+            orb.degreesPerSecond = rig.orbitDps;
+            orb.focusRadius = FocusRadius(root, rig, look);
+            orb.elevationAmplitude = rig.elevationAmp;
             orb.elevationPeriod = 17f;
-            orb.azimuthAmplitude = AzimuthAmp.TryGetValue(n, out float az) ? az : 0f;
+            orb.azimuthAmplitude = rig.azimuthAmp;
 
             // 画角を担当範囲に合わせる。**死角の最大要因は「画角に入っていない」だった**（実測:
             // 大ルーレット76% / ガラポン83% が画角外）ので、focusRadius が必ず収まるFOVにする
@@ -454,13 +443,12 @@ public static class ParkBuilder
         return g;
     }
 
-    /// カメラが「映すべき」半径。担当グループ（`CameraCoverage.Assign`）の実メッシュが
+    /// カメラが「映すべき」半径。担当グループ（`CameraCoverage.Rigs` の `groups`）の実メッシュが
     /// 注視点からどこまで広がっているかで決める。死角の実測はこの球の中に居た球だけを母数にする。
-    static float FocusRadius(Transform root, string camKey, Vector3 look)
+    static float FocusRadius(Transform root, CameraCoverage.Rig rig, Vector3 look)
     {
-        if (!CameraCoverage.Assign.TryGetValue(camKey, out var groups)) return 2f;
         float r = 0f;
-        foreach (var name in groups)
+        foreach (var name in rig.groups)
         {
             var go = root.Find(name);
             if (go == null) continue;
@@ -470,8 +458,8 @@ public static class ParkBuilder
                 r = Mathf.Max(r, Vector3.Distance(look, rend.bounds.center) + rend.bounds.extents.magnitude);
             }
         }
-        // 既定は機構スケール(2.5m)で頭打ち。塔全体を担当する全景系だけ FocusCap で広げる
-        return Mathf.Clamp(r, 0.8f, FocusCap.TryGetValue(camKey, out float cap) ? cap : 2.5f);
+        // 既定の機構スケール(2.5m)で頭打ち。塔全体を担当する全景系だけ focusCap で広げる
+        return Mathf.Clamp(r, 0.8f, rig.focusCap);
     }
 
     /// 演出用のローミングカメラ（User要望 2026-08-24）。

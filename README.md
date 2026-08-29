@@ -68,8 +68,6 @@ git clone https://github.com/radiann-kswg/RouletteSphereChaser.git
 | `Tools > Run Soak (36 balls)` | 36 球の長時間試験。周回数・得点・**コースアウト/停止/迷子**と定点カメラの死角を `Docs/soak_*.json` / `Docs/camera_coverage.json` に記録 |
 | `Tools > Capture Showcase Shots` | 本 README 用のスクリーンショットを `Docs/screenshots/` に撮り直す |
 
-> `Assets/Scenes/ParkScene_v1.unity` ＋ `Tools > Build RouletteSphere Greybox` は v1 の完成機です。参照用に凍結してあります。
-
 ## ボールにキャラクターの絵を貼る
 
 ボールは「球体化キャラクター」のテクスチャに差し替えられます。
@@ -79,7 +77,7 @@ git clone https://github.com/radiann-kswg/RouletteSphereChaser.git
 
 UV は**前後 2 円ディスク方式**（キャンバス 2:1・左円＝前半球 / 右円＝後半球の鏡像）。下描き用テンプレートが [`Docs/BallUV_Template.png`](Docs/BallUV_Template.png) にあります。番号パッチはボールの上下面（`NumberAtlas.png` の 10×10 アトラス）です。
 
-ボール単体を自分のプロジェクトへ持っていきたい場合は、移植キット `LotteryBallKit.unitypackage`（`Assets/LotteryBallKit/` が出力元）を使ってください。
+ボール単体を自分のプロジェクトへ持っていきたい場合は、サブモジュールの [`LotteryBallKit/`](https://github.com/radiann-kswg/LotteryBallKit) を使ってください。
 
 > [!IMPORTANT]
 > `BallSkins/` に置いた画像は本リポジトリのライセンス（CC BY 4.0）の対象外で、**テクスチャ画像元のライセンスに従います**。詳細は [`LICENSE-ASSETS.md`](LICENSE-ASSETS.md) §2。
@@ -89,9 +87,7 @@ UV は**前後 2 円ディスク方式**（キャンバス 2:1・左円＝前半
 | パス | 内容 |
 | --- | --- |
 | `Assets/Scenes/ParkScene_v2.unity` | v2 本編シーン（多塔パーク） |
-| `Assets/Scenes/ParkScene_v1.unity` | v1 完成機（凍結・参照用） |
 | `Assets/Editor/ParkBuilder.cs` | v2 パークビルダー。**座標は一切計算せず** `ParkAssembly.fbx` ＋ `ParkAssembly.params.json` を読むだけの解釈器 |
-| `Assets/Editor/GreyboxKit.cs` | ビルダー共通ヘルパ（クリアランス基準・罠対策を標準装備） |
 | `Assets/Editor/SoakRunner.cs` / `ShowcaseCapture.cs` | 長時間試験の起動係 / README 用スクショの撮影 |
 | `Assets/Scripts/` | `LotteryBall` / `ScoreZone` / `LapGate` / `Rotator` / `Oscillator` / `BallLift` / `BallSpawner` / カメラ演出一式 / `SoakRecorder` / `CameraCoverage` |
 | `Assets/Models/ParkAssembly.fbx` | **配置の唯一の成果物**（メッシュ 123 ＋機能マーカー） |
