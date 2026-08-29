@@ -553,6 +553,18 @@
    }
   },
   {
+   "name": "LiftShaft",
+   "path": "Park/Lifts/LiftShaft",
+   "collider": "none",
+   "material": "ParkAcrylic",
+   "rgb": {
+    "r": 0.75,
+    "g": 0.8,
+    "b": 0.9,
+    "a": 1.0
+   }
+  },
+  {
    "name": "LiftTopRail.005",
    "path": "Park/Lifts/LiftTopRail",
    "collider": "none",

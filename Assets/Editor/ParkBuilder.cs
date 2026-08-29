@@ -42,6 +42,7 @@ public static class ParkBuilder
         "TowerC_CatchTurn",           // 同 46/27
         "TowerG_MergeTray",           // Cam_G_Numa_W 12 / Cam_H_Garapon 29
         "TowerB_CatchTray",           // CatchChute。盤を透かした後の Cam_B_Pachinko_E/W の最大（65/73）
+        "ParkAcrylic",                // リフトシャフト等の汎用アクリル（手順3・コライダ無しの視覚シェル）
     };
 
     [System.Serializable]
