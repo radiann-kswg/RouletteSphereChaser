@@ -76,7 +76,7 @@ v1で一度学んだはずの失敗を、v2のフェーズ6でそっくり再演
 - `Assets/Editor/ShowcaseCapture.cs` ＋ `Docs/screenshots/` … **README掲載画像**。`Tools > Capture Showcase Shots` で `park-wide` / `park-front` ＋抽選機6点を撮る（1600×900）
 - **`Docs/DESIGN-materials.md` … 外装（マテリアル／配色）の設計正本**（フェーズ9〜）。役割ごとの9パレットとシーン照明、第2段のテクスチャ計画
 - `PenchantManufacture_ImageAssets/` … **gitサブモジュール**（User作フォント・CC BY 4.0）。`Assets/Fonts/PenchantManufacture.otf` はここからのコピー。TMP SDFアセットはビルダーが自動生成（`Assets/Fonts/PenchantManufacture_SDF.asset`）
-- 得点表示の標準: **Blender製ScoreGate（チャッカー風）＋ボード上TMP SDFラベル**（深度テスト＋`_CullMode=2`背面カリング→壁越し・裏側の得点は見えない）。ボール番号アトラス`NumberAtlas.png`も同フォントで生成（上段=90番台・下段=0番台のUV反転レイアウト・白地黒丸黒数字。生成はPIL・4xスーパーサンプル）
+- 得点表示の標準: **Blender製ScoreGate（チャッカー風）＋ボード上TMP SDFラベル**。ゲートは2026-08-30に**柱を延長し下側クロスバーで閉じた「口の字」フープ**へ整形（レーンを抱く形。旧⊓型は脚が空中で終わっていた）。`verify_park_assembly.py` の aabbOverlapPairs 基準は 106→**114**（フープ・レーンバンドがレーンAABBを包むための意図的増加）（深度テスト＋`_CullMode=2`背面カリング→壁越し・裏側の得点は見えない）。ボール番号アトラス`NumberAtlas.png`も同フォントで生成（上段=90番台・下段=0番台のUV反転レイアウト・白地黒丸黒数字。生成はPIL・4xスーパーサンプル）
 - クレジット: `PenchantManufacture image assets by RadianN_kswg / ラジアン（柏木主税） CC BY 4.0`
 
 > **造形ポリシー（User方針 2026-08-22）**: シーンに配置するメッシュは**すべてBlenderモデリング**とする（DrainStirrer含め可視メッシュ100%Blender化済み）。Unityプリミティブはトリガー等の不可視コライダのみ許容。各メッシュは単一マテリアル＋UV展開済みで、`Assets/Materials/` のマテリアル（`TowerA_Spiral` 等）の `_BaseMap` に任意テクスチャを差し替えられる。
