@@ -13,6 +13,42 @@
    }
   },
   {
+   "name": "BLegs_E",
+   "path": "Park/TowerB_E/BLegs_E",
+   "collider": "mesh",
+   "material": "TowerB_CatchTray",
+   "rgb": {
+    "r": 0.6,
+    "g": 0.45,
+    "b": 0.35,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "BLegs_W",
+   "path": "Park/TowerB_W/BLegs_W",
+   "collider": "mesh",
+   "material": "TowerB_CatchTray",
+   "rgb": {
+    "r": 0.6,
+    "g": 0.45,
+    "b": 0.35,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "BasinWallRibs",
+   "path": "Park/Basin/WallRibs",
+   "collider": "none",
+   "material": "ParkBase",
+   "rgb": {
+    "r": 0.55,
+    "g": 0.55,
+    "b": 0.58,
+    "a": 1.0
+   }
+  },
+  {
    "name": "BowlLower.111",
    "path": "Park/TowerD_E/BowlLower",
    "collider": "mesh",
@@ -61,6 +97,30 @@
    }
   },
   {
+   "name": "CLegs_N",
+   "path": "Park/TowerC_N/CLegs_N",
+   "collider": "mesh",
+   "material": "TowerC_CatchTurn",
+   "rgb": {
+    "r": 0.42,
+    "g": 0.52,
+    "b": 0.48,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "CLegs_S",
+   "path": "Park/TowerC_S/CLegs_S",
+   "collider": "mesh",
+   "material": "TowerC_CatchTurn",
+   "rgb": {
+    "r": 0.42,
+    "g": 0.52,
+    "b": 0.48,
+    "a": 1.0
+   }
+  },
+  {
    "name": "CatchChute.106",
    "path": "Park/TowerB_E/CatchChute",
    "collider": "mesh",
@@ -105,6 +165,18 @@
     "r": 0.55,
     "g": 0.5,
     "b": 0.42,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ChainJointCollars",
+   "path": "Park/TowerA23/ChainJointCollars",
+   "collider": "none",
+   "material": "TowerA_HighLane",
+   "rgb": {
+    "r": 0.85,
+    "g": 0.72,
+    "b": 0.25,
     "a": 1.0
    }
   },
@@ -177,6 +249,30 @@
     "r": 0.8,
     "g": 0.55,
     "b": 0.25,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ELegs_N",
+   "path": "Park/TowerE_N/ELegs_N",
+   "collider": "mesh",
+   "material": "TowerE_Pickup",
+   "rgb": {
+    "r": 0.55,
+    "g": 0.45,
+    "b": 0.35,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "ELegs_S",
+   "path": "Park/TowerE_S/ELegs_S",
+   "collider": "mesh",
+   "material": "TowerE_Pickup",
+   "rgb": {
+    "r": 0.55,
+    "g": 0.45,
+    "b": 0.35,
     "a": 1.0
    }
   },
@@ -273,6 +369,18 @@
     "r": 0.7,
     "g": 0.28,
     "b": 0.3,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "HLegs",
+   "path": "Park/TowerH/PanLegs",
+   "collider": "mesh",
+   "material": "TowerH_CatchFunnel",
+   "rgb": {
+    "r": 0.55,
+    "g": 0.4,
+    "b": 0.55,
     "a": 1.0
    }
   },
