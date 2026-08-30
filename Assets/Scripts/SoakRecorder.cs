@@ -27,6 +27,7 @@ public class SoakRecorder : MonoBehaviour
         public float stillFor, sinceProgress;
         public int lastLaps, lastPending;
         public bool reportedStuck, reportedStranded, reportedEscape;
+        public bool inWallBand;   // 外周壁帯に高所進入中（脱線イベントの立ち上がり検出用）
     }
 
     /// 同じシーンを比べるときに再現性を持たせる（BallLift.releaseJitter 等が Random を引くため）。
@@ -50,7 +51,7 @@ public class SoakRecorder : MonoBehaviour
     float frameAcc;
 
     readonly Dictionary<LotteryBall, Track> tracks = new();
-    readonly List<string> escapes = new(), stucks = new(), strandeds = new();
+    readonly List<string> escapes = new(), stucks = new(), strandeds = new(), derails = new();
     float t;
 
     void Awake() { Random.InitState(seed); }
@@ -134,6 +135,22 @@ public class SoakRecorder : MonoBehaviour
                 Debug.LogWarning($"[Soak] ESCAPE {ball.name} at {p} t={t:F1}");
                 ShotAnomaly(ball, "ESCAPE");
             }
+
+            // 1.5) 外周壁マージン帯への高所進入＝機構から飛び出したオーバーシュート（脱線）。
+            //      枠内に収まっていても、壁に当たって盆地へ落ちる球はコース設計上の取りこぼし（User要望 2026-08-30）。
+            //      帯: 南北壁際 |z|>6.2 ／ 西壁際 x<-9.8 ／ 東は排水路(y<0.6)を除く x>10.2。y>0.6=床バウンドより上。
+            //      リフト回廊(x>11.8)と搬送中(isKinematic)は正規ルートなので除外する。
+            //      盆地床は3°で西高東低（西端y≈1.1）なので、しきい値は局所床高からの相対で見る。
+            float localFloor = 0.62f - 0.05f * p.x;
+            bool wallBand = p.y > localFloor + 0.45f && p.x < 11.8f && !(rb != null && rb.isKinematic)
+                            && (Mathf.Abs(p.z) > 6.2f || p.x < -9.8f || p.x > 10.2f);
+            if (wallBand && !tr.inWallBand)
+            {
+                tr.inWallBand = true;
+                derails.Add(Row(ball, p, "derail"));
+                Debug.LogWarning($"[Soak] DERAIL {ball.name} at {p} t={t:F1}");
+            }
+            else if (!wallBand) tr.inWallBand = false;
 
             // 2) 止まったまま（リフト搬送中の isKinematic は除外）
             if (rb != null && !rb.isKinematic && rb.linearVelocity.magnitude < stuckSpeed) tr.stillFor += Time.fixedDeltaTime;
@@ -235,6 +252,7 @@ public class SoakRecorder : MonoBehaviour
         sb.AppendLine($" \"escapes\": [{string.Join(",", escapes)}],");
         sb.AppendLine($" \"stuck\": [{string.Join(",", stucks)}],");
         sb.AppendLine($" \"stranded\": [{string.Join(",", strandeds)}],");
+        sb.AppendLine($" \"derails\": [{string.Join(",", derails)}],");
 
         // 同名の兄弟トリガーが多数あるので、キーにワールド座標を混ぜて一意かつ実行間で安定にする
         var rows = new List<string>();
@@ -251,7 +269,7 @@ public class SoakRecorder : MonoBehaviour
 
         System.IO.File.WriteAllText(System.IO.Path.Combine(Application.dataPath, "..", outPath), sb.ToString());
         if (coverage != null) coverage.Dump();
-        Debug.Log($"[Soak] done label={label} hits={totalHits} laps={totalLaps} escapes={escapes.Count} stuck={stucks.Count} stranded={strandeds.Count} shots={shotNo}");
+        Debug.Log($"[Soak] done label={label} hits={totalHits} laps={totalLaps} escapes={escapes.Count} derails={derails.Count} stuck={stucks.Count} stranded={strandeds.Count} shots={shotNo}");
         enabled = false;
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;

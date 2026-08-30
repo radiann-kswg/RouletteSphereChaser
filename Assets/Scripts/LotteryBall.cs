@@ -24,6 +24,10 @@ public class LotteryBall : MonoBehaviour
     {
         rend = GetComponentInChildren<Renderer>();
         Apply();
+        // 罠2: 渋滞待機中にスリープすると坂でも永久停止する。プレハブ設定に頼らずコードで強制する
+        // （2026-08-30: プレハブ側の sleepThreshold が既定値0.005に戻っており、盆地で集団スリープ渋滞が発生した）
+        var rb = GetComponent<Rigidbody>();
+        if (rb != null) rb.sleepThreshold = 0f;
     }
 
     void OnValidate()

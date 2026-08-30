@@ -159,3 +159,4 @@ MonoBehaviour:
   pendingPoints: 0
   totalScore: 0
   laps: 0
+  nextMultiplier: 1

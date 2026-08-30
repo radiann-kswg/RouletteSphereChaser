@@ -1,6 +1,18 @@
 {
  "meshes": [
   {
+   "name": "A23ChainLegs",
+   "path": "Park/TowerA23/ChainLegs",
+   "collider": "mesh",
+   "material": "TowerA_MiniRouletteBowl",
+   "rgb": {
+    "r": 0.3,
+    "g": 0.45,
+    "b": 0.3,
+    "a": 1.0
+   }
+  },
+  {
    "name": "AgitatorA.011",
    "path": "Park/TowerA/AgitatorA",
    "collider": "mesh",
@@ -169,18 +181,6 @@
    }
   },
   {
-   "name": "ChainJointCollars",
-   "path": "Park/TowerA23/ChainJointCollars",
-   "collider": "none",
-   "material": "TowerA_HighLane",
-   "rgb": {
-    "r": 0.85,
-    "g": 0.72,
-    "b": 0.25,
-    "a": 1.0
-   }
-  },
-  {
    "name": "CollectorFunnel.052",
    "path": "Park/TowerA23/CollectorFunnel",
    "collider": "mesh",
@@ -189,6 +189,18 @@
     "r": 0.55,
     "g": 0.5,
     "b": 0.68,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "DLegBrace_E",
+   "path": "Park/TowerD_E/BowlLegBrace",
+   "collider": "mesh",
+   "material": "TowerD_Kuruun",
+   "rgb": {
+    "r": 0.5,
+    "g": 0.5,
+    "b": 0.5,
     "a": 1.0
    }
   },
@@ -253,6 +265,30 @@
    }
   },
   {
+   "name": "EExo_N",
+   "path": "Park/TowerE_N/DiscExoFrame",
+   "collider": "mesh",
+   "material": "TowerE_Disc",
+   "rgb": {
+    "r": 0.52,
+    "g": 0.44,
+    "b": 0.34,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "EExo_S",
+   "path": "Park/TowerE_S/DiscExoFrame",
+   "collider": "mesh",
+   "material": "TowerE_Disc",
+   "rgb": {
+    "r": 0.52,
+    "g": 0.44,
+    "b": 0.34,
+    "a": 1.0
+   }
+  },
+  {
    "name": "ELegs_N",
    "path": "Park/TowerE_N/ELegs_N",
    "collider": "mesh",
@@ -273,54 +309,6 @@
     "r": 0.55,
     "g": 0.45,
     "b": 0.35,
-    "a": 1.0
-   }
-  },
-  {
-   "name": "FeedGuide_N.061",
-   "path": "Park/TowerG_E/FeedGuide_N",
-   "collider": "mesh",
-   "material": "TowerF_CatchTray",
-   "rgb": {
-    "r": 0.55,
-    "g": 0.5,
-    "b": 0.42,
-    "a": 1.0
-   }
-  },
-  {
-   "name": "FeedGuide_N.069",
-   "path": "Park/TowerG_W/FeedGuide_N",
-   "collider": "mesh",
-   "material": "TowerF_CatchTray",
-   "rgb": {
-    "r": 0.55,
-    "g": 0.5,
-    "b": 0.42,
-    "a": 1.0
-   }
-  },
-  {
-   "name": "FeedGuide_S.060",
-   "path": "Park/TowerG_E/FeedGuide_S",
-   "collider": "mesh",
-   "material": "TowerF_CatchTray",
-   "rgb": {
-    "r": 0.55,
-    "g": 0.5,
-    "b": 0.42,
-    "a": 1.0
-   }
-  },
-  {
-   "name": "FeedGuide_S.068",
-   "path": "Park/TowerG_W/FeedGuide_S",
-   "collider": "mesh",
-   "material": "TowerF_CatchTray",
-   "rgb": {
-    "r": 0.55,
-    "g": 0.5,
-    "b": 0.42,
     "a": 1.0
    }
   },
@@ -349,6 +337,78 @@
    }
   },
   {
+   "name": "FeedTray.060",
+   "path": "Park/TowerG_E/FeedTray",
+   "collider": "mesh",
+   "material": "TowerF_CatchTray",
+   "rgb": {
+    "r": 0.55,
+    "g": 0.5,
+    "b": 0.42,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "FeedTray.068",
+   "path": "Park/TowerG_W/FeedTray",
+   "collider": "mesh",
+   "material": "TowerF_CatchTray",
+   "rgb": {
+    "r": 0.55,
+    "g": 0.5,
+    "b": 0.42,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "FrameCaps.061",
+   "path": "Park/TowerG_E/FrameCaps",
+   "collider": "mesh",
+   "material": "TowerF_CatchTray",
+   "rgb": {
+    "r": 0.55,
+    "g": 0.5,
+    "b": 0.42,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "FrameCaps.069",
+   "path": "Park/TowerG_W/FrameCaps",
+   "collider": "mesh",
+   "material": "TowerF_CatchTray",
+   "rgb": {
+    "r": 0.55,
+    "g": 0.5,
+    "b": 0.42,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "GFrame_E",
+   "path": "Park/TowerG_E/Frame",
+   "collider": "mesh",
+   "material": "TowerF_CatchTray",
+   "rgb": {
+    "r": 0.55,
+    "g": 0.5,
+    "b": 0.42,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "GFrame_W",
+   "path": "Park/TowerG_W/Frame",
+   "collider": "mesh",
+   "material": "TowerF_CatchTray",
+   "rgb": {
+    "r": 0.55,
+    "g": 0.5,
+    "b": 0.42,
+    "a": 1.0
+   }
+  },
+  {
    "name": "GrandRouletteBowl.054",
    "path": "Park/TowerA23/GrandRouletteBowl",
    "collider": "mesh",
@@ -369,6 +429,18 @@
     "r": 0.7,
     "g": 0.28,
     "b": 0.3,
+    "a": 1.0
+   }
+  },
+  {
+   "name": "HLegBraces",
+   "path": "Park/TowerH/PanLegBraces",
+   "collider": "mesh",
+   "material": "TowerH_CatchFunnel",
+   "rgb": {
+    "r": 0.55,
+    "g": 0.4,
+    "b": 0.55,
     "a": 1.0
    }
   },
