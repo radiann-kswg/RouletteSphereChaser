@@ -13,7 +13,10 @@ public class BallSpawner : MonoBehaviour
     {
         for (int i = 0; i < count; i++)
         {
-            var go = Instantiate(ballPrefab, transform.position, Random.rotation);
+            // 初動波の分散: 南北対称のパークなので交互に±zへ落とし、東回廊への一列縦隊を半減させる
+            var pos = transform.position;
+            if ((i & 1) == 1) pos.z = -pos.z;
+            var go = Instantiate(ballPrefab, pos, Random.rotation);
             go.name = $"Ball_{i + 1:00}";
             var ball = go.GetComponent<LotteryBall>();
             ball.number = i + 1;
