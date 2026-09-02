@@ -280,6 +280,14 @@ public static class ParkBuilder
             m.SetColor("_BaseColor", c);
             AssetDatabase.CreateAsset(m, path);
         }
+        // 外装テクスチャ（DESIGN-materials.md 4章）。`Assets/Textures/Park/<マテリアル名>.png` は **git管轄外**
+        // （`python Docs/gen_park_textures.py` で生成・手描きで差し替え可）。無ければ単色のまま＝クローン直後も壊れない。
+        var tex = AssetDatabase.LoadAssetAtPath<Texture2D>($"Assets/Textures/Park/{name}.png");
+        if (m.HasProperty("_BaseMap") && m.GetTexture("_BaseMap") != tex)
+        {
+            m.SetTexture("_BaseMap", tex);
+            EditorUtility.SetDirty(m);
+        }
         return m;
     }
 
