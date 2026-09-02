@@ -1,9 +1,10 @@
 # 外装テクスチャ作成用のレイヤー付きPSDテンプレート（マテリアルごと・1024x1024）。BallUV_Template.psd と同じ作法。
 #   1) Blender で ParkAssembly.blend を開き Docs/dump_park_uv.py を exec → Temp/park_uv_dump.json
 #      （{マテリアル名: {メッシュデータ名: [[[u,v],...], ...]}}）
-#   2) python Docs/gen_park_texture_psd.py [マテリアル名...]   … 省略時は全部。要 `pip install pytoshop`
-# 出力: Docs/ParkTextures PSD/<マテリアル名>.psd（**git管轄外**・BallSkins PSD と同じ扱い）
-# レイヤー（下→上）: 背景(白) / 下絵(空) / 模様サンプル(ParkSamples の役割PNG) / UVガイド(メッシュごとに色分け＋凡例)
+#   2) python Docs/gen_park_texture_psd.py [マテリアル名...]   … 省略時は全部
+# 出力: Docs/ParkTextures PSD/Samples/<マテリアル名>.psd（**git管轄・LFS**）。自分の作画版は Docs/ParkTextures PSD/ 直下へ（管轄外）
+# 要 `pip install pytoshop packbits`（packbits が無いと統合画像が raw になり 3MB/枚 → 約0.3MB/枚）
+# レイヤー（下→上）: 背景(白) / 下絵(空) / 模様サンプル(Park/Samples の役割PNG) / UVガイド(メッシュごとに色分け＋凡例)
 import json
 import os
 import sys
@@ -16,10 +17,17 @@ from pytoshop.enums import BlendMode, ColorMode, Compression
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from gen_park_textures import ROLES, SAMPLES   # noqa: E402  役割表を共有
+try:                                            # pytoshop 同梱の packbits は未ビルドなので pip 版を差す
+    import packbits
+    import pytoshop.codecs
+    pytoshop.codecs.packbits = packbits
+    FLAT = Compression.rle
+except ImportError:
+    FLAT = Compression.raw
 
 N, SS = 1024, 2
 FONT = "Assets/Fonts/PenchantManufacture.otf"
-OUT = "Docs/ParkTextures PSD"
+OUT = "Docs/ParkTextures PSD/Samples"
 COLORS = [(90, 90, 90), (200, 60, 60), (40, 120, 220), (30, 150, 70), (200, 130, 20), (140, 60, 180)]
 role_of = {m: r for r, ms in ROLES.items() for m in ms}
 dump = json.load(open("Temp/park_uv_dump.json"))
@@ -65,8 +73,7 @@ def build(mat):
     ]
     psd = nested_layers.nested_layers_to_psd(layers, color_mode=ColorMode.rgb, compression=Compression.zip)
     flat = Image.alpha_composite(Image.alpha_composite(white, sample), guide).convert("RGB").resize((N, N), Image.LANCZOS)
-    # 統合画像は raw（pytoshop の rle は packbits 拡張が要り、無いと NameError で落ちる。BallUV_Template と同じ）
-    psd.image_data = image_data.ImageData(channels=np.asarray(flat).transpose(2, 0, 1).copy(), compression=Compression.raw)
+    psd.image_data = image_data.ImageData(channels=np.asarray(flat).transpose(2, 0, 1).copy(), compression=FLAT)
     os.makedirs(OUT, exist_ok=True)
     with open(f"{OUT}/{mat}.psd", "wb") as fp:
         psd.write(fp)

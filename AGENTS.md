@@ -76,10 +76,10 @@ v1で一度学んだはずの失敗を、v2のフェーズ6でそっくり再演
 - `Assets/Editor/ShowcaseCapture.cs` ＋ `Docs/screenshots/` … **README掲載画像**。`Tools > Capture Showcase Shots` で `park-wide` / `park-front` ＋抽選機6点を撮る（1600×900）
 - **`Docs/DESIGN-materials.md` … 外装（マテリアル／配色）の設計正本**（フェーズ9〜）。役割ごとの9パレットとシーン照明、第2段のテクスチャ計画
 - `PenchantManufacture_ImageAssets/` … **gitサブモジュール**（User作フォント・CC BY 4.0）。`Assets/Fonts/PenchantManufacture.otf` はここからのコピー。TMP SDFアセットはビルダーが自動生成（`Assets/Fonts/PenchantManufacture_SDF.asset`）
-- **外装テクスチャ（美化その3・2026-09-02）**: `python Docs/gen_park_textures.py` → サンプル `Assets/Textures/ParkSamples/<役割>.png`（git管轄・LFS）
+- **外装テクスチャ（美化その3・2026-09-02）**: `python Docs/gen_park_textures.py` → サンプル `Assets/Textures/Park/Samples/<役割>.png`（git管轄・LFS）
   ＋作業用 `Assets/Textures/Park/<マテリアル名>.png`（**git管轄外**＝ボールスキン同様、ライセンス適用外の画像を各自置く。既存は上書きしない）。
   `ParkBuilder.Mat()` がビルド時に Park/ → 無ければサンプルの順で `_BaseMap` へ差す。作画用PSDは `Docs/gen_park_texture_psd.py`
-  （入力: Blenderで `Docs/dump_park_uv.py`）→ `Docs/ParkTextures PSD/`（管轄外）。役割表・濃さの上限は `Docs/DESIGN-materials.md` 4.0章
+  （入力: Blenderで `Docs/dump_park_uv.py`）→ `Docs/ParkTextures PSD/Samples/`（LFS。作画版は直下＝管轄外）。役割表・濃さの上限は `Docs/DESIGN-materials.md` 4.0章
 - **ユニットPrefab／素材パッケージ（7章）**: `Assets/Editor/ParkUnitExporter.cs`（`Tools > Export Park Units`）→ `Assets/Prefabs/Units/*.prefab`（45基）＋ `Exports/RouletteSphereChaser_Units.unitypackage`（LFS）
 - 得点表示の標準: **Blender製ScoreGate（チャッカー風）＋ボード上TMP SDFラベル**。ゲートは2026-08-30に**柱を延長し下側クロスバーで閉じた「口の字」フープ**へ整形（レーンを抱く形。旧⊓型は脚が空中で終わっていた）。`verify_park_assembly.py` の aabbOverlapPairs 基準は 106→**114**（フープ・レーンバンドがレーンAABBを包むための意図的増加）（深度テスト＋`_CullMode=2`背面カリング→壁越し・裏側の得点は見えない）。ボール番号アトラス`NumberAtlas.png`も同フォントで生成（上段=90番台・下段=0番台のUV反転レイアウト・白地黒丸黒数字。生成はPIL・4xスーパーサンプル）
 - クレジット: `PenchantManufacture image assets by RadianN_kswg / ラジアン（柏木主税） CC BY 4.0`

@@ -283,10 +283,10 @@ public static class ParkBuilder
         }
         // 外装テクスチャ（DESIGN-materials.md 4章）。`Assets/Textures/Park/<マテリアル名>.png` は **git管轄外**
         // （ボールスキンと同じ運用: ライセンス適用外の画像を各自ここへ置く）。無ければ git管轄のサンプル
-        // `Assets/Textures/ParkSamples/<役割>.png`（roles.txt で引く）へフォールバック＝クローン直後もサンプルが貼られる。
+        // `Assets/Textures/Park/Samples/<役割>.png`（roles.txt で引く）へフォールバック＝クローン直後もサンプルが貼られる。
         var tex = AssetDatabase.LoadAssetAtPath<Texture2D>($"Assets/Textures/Park/{name}.png");
         if (tex == null && SampleRoles.TryGetValue(name, out var role))
-            tex = AssetDatabase.LoadAssetAtPath<Texture2D>($"Assets/Textures/ParkSamples/{role}.png");
+            tex = AssetDatabase.LoadAssetAtPath<Texture2D>($"Assets/Textures/Park/Samples/{role}.png");
         if (m.HasProperty("_BaseMap") && m.GetTexture("_BaseMap") != tex)
         {
             m.SetTexture("_BaseMap", tex);
@@ -303,7 +303,7 @@ public static class ParkBuilder
         {
             if (_sampleRoles != null) return _sampleRoles;
             _sampleRoles = new Dictionary<string, string>();
-            const string p = "Assets/Textures/ParkSamples/roles.txt";
+            const string p = "Assets/Textures/Park/Samples/roles.txt";
             if (System.IO.File.Exists(p))
                 foreach (var line in System.IO.File.ReadAllLines(p))
                 {

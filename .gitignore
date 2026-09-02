@@ -128,11 +128,15 @@ __pycache__/
 /[Dd]ocs/BallSkins PSD/
 
 # 外装テクスチャ（DESIGN-materials.md 4章）の作業用フォルダも管轄外（ボールスキンと同じ＝ライセンス適用外の画像を各自置く）。
-# サンプルは Assets/Textures/ParkSamples/（管轄内・LFS）。ParkBuilder は Park/<マテリアル名>.png → 無ければサンプルの順で _BaseMap へ差す。
+# サンプルは Park/Samples/（管轄内・LFS）。ParkBuilder は Park/<マテリアル名>.png → 無ければ Samples/<役割>.png の順で _BaseMap へ差す。
+# 注意: 除外したディレクトリの中身は `!dir/*` では戻せない（gitは除外ディレクトリに降りない）。ディレクトリ自体を `!dir/` で戻す。
 /[Aa]ssets/[Tt]extures/Park/*
+!/[Aa]ssets/[Tt]extures/Park/Samples/
+!/[Aa]ssets/[Tt]extures/Park/Samples.meta
 !/[Aa]ssets/[Tt]extures/Park/.gitkeep
-# 外装テクスチャ作成用PSD（Docs/gen_park_texture_psd.py で再生成。1枚3MB超×25なので管轄外）
-/[Dd]ocs/ParkTextures PSD/
+# 外装テクスチャ作成用PSD。Samples/（Docs/gen_park_texture_psd.py の出力・LFS）だけ管轄内。自分の作画版は直下に置く＝管轄外
+/[Dd]ocs/ParkTextures PSD/*
+!/[Dd]ocs/ParkTextures PSD/Samples/
 
 # Unity管轄外へ持ち出す素材パッケージ（AGENTS.md 7章）。テンプレートの *.unitypackage 除外の例外＝LFSで追跡する
 !/Exports/*.unitypackage

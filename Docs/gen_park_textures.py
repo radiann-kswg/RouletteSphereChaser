@@ -1,10 +1,10 @@
 # 外装テクスチャ（DESIGN-materials.md 4章・第2段）を役割ごとに手続き生成する。
 #   python Docs/gen_park_textures.py [--force]      … リポジトリ直下で実行
 # 出力:
-#   Assets/Textures/ParkSamples/<役割>.png + roles.txt … **サンプル（git管轄・LFS）**。ParkBuilder のフォールバック元
+#   Assets/Textures/Park/Samples/<役割>.png + roles.txt … **サンプル（git管轄・LFS）**。ParkBuilder のフォールバック元
 #   Assets/Textures/Park/<マテリアル名>.png             … **作業用（git管轄外）**。ParkBuilder はまずこちらを _BaseMap へ差す。
 #       ボールスキンと同じ運用: ライセンス適用外の画像を各自ここへ置いて差し替える。**既にあるファイルは上書きしない**（--force で上書き）
-#   PSD テンプレートは Docs/gen_park_texture_psd.py（Docs/ParkTextures PSD/<マテリアル名>.psd）
+#   PSD テンプレートは Docs/gen_park_texture_psd.py（Docs/ParkTextures PSD/Samples/<マテリアル名>.psd）
 # 方針: URP/Lit は BaseMap×BaseColor なので、テクスチャは「白地に薄い陰影」だけ＝配色（2章）はそのまま生きる。派手にしない（0章）。
 import os
 import shutil
@@ -13,7 +13,8 @@ import numpy as np
 from PIL import Image
 
 N = 1024
-SAMPLES, OUT = "Assets/Textures/ParkSamples", "Assets/Textures/Park"
+OUT = "Assets/Textures/Park"
+SAMPLES = OUT + "/Samples"
 ROLES = {  # DESIGN-materials.md 2章「マテリアル → 役割」。透過アクリル（SeeThroughMats）は貼らない
     "CABINET":   ["ParkBase", "DrainStation"],
     "CHROME":    ["LiftGuide", "TowerF_CatchTray", "TowerF_MissTray", "TowerH_CatchFunnel", "TowerE_Pickup"],

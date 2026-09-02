@@ -165,14 +165,15 @@ URP/Lit の `_BaseColor` / `_Metallic` / `_Smoothness` / `_EmissionColor` のみ
 
 - **生成**: `python Docs/gen_park_textures.py`（リポジトリ直下。PIL＋numpy、約6秒）。
   役割→マテリアルの対応表はスクリプト冒頭の `ROLES`（2章の表と同じ。**透過アクリル＝`SeeThroughMats` には貼らない**）。
-  - `Assets/Textures/ParkSamples/<役割>.png` ＋ `roles.txt` … **サンプル（git管轄・LFS）**。9枚・計2.3MB。
+  - `Assets/Textures/Park/Samples/<役割>.png` ＋ `roles.txt` … **サンプル（git管轄・LFS）**。9枚・計2.3MB。
   - `Assets/Textures/Park/<マテリアル名>.png` … **作業用（git管轄外）**。ボールスキンと同じ運用で、**ライセンス適用外の画像を各自ここへ置いて差し替える**。
     スクリプトは**既にあるファイルを上書きしない**（`--force` で上書き）ので、手描き版が消えることはない。
-- **貼付**: `ParkBuilder.Mat()` がビルド時に `Park/<マテリアル名>.png` → 無ければ `ParkSamples/<役割>.png`（`roles.txt` で引く）の順で `_BaseMap` へ差す。
+- **貼付**: `ParkBuilder.Mat()` がビルド時に `Park/<マテリアル名>.png` → 無ければ `Park/Samples/<役割>.png`（`roles.txt` で引く）の順で `_BaseMap` へ差す。
   クローン直後（Park/ が空）でもサンプルが貼られ、差し替えたものだけが上書きされる。
-- **PSDテンプレート**: `Docs/gen_park_texture_psd.py` → `Docs/ParkTextures PSD/<マテリアル名>.psd`（1024²・**git管轄外**・25枚で約100MB）。
+- **PSDテンプレート**: `Docs/gen_park_texture_psd.py` → `Docs/ParkTextures PSD/Samples/<マテリアル名>.psd`（1024²・**git管轄・LFS**・25枚で約90MB）。
+  自分の作画版は `Docs/ParkTextures PSD/` 直下に置く（管轄外＝`BallSkins PSD` と同じ）。
   レイヤーは `BallUV_Template.psd` と同じ作法で 背景 / 下絵(空) / 模様サンプル / UVガイド（メッシュごとに色分け＋凡例）。
-  入力の `Temp/park_uv_dump.json` は Blender で `Docs/dump_park_uv.py` を exec して作る。要 `pip install pytoshop`。
+  入力の `Temp/park_uv_dump.json` は Blender で `Docs/dump_park_uv.py` を exec して作る。要 `pip install pytoshop packbits`（packbits が無いと統合画像が raw になり3倍に膨らむ）。
   UVは 0..1 に畳んで描いてある（タイリング前提）。同じマテリアルを複数メッシュが共有する場合は全部重ねて描く（凡例の色で見分ける）。
 - **テクスチャは白地に薄い陰影だけ**（URP/Lit は BaseMap×BaseColor なので2章の配色がそのまま生きる）。
   濃さの上限は 18%（CABINET のパンチ穴）、ほかは 3〜10%。0章「静かであること」に従い、これ以上は濃くしない。
