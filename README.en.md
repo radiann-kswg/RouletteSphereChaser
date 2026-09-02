@@ -38,7 +38,7 @@ Dishes, boards and troughs that **enclose the balls are clear acrylic**. This sh
 
 ## Requirements
 
-- Unity **6000.5.9f1** (Universal Render Pipeline)
+- Unity **6000.6.0f1** (Universal Render Pipeline)
 - Blender **5.2.0 LTS** (only if you want to edit `BlenderSources/*.blend`)
 - [Git LFS](https://git-lfs.com/) — used for binary assets (`.fbx`, `.blend`, `.png`, …)
 

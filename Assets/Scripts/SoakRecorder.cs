@@ -58,7 +58,7 @@ public class SoakRecorder : MonoBehaviour
 
     void Start()
     {
-        director = Object.FindFirstObjectByType<CameraDirector>();
+        director = Object.FindAnyObjectByType<CameraDirector>();
         coverage = gameObject.AddComponent<CameraCoverage>();
         System.IO.Directory.CreateDirectory(ShotPath(""));
     }
@@ -118,7 +118,7 @@ public class SoakRecorder : MonoBehaviour
     {
         t += Time.fixedDeltaTime;
 
-        foreach (var ball in Object.FindObjectsByType<LotteryBall>(FindObjectsSortMode.None))
+        foreach (var ball in Object.FindObjectsByType<LotteryBall>())
         {
             if (!tracks.TryGetValue(ball, out var tr)) tracks[ball] = tr = new Track();
             var rb = ball.GetComponent<Rigidbody>();
@@ -229,8 +229,8 @@ public class SoakRecorder : MonoBehaviour
 
     void Finish()
     {
-        var zones = Object.FindObjectsByType<ScoreZone>(FindObjectsSortMode.None);
-        var balls = Object.FindObjectsByType<LotteryBall>(FindObjectsSortMode.None);
+        var zones = Object.FindObjectsByType<ScoreZone>();
+        var balls = Object.FindObjectsByType<LotteryBall>();
 
         var sb = new StringBuilder();
         sb.AppendLine("{");

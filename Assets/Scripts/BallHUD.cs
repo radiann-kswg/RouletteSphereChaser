@@ -129,7 +129,7 @@ public class BallHUD : MonoBehaviour
         {
             // ponytail: 全景表示のみ毎フレーム集計（8〜32球なら無視できる負荷）
             int total = 0, laps = 0, n = 0;
-            foreach (var lb in FindObjectsByType<LotteryBall>(FindObjectsSortMode.None))
+            foreach (var lb in FindObjectsByType<LotteryBall>())
             {
                 total += lb.totalScore;
                 laps += lb.laps;

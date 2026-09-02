@@ -105,7 +105,7 @@ public class CameraCoverage : MonoBehaviour
 		if (acc < sampleInterval) return;
 		acc = 0f;
 
-		var balls = Object.FindObjectsByType<LotteryBall>(FindObjectsSortMode.None);
+		var balls = Object.FindObjectsByType<LotteryBall>();
 		foreach (var c in covs)
 		{
 			var planes = GeometryUtility.CalculateFrustumPlanes(c.cam);

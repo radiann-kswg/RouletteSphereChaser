@@ -44,7 +44,7 @@ public class RandomFixedCamera : MonoBehaviour
     {
         if (sources.Count == 0) { nextSwitch = Time.time + 1f; return; }
         // 球が映っている機構を優先（誰も居ない機構を延々映さない）。8回引いて駄目なら諦める
-        var balls = Object.FindObjectsByType<LotteryBall>(FindObjectsSortMode.None);
+        var balls = Object.FindObjectsByType<LotteryBall>();
         Camera pick = sources[Random.Range(0, sources.Count)];
         for (int i = 0; i < 8; i++)
         {

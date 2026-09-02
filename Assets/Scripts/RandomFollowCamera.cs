@@ -26,7 +26,7 @@ public class RandomFollowCamera : MonoBehaviour
 
     void Pick()
     {
-        var balls = Object.FindObjectsByType<LotteryBall>(FindObjectsSortMode.None);
+        var balls = Object.FindObjectsByType<LotteryBall>();
         if (balls.Length == 0) { nextSwitch = Time.time + 1f; return; }
 
         // 搬送中（キネマティック＝リフトで運ばれている）の球は絵が動かないので、8回まで引き直す

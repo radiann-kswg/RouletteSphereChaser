@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -34,7 +35,7 @@ public class FollowCamera : MonoBehaviour
         {
             if (kb.tabKey.wasPressedThisFrame)
             {
-                var balls = FindObjectsByType<LotteryBall>(FindObjectsSortMode.InstanceID);
+                var balls = FindObjectsByType<LotteryBall>().OrderBy(b => b.number).ToArray();
                 if (balls.Length > 0)
                 {
                     index = (index + 1) % balls.Length;
@@ -52,7 +53,7 @@ public class FollowCamera : MonoBehaviour
         // デフォルト: 1番ボールに追従（スポーン待ちの間は毎フレーム探す）
         if (target == null && !manualOverview)
         {
-            foreach (var b in FindObjectsByType<LotteryBall>(FindObjectsSortMode.None))
+            foreach (var b in FindObjectsByType<LotteryBall>())
                 if (b.number == 1) { target = b; break; }
         }
     }
