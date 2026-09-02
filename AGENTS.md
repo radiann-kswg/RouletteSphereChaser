@@ -76,6 +76,9 @@ v1で一度学んだはずの失敗を、v2のフェーズ6でそっくり再演
 - `Assets/Editor/ShowcaseCapture.cs` ＋ `Docs/screenshots/` … **README掲載画像**。`Tools > Capture Showcase Shots` で `park-wide` / `park-front` ＋抽選機6点を撮る（1600×900）
 - **`Docs/DESIGN-materials.md` … 外装（マテリアル／配色）の設計正本**（フェーズ9〜）。役割ごとの9パレットとシーン照明、第2段のテクスチャ計画
 - `PenchantManufacture_ImageAssets/` … **gitサブモジュール**（User作フォント・CC BY 4.0）。`Assets/Fonts/PenchantManufacture.otf` はここからのコピー。TMP SDFアセットはビルダーが自動生成（`Assets/Fonts/PenchantManufacture_SDF.asset`）
+- **外装テクスチャ（美化その3・2026-09-02）**: `python Docs/gen_park_textures.py` → `Assets/Textures/Park/<マテリアル名>.png`（**git管轄外**・手描き差し替え可）。
+  `ParkBuilder.Mat()` がビルド時に `_BaseMap` へ差す（無ければ単色）。役割→マテリアル表と濃さの上限は `Docs/DESIGN-materials.md` 4.0章
+- **ユニットPrefab／素材パッケージ（7章）**: `Assets/Editor/ParkUnitExporter.cs`（`Tools > Export Park Units`）→ `Assets/Prefabs/Units/*.prefab`（45基）＋ `Exports/RouletteSphereChaser_Units.unitypackage`（LFS）
 - 得点表示の標準: **Blender製ScoreGate（チャッカー風）＋ボード上TMP SDFラベル**。ゲートは2026-08-30に**柱を延長し下側クロスバーで閉じた「口の字」フープ**へ整形（レーンを抱く形。旧⊓型は脚が空中で終わっていた）。`verify_park_assembly.py` の aabbOverlapPairs 基準は 106→**114**（フープ・レーンバンドがレーンAABBを包むための意図的増加）（深度テスト＋`_CullMode=2`背面カリング→壁越し・裏側の得点は見えない）。ボール番号アトラス`NumberAtlas.png`も同フォントで生成（上段=90番台・下段=0番台のUV反転レイアウト・白地黒丸黒数字。生成はPIL・4xスーパーサンプル）
 - クレジット: `PenchantManufacture image assets by RadianN_kswg / ラジアン（柏木主税） CC BY 4.0`
 
@@ -223,6 +226,14 @@ v1で一度学んだはずの失敗を、v2のフェーズ6でそっくり再演
     ParkAssemblyでreload→`park_layout.json`をパッチ→verify、と同一セッションで流すと、パッチもverifyも**同じ古い値**を掴んで
     「通ったように見える」。あとでキャッシュが新鮮になってからverifyが落ちて発覚する（HighLaneバンドで実測: 0.02のずれ）。
     **形状変更後の基準パッチは、時間をおいて（別の作業を挟んで）再verifyで確定させること。**
+    （同種: `o.location` を書いた直後の `matrix_world` も古い。`view_layer.update()` を挟んでから verify する—2026-09-02 で再踏）
+59. **ビルボードの得点ラベルを「トリガー中心+0.25」の固定オフセットで置くと、皿床の上ではボール高さそのもの＝通過球に必ず隠れる**
+    （2026-09-02実測: 36球150秒で球がラベル0.25m以内に入ったサンプル 8,130。C_S/DropLabel_20 は1,796、D皿は床+0.05に座っていた）。
+    E盤（45°傾斜）では盤面の**裏側**に0.06埋まっていた。**置き方の標準**: 皿床（レイキャスト実測）+0.30・D皿は+0.40・
+    傾斜盤は盤面法線方向+0.30・パチンコ盤は板面から手前+0.30・シーソー等の飛翔帯は+0.45。適用後は 1,839（残りはゲート印字の
+    非重畳分）。検証は**プレイ中に `EditorApplication.update` で全ラベル×全球の距離を数える**（`Temp/label_occlusion*.tsv`）。
+    なお `EditorApplication.update` の購読は**プレイ開始のドメインリロードで消える**ので、Play に入ってから登録すること。
+    ラベルを動かしたら `Docs/park_labels.json` の `m[3],m[7],m[11]` も同時に更新（verify が突き合わせる）。
 
 ## 4. Unity MCP / Blender MCP 運用
 
@@ -335,10 +346,11 @@ v1で一度学んだはずの失敗を、v2のフェーズ6でそっくり再演
 | 9-2（2026-08-24） | コンセプトを明文化。**中性色へ後退**（色味を持つのは抽選盤の紺だけ）。**透過アクリル化で死角70%超をゼロに**（罠52） |
 | 9-3（2026-08-24） | `OrbitCamera.azimuthAmplitude` を追加してパチンコ盤カメラを正面振り子に。盤面印字ラベルを藍へ。READMEに画像掲載 |
 | 整備（2026-08-29） | v1ビルダー・キット複製・過去ソークログを削除。`GreyboxKit` を `ParkBuilder` へ畳み込み。定点カメラの6辞書を `CameraCoverage.Rigs` の1表に統合 |
+| 美化その3（2026-09-02） | Unity `6000.6.0f1` へ移行（サブモジュール追随）。得点ラベルをボール通過帯の外へ（罠59・接近サンプル 8,130→1,839）。外装テクスチャ初版（git管轄外・`gen_park_textures.py`）。**タワー×役割のユニットPrefab 45基＋`Exports/*.unitypackage`**（7章） |
 
 - **作業手順（フェーズ8以降の標準）**: 形は原本`.blend` → 位置/トリガー/回転速度は`ParkAssembly.blend` →
   `Docs/verify_park_assembly.py` → `Docs/export_park_assembly.py` → Unityで `Tools > Build RouletteSphere Park (v2)` →
-  `Tools > Run Soak (36 balls)`（**コースアウト0・derail増加なしを必須条件**にする）。
+  `Tools > Run Soak (36 balls)`（**コースアウト0・derail増加なしを必須条件**にする）→ 通ったら `Tools > Export Park Units`（7章）。
   - **ソーク実行中（約5.5分）はBlenderネイティブの編集作業を並行する**（User方針 2026-08-30）。BlenderとUnityは独立なので、
     次バッチのメッシュ推敲・計測・原本編集をソーク待ち時間に進め、ソーク完了後にまとめてexport→次ビルドへ回す。
     ただし**ソーク対象のFBXは書き換えない**こと（export はソーク完了後）。
@@ -397,3 +409,31 @@ exit playmode → `AssetDatabase.Refresh` → 40秒待機（コンパイル完�
 - `.meta` はUnityエディタに任せる。
 - **gitは節目ごとに定期コミットする**（User方針 2026-08-21）。サンドボックスのマウントはgit-lfs無し・削除不可でgit操作不能のため、**コミットはUnityメニュー `Tools > Git Commit All`（`Assets/Editor/GitTools.cs`）経由**で行う。メッセージは実行前に `EditorPrefs "GitTools.Message"` へ設定。pushはUserの指示があったときのみ。
 - ロールプレイはルート `AGENTS.md` の既定（錦野歌嫁）に従う。
+
+## 7. ユニットPrefab／素材パッケージの継続更新（2026-09-02〜）
+
+パークを「タワー × ユニット役割」に切り分けた Prefab と、それを他プロジェクトへ持ち出す `.unitypackage` を**配置成果物と同じ節目で更新し続ける**。
+
+- **役割の正本は Blender**: `ParkAssembly.blend` の各メッシュのカスタムプロパティ `unit_role`
+  （`mech`=抽選機 / `tray`=受け皿・樋 / `leg`=支柱・フレーム / `relay`=中継レーン / `base`=土台・回収系）。
+  コレクションも同じ軸で整理してある（`<タワー>_Mech` / `_Tray` / `_Legs`。回転ピボットのコレクション＝DiscPivot・Stirrer類はそのまま mech）。
+  `Docs/export_park_assembly.py` が `role` として `params.json` に書き、`ParkUnitExporter` はそれを読むだけ。
+  **新しいメッシュを足したら必ず `unit_role` を付ける**（未設定は mech 扱い＝支柱が抽選機に混ざる）。
+- **切り分けの単位**: トップレベルグループ（Basin / DrainStation / Lifts / TowerA / TowerA23 / TowerB_E … / TowerH）× 役割。
+  中継レーンだけは種類別（`Relays_HighLane` / `Relays_JPRail` / `Relays_JPTube`）。mech と base のユニットには
+  トリガー・回転体・リフト・得点ラベルなどの機能マーカーを同梱し、tray / leg / relay はメッシュ＋コライダのみ。
+  Prefab は座標をワールドのまま持つ（ルートを動かせば塔ごと移動できる。塔単位で組み直す用途に足りる）。
+- **出力**: `Tools > Export Park Units (prefabs + unitypackage)`（`Assets/Editor/ParkUnitExporter.cs`）。
+  `Assets/Prefabs/Units/<Group>_<Role>.prefab`（45基・git管轄）と `Exports/RouletteSphereChaser_Units.unitypackage`
+  （依存＝`ParkAssembly.fbx`・マテリアル・スクリプト・フォント・外装テクスチャを同梱。約12MB・**LFS管轄**。`.gitignore` の
+  `*.unitypackage` 除外に対し `Exports/` だけ例外にしてある）。
+- **いつ更新するか（必須）**: `Docs/export_park_assembly.py` → `Tools > Build RouletteSphere Park (v2)` を回した節目で、
+  **ソークが通ったあと**に `Export Park Units` も回してから同じコミットに入れる（配置成果物と素材パッケージの版ズレを作らない）。
+  メッシュ・マーカー・マテリアル・スクリプトのどれを変えても Prefab の中身は変わるので、「見た目だけの変更だから」で飛ばさない。
+  ただし `.unitypackage` はコミットごとにLFS履歴が積まれるので、**ソーク不要の微修正が続く間は Prefab だけ更新し、
+  パッケージは節目（README画像を撮り直すタイミングと同じ）でまとめて出す**のでもよい。
+- **検査**: 出力ログの `prefabs=45`（ユニット数が増減したら意図した増減か確認）と、コンソールの
+  `メッシュ n/m しか拾えていない` 警告が **0件**であること（出たら `unity_path` と Prefab 内の相対パスの不一致＝ParkBuilder の改名規則が変わった合図）。
+- **他プロジェクトでの使い方**: パッケージを Import → `Assets/Prefabs/Units/` の Prefab をシーンへ。`ScoreZone` / `Rotator` /
+  `Oscillator` / `BallLift` / `LapGate` / `Billboard` / `CameraDirector` は同梱される。球は `LotteryBallKit` を別途入れる。
+  URP前提（`_BaseMap` / `_BaseColor`）。
