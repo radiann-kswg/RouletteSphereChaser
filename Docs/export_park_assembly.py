@@ -62,6 +62,9 @@ def main():
                 "path": ob.get("unity_path", ""),
                 "collider": ob.get("collider", "mesh"),
                 "material": ob.get("material", "") or ob.name.split(".")[0],
+                # ユニット役割（AGENTS.md 7章）: mech=抽選機 / tray=受け皿・樋 / leg=支柱・フレーム / relay=中継レーン / base=土台
+                # Blender側は <タワー>_Mech/_Tray/_Legs のサブコレクションに整理してあり、この値が ParkUnitExporter の切り分け軸
+                "role": ob.get("unit_role", "mech"),
                 "rgb": {"r": c[0], "g": c[1], "b": c[2], "a": 1.0},
             })
         elif ob.type == 'EMPTY' and ob.get("kind") not in (None, "waypoint"):
