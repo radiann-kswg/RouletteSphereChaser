@@ -85,6 +85,7 @@ public static class ParkBuilder
                 EditorSceneManager.NewScene(NewSceneSetup.DefaultGameObjects, NewSceneMode.Single), ScenePath);
         }
 
+        _sampleRoles = null;   // roles.txt を毎ビルド読み直す
         var old = GameObject.Find("Park");
         if (old != null) Object.DestroyImmediate(old);
         var root = new GameObject("Park").transform;
@@ -281,14 +282,36 @@ public static class ParkBuilder
             AssetDatabase.CreateAsset(m, path);
         }
         // 外装テクスチャ（DESIGN-materials.md 4章）。`Assets/Textures/Park/<マテリアル名>.png` は **git管轄外**
-        // （`python Docs/gen_park_textures.py` で生成・手描きで差し替え可）。無ければ単色のまま＝クローン直後も壊れない。
+        // （ボールスキンと同じ運用: ライセンス適用外の画像を各自ここへ置く）。無ければ git管轄のサンプル
+        // `Assets/Textures/ParkSamples/<役割>.png`（roles.txt で引く）へフォールバック＝クローン直後もサンプルが貼られる。
         var tex = AssetDatabase.LoadAssetAtPath<Texture2D>($"Assets/Textures/Park/{name}.png");
+        if (tex == null && SampleRoles.TryGetValue(name, out var role))
+            tex = AssetDatabase.LoadAssetAtPath<Texture2D>($"Assets/Textures/ParkSamples/{role}.png");
         if (m.HasProperty("_BaseMap") && m.GetTexture("_BaseMap") != tex)
         {
             m.SetTexture("_BaseMap", tex);
             EditorUtility.SetDirty(m);
         }
         return m;
+    }
+
+    /// マテリアル名 -> 役割（`Docs/gen_park_textures.py` が書く roles.txt。1行 `マテリアル=役割`）
+    static Dictionary<string, string> _sampleRoles;
+    static Dictionary<string, string> SampleRoles
+    {
+        get
+        {
+            if (_sampleRoles != null) return _sampleRoles;
+            _sampleRoles = new Dictionary<string, string>();
+            const string p = "Assets/Textures/ParkSamples/roles.txt";
+            if (System.IO.File.Exists(p))
+                foreach (var line in System.IO.File.ReadAllLines(p))
+                {
+                    int i = line.IndexOf('=');
+                    if (i > 0) _sampleRoles[line.Substring(0, i).Trim()] = line.Substring(i + 1).Trim();
+                }
+            return _sampleRoles;
+        }
     }
 
     /// unity_path の中間ノードを必要に応じて作る

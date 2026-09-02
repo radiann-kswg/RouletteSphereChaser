@@ -1,14 +1,19 @@
 # 外装テクスチャ（DESIGN-materials.md 4章・第2段）を役割ごとに手続き生成する。
-#   python Docs/gen_park_textures.py            … リポジトリ直下で実行
-# 出力: Assets/Textures/Park/<マテリアル名>.png（**git管轄外**。ParkBuilder がビルド時に _BaseMap へ差す）
-# 方針: URP/Lit は BaseMap×BaseColor なので、テクスチャは「白地に薄い陰影」だけ＝配色（2章）はそのまま生きる。
-# 派手にしない（0章「静かであること」）。気に入らなければ PNG を手で描き替えてよい（再生成で上書きされる点だけ注意）。
+#   python Docs/gen_park_textures.py [--force]      … リポジトリ直下で実行
+# 出力:
+#   Assets/Textures/ParkSamples/<役割>.png + roles.txt … **サンプル（git管轄・LFS）**。ParkBuilder のフォールバック元
+#   Assets/Textures/Park/<マテリアル名>.png             … **作業用（git管轄外）**。ParkBuilder はまずこちらを _BaseMap へ差す。
+#       ボールスキンと同じ運用: ライセンス適用外の画像を各自ここへ置いて差し替える。**既にあるファイルは上書きしない**（--force で上書き）
+#   PSD テンプレートは Docs/gen_park_texture_psd.py（Docs/ParkTextures PSD/<マテリアル名>.psd）
+# 方針: URP/Lit は BaseMap×BaseColor なので、テクスチャは「白地に薄い陰影」だけ＝配色（2章）はそのまま生きる。派手にしない（0章）。
 import os
+import shutil
+import sys
 import numpy as np
 from PIL import Image
 
 N = 1024
-OUT = "Assets/Textures/Park"
+SAMPLES, OUT = "Assets/Textures/ParkSamples", "Assets/Textures/Park"
 ROLES = {  # DESIGN-materials.md 2章「マテリアル → 役割」。透過アクリル（SeeThroughMats）は貼らない
     "CABINET":   ["ParkBase", "DrainStation"],
     "CHROME":    ["LiftGuide", "TowerF_CatchTray", "TowerF_MissTray", "TowerH_CatchFunnel", "TowerE_Pickup"],
@@ -28,8 +33,7 @@ rng = np.random.default_rng(78)
 
 def hairline(strength=0.06, lines=1.0):
     """横方向のヘアライン（uに沿った条線）。行ごとの明暗ノイズをuに引き伸ばす"""
-    row = rng.normal(0, 1, (N, 1))
-    row = np.repeat(row, N, axis=1) * lines
+    row = np.repeat(rng.normal(0, 1, (N, 1)), N, axis=1) * lines
     fine = rng.normal(0, 0.3, (N, N))
     return 1.0 - strength * np.clip(np.abs(row + fine) * 0.5, 0, 1)
 
@@ -70,8 +74,7 @@ def panel(strength=0.10):
 
 def frost(strength=0.04):
     """乳白アクリルのすりガラス感"""
-    n = rng.normal(0, 1, (N // 8, N // 8))
-    n = np.kron(n, np.ones((8, 8)))
+    n = np.kron(rng.normal(0, 1, (N // 8, N // 8)), np.ones((8, 8)))
     return 1.0 - strength * np.clip(np.abs(n) * 0.5, 0, 1)
 
 
@@ -87,9 +90,20 @@ GEN = {
     "SHOWPIECE": lambda: frost(),
 }
 
-os.makedirs(OUT, exist_ok=True)
-for role, mats in ROLES.items():
-    img = Image.fromarray((np.clip(GEN[role](), 0, 1) * 255).astype(np.uint8), "L").convert("RGB")
-    for m in mats:
-        img.save(f"{OUT}/{m}.png")
-    print(role, len(mats))
+if __name__ == "__main__":
+    force = "--force" in sys.argv
+    os.makedirs(SAMPLES, exist_ok=True)
+    os.makedirs(OUT, exist_ok=True)
+    copied = 0
+    with open(f"{SAMPLES}/roles.txt", "w", encoding="utf-8") as f:
+        for role, mats in ROLES.items():
+            sample = f"{SAMPLES}/{role}.png"
+            Image.fromarray((np.clip(GEN[role](), 0, 1) * 255).astype(np.uint8), "L").convert("RGB").save(sample)
+            for m in mats:
+                f.write(f"{m}={role}\n")
+                dst = f"{OUT}/{m}.png"
+                if force or not os.path.exists(dst):
+                    shutil.copyfile(sample, dst)
+                    copied += 1
+            print(role, len(mats))
+    print(f"samples -> {SAMPLES}/ ; copied {copied} to {OUT}/ (skip existing unless --force)")

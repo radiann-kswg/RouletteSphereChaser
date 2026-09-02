@@ -126,10 +126,12 @@ InitTestScene*.unity*
 # ボールスキンの作成用PSD（サンプル texture の原本）も同様に管轄外。
 /[Dd]ocs/BallSkins PSD/
 
-# 外装テクスチャ（DESIGN-materials.md 4章）も管轄外。`python Docs/gen_park_textures.py` で再生成でき、
-# 手で描き替えてもよい。ParkBuilder がビルド時に Assets/Textures/Park/<マテリアル名>.png を _BaseMap へ差す（無ければ単色）。
+# 外装テクスチャ（DESIGN-materials.md 4章）の作業用フォルダも管轄外（ボールスキンと同じ＝ライセンス適用外の画像を各自置く）。
+# サンプルは Assets/Textures/ParkSamples/（管轄内・LFS）。ParkBuilder は Park/<マテリアル名>.png → 無ければサンプルの順で _BaseMap へ差す。
 /[Aa]ssets/[Tt]extures/Park/*
 !/[Aa]ssets/[Tt]extures/Park/.gitkeep
+# 外装テクスチャ作成用PSD（Docs/gen_park_texture_psd.py で再生成。1枚3MB超×25なので管轄外）
+/[Dd]ocs/ParkTextures PSD/
 
 # Unity管轄外へ持ち出す素材パッケージ（AGENTS.md 7章）。テンプレートの *.unitypackage 除外の例外＝LFSで追跡する
 !/Exports/*.unitypackage
