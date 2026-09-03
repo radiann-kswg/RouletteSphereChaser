@@ -436,6 +436,7 @@ exit playmode → `AssetDatabase.Refresh` → 40秒待機（コンパイル完�
   パッケージは節目（README画像を撮り直すタイミングと同じ）でまとめて出す**のでもよい。
 - **検査**: 出力ログの `prefabs=45`（ユニット数が増減したら意図した増減か確認）と、コンソールの
   `メッシュ n/m しか拾えていない` 警告が **0件**であること（出たら `unity_path` と Prefab 内の相対パスの不一致＝ParkBuilder の改名規則が変わった合図）。
+- **既知の穴（2026-09-04・NTsMedalGame で踏んだ）**: 依存収集は Prefab から辿れる資産だけなので、`ScoreZone`/`LapGate`/`BallLift` が参照する **`LotteryBall.cs`** と `Billboard` が参照する **`CameraDirector.cs`** が同梱されず、Import 先がコンパイルエラー（Safe Mode）になる。次に Export するときは `ParkUnitExporter` に `Assets/Scripts/LotteryBall.cs` を明示追加し、`Billboard` は `CameraDirector` が無い環境で `Camera.main` に落ちる形にする（NTsMedalGame は暫定で `MedalSetup` が置換している）。
 - **他プロジェクトでの使い方**: パッケージを Import → `Assets/Prefabs/Units/` の Prefab をシーンへ。`ScoreZone` / `Rotator` /
   `Oscillator` / `BallLift` / `LapGate` / `Billboard` / `CameraDirector` は同梱される。球は `LotteryBallKit` を別途入れる。
   URP前提（`_BaseMap` / `_BaseColor`）。
