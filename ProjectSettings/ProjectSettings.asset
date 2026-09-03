@@ -931,11 +931,11 @@ PlayerSettings:
   activeInputHandler: 1
   windowsGamepadBackendHint: 0
   enableDirectStorage: 0
-  cloudProjectId: ed7d211b-ebc0-41a6-aaa6-747fc498d3ea
+  cloudProjectId: bc4070b1-e77c-4e38-9741-b7a68a385965
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: RouletteSphereChaser
-  organizationId: nplottetrradian
+  projectName: LotteryBallKit
+  organizationId: e3a73781-effd-4600-0000-0e4002434cf8
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
