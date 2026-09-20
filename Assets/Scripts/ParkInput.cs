@@ -11,6 +11,7 @@ public static class ParkInput
     static readonly InputAction prevBall = Make(null, "<Gamepad>/leftShoulder");   // キーボードは Shift+Tab（BallStep で判定）
     static readonly InputAction overview = Make("<Keyboard>/0", "<Gamepad>/leftTrigger");
     static readonly InputAction help = Make("<Keyboard>/h", "<Gamepad>/select");
+    static readonly InputAction audio = Make("<Keyboard>/m", "<Gamepad>/buttonNorth");
     static readonly InputAction quit = Make("<Keyboard>/escape", "<Gamepad>/start", "hold(duration=1)");   // 誤爆防止の1秒長押し
 
     /// 最後に触ったのがゲームパッドか（ヘルプ表記の切替用）
@@ -20,6 +21,7 @@ public static class ParkInput
     public static bool NextShot => Pressed(nextShot);
     public static bool Overview => Pressed(overview);
     public static bool Help => Pressed(help);
+    public static bool Audio => Pressed(audio);
     public static bool Quit => quit.WasPerformedThisFrame();
     /// +1=次の球 / -1=前の球 / 0=操作なし
     public static int BallStep
@@ -33,9 +35,9 @@ public static class ParkInput
         }
     }
 
-    public static string HelpText => UsingGamepad
-        ? "X Demo\nRT Next shot\nLB / RB Ball\nLT Overview\nSelect Help\nHold Start Quit"
-        : "C Demo\nV Next shot\nTab / Shift+Tab Ball\n0 Overview\nH Help\nHold Esc Quit";
+    public static string HelpText => (UsingGamepad
+        ? "X Demo\nRT Next shot\nLB / RB Ball\nLT Overview\nY Audio\nSelect Help\nHold Start Quit"
+        : "C Demo\nV Next shot\nTab / Shift+Tab Ball\n0 Overview\nM Audio\nH Help\nHold Esc Quit").Replace("Audio", "Audio: " + ParkAudio.Current);
 
     static InputAction Make(string key, string pad, string interactions = null)
     {

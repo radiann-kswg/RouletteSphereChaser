@@ -144,3 +144,7 @@ __pycache__/
 # ソークの生成物はローカル調査用。PNGはLFSに毎回積まれるので追跡しない
 /[Dd]ocs/soak_shots/
 /[Dd]ocs/soak_result.json
+
+# BGM の差し替えスロット（ボールスキン同様、各自の音源を置く。ライセンス適用外・git 管轄外）
+/[Aa]ssets/[Rr]esources/BGM_Custom/*
+!/[Aa]ssets/[Rr]esources/BGM_Custom/.gitkeep

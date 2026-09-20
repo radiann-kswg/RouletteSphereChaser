@@ -61,10 +61,16 @@ git clone https://github.com/radiann-kswg/RouletteSphereChaser.git
 | `V` | `RT` | Cut to the next shot |
 | `Tab` / `Shift+Tab` | `RB` / `LB` | Follow the next / previous ball |
 | `0` | `LT` | Back to the overview camera (releases auto-follow) |
+| `M` | `Y` | Cycle audio: All → SFX only → Mute (remembered across launches) |
 | `H` | `Select` | Show / hide the controls help (shown for the first 8 seconds) |
 | Hold `Esc` | Hold `Start` | Quit (1 second, to avoid accidents) |
 
 Left alone, it keeps running the demo director. The mouse cursor hides after 3 seconds. `Alt+Enter` toggles windowed mode.
+
+### Audio
+
+Rolling, impact and lift sounds are procedurally generated (`Docs/gen_sfx.py`). The background music is public-domain sheet-music data (MIDI files marked Public Domain on the [Mutopia Project](https://www.mutopiaproject.org/)) rendered by our own music-box synth (`Docs/gen_bgm.py`) — no recorded performances are used.
+To play your own music instead, drop audio files into `Assets/Resources/BGM_Custom/` (untracked and outside this repository's license, like the ball skins).
 
 ### Building the app (Windows x64)
 

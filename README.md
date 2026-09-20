@@ -61,10 +61,16 @@ git clone https://github.com/radiann-kswg/RouletteSphereChaser.git
 | `V` | `RT` | 次のショットへ送る |
 | `Tab` / `Shift+Tab` | `RB` / `LB` | 次／前のボールを追従する |
 | `0` | `LT` | 全景カメラに戻る（オート追従を解除） |
+| `M` | `Y` | 音の切替: All → SFX only → Mute（次回起動にも引き継ぐ） |
 | `H` | `Select` | 操作ヘルプの表示/非表示（起動後 8 秒は自動表示） |
 | `Esc` 長押し | `Start` 長押し | 終了（1 秒。誤操作防止） |
 
 何もしなければデモ演出のまま流れ続けます。マウスカーソルは 3 秒で隠れます。`Alt+Enter` でウィンドウ表示に切り替えられます。
+
+### 音
+
+球の転がり・衝突とリフトの物理音は手続き生成（`Docs/gen_sfx.py`）、BGM はパブリックドメインの楽譜データ（[Mutopia Project](https://www.mutopiaproject.org/) の Public Domain 指定 MIDI）を自前でオルゴール風にレンダリングしたもの（`Docs/gen_bgm.py`）です。演奏の録音は使っていません。
+手持ちの音源を流したいときは `Assets/Resources/BGM_Custom/` に置くと、同梱の BGM の代わりに順繰りで再生されます（ボールスキンと同じく git 管轄外・ライセンス適用外）。
 
 ### アプリとしてビルドする（Windows x64）
 

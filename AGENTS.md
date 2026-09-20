@@ -60,8 +60,14 @@ v1で一度学んだはずの失敗を、v2のフェーズ6でそっくり再演
   ─ **スターギアは8山サイン波（2026-08-29再生成）**: 旧11山では盤の8穴（az0,45,…,315・45°間隔）と共回転位相が合わず、歯が180点穴ほか複数の穴の縁に被さっていた。谷（r0.60）を8穴の方位に位相同期し、全穴のスロット開口±16.5°を確保。**盤の穴数・方位を変えるときはギアの山数・位相も揃えること**（かみ合い検算はBVHレイキャストで穴帯r0.70-0.72にギア影が無いことを確認）
 - `Assets/Scripts/` … `LotteryBall` / `ScoreZone`（`hits` カウンタ付き＝C/P計測用） / `LapGate` / `Rotator` / `Oscillator` / `BallLift` / `BallSpawner` / `FollowCamera`（**無指示時は1番ボール自動追従**・Tab切替・0で全景=オート解除）/ `BallHUD`（Penchant書体の情報HUD: 番号/LAP/SCORE/TOTAL、全景時はパーク集計）/ `Billboard`
 - `Assets/Scripts/ParkInput.cs` … **操作バインドの唯一の置き場**（美化その4・2026-09-20）。コード定義の `InputAction`（アセット無し）でキーボード＋`<Gamepad>`（X-Input / DualShock / Switch Pro 共通）。
-  C/X=デモ・V/RT=次ショット・Tab,Shift+Tab/RB,LB=球送り・0/LT=全景・H/Select=ヘルプ・Esc/Start **1秒長押し**=終了。`UsingGamepad`（最後に触ったデバイス）で `BallHUD` 左下のヘルプ表記が切り替わる。
+  C/X=デモ・V/RT=次ショット・Tab,Shift+Tab/RB,LB=球送り・0/LT=全景・M/Y=音の切替・H/Select=ヘルプ・Esc/Start **1秒長押し**=終了。`UsingGamepad`（最後に触ったデバイス）で `BallHUD` 左下のヘルプ表記が切り替わる。
   `CameraDirector` / `FollowCamera` は `Keyboard.current` を直接読まない。キーを足すときはここと `HelpText` と README（日英）の表を同時に直す
+- **音（美化その4-2・2026-09-20）**: `Assets/Scripts/ParkAudio.cs` が `RuntimeInitializeOnLoadMethod` で自分を生成する（`CameraDirector` のあるシーンだけ）。**シーンにもプレハブにも配線しない**＝`ParkBuilder` の作り直しでも下流の球差し替えでも壊れない。
+  素材は `Resources` から拾う: `Assets/Resources/SFX/Roll_Loop.wav`・`SFX/Hits/Hit_1〜4.wav`・`SFX/Lift_Loop.wav`・`BGM/*.ogg`（LFS）。`Assets/Resources/BGM_Custom/` は **git 管轄外の差し替えスロット**（中身があれば同梱 BGM の代わりに流す）。
+  ─ 耳（`AudioListener`）は `ParkAudio` が持ち、毎フレーム `CameraDirector.Active` へ移す（メインカメラに置くと、デモ中も1番ボールの位置で聴くことになり絵と音がずれる）。
+  ─ 球の音は `BallAudio`（1秒ごとの走査で新しい `LotteryBall` に後付け）。転がり＝接地中の速さで音量/ピッチ、衝突＝相対速度 `hitMinSpeed` 以上だけ。**ノブは `ParkAudio` の public フィールド1か所**（Play 中に Hierarchy の `ParkAudio` で動かし、決まった値を既定値へ書き戻す）。実測の球速は p50≈0.15〜0.6・p90≈1.75・max≈2.5 m/s（36球）。
+  ─ **音色の決めごと（User 判断 2026-09-20）**: 球もレーンも ABS／アクリル系の「軽くて柔らかい」音。**金属的にしない**（長く鳴る正弦・非整数倍音を足さない。衝突は約30msで消す）、**重低音にしない**（転がりは250Hz未満を切る）。キャラ絵のボールスキンに対して音が浮かないこと。リフトの低いモーター音は User 承認済み。
+  ─ **BGM に使ってよいのは Mutopia で License が `Public Domain` のものだけ**。`CC BY-SA` の版（サティのグノシエンヌ、ゴルトベルクのアリア等）は継承条項が本リポジトリ（CC BY 4.0）と下流（CC BY-NC）にぶつかるので使わない。演奏の録音も使わない（演奏者の権利が別にある）。現行: バッハ BWV 846 前奏曲／ドビュッシー「月の光」。
 - `LotteryBall.displayName` … HUD に出す名前（既定は空＝RSC 単体では番号だけ）。**下流プロジェクト（NTsSphereChaser）が入れる差し込み口**。`LotteryBall.Label` が `Ball 02  Binor` 形式を返し、HUD タイトルと通過ログが使う。HUD 書体は CJK 未収録（罠53）なので英数字で入れること
 - `Assets/Editor/ParkBuilder.cs` … シーン生成の唯一の入口（再実行で作り直し。座標は計算せず `ParkAssembly.fbx` を解釈するだけ）
 - `Assets/Models/TowerA_*.fbx` … タワーA機構（Spiral3/Distributor/Agitator。原本 `BlenderSources/TowerA.blend`。Spiral=旧4巻き版は未使用残置）
@@ -353,6 +359,7 @@ v1で一度学んだはずの失敗を、v2のフェーズ6でそっくり再演
 | 9-3（2026-08-24） | `OrbitCamera.azimuthAmplitude` を追加してパチンコ盤カメラを正面振り子に。盤面印字ラベルを藍へ。READMEに画像掲載 |
 | 整備（2026-08-29） | v1ビルダー・キット複製・過去ソークログを削除。`GreyboxKit` を `ParkBuilder` へ畳み込み。定点カメラの6辞書を `CameraCoverage.Rigs` の1表に統合 |
 | 美化その4-1（2026-09-20） | **観賞アプリの殻**: `ParkInput`（キーボード＋ゲームパッド）・操作ヘルプ（起動8秒＋H/Select）・1秒長押し終了・カーソル3秒で隠す・`LotteryBall.displayName`。フルスクリーンウィンドウ起動／リサイズ可／vSync 1・`companyName=RadianN_kswg`・`0.2.0`。Windows x64 ビルド（下記）。音（物理音＋PD曲のオルゴール風BGM）は 4-2 |
+| 美化その4-2（2026-09-20） | **音**: `ParkAudio`（実行時に自前生成・シーン配線なし）＋`BallAudio`（球ごとに後付け）。物理音は `Docs/gen_sfx.py` の手続き生成、BGM は Mutopia の **Public Domain 指定** MIDI を `Docs/gen_bgm.py` でオルゴール風に自前レンダリング。M/Y で All→SFX only→Mute。`0.3.0` |
 | 美化その3（2026-09-02） | Unity `6000.6.0f1` へ移行（サブモジュール追随）。得点ラベルをボール通過帯の外へ（罠59・接近サンプル 8,130→1,839）。外装テクスチャ初版（git管轄外・`gen_park_textures.py`）。**タワー×役割のユニットPrefab 45基＋`Exports/*.unitypackage`**（7章） |
 
 - **作業手順（フェーズ8以降の標準）**: 形は原本`.blend` → 位置/トリガー/回転速度は`ParkAssembly.blend` →
