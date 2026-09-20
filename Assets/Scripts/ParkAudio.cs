@@ -10,16 +10,17 @@ public class ParkAudio : MonoBehaviour
 {
     public enum Mode { All, SfxOnly, Mute }
 
-    [Range(0, 1)] public float master = 0.6f;
-    [Range(0, 1)] public float bgmVolume = 0.22f;
+    [Range(0, 1)] public float master = 0.65f;
+    [Range(0, 1)] public float bgmVolume = 0.15f;
     [Range(0, 1)] public float liftVolume = 0.10f;
     public float bgmGap = 6f;   // 曲間の無音[s]
+    // 既定値は User が Play 中に耳で合わせた値（2026-09-20）。変えるときも耳で合わせてから書き戻す。
     // 球の音のノブ。実物の音は測れないので耳で合わせる（Play 中に Hierarchy の ParkAudio を Inspector で動かし、決まった値をこの既定値へ）
-    [Range(0, 1)] public float rollVolume = 0.10f;   // 転がりの刻み（衝突と同じ「コトッ」）の最大音量。衝突より十分小さく
+    [Range(0, 1)] public float rollVolume = 0.035f;  // 転がりの刻み（衝突と同じ「コトッ」）の最大音量。衝突より十分小さく
     public float rollFullSpeed = 2.0f;               // この速さ[m/s]で最大音量
-    public float rollMinSpeed = 0.15f;               // これ未満（渋滞待ち・ほぼ静止）は刻まない
+    public float rollMinSpeed = 0.25f;               // これ未満（渋滞待ち・ほぼ静止）は刻まない
     public float rollTickDistance = 0.30f;           // 何m転がるごとに1回刻むか（球径0.1＝約1回転）
-    [Range(0, 1)] public float hitVolume = 0.5f;
+    [Range(0, 1)] public float hitVolume = 0.35f;
     public float hitMinSpeed = 0.35f;                // これ未満の接触は鳴らさない（レール上の細かい跳ねを拾わない）
     public float hitFullSpeed = 4.0f;
 
