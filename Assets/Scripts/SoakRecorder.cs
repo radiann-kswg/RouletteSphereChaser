@@ -54,7 +54,17 @@ public class SoakRecorder : MonoBehaviour
     readonly List<string> escapes = new(), stucks = new(), strandeds = new(), derails = new();
     float t;
 
-    void Awake() { Random.InitState(seed); }
+    void Awake()
+    {
+#if UNITY_EDITOR
+        Random.InitState(seed);
+#else
+        // 計測はエディタ専用。シーンに残ったまま保存されてもビルドしたアプリでは動かさない
+        // （2026-09-20: 残骸が ParkScene_v2 にコミットされていて、アプリが乱数種固定・15秒ごとの撮影・死角レイキャスト・exe 隣への書き出しをしていた）
+        enabled = false;   // Destroy はフレーム末なので、同フレームの Start（フォルダ作成・CameraCoverage 追加）を止める
+        Destroy(gameObject);
+#endif
+    }
 
     void Start()
     {
