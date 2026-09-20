@@ -5,9 +5,10 @@ public class LotteryBall : MonoBehaviour
 {
     [Range(0, 99)] public int number;
     public Color tint = Color.white;
-    /// HUD に出す名前（下流プロジェクトが入れる。空なら番号だけ）。HUD 書体は CJK 未収録なので英数字で
+    /// HUD に出す呼び名（下流プロジェクトが入れる。空なら番号）。入っていれば**番号の代わり**に出す＝番号を含めるかは入れる側が決める
+    /// （NTsSphereChaser は創作DB の Name_EN: "93(Nintris)" / "Binor"。User 判断 2026-09-20）。HUD 書体は CJK 未収録なので英数字で
     public string displayName;
-    public string Label => string.IsNullOrEmpty(displayName) ? $"Ball {number:00}" : $"Ball {number:00}  {displayName}";
+    public string Label => string.IsNullOrEmpty(displayName) ? $"Ball {number:00}" : $"Ball {displayName}";
 
     [Header("Score (runtime)")]
     public int pendingPoints; // 今の1巡で獲得中
