@@ -1,8 +1,7 @@
 using System.Linq;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-/// Tabでボールを順に追従、0キーで全景に戻る観賞用カメラ。
+/// Tab(RB)/Shift+Tab(LB)でボールを順に追従、0(LT)で全景に戻る観賞用カメラ。バインドは ParkInput。
 /// 無指示のときは1番ボールへ自動追従（User方針 2026-08-22）。0で全景にするとオート解除、Tabで復帰。
 public class FollowCamera : MonoBehaviour
 {
@@ -30,25 +29,22 @@ public class FollowCamera : MonoBehaviour
 
     void Update()
     {
-        var kb = Keyboard.current;
-        if (kb != null)
+        int step = ParkInput.BallStep;
+        if (step != 0)
         {
-            if (kb.tabKey.wasPressedThisFrame)
+            var balls = FindObjectsByType<LotteryBall>().OrderBy(b => b.number).ToArray();
+            if (balls.Length > 0)
             {
-                var balls = FindObjectsByType<LotteryBall>().OrderBy(b => b.number).ToArray();
-                if (balls.Length > 0)
-                {
-                    index = (index + 1) % balls.Length;
-                    target = balls[index];
-                    manualOverview = false;
-                }
+                index = ((index < 0 && step < 0 ? 0 : index) + step + balls.Length) % balls.Length;
+                target = balls[index];
+                manualOverview = false;
             }
-            if (kb.digit0Key.wasPressedThisFrame)
-            {
-                target = null;
-                index = -1;
-                manualOverview = true;
-            }
+        }
+        if (ParkInput.Overview)
+        {
+            target = null;
+            index = -1;
+            manualOverview = true;
         }
         // デフォルト: 1番ボールに追従（スポーン待ちの間は毎フレーム探す）
         if (target == null && !manualOverview)

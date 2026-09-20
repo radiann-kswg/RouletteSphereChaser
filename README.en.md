@@ -38,7 +38,7 @@ Dishes, boards and troughs that **enclose the balls are clear acrylic**. This sh
 
 ## Requirements
 
-- Unity **6000.6.0f1** (Universal Render Pipeline)
+- Unity **6000.6.2f1** (Universal Render Pipeline)
 - Blender **5.2.0 LTS** (only if you want to edit `BlenderSources/*.blend`)
 - [Git LFS](https://git-lfs.com/) — used for binary assets (`.fbx`, `.blend`, `.png`, …)
 
@@ -55,12 +55,26 @@ git clone https://github.com/radiann-kswg/RouletteSphereChaser.git
 2. Run the menu item **`Tools > Build RouletteSphere Park (v2)`** to generate the park (idempotent — re-running rebuilds the same layout)
 3. Press Play. Balls are fed in one by one and the loop starts
 
-| Key | Action |
-| --- | --- |
-| `C` | Toggle the demo director (auto-picks shots from 8 channels) |
-| `V` | Cut to the next shot |
-| `Tab` | Follow the next ball |
-| `0` | Back to the overview camera (releases auto-follow) |
+| Keyboard | Gamepad | Action |
+| --- | --- | --- |
+| `C` | `X` | Toggle the demo director (auto-picks shots from 8 channels) |
+| `V` | `RT` | Cut to the next shot |
+| `Tab` / `Shift+Tab` | `RB` / `LB` | Follow the next / previous ball |
+| `0` | `LT` | Back to the overview camera (releases auto-follow) |
+| `H` | `Select` | Show / hide the controls help (shown for the first 8 seconds) |
+| Hold `Esc` | Hold `Start` | Quit (1 second, to avoid accidents) |
+
+Left alone, it keeps running the demo director. The mouse cursor hides after 3 seconds. `Alt+Enter` toggles windowed mode.
+
+### Building the app (Windows x64)
+
+With the Unity CLI, from the repository root:
+
+```sh
+unity build . --target StandaloneWindows64 --output-path Builds/RouletteSphereChaser/RouletteSphereChaser.exe
+```
+
+`Builds/` is not tracked by git. `File > Build Profiles` in the Unity editor produces the same thing.
 
 | Menu | What it does |
 | --- | --- |

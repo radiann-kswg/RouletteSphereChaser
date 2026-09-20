@@ -38,7 +38,7 @@
 
 ## 動作環境
 
-- Unity **6000.6.0f1**（Universal Render Pipeline）
+- Unity **6000.6.2f1**（Universal Render Pipeline）
 - Blender **5.2.0 LTS**（`BlenderSources/*.blend` を編集する場合のみ）
 - [Git LFS](https://git-lfs.com/)（`.fbx` / `.blend` / `.png` などのバイナリアセットに使用）
 
@@ -55,12 +55,26 @@ git clone https://github.com/radiann-kswg/RouletteSphereChaser.git
 2. メニュー **`Tools > Build RouletteSphere Park (v2)`** を実行してパークを生成する（冪等。何度実行しても同じ形に作り直されます）
 3. Play。ボールが順次投入され、循環が始まります
 
-| 操作 | 動作 |
-| --- | --- |
-| `C` | デモ演出のオン/オフ（8 チャンネルから自動でショットを選ぶ） |
-| `V` | 次のショットへ送る |
-| `Tab` | ボールを 1 つずつ順番に追従する |
-| `0` | 全景カメラに戻る（オート追従を解除） |
+| キーボード | ゲームパッド | 動作 |
+| --- | --- | --- |
+| `C` | `X` | デモ演出のオン/オフ（8 チャンネルから自動でショットを選ぶ） |
+| `V` | `RT` | 次のショットへ送る |
+| `Tab` / `Shift+Tab` | `RB` / `LB` | 次／前のボールを追従する |
+| `0` | `LT` | 全景カメラに戻る（オート追従を解除） |
+| `H` | `Select` | 操作ヘルプの表示/非表示（起動後 8 秒は自動表示） |
+| `Esc` 長押し | `Start` 長押し | 終了（1 秒。誤操作防止） |
+
+何もしなければデモ演出のまま流れ続けます。マウスカーソルは 3 秒で隠れます。`Alt+Enter` でウィンドウ表示に切り替えられます。
+
+### アプリとしてビルドする（Windows x64）
+
+Unity CLI で、リポジトリ直下から:
+
+```sh
+unity build . --target StandaloneWindows64 --output-path Builds/RouletteSphereChaser/RouletteSphereChaser.exe
+```
+
+`Builds/` は git 管轄外です。Unity エディタの `File > Build Profiles` からでも同じものが作れます。
 
 | メニュー | 内容 |
 | --- | --- |

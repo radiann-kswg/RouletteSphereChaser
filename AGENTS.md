@@ -11,7 +11,7 @@ AIエージェント設定の単一情報源（SSOT）。運用ルール・設�
 > **中が見えること**を機構の見栄えより優先する／主役は球で機構は舞台装置。
 > 迷ったら「**静かな部屋でずっと流しておけるか**」で決める。詳細は `Docs/DESIGN-v2.md` 1.0章・`Docs/DESIGN-materials.md` 0章。
 
-- 神戸「Din Don」のような**観賞用の循環型ボール抽選機**。Unity `6000.6.0f1`（URP）＋ Blender `5.2.0LTS`。
+- 神戸「Din Don」のような**観賞用の循環型ボール抽選機**。Unity `6000.6.2f1`（URP）＋ Blender `5.2.0LTS`。
 - 番号付きボールが自律循環し、通過した抽選機構の結果に応じて**1巡ごとに点数が確定**する。
 - ボールはカメラ個別追従（Tabで切替・0で全景）と、**球体化キャラクターへのテクスチャ差し替え**に対応（`LotteryBall.SetCharacterTexture()`）。
 
@@ -59,6 +59,10 @@ v1で一度学んだはずの失敗を、v2のフェーズ6でそっくり再演
 - `Assets/Models/TowerE_PocketDisc.fbx` / `TowerE_StarGear.fbx` / `TowerE_FeedPan.fbx` … タワーE「45°傾斜ポケット盤」（2026-08-24新造。原本 `BlenderSources/TowerDE.blend`）
   ─ **スターギアは8山サイン波（2026-08-29再生成）**: 旧11山では盤の8穴（az0,45,…,315・45°間隔）と共回転位相が合わず、歯が180点穴ほか複数の穴の縁に被さっていた。谷（r0.60）を8穴の方位に位相同期し、全穴のスロット開口±16.5°を確保。**盤の穴数・方位を変えるときはギアの山数・位相も揃えること**（かみ合い検算はBVHレイキャストで穴帯r0.70-0.72にギア影が無いことを確認）
 - `Assets/Scripts/` … `LotteryBall` / `ScoreZone`（`hits` カウンタ付き＝C/P計測用） / `LapGate` / `Rotator` / `Oscillator` / `BallLift` / `BallSpawner` / `FollowCamera`（**無指示時は1番ボール自動追従**・Tab切替・0で全景=オート解除）/ `BallHUD`（Penchant書体の情報HUD: 番号/LAP/SCORE/TOTAL、全景時はパーク集計）/ `Billboard`
+- `Assets/Scripts/ParkInput.cs` … **操作バインドの唯一の置き場**（美化その4・2026-09-20）。コード定義の `InputAction`（アセット無し）でキーボード＋`<Gamepad>`（X-Input / DualShock / Switch Pro 共通）。
+  C/X=デモ・V/RT=次ショット・Tab,Shift+Tab/RB,LB=球送り・0/LT=全景・H/Select=ヘルプ・Esc/Start **1秒長押し**=終了。`UsingGamepad`（最後に触ったデバイス）で `BallHUD` 左下のヘルプ表記が切り替わる。
+  `CameraDirector` / `FollowCamera` は `Keyboard.current` を直接読まない。キーを足すときはここと `HelpText` と README（日英）の表を同時に直す
+- `LotteryBall.displayName` … HUD に出す名前（既定は空＝RSC 単体では番号だけ）。**下流プロジェクト（NTsSphereChaser）が入れる差し込み口**。`LotteryBall.Label` が `Ball 02  Binor` 形式を返し、HUD タイトルと通過ログが使う。HUD 書体は CJK 未収録（罠53）なので英数字で入れること
 - `Assets/Editor/ParkBuilder.cs` … シーン生成の唯一の入口（再実行で作り直し。座標は計算せず `ParkAssembly.fbx` を解釈するだけ）
 - `Assets/Models/TowerA_*.fbx` … タワーA機構（Spiral3/Distributor/Agitator。原本 `BlenderSources/TowerA.blend`。Spiral=旧4巻き版は未使用残置）
 - `Assets/Models/TowerB_*.fbx` / `TowerC_*.fbx` / `TowerH_*.fbx` / `LiftTopRail.fbx` … フェーズ5機構（原本 `BlenderSources/TowerBCH.blend`。TowerH_CatchFunnel/Drum用初版ファンネルは未使用残置）
@@ -348,6 +352,7 @@ v1で一度学んだはずの失敗を、v2のフェーズ6でそっくり再演
 | 9-2（2026-08-24） | コンセプトを明文化。**中性色へ後退**（色味を持つのは抽選盤の紺だけ）。**透過アクリル化で死角70%超をゼロに**（罠52） |
 | 9-3（2026-08-24） | `OrbitCamera.azimuthAmplitude` を追加してパチンコ盤カメラを正面振り子に。盤面印字ラベルを藍へ。READMEに画像掲載 |
 | 整備（2026-08-29） | v1ビルダー・キット複製・過去ソークログを削除。`GreyboxKit` を `ParkBuilder` へ畳み込み。定点カメラの6辞書を `CameraCoverage.Rigs` の1表に統合 |
+| 美化その4-1（2026-09-20） | **観賞アプリの殻**: `ParkInput`（キーボード＋ゲームパッド）・操作ヘルプ（起動8秒＋H/Select）・1秒長押し終了・カーソル3秒で隠す・`LotteryBall.displayName`。フルスクリーンウィンドウ起動／リサイズ可／vSync 1・`companyName=RadianN_kswg`・`0.2.0`。Windows x64 ビルド（下記）。音（物理音＋PD曲のオルゴール風BGM）は 4-2 |
 | 美化その3（2026-09-02） | Unity `6000.6.0f1` へ移行（サブモジュール追随）。得点ラベルをボール通過帯の外へ（罠59・接近サンプル 8,130→1,839）。外装テクスチャ初版（git管轄外・`gen_park_textures.py`）。**タワー×役割のユニットPrefab 45基＋`Exports/*.unitypackage`**（7章） |
 
 - **作業手順（フェーズ8以降の標準）**: 形は原本`.blend` → 位置/トリガー/回転速度は`ParkAssembly.blend` →
@@ -378,6 +383,15 @@ v1で一度学んだはずの失敗を、v2のフェーズ6でそっくり再演
   - アーティスト用テンプレート: `Docs/BallUV_Template.png` と、作画用のレイヤー付き `Docs/BallUV_Template.psd`（レイヤー: 背景 / 下絵(空) / UVガイド / 番号デカール範囲。赤い弧が番号デカールに隠れる範囲）。再生成はBlenderで `Temp/uv_dump.json` を書き出してから `python Docs/gen_ball_uv_template.py` / `python Docs/gen_ball_uv_psd.py`（要 `pip install pytoshop`。統合画像はraw圧縮＝6MB強。packbits拡張が入る環境ならrleにすると小さくなる）。スキン作成中のPSD（サンプル原本）は `Docs/BallSkins PSD/` に置き、これも**gitの管轄外**（`.gitignore` 済み）。**ボールスキン（球体化キャラのテクスチャ）は `Assets/Textures/BallSkins/` に置き、gitの管轄外**（`.gitignore` 済み。権利はテクスチャ画像元のライセンス依存＝`LICENSE-ASSETS.md` §2。クローンした人が自前の画像を置ける運用）。旧テスト用テクスチャ `Assets/Textures/RefBallTex.png` も同様に管轄外へ移行済み。UV変更時は必ずUnity側で正面＋真上レンダリングして鏡像チェック（前髪の流れ・数字の向きで判定）
 
 - ✅ ボールUV申し送りは検証済み（2026-08-23）: 番号「12」が両ポールで正向き・Zファイティング無し・マテリアル割当正常（submesh0=BallBody / submesh1=BallNumber）・コンソールエラー無し。※`LotteryBall.Apply()`のMPBはエディタの手動`Camera.Render()`には乗らない（プレイ時は正常）。検証レンダはニアクリップ0.01・SubmitRenderRequest不要・ライト同梱で。
+
+**アプリのビルド（美化その4〜・Windows x64 のみ。Linux は下流 NTsSphereChaser の担当）**
+
+```
+unity build . --target StandaloneWindows64 --output-path Builds/RouletteSphereChaser/RouletteSphereChaser.exe
+```
+
+`Builds/` は git 管轄外。完成判定は「ビルド成功・10分放置で Player.log（`%USERPROFILE%\AppData\LocalLow\RadianN_kswg\RouletteSphereChaser\Player.log`）に例外0・停止球なし・キーボード/パッド全操作」。
+新しい UI デザインを起こすときは Claude Design を使う（User 指定 2026-09-20。操作ヘルプは既存 HUD の流用なので対象外だった）。
 
 **セッション開始手順**
 

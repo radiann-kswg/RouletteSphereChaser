@@ -5,6 +5,9 @@ public class LotteryBall : MonoBehaviour
 {
     [Range(0, 99)] public int number;
     public Color tint = Color.white;
+    /// HUD に出す名前（下流プロジェクトが入れる。空なら番号だけ）。HUD 書体は CJK 未収録なので英数字で
+    public string displayName;
+    public string Label => string.IsNullOrEmpty(displayName) ? $"Ball {number:00}" : $"Ball {number:00}  {displayName}";
 
     [Header("Score (runtime)")]
     public int pendingPoints; // 今の1巡で獲得中

@@ -10,7 +10,7 @@ using UnityEngine.InputSystem;
 ///
 /// デモ中は**同時に1台だけ**を有効にして Display 1 に出す。HUDは映っている球に追従させる。
 /// 何も操作されない時間が `idleToDemo` を超えたら自動でデモへ入る（アトラクトモード）。
-///   C … デモON/OFF   V … 次のショットへ   Tab/0 … 手動操作（デモを抜ける）
+///   C … デモON/OFF   V … 次のショットへ   Tab/0 … 手動操作（デモを抜ける）。パッド含むバインドは ParkInput
 public class CameraDirector : MonoBehaviour
 {
 	public bool demoMode = true;
@@ -28,6 +28,7 @@ public class CameraDirector : MonoBehaviour
 
 	Camera live;
 	float lastManual;
+	float lastMouse;
 
 	/// 現在映しているカメラ（ソークのスクリーンショット用）
 	public Camera Live => live != null ? live : mainCam;
@@ -71,18 +72,21 @@ public class CameraDirector : MonoBehaviour
 
 	void Update()
 	{
-		var kb = Keyboard.current;
-		if (kb != null)
+		if (ParkInput.Quit) Application.Quit();
+		if (ParkInput.Help && hud != null) hud.ToggleHelp();
+		// マウスは3秒放置で隠す（観賞の邪魔をしない）
+		var mouse = Mouse.current;
+		if (mouse != null && mouse.delta.ReadValue() != Vector2.zero) lastMouse = Time.unscaledTime;
+		Cursor.visible = Time.unscaledTime - lastMouse < 3f;
+
+		if (ParkInput.Demo) { demoMode = !demoMode; Cut(demoMode ? mixCam : mainCam); }
+		if (ParkInput.NextShot && demoMode && mix != null) mix.Pick();
+		// 手動でボールを選んだらデモを抜けてメインカメラへ戻す
+		if (ParkInput.BallStep != 0 || ParkInput.Overview)
 		{
-			if (kb.cKey.wasPressedThisFrame) { demoMode = !demoMode; Cut(demoMode ? mixCam : mainCam); }
-			if (kb.vKey.wasPressedThisFrame && demoMode && mix != null) mix.Pick();
-			// 手動でボールを選んだらデモを抜けてメインカメラへ戻す
-			if (kb.tabKey.wasPressedThisFrame || kb.digit0Key.wasPressedThisFrame)
-			{
-				lastManual = Time.time;
-				demoMode = false;
-				Cut(mainCam);
-			}
+			lastManual = Time.time;
+			demoMode = false;
+			Cut(mainCam);
 		}
 
 		if (!demoMode)

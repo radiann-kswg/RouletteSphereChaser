@@ -35,14 +35,23 @@ public class BallHUD : MonoBehaviour
         while (t.parent != null && t.parent.name != "Park") { t = t.parent; group = t.name; }
 
         string text = gained > 0
-            ? $"Ball {b.number:00}   {z.name}   +{gained}" + (mult > 1 ? $"  (x{mult})" : "")
-            : $"Ball {b.number:00}   {z.name}   Next x{mult}";
+            ? $"{b.Label}   {z.name}   +{gained}" + (mult > 1 ? $"  (x{mult})" : "")
+            : $"{b.Label}   {z.name}   Next x{mult}";
         passes.Add(new Pass { group = group, text = text, time = Time.time });
         if (passes.Count > 200) passes.RemoveRange(0, 100);   // ponytail: 単純なリングでよい
     }
 
-    TextMeshProUGUI title, body;
-    RectTransform panel;   // 明るい機構を映すと白文字が飛ぶので、TMPの裏に半透明の黒板を敷く
+    TextMeshProUGUI title, body, help;
+    RectTransform panel, helpPanel;
+    bool helpOn;
+    float helpUntil = 8f;   // 起動後この秒数だけ操作ヘルプを出す
+
+    public void ToggleHelp()
+    {
+        helpOn = !(helpOn || Time.time < helpUntil);
+        helpUntil = 0f;
+    }
+   // 明るい機構を映すと白文字が飛ぶので、TMPの裏に半透明の黒板を敷く
 
     void Awake()
     {
@@ -67,6 +76,17 @@ public class BallHUD : MonoBehaviour
 
         title = MakeText(canvasGO.transform, new Vector2(36, -30), 64, new Color(1f, 0.85f, 0.30f));
         body = MakeText(canvasGO.transform, new Vector2(38, -108), 40, new Color(0.95f, 0.95f, 1f));
+
+        // 操作ヘルプ（左下）。黒板→文字の順に作る
+        helpPanel = Instantiate(panelGO, canvasGO.transform).GetComponent<RectTransform>();
+        help = MakeText(canvasGO.transform, new Vector2(38, 30), 30, new Color(0.95f, 0.95f, 1f));
+        foreach (var rt in new[] { helpPanel, help.rectTransform })
+        {
+            rt.anchorMin = rt.anchorMax = Vector2.zero;
+            rt.pivot = Vector2.zero;
+        }
+        helpPanel.anchoredPosition = new Vector2(20, 18);
+        help.alignment = TextAlignmentOptions.BottomLeft;
     }
 
     /// 文字の実サイズに合わせて黒板を伸縮させる（機構モードはログ行数で高さが変わる）
@@ -101,6 +121,16 @@ public class BallHUD : MonoBehaviour
 
     void LateUpdate()
     {
+        bool showHelp = helpOn || Time.time < helpUntil;
+        help.gameObject.SetActive(showHelp);
+        helpPanel.gameObject.SetActive(showHelp);
+        if (showHelp)
+        {
+            help.text = ParkInput.HelpText;   // 最後に触ったデバイスの表記へ切り替わる
+            help.ForceMeshUpdate();
+            helpPanel.sizeDelta = new Vector2(help.preferredWidth + 40f, help.preferredHeight + 28f);
+        }
+
         // 抽選機モード: 機構名＋その機構での通過スクロールログ
         if (mechTitle != null)
         {
@@ -121,7 +151,7 @@ public class BallHUD : MonoBehaviour
         var b = externalTarget != null ? externalTarget : (followCam != null ? followCam.Target : null);
         if (b != null)
         {
-            title.text = $"Ball {b.number:00}";
+            title.text = b.Label;
             var mult = b.nextMultiplier > 1 ? $"  x{b.nextMultiplier}" : "";
             body.text = $"Lap {b.laps}\nScore {b.pendingPoints}{mult}\nTotal {b.totalScore}";
         }
