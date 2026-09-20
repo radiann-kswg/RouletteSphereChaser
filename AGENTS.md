@@ -63,10 +63,10 @@ v1で一度学んだはずの失敗を、v2のフェーズ6でそっくり再演
   C/X=デモ・V/RT=次ショット・Tab,Shift+Tab/RB,LB=球送り・0/LT=全景・M/Y=音の切替・H/Select=ヘルプ・Esc/Start **1秒長押し**=終了。`UsingGamepad`（最後に触ったデバイス）で `BallHUD` 左下のヘルプ表記が切り替わる。
   `CameraDirector` / `FollowCamera` は `Keyboard.current` を直接読まない。キーを足すときはここと `HelpText` と README（日英）の表を同時に直す
 - **音（美化その4-2・2026-09-20）**: `Assets/Scripts/ParkAudio.cs` が `RuntimeInitializeOnLoadMethod` で自分を生成する（`CameraDirector` のあるシーンだけ）。**シーンにもプレハブにも配線しない**＝`ParkBuilder` の作り直しでも下流の球差し替えでも壊れない。
-  素材は `Resources` から拾う: `Assets/Resources/SFX/Roll_Loop.wav`・`SFX/Hits/Hit_1〜4.wav`・`SFX/Lift_Loop.wav`・`BGM/*.ogg`（LFS）。`Assets/Resources/BGM_Custom/` は **git 管轄外の差し替えスロット**（中身があれば同梱 BGM の代わりに流す）。
+  素材は `Resources` から拾う: `SFX/Hits/Hit_1〜4.wav`・`SFX/Lift_Loop.wav`・`BGM/*.ogg`（LFS）。`Assets/Resources/BGM_Custom/` は **git 管轄外の差し替えスロット**（中身があれば同梱 BGM の代わりに流す）。
   ─ 耳（`AudioListener`）は `ParkAudio` が持ち、毎フレーム `CameraDirector.Active` へ移す（メインカメラに置くと、デモ中も1番ボールの位置で聴くことになり絵と音がずれる）。
-  ─ 球の音は `BallAudio`（1秒ごとの走査で新しい `LotteryBall` に後付け）。転がり＝接地中の速さで音量/ピッチ、衝突＝相対速度 `hitMinSpeed` 以上だけ。**ノブは `ParkAudio` の public フィールド1か所**（Play 中に Hierarchy の `ParkAudio` で動かし、決まった値を既定値へ書き戻す）。実測の球速は p50≈0.15〜0.6・p90≈1.75・max≈2.5 m/s（36球）。
-  ─ **音色の決めごと（User 判断 2026-09-20）**: 球もレーンも ABS／アクリル系の「軽くて柔らかい」音。**金属的にしない**（長く鳴る正弦・非整数倍音を足さない。衝突は約30msで消す）、**重低音にしない**（転がりは250Hz未満を切る）。キャラ絵のボールスキンに対して音が浮かないこと。リフトの低いモーター音は User 承認済み。
+  ─ 球の音は `BallAudio`（1秒ごとの走査で新しい `LotteryBall` に後付け）。衝突＝相対速度 `hitMinSpeed` 以上だけ「コトッ」。**転がりは連続ループを使わず、同じ Hit を小音量（`rollVolume`）で `rollTickDistance` 進むごとに刻む**（User 判断 2026-09-20: 連続ノイズの転がりループは衝突音と重なると主張が強く、刻みだけのほうが自然でおとなしい。タワーA のスパイラルで確認）。**ノブは `ParkAudio` の public フィールド1か所**（Play 中に Hierarchy の `ParkAudio` で動かし、決まった値を既定値へ書き戻す）。実測の球速は p50≈0.15〜0.6・p90≈1.75・max≈2.5 m/s（36球）。
+  ─ **音色の決めごと（User 判断 2026-09-20）**: 球もレーンも ABS／アクリル系の「軽くて柔らかい」音。**金属的にしない**（長く鳴る正弦・非整数倍音を足さない。衝突は約30msで消す）、**重低音にしない**・**連続ノイズを鳴らし続けない**。キャラ絵のボールスキンに対して音が浮かないこと。リフトの低いモーター音は User 承認済み。
   ─ **BGM に使ってよいのは Mutopia で License が `Public Domain` のものだけ**。`CC BY-SA` の版（サティのグノシエンヌ、ゴルトベルクのアリア等）は継承条項が本リポジトリ（CC BY 4.0）と下流（CC BY-NC）にぶつかるので使わない。演奏の録音も使わない（演奏者の権利が別にある）。現行: バッハ BWV 846 前奏曲／ドビュッシー「月の光」。
 - `LotteryBall.displayName` … HUD に出す名前（既定は空＝RSC 単体では番号だけ）。**下流プロジェクト（NTsSphereChaser）が入れる差し込み口**。`LotteryBall.Label` が `Ball 02  Binor` 形式を返し、HUD タイトルと通過ログが使う。HUD 書体は CJK 未収録（罠53）なので英数字で入れること
 - `Assets/Editor/ParkBuilder.cs` … シーン生成の唯一の入口（再実行で作り直し。座標は計算せず `ParkAssembly.fbx` を解釈するだけ）

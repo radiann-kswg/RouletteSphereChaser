@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// 観賞アプリの音（美化その4-2）。シーンにもプレハブにも配線しない＝ParkBuilder の作り直しや下流の球差し替えに影響されない。
-///   ・物理音: 球ごとに BallAudio（転がり＋衝突）を後付け、リフトに低いモーター音
+///   ・物理音: 球ごとに BallAudio（衝突の「コトッ」＋転がりはその小さな刻み）を後付け、リフトに低いモーター音
 ///   ・BGM: Resources/BGM_Custom（git 管轄外の差し替えスロット）が空なら Resources/BGM（PD 曲の自前オルゴール版）を順繰り
 ///   ・M / パッド Y: All → SFX only → Mute（PlayerPrefs に保存）
 /// 方針は「静かな部屋でずっと流しておけるか」。既定値は小さめ。音色は Docs/gen_sfx.py / gen_bgm.py、音量はここのノブ。
@@ -15,8 +15,10 @@ public class ParkAudio : MonoBehaviour
     [Range(0, 1)] public float liftVolume = 0.10f;
     public float bgmGap = 6f;   // 曲間の無音[s]
     // 球の音のノブ。実物の音は測れないので耳で合わせる（Play 中に Hierarchy の ParkAudio を Inspector で動かし、決まった値をこの既定値へ）
-    [Range(0, 1)] public float rollVolume = 0.35f;   // 最高速での転がり音量
+    [Range(0, 1)] public float rollVolume = 0.10f;   // 転がりの刻み（衝突と同じ「コトッ」）の最大音量。衝突より十分小さく
     public float rollFullSpeed = 2.0f;               // この速さ[m/s]で最大音量
+    public float rollMinSpeed = 0.15f;               // これ未満（渋滞待ち・ほぼ静止）は刻まない
+    public float rollTickDistance = 0.30f;           // 何m転がるごとに1回刻むか（球径0.1＝約1回転）
     [Range(0, 1)] public float hitVolume = 0.5f;
     public float hitMinSpeed = 0.35f;                // これ未満の接触は鳴らさない（レール上の細かい跳ねを拾わない）
     public float hitFullSpeed = 4.0f;
@@ -27,7 +29,6 @@ public class ParkAudio : MonoBehaviour
     AudioClip[] playlist;
     int track = -1;
     float nextTrackAt, nextScan;
-    AudioClip roll;
     AudioClip[] hits;
     readonly HashSet<LotteryBall> wired = new();
 
@@ -46,7 +47,6 @@ public class ParkAudio : MonoBehaviour
         foreach (var l in FindObjectsByType<AudioListener>()) l.enabled = false;
         gameObject.AddComponent<AudioListener>();
 
-        roll = Resources.Load<AudioClip>("SFX/Roll_Loop");
         hits = Resources.LoadAll<AudioClip>("SFX/Hits");
         var lift = Resources.Load<AudioClip>("SFX/Lift_Loop");
         foreach (var bl in FindObjectsByType<BallLift>())
@@ -107,11 +107,11 @@ public class ParkAudio : MonoBehaviour
 
         // ponytail: 1秒ごとの全探索で新しい球に BallAudio を付ける（球は数十個・生成は起動直後だけ）。
         // 球の生成元が RSC と下流で別なので、生成側にフックを足すよりこちらが疎結合
-        if (Time.time >= nextScan && roll != null)
+        if (Time.time >= nextScan && hits.Length > 0)
         {
             nextScan = Time.time + 1f;
             foreach (var b in FindObjectsByType<LotteryBall>())
-                if (wired.Add(b)) b.gameObject.AddComponent<BallAudio>().Init(this, roll, hits);
+                if (wired.Add(b)) b.gameObject.AddComponent<BallAudio>().Init(this, hits);
         }
     }
 
