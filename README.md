@@ -38,7 +38,7 @@
 
 ## 動作環境
 
-- Unity **6000.6.2f1**（Universal Render Pipeline）
+- Unity **6000.3.25f1**（6.3 LTS・Universal Render Pipeline）
 - Blender **5.2.0 LTS**（`BlenderSources/*.blend` を編集する場合のみ）
 - [Git LFS](https://git-lfs.com/)（`.fbx` / `.blend` / `.png` などのバイナリアセットに使用）
 
