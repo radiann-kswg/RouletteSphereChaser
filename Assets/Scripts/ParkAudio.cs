@@ -45,12 +45,12 @@ public class ParkAudio : MonoBehaviour
         Current = (Mode)PlayerPrefs.GetInt("ParkAudio.Mode", 0);
 
         // 耳は「いま映しているカメラ」に置く（メインカメラはデモ中も1番ボールを追っていて、絵と音がずれる）
-        foreach (var l in FindObjectsByType<AudioListener>()) l.enabled = false;
+        foreach (var l in FindObjectsByType<AudioListener>(FindObjectsSortMode.None)) l.enabled = false;
         gameObject.AddComponent<AudioListener>();
 
         hits = Resources.LoadAll<AudioClip>("SFX/Hits");
         var lift = Resources.Load<AudioClip>("SFX/Lift_Loop");
-        foreach (var bl in FindObjectsByType<BallLift>())
+        foreach (var bl in FindObjectsByType<BallLift>(FindObjectsSortMode.None))
         {
             var s = Make3D(bl.gameObject, lift, true);
             s.volume = liftVolume;
@@ -111,7 +111,7 @@ public class ParkAudio : MonoBehaviour
         if (Time.time >= nextScan && hits.Length > 0)
         {
             nextScan = Time.time + 1f;
-            foreach (var b in FindObjectsByType<LotteryBall>())
+            foreach (var b in FindObjectsByType<LotteryBall>(FindObjectsSortMode.None))
                 if (wired.Add(b)) b.gameObject.AddComponent<BallAudio>().Init(this, hits);
         }
     }

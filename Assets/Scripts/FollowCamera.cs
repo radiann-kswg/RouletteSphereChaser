@@ -32,7 +32,7 @@ public class FollowCamera : MonoBehaviour
         int step = ParkInput.BallStep;
         if (step != 0)
         {
-            var balls = FindObjectsByType<LotteryBall>().OrderBy(b => b.number).ToArray();
+            var balls = FindObjectsByType<LotteryBall>(FindObjectsSortMode.None).OrderBy(b => b.number).ToArray();
             if (balls.Length > 0)
             {
                 index = ((index < 0 && step < 0 ? 0 : index) + step + balls.Length) % balls.Length;
@@ -49,7 +49,7 @@ public class FollowCamera : MonoBehaviour
         // デフォルト: 1番ボールに追従（スポーン待ちの間は毎フレーム探す）
         if (target == null && !manualOverview)
         {
-            foreach (var b in FindObjectsByType<LotteryBall>())
+            foreach (var b in FindObjectsByType<LotteryBall>(FindObjectsSortMode.None))
                 if (b.number == 1) { target = b; break; }
         }
     }

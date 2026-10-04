@@ -40,7 +40,7 @@ public static class ShowcaseCapture
         Object.DestroyImmediate(go);
 
         // 2) 抽選機ごとの定点カメラ。実際にデモで映る絵をそのまま出す
-        var cams = Object.FindObjectsByType<Camera>();
+        var cams = Object.FindObjectsByType<Camera>(FindObjectsSortMode.None);
         int n = 2;
         foreach (var (name, file) in Shots)
         {

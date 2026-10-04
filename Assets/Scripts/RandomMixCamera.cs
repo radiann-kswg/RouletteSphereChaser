@@ -21,7 +21,7 @@ public class RandomMixCamera : MonoBehaviour
     void Start()
     {
         self = GetComponent<Camera>();
-        foreach (var c in Object.FindObjectsByType<Camera>())
+        foreach (var c in Object.FindObjectsByType<Camera>(FindObjectsSortMode.None))
         {
             if (c == self) continue;
             if (c.GetComponent<RandomFixedCamera>() != null) mech.Add(c);

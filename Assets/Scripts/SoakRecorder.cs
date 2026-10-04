@@ -128,7 +128,7 @@ public class SoakRecorder : MonoBehaviour
     {
         t += Time.fixedDeltaTime;
 
-        foreach (var ball in Object.FindObjectsByType<LotteryBall>())
+        foreach (var ball in Object.FindObjectsByType<LotteryBall>(FindObjectsSortMode.None))
         {
             if (!tracks.TryGetValue(ball, out var tr)) tracks[ball] = tr = new Track();
             var rb = ball.GetComponent<Rigidbody>();
@@ -239,8 +239,8 @@ public class SoakRecorder : MonoBehaviour
 
     void Finish()
     {
-        var zones = Object.FindObjectsByType<ScoreZone>();
-        var balls = Object.FindObjectsByType<LotteryBall>();
+        var zones = Object.FindObjectsByType<ScoreZone>(FindObjectsSortMode.None);
+        var balls = Object.FindObjectsByType<LotteryBall>(FindObjectsSortMode.None);
 
         var sb = new StringBuilder();
         sb.AppendLine("{");
